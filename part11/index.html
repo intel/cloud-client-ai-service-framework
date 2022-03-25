@@ -1,0 +1,6029 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>11. APIs Reference List · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../part10/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/">
+            
+                <a href="../part1/#1">
+            
+                    
+                    1. What is Intel Cloud-Client AI Service Framework (CCAI)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../part2/">
+            
+                <a href="../part2/#2">
+            
+                    
+                    2. How does CCAI work
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../part2/">
+            
+                <a href="../part2/#2_1">
+            
+                    
+                    2.1 The high level call flow of CCAI (1.2 release)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../part2/">
+            
+                <a href="../part2/#2_2">
+            
+                    
+                    2.2 CCAI (1.2 release) stack architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../part3/">
+            
+                <a href="../part3/#3">
+            
+                    
+                    3. Integrate and use CCAI runtime environment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../part3/">
+            
+                <a href="../part3/#3_1">
+            
+                    
+                    3.1 How to install the pre-built runtime (if have) and verify it quickly
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../part3/">
+            
+                <a href="../part3/#3_1_1">
+            
+                    
+                    3.1.1 Prepare
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../part3/">
+            
+                <a href="../part3/#3_1_2">
+            
+                    
+                    3.1.2 Proxy setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../part3/">
+            
+                <a href="../part3/#3_1_3">
+            
+                    
+                    3.1.3 Container image preparation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../part3/">
+            
+                <a href="../part3/#3_1_4">
+            
+                    
+                    3.1.4 Download and install service-framework packages/test cases/docker files in host
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../part3/">
+            
+                <a href="../part3/#3_1_5">
+            
+                    
+                    3.1.5 Start/Stop service-framework
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../part3/">
+            
+                <a href="../part3/#3_2">
+            
+                    
+                    3.2 Verify CCAI functions with samples or test cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../part4/">
+            
+                <a href="../part4/#4">
+            
+                    
+                    4. How to setup development environment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../part4/">
+            
+                <a href="../part4/#4_1">
+            
+                    
+                    4.1 Download and run development docker image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../part4/">
+            
+                <a href="../part4/#4_2">
+            
+                    
+                    4.2 Enter development container environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../part4/">
+            
+                <a href="../part4/#4_3">
+            
+                    
+                    4.3 Setup development environment directly in your machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../part4/">
+            
+                <a href="../part4/#4_4">
+            
+                    
+                    4.4 Setup the Pulseaudio service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../part5/">
+            
+                <a href="../part5/#5">
+            
+                    
+                    5. How to generate CCAI packages and container image
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../part5/">
+            
+                <a href="../part5/#5_1">
+            
+                    
+                    5.1 Build CCAI packages and generate CCAI container image form pre-built binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../part5/">
+            
+                <a href="../part5/#5_2">
+            
+                    
+                    5.2 How to build from source
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../part5/">
+            
+                <a href="../part5/#5_2_1">
+            
+                    
+                    5.2.1 download initial project - container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../part5/">
+            
+                <a href="../part5/#5_2_2">
+            
+                    
+                    5.2.2 build host packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../part5/">
+            
+                <a href="../part5/#5_2_3">
+            
+                    
+                    5.2.3 install CCAI services and image on host
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../part5/">
+            
+                <a href="../part5/#5_3">
+            
+                    
+                    5.3 How to check all component versions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../part5/">
+            
+                <a href="../part5/#5_4">
+            
+                    
+                    5.4 Generate CCAI OTA image
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../part6/">
+            
+                <a href="../part6/#6">
+            
+                    
+                    6. How to develop AI services for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../part6/">
+            
+                <a href="../part6/#6_1">
+            
+                    
+                    6.1 CCAI service work mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../part6/">
+            
+                <a href="../part6/#6_2">
+            
+                    
+                    6.2 Preparation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="../part6/">
+            
+                <a href="../part6/#6_2_1">
+            
+                    
+                    6.2.1 Using OpenVINO as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="../part6/">
+            
+                <a href="../part6/#6_2_2">
+            
+                    
+                    6.2.2 Using PyTorch as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="../part6/">
+            
+                <a href="../part6/#6_2_3">
+            
+                    
+                    6.2.3 Using ONNX runtime as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="../part6/">
+            
+                <a href="../part6/#6_2_4">
+            
+                    
+                    6.2.4 Using TensorFlow as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="../part6/">
+            
+                <a href="../part6/#6_2_5">
+            
+                    
+                    6.2.5 Using PaddlePaddle as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../part6/">
+            
+                <a href="../part6/#6_3">
+            
+                    
+                    6.3 Development services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="../part6/">
+            
+                <a href="../part6/#6_3_1">
+            
+                    
+                    6.3.1 Develop FCGI service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="../part6/">
+            
+                <a href="../part6/#6_3_2">
+            
+                    
+                    6.3.2 Develop gRPC service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../part6/">
+            
+                <a href="../part6/#6_4">
+            
+                    
+                    6.4 Deploy services for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="../part6/">
+            
+                <a href="../part6/#6_4_1">
+            
+                    
+                    6.4.1 Deploy into container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="../part6/">
+            
+                <a href="../part6/#6_4_2">
+            
+                    
+                    6.4.2 Deploy on host
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="../part6/">
+            
+                <a href="../part6/#6_4_3">
+            
+                    
+                    6.4.3 Specific to PyTorch service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="../part6/">
+            
+                <a href="../part6/#6_4_4">
+            
+                    
+                    6.4.4 Specific to Onnx service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="../part6/">
+            
+                <a href="../part6/#6_4_5">
+            
+                    
+                    6.4.5 Specific to Tensorflow service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.6" data-path="../part6/">
+            
+                <a href="../part6/#6_4_6">
+            
+                    
+                    6.4.6 Specific to PaddlePaddle service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../part6/">
+            
+                <a href="../part6/#6_5">
+            
+                    
+                    6.5 Sample: Add a service for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="../part6/">
+            
+                <a href="../part6/#6_5_1">
+            
+                    
+                    6.5.1 Install packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="../part6/">
+            
+                <a href="../part6/#6_5_2">
+            
+                    
+                    6.5.2 Compose the header file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="../part6/">
+            
+                <a href="../part6/#6_5_3">
+            
+                    
+                    6.5.3 Extract service runtime library from CCAI container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="../part6/">
+            
+                <a href="../part6/#6_5_4">
+            
+                    
+                    6.5.4 Write the main source code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="../part6/">
+            
+                <a href="../part6/#6_5_5">
+            
+                    
+                    6.5.5 Build the program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="../part6/">
+            
+                <a href="../part6/#6_5_6">
+            
+                    
+                    6.5.6 Write the configuration file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="../part6/">
+            
+                <a href="../part6/#6_5_7">
+            
+                    
+                    6.5.7 Build docker image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="../part6/">
+            
+                <a href="../part6/#6_5_8">
+            
+                    
+                    6.5.8 Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../part7/">
+            
+                <a href="../part7/#7">
+            
+                    
+                    7. How to use AI services provided by CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../part7/">
+            
+                <a href="../part7/#7_1">
+            
+                    
+                    7.1 Request serving via REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../part7/">
+            
+                <a href="../part7/#7_2">
+            
+                    
+                    7.2 Request serving via gRPC APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../part7/">
+            
+                <a href="../part7/#7_3">
+            
+                    
+                    7.3 Proxy setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../part8/">
+            
+                <a href="../part8/#8">
+            
+                    
+                    8. How to integrate new AI services with CCAI framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../part8/">
+            
+                <a href="../part8/#8_1">
+            
+                    
+                    8.1 Where to put those services file to
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../part8/">
+            
+                <a href="../part8/#8_2">
+            
+                    
+                    8.2 Where to put related Neural Network Models file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../part8/">
+            
+                <a href="../part8/#8_3">
+            
+                    
+                    8.3 How to enable services via API gateway
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../part8/">
+            
+                <a href="../part8/#8_4">
+            
+                    
+                    8.4 How to generate new container image
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../part9/">
+            
+                <a href="../part9/#9">
+            
+                    
+                    9. How to enable Encryption and Authentication for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../part9/">
+            
+                <a href="../part9/#9_1">
+            
+                    
+                    9.1 Encryption
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../part9/">
+            
+                <a href="../part9/#9_2">
+            
+                    
+                    9.2 Enable authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../part10/">
+            
+                <a href="../part10/#10">
+            
+                    
+                    10. How to enable DNS interception
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./#11">
+            
+                    
+                    11. APIs Reference List
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="./">
+            
+                <a href="./#11_1">
+            
+                    
+                    11.1 FCGI APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1" data-path="./">
+            
+                <a href="./#11_1_1">
+            
+                    
+                    11.1.1 TTS API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2" data-path="./">
+            
+                <a href="./#11_1_2">
+            
+                    
+                    11.1.2 ASR API usage (offline ASR case)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.3" data-path="./">
+            
+                <a href="./#11_1_3">
+            
+                    
+                    11.1.3 API in Speech sample
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4" data-path="./">
+            
+                <a href="./#11_1_4">
+            
+                    
+                    11.1.4 Policy API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.5" data-path="./">
+            
+                <a href="./#11_1_5">
+            
+                    
+                    11.1.5 Classification API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.6" data-path="./">
+            
+                <a href="./#11_1_6">
+            
+                    
+                    11.1.6 Face Detection API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.7" data-path="./">
+            
+                <a href="./#11_1_7">
+            
+                    
+                    11.1.7 Facial Landmark API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.8" data-path="./">
+            
+                <a href="./#11_1_8">
+            
+                    
+                    11.1.8 OCR API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.9" data-path="./">
+            
+                <a href="./#11_1_9">
+            
+                    
+                    11.1.9 formula API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.10" data-path="./">
+            
+                <a href="./#11_1_10">
+            
+                    
+                    11.1.10 handwritten API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.11" data-path="./">
+            
+                <a href="./#11_1_11">
+            
+                    
+                    11.1.11 ppocr API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.12" data-path="./">
+            
+                <a href="./#11_1_12">
+            
+                    
+                    11.1.12 segmentation API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.13" data-path="./">
+            
+                <a href="./#11_1_13">
+            
+                    
+                    11.1.13 super resolution API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.14" data-path="./">
+            
+                <a href="./#11_1_14">
+            
+                    
+                    11.1.14 digitalnote API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.15" data-path="./">
+            
+                <a href="./#11_1_15">
+            
+                    
+                    11.1.15 Video pipeline management (control) API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.16" data-path="./">
+            
+                <a href="./#11_1_16">
+            
+                    
+                    11.1.16 Live ASR API usage (online ASR case)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.17" data-path="./">
+            
+                <a href="./#11_1_17">
+            
+                    
+                    11.1.17 Pose estimation API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.18" data-path="./">
+            
+                <a href="./#11_1_18">
+            
+                    
+                    11.1.18 Capability API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="./">
+            
+                <a href="./#11_2">
+            
+                    
+                    11.2 gRPC APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.2.1" data-path="./">
+            
+                <a href="./#11_2_1">
+            
+                    
+                    11.2.1 proto file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.2" data-path="./">
+            
+                <a href="./#11_2_2">
+            
+                    
+                    11.2.2 OCR method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.3" data-path="./">
+            
+                <a href="./#11_2_3">
+            
+                    
+                    11.2.3 ASR method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.4" data-path="./">
+            
+                <a href="./#11_2_4">
+            
+                    
+                    11.2.4 Classification method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.5" data-path="./">
+            
+                <a href="./#11_2_5">
+            
+                    
+                    11.2.5 FaceDetection method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.6" data-path="./">
+            
+                <a href="./#11_2_6">
+            
+                    
+                    11.2.6 FacialLandmark method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="./">
+            
+                <a href="./#11_3">
+            
+                    
+                    11.3 Low level APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1" data-path="./">
+            
+                <a href="./#11_3_1">
+            
+                    
+                    11.3.1 C++ APIs for Openvino Backend Engine(Version 0)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1.1" data-path="./">
+            
+                <a href="./#11_3_1_1">
+            
+                    
+                    11.3.1.1 Return value (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.2" data-path="./">
+            
+                <a href="./#11_3_1_2">
+            
+                    
+                    11.3.1.2 Server parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.3" data-path="./">
+            
+                <a href="./#11_3_1_3">
+            
+                    
+                    11.3.1.3 Policy configuration API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.4" data-path="./">
+            
+                <a href="./#11_3_1_4">
+            
+                    
+                    11.3.1.4 image API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.5" data-path="./">
+            
+                <a href="./#11_3_1_5">
+            
+                    
+                    11.3.1.5 ASR API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.6" data-path="./">
+            
+                <a href="./#11_3_1_6">
+            
+                    
+                    11.3.1.6 common API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.7" data-path="./">
+            
+                <a href="./#11_3_1_7">
+            
+                    
+                    11.3.1.7 video API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.8" data-path="./">
+            
+                <a href="./#11_3_1_8">
+            
+                    
+                    11.3.1.8 Load Openvino Model from Buffer API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.9" data-path="./">
+            
+                <a href="./#11_3_1_9">
+            
+                    
+                    11.3.1.9 Configure a temporary inference device API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2" data-path="./">
+            
+                <a href="./#11_3_2">
+            
+                    
+                    11.3.2 Python API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.2.1" data-path="./">
+            
+                <a href="./#11_3_2_1">
+            
+                    
+                    11.3.2.1 Image API(deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.2" data-path="./">
+            
+                <a href="./#11_3_2_2">
+            
+                    
+                    11.3.2.2 Image API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.3" data-path="./">
+            
+                <a href="./#11_3_2_3">
+            
+                    
+                    11.3.2.3 ASR API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.4" data-path="./">
+            
+                <a href="./#11_3_2_4">
+            
+                    
+                    11.3.2.4 Common API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.5" data-path="./">
+            
+                <a href="./#11_3_2_5">
+            
+                    
+                    11.3.2.5 Policy configuration API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.6" data-path="./">
+            
+                <a href="./#11_3_2_6">
+            
+                    
+                    11.3.2.6 Set temporary inference device API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3" data-path="./">
+            
+                <a href="./#11_3_3">
+            
+                    
+                    11.3.3 C++ APIs for Different backend Engines (Version 1)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.3.1" data-path="./">
+            
+                <a href="./#11_3_3_1">
+            
+                    
+                    11.3.3.1 Return Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.2" data-path="./">
+            
+                <a href="./#11_3_3_2">
+            
+                    
+                    11.3.3.2 Inference Engines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.3" data-path="./">
+            
+                <a href="./#11_3_3_3">
+            
+                    
+                    11.3.3.3 Image API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.4" data-path="./">
+            
+                <a href="./#11_3_3_4">
+            
+                    
+                    11.3.3.4 Speech API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.5" data-path="./">
+            
+                <a href="./#11_3_3_5">
+            
+                    
+                    11.3.3.5 Common API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.4" data-path="./">
+            
+                <a href="./#11_3_4">
+            
+                    
+                    11.3.4 Video pipeline management (construct) APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="./">
+            
+                <a href="./#11_4">
+            
+                    
+                    11.4 How to extend video pipeline with video pipeline manager
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.4.1" data-path="./">
+            
+                <a href="./#11_4_1">
+            
+                    
+                    11.4.1 construct the plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.2" data-path="./">
+            
+                <a href="./#11_4_2">
+            
+                    
+                    11.4.2 Build the plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.3" data-path="./">
+            
+                <a href="./#11_4_3">
+            
+                    
+                    11.4.3 Install the plugin to destination
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.4" data-path="./">
+            
+                <a href="./#11_4_4">
+            
+                    
+                    11.4.4 Test your plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="./">
+            
+                <a href="./#12">
+            
+                    
+                    11.5 Smart Photo Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../part12/">
+            
+                <a href="../part12/#12">
+            
+                    
+                    12. Test cases and packages installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../part12/">
+            
+                <a href="../part12/#12_1">
+            
+                    
+                    12.1 Enabled services for testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../part12/">
+            
+                <a href="../part12/#12_2">
+            
+                    
+                    12.2 High Level APIs test cases
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../part12/">
+            
+                <a href="../part12/#12_2_1">
+            
+                    
+                    12.2.1 For testing all provided API in a bunch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.2" data-path="../part12/">
+            
+                <a href="../part12/#12_2_2">
+            
+                    
+                    12.2.2 For testing python implementation of related REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.3" data-path="../part12/">
+            
+                <a href="../part12/#12_2_3">
+            
+                    
+                    12.2.3 For testing C++ implementation of related REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.4" data-path="../part12/">
+            
+                <a href="../part12/#12_2_4">
+            
+                    
+                    12.2.4 For testing C++ implementation of related gRPC APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../part12/">
+            
+                <a href="../part12/#12_3">
+            
+                    
+                    12.3 Health-monitor mechanism test case
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../part12/">
+            
+                <a href="../part12/#12_3_1">
+            
+                    
+                    12.3.1 Test case
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../part12/">
+            
+                <a href="../part12/#12_3_2">
+            
+                    
+                    12.3.2 How it works (in brief)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../part12/">
+            
+                <a href="../part12/#12_4">
+            
+                    
+                    12.4 Deb package for host installed application/service (if not install yet)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../part12/">
+            
+                <a href="../part12/#12_5">
+            
+                    
+                    12.5 Deb package for host installed neural network models (if not install yet)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >11. APIs Reference List</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="11-apis-reference-list-">11. APIs Reference List <div id="11"></div></h1>
+<h2 id="111-fcgi-apis-manual-">11.1 FCGI APIs Manual <div id="11_1"></div></h2>
+<p>CCAI provides many FCGI APIs. They are named fcgi_xxxx. Each fcgi API is a fcgi server, running in the background. Client APPs communicate with fcgi server by using http post protocol.</p>
+<p><img src="../media/e7c807702cc3161bf0e4b0aad6e914eb.png" alt=""></p>
+<p>These fcgi APIs will do AI for different cases, such as classification, face detection, OCR, TTS, or ASR. Please refer to the following API list to understand the specific API.</p>
+<p>Some fcgi APIs have two working modes. One mode is doing inference locally in the fcgi_xxxx server, the other one is proxy mode. In proxy mode, the fcgi_xxxx server forwards requests from client apps to the remote server (such as QQ server or Tencent server), the remote server does inference. In which mode the fcgi_xxxx server works is decided by configuration file (policy_setting.cfg) or the result of policy calculation.</p>
+<p>The following picture shows two working modes.</p>
+<p><img src="../media/be66a503bcb7f6737e90704fa40d43d1.png" alt=""></p>
+<p>Some FCGI APIs are implemented by two languages, C++ and python. So some APIs have two types of API: python API and C++ API. Both python API and C++ API provide the same functionality and parameters. The only difference is they have different http addresses. So clients&apos; apps can get the same inference result from either FCGI C++ API or python API by using different addresses.</p>
+<h3 id="1111-tts-api-usage-">11.1.1 TTS API usage <div id="11_1_1"></div></h3>
+<p>fcgi_tts API is used for text-to-speech. This is an end-to-end TTS API. Client app inputs one text sentence, fcgi_tts outputs the wave data of the text sentence. The wave data is the sound data. There are two paths for the wave data generated. The first path is that the wave data is written to a wav file. The second path is that the wave data is sent to the speakers directly, so you can hear the sentence from the speaker devices.</p>
+<p>There are two working modes for fcgi_tts server, local mode and proxy mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_tts server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_tts" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_tts</a>&gt;&apos;  </p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;aht&apos;</td>
+<td>Int</td>
+<td>[-24, 24]</td>
+<td>0</td>
+<td>increase(+)/descread(-) amount of semitone for generated speech</td>
+</tr>
+<tr>
+<td>&apos;apc&apos;</td>
+<td>int</td>
+<td>[0,100]</td>
+<td>58</td>
+<td>Set the speaker&apos;s timbre</td>
+</tr>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;format&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2</td>
+<td>1:PCM 2:WAV 3:MP3</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;speaker&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1</td>
+<td>1: male voice 5: female voice</td>
+</tr>
+<tr>
+<td>&apos;speed&apos;</td>
+<td>Int</td>
+<td>[50-200]</td>
+<td>100</td>
+<td>The speed of voice</td>
+</tr>
+<tr>
+<td>&apos;text&apos;</td>
+<td>string</td>
+<td>Utf-8 encoding, No more than 150 bytes</td>
+<td>Hello world</td>
+<td>The input text sentence</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;volum&apos;</td>
+<td>Int</td>
+<td>[-10, 10]</td>
+<td>0</td>
+<td>volume</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In local mode(doing inference locally), only a &quot;text&quot; field is needed to set,
+other fields are ignored.</p>
+<p>In proxy mode(doing inference on a remote server), all fields are needed to set.</p>
+<p>In proxy mode, &apos;appid&apos; and &apos;appkey&apos; are the necessary parameters in order to get
+the right results from the remote server(www.ai.qq.com). You should register on
+www.ai.qq.com and get &apos;appid&apos; and &apos;appkey&apos;. Please refer to
+<em><a href="https://ai.qq.com/doc/aaitts.shtml" target="_blank">https://ai.qq.com/doc/aaitts.shtml</a></em> , find out how to apply these fields and
+how to write a post request for the remote server.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+&quot;ret&quot;: 0, //return value: 0 (success) or 1(failure)
+&quot;msg&quot;: &quot;ok&quot;, // request result: &quot;ok&quot; or &quot;inference failed&quot;
+&quot;data&quot;: { //inference result
+  &quot;format&quot;: 2, // the format of voice : 1(pcm) 2(wav) 3(mp3)
+  &quot;speech&quot;: &quot;UklGRjL4Aw...&quot; // wave data of input sentence
+  &quot;md5sum&quot;: &quot;3bae7bf99ad32bc2880ef1938ba19590&quot; //Base64 encoding of synthesized speech
+  },
+&quot;time&quot;: 7.283 //fcgi_tts processing time
+}
+</code></pre><p>If the speaker devices are configured correctly, you can also hear the sentence
+directly from the speakers.</p>
+<p>One example of a client app for fcgi_tts API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_tts_py.py</em>&quot;.</p>
+<p>c) Notice</p>
+<p>Currently, this model only supports English text, not Chinese text.
+It provides only python API.</p>
+<p>To configure the speaker devices, you need to enable the pulseaudio and
+health-monitor services by following the following steps:</p>
+<p>(1) On the host PC, install the pulseaudio package if this package hasn&apos;t been
+installed.</p>
+<p>For example:</p>
+<pre><code>#sudo apt-get install pulseaudio
+</code></pre><p>(2) Enable the TCP protocol of the pulseaudio.</p>
+<p>Edit the configuration file. for example:</p>
+<pre><code>#sudo vim /etc/pulse/default.pa
+</code></pre><p>Find out the following tcp configuration:</p>
+<pre><code>#load-module module-native-protocol-tcp
+</code></pre><p>Uncomment the tcp configuration(remove &quot;    #&quot;), and add authentication:</p>
+<pre><code>load-module module-native-protocol-tcp auth-anonymous=1
+</code></pre><p>Save and quit the configuration file.</p>
+<p>(3) Restart the pulseaudio service. For example:
+    Stop the pulseaudio:</p>
+<pre><code>    # pulseaudio -k
+Start the pulseaudio:
+    #pulseaudio --start or #pulseaudio -D
+</code></pre><p>(4) Running the health-monitor service on the host pc if you don&apos;t run it.
+This service is used to monitor the CCAI container.</p>
+<h3 id="1112-asr-api-usage-offline-asr-case-">11.1.2 ASR API usage (offline ASR case) <div id="11_1_2"></div></h3>
+<p>fcgi_asr API is a usage of Automatic-Speech-Recognition. This is an end-to-end speech recognition. It includes several libraries released by the OpenVINO? toolkit. These libraries perform feature extraction, OpenVINO?-based neural-network speech recognition, and decoding to produce text from scores. All these libraries provide an end-to-end pipeline converting speech to text. Client app inputs an utterance (speech), fcgi_asr outputs the text directly expressed by this utterance.</p>
+<p>fcgi_asr has only one working modes - local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_asr server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_asr" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_asr</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;samplewidth&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2</td>
+<td>1:PCM 2:WAV 3:AMR 4:SILK</td>
+</tr>
+<tr>
+<td>&apos;rate&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>16000</td>
+<td>sample frequency</td>
+</tr>
+<tr>
+<td>&apos;language&apos;</td>
+<td>string</td>
+<td>&quot;ENGLISH&quot; or &quot;CHINESE&quot;</td>
+<td>ENGLISH</td>
+<td>language type</td>
+</tr>
+<tr>
+<td>&apos;realtime&apos;</td>
+<td>string</td>
+<td>&apos;OFFLINE&apos;,&apos;ONLINE_READ&apos;,&apos;ONLINE_STOP&apos;</td>
+<td>OFFLINE</td>
+<td>working mode: offline or live asr</td>
+</tr>
+<tr>
+<td>&apos;speech&apos;</td>
+<td>string</td>
+<td>Utterance data. Usually PCM data</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;audio_input&apos;</td>
+<td>string</td>
+<td>&apos;SIMULATION&apos; or &apos;MIC&apos;</td>
+<td>SIMULATION</td>
+<td>Used in live asr mode.</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>Timestamp</td>
+</tr>
+</tbody>
+</table>
+<p>For offline mode, the &quot;realtime&quot; field should set to &quot;OFFLINE&quot;, the &quot;audio_input&quot; field should set to &quot;SIMULATION&quot;.
+Because an audio file should be PCM WAV 16 kHz mono format in this case, the &quot;samplewidth&quot; field should be 2, and the
+&quot;rate&quot; field should be 16000.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+
+    &quot;ret&quot;:0, //return value: 0 (success) or 1(failure)
+
+    &quot;msg&quot;:&quot;ok&quot;, // request result: &quot;ok&quot; or &quot;inference error&quot;
+
+    &quot;data&quot;:{ //inference result
+
+        &quot;text&quot;:HOW ARE YOU DOING //text
+
+    },
+
+    &quot;time&quot;:0.695 //fcgi_asr processing time
+
+}
+</code></pre><p>One example of a client app for fcgi_asr API is &quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_asr_py.py</em>&quot;.</p>
+<h1 id="python3-postlocalasrpypy--l-eng--m-offline--f-pathofaudiofile">python3 post_local_asr_py.py -l ENG -m Offline -f path_of_audio_file</h1>
+<p>c) Notice
+This model supports both English utterance and Mathaland. For Mandarin model (IR format), please contact the author to get it.
+Please refer to README.txt file under api-gateway/fcgi/asr/python folder. </p>
+<p>It provides only python API.</p>
+<h3 id="1113-api-in-speech-sample-">11.1.3 API in Speech sample <div id="11_1_3"></div></h3>
+<p>Fcgi_speech API is used for inference speech. The acoustic model is trained on
+Kaldi* neural networks. The input speech data must be speech feature vectors.
+The feature vector is ARK format (ARK file - the result of feature extraction).
+The inference result is score data, which is also ARK format.</p>
+<p>Client app uses http protocol to communicate with fcgi_speech server.</p>
+<p>The sample of sending request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following is the detailed information about request parameters and response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_speech" target="_blank">http://localhost:8080/cgi-bin/fcgi_speech</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;stage&apos;</td>
+<td>string</td>
+<td>{&apos;RAW_FORMAT_INIT&apos;, &apos;IR_FORMAT_INIT_NETWORK&apos;, &apos;IR_FORMAT_INIT_EXENETWORK&apos;, &apos;INFERENCE&apos;}</td>
+<td>Only have 4 items</td>
+</tr>
+<tr>
+<td>&apos;model&apos;</td>
+<td>string</td>
+<td>Example: &apos;./models/wsj_dnn5b.xml&apos;</td>
+<td>IR format file or no IR format model</td>
+</tr>
+<tr>
+<td>&apos;batch&apos;</td>
+<td>int</td>
+<td>Positive integer. Example: 1 or 8</td>
+<td>Set based on the real case</td>
+</tr>
+<tr>
+<td>&apos;device&apos;</td>
+<td>string</td>
+<td>Example: &apos;GNA_AUTO&apos; or &apos;CPU&apos;</td>
+<td>Select the inference device</td>
+</tr>
+<tr>
+<td>&apos;scale_factor&apos;</td>
+<td>int</td>
+<td>Positive integer Example: 2048</td>
+<td>Used for GNA HW</td>
+</tr>
+<tr>
+<td>&apos;speech&apos;</td>
+<td>string</td>
+<td>Speech input vector data</td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>int</td>
+<td>Positive integer</td>
+<td>Time stamp for this request.</td>
+</tr>
+</tbody>
+</table>
+<p>The fcgi_speech uses a finite state machine to record the behavior. Client apps should use different &apos;stage&apos; requests to trigger translation of fcgi_speech behavior.</p>
+<p>For IR format model, the sample of post requests sequence is:</p>
+<p>The First post request is init request:</p>
+<pre><code>[&apos;stage&apos;] = &apos;IR_FORMAT_INIT_NETWORK&apos;
+
+[&apos;model&apos;] = &apos;./models/wsj_dnn5b.xml&apos;
+
+[&apos;batch&apos;] = 8
+</code></pre><p>The second post request is also init request:</p>
+<pre><code>[&apos;stage&apos;] = &apos;IR_FORMAT_INIT_EXENETWORK &apos;
+
+[&apos;model&apos;] = &apos;./models/wsj_dnn5b.xml&apos;
+
+[&apos;device&apos;] = &apos;GNA_AUTO&apos;
+</code></pre><p>The last post request is for inference:</p>
+<pre><code>[&apos;stage&apos;] = &apos;INFERENCE&apos;
+
+[&apos;model&apos;] = &apos;./models/wsj_dnn5b.xml&apos;
+
+[&apos;speech&apos;] = base64_data
+</code></pre><p>For IR format model, the sample of post requests sequence is: (two requests
+only)</p>
+<p>The First post request is init request:</p>
+<pre><code>[&apos;stage&apos;] = &apos;RAW_FORMAT_INIT&apos;
+
+[&apos;model&apos;] = &apos;./models/ELE_M.raw&apos;
+
+[&apos;batch&apos;] = 1
+
+[&apos;device&apos;] = &apos;GNA_AUTO&apos;
+
+[&apos;scale_factor&apos;] = 2048
+</code></pre><p>The second post request which is also the last request is for inference:</p>
+<pre><code>[&apos;stage&apos;] = &apos;INFERENCE&apos;
+
+[&apos;model&apos;] = &apos;./models/ELE_M.raw&apos;
+
+[&apos;speech&apos;] = base64_data
+</code></pre><p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+
+    &quot;ret&quot;:0, //return value: 0 (success) or 1(failure)
+
+    &quot;msg&quot;:&quot;ok&quot;, // request result: &quot;ok&quot; or &quot;inference error&quot;
+
+    &quot;data&quot;:{ ... // inference result
+
+    ...... // response data
+
+    },
+
+    &quot;time&quot;:0.344222 //fcgi_speech processing time
+
+}
+</code></pre><p>One example of a client app for fcgi_speech API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_speech_c.py</em>&quot;.</p>
+<p>c) Notice</p>
+<p>The fcgi_speech API doesn&apos;t have proxy mode. That means this API doesn&apos;t support doing inference on remote servers.</p>
+<p>This API can use GNA_HW as a reference device.</p>
+<p>It provides only C++ API.</p>
+<h3 id="1114-policy-api-usage-">11.1.4 Policy API usage <div id="11_1_4"></div></h3>
+<p>fcgi_policy API is used to select inference devices or working mode(local model or proxy mode) for fcgi APIs.</p>
+<p>Client app uses http protocol to communicate with fcgi_policy server.</p>
+<p>The sample of sending request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following is the detailed information about request parameters and response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_policy" target="_blank">http://localhost:8080/cgi-bin/fcgi_policy</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;device&apos;</td>
+<td>string</td>
+<td>CPU, GPU, GNA_AUTO, GNA_HW, GNA_SW</td>
+<td>This field is used to set inference devices. Such as &quot;GPU&quot;, &quot;CPU&quot; etc.</td>
+</tr>
+<tr>
+<td>&apos;local&apos;</td>
+<td>string</td>
+<td>&quot;1&quot; - do inference locally &quot;0&quot; - do inference on a remote server</td>
+<td>Select working mode of fcgi server: local mode or proxy mode</td>
+</tr>
+</tbody>
+</table>
+<p>b) Response</p>
+<p>The response of the post request is a string, which indicates whether the
+request is processed correctly.</p>
+<p><em>&quot;successfully set the policy daemon&quot; // OK</em></p>
+<p><em>&quot;failed to set policy daemon&quot; // Fail</em></p>
+<p>c) Notice</p>
+<p>The policy daemon must be run, or else calling this API will fail.</p>
+<p>Run this policy API before running any other case if you want to select an
+inference device or change working mode of fcgi APIs.</p>
+<p>This setting is a global setting. That means the setting will impact the
+following cases.</p>
+<p>It provides two types of APIs: C++ and python API.</p>
+<h3 id="1115-classification-api-usage-">11.1.5 Classification API usage <div id="11_1_5"></div></h3>
+<p>fcgi_classification API is used to run inference on an image, and produce the classification information for objects in the image. Client app inputs one picture(image), fcgi_classification outputs the object information, such as what the object is, and the coordinates of the object in the picture.</p>
+<p>Same as fcgi_tts, fcgi_classification also has two working modes, locol mode and proxy mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_classification server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<pre><code>response = requests.post(url, post_parameter)
+</code></pre><p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_classfication" target="_blank">http://localhost:8080/cgi-bin/fcgi_classfication</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>In proxy mode(doing inference on a remote server), all fields are needed to be set.</p>
+<p>In proxy mode, &apos;appid&apos; and &apos;appkey&apos; are the necessary parameters in order to get the right results from the remote server(www.ai.qq.com). You should register on www.ai.qq.com and get &apos;appid&apos; and &apos;appkey&apos;. Please refer to <em><a href="https://ai.qq.com/doc/imagetag.shtml" target="_blank">https://ai.qq.com/doc/imagetag.shtml</a></em> , find out how to apply these fields and how to write a post request for the remote server.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+
+    &quot;ret&quot;:0,
+
+    &quot;msg&quot;:&quot;ok&quot;,
+
+    &quot;data&quot;:{
+
+        &quot;tag_list&quot;:[
+
+            {&quot;tag_name&quot;:&apos;sandal&apos;,&quot;tag_confidence&quot;:0.786503}
+
+        ]
+
+    },
+
+    &quot;time&quot;:0.380
+
+}
+</code></pre><p>One example of a client app for fcgi_classification API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_classification_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of APIs: both C++ and python API.</p>
+<h3 id="1116-face-detection-api-usage-">11.1.6 Face Detection API usage <div id="11_1_6"></div></h3>
+<p>fcgi_face_detection API is used to run inference on an image, and find out human faces in the image. Client app inputs one picture(image), fcgi_face_detection
+outputs the face information, such as how many human faces, and the bounding box
+for each face in the picture.</p>
+<p>Same as fcgi_tts, fcgi_face_detection also has two working modes, local mode and
+proxy mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_face_detection server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_face_detection" target="_blank">http://localhost:8080/cgi-bin/fcgi_face_detection</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>In proxy mode(doing inference on a remote server), all fields are needed to be set.</p>
+<p>In proxy mode, &apos;appid&apos; and &apos;appkey&apos; are the necessary parameters in order to get the right results from the remote server(www.ai.qq.com). You should register on www.ai.qq.com and get &apos;appid&apos; and &apos;appkey&apos;. Please refer to <em><a href="https://ai.qq.com/doc/detectface.shtml" target="_blank">https://ai.qq.com/doc/detectface.shtml</a></em> , find out how to apply these fields
+and how to write a post request for the remote server.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+
+    &quot;ret&quot;:0,
+    &quot;msg&quot;:&quot;ok&quot;,
+    &quot;data&quot;:{
+        &quot;face_list&quot;:[
+        {
+            &quot;x1&quot;:655,
+            &quot;y1&quot;:124,
+            &quot;x2&quot;:783,
+            &quot;y2&quot;:304
+        },
+        {
+            &quot;x1&quot;:68,
+            &quot;y1&quot;:149,
+            &quot;x2&quot;:267,
+            &quot;y2&quot;:367
+        } ]
+    },
+    &quot;time&quot;:0.305
+}
+</code></pre><p>One example of a client app for fcgi_face_detection API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_face_detection_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of API: both C++ and python API.</p>
+<h3 id="1117-facial-landmark-api-usage-">11.1.7 Facial Landmark API usage <div id="11_1_7"></div></h3>
+<p>fcgi_facial_landmark API is used to run inference on an image, and print human facial landmarks in the image. Client app inputs one picture(image), fcgi_facial_landmark outputs the coordinates of facial landmark points.</p>
+<p>Same as fcgi_tts, fcgi_facial_landmark also has two working modes, local mode and proxy mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_facial_landmark server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_facial_landmark" target="_blank">http://localhost:8080/cgi-bin/fcgi_facial_landmark</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>In proxy mode(doing inference on a remote server), all fields are needed to be set.</p>
+<p>In proxy mode, &apos;appid&apos; and &apos;appkey&apos; are the necessary parameters in order to get the right results from the remote server(www.ai.qq.com). You should register on www.ai.qq.com and get &apos;appid&apos; and &apos;appkey&apos;. Please refer to
+<em><a href="https://ai.qq.com/doc/detectface.shtml" target="_blank">https://ai.qq.com/doc/detectface.shtml</a></em> , find out how to apply these fields and how to write a post request for the remote server.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+
+    &quot;ret&quot;:0,
+
+    &quot;msg&quot;:&quot;ok&quot;,
+
+    &quot;data&quot;:{
+
+        &quot;image_width&quot;:916.000000,
+
+        &quot;image_height&quot;:502.000000,
+
+        &quot;face_shape_list&quot;:[
+
+            {&quot;x&quot;:684.691284,
+
+            &quot;y&quot;:198.765793},
+
+            {&quot;x&quot;:664.316528,
+
+            &quot;y&quot;:195.681824},
+
+            &apos;&apos;
+
+            {&quot;x&quot;:241.314194,
+
+            &quot;y&quot;:211.847031} ]
+
+    },
+
+    &quot;time&quot;:0.623
+
+}
+</code></pre><p>One example of a client app for fcgi_facial_landmark API is &quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_facial_landmark_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of API: both C++ and python API.</p>
+<h3 id="1118-ocr-api-usage-">11.1.8 OCR API usage <div id="11_1_8"></div></h3>
+<p>fcgi_ocr API is used to run inference on an image, and recognize handwritten or printed text from an image. Client app inputs one picture(image), fcgi_ocr outputs the text information in the picture. The information includes text coordinations and text confidence.</p>
+<p>Same as fcgi_tts, fcgi_ocr also has two working modes, local mode and proxy
+mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_ocr server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_ocr" target="_blank">http://localhost:8080/cgi-bin/fcgi_ocr</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>In proxy mode(doing inference on a remote server), all fields are needed to be set.</p>
+<p>In proxy mode, &apos;appid&apos; and &apos;appkey&apos; are the necessary parameters in order to get the right results from the remote server(www.ai.qq.com). You should register on www.ai.qq.com and get &apos;appid&apos; and &apos;appkey&apos;. Please refer to
+<em><a href="https://ai.qq.com/doc/imgtotext.shtml" target="_blank">https://ai.qq.com/doc/imgtotext.shtml</a></em> , find out how to apply these fields and how to write a post request for the remote server.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{
+&quot;ret&quot;:0,
+&quot;msg&quot;:&quot;ok&quot;,
+&quot;data&quot;:{
+&quot;item_list&quot;:[
+{
+&quot;itemcoord&quot;:[
+{
+&quot;x&quot;:161.903748,
+&quot;y&quot;:91.755684,
+&quot;width&quot;:141.737503,
+&quot;height&quot;:81.645004
+}
+],
+&quot;words&quot;:[
+{
+&quot;character&quot;:i,
+&quot;confidence&quot;:0.999999
+},
+{
+&quot;character&quot;:n,
+&quot;confidence&quot;:0.999998
+},
+{
+&quot;character&quot;:t,
+&quot;confidence&quot;:0.621934
+},
+{
+&quot;character&quot;:e,
+&quot;confidence&quot;:0.999999
+},
+{
+&quot;character&quot;:l,
+&quot;confidence&quot;:0.999995
+} ],
+&quot;itemstring&quot;:intel
+},
+{
+&quot;itemcoord&quot;:[
+{
+&quot;x&quot;:205.378326,
+&quot;y&quot;:153.429291,
+&quot;width&quot;:175.314835,
+&quot;height&quot;:77.421722
+}
+],
+&quot;words&quot;:[
+{
+&quot;character&quot;:i,
+&quot;confidence&quot;:1.000000
+},
+{
+&quot;character&quot;:n,
+&quot;confidence&quot;:1.000000
+},
+{
+&quot;character&quot;:s,
+&quot;confidence&quot;:1.000000
+},
+{
+&quot;character&quot;:i,
+&quot;confidence&quot;:0.776524
+},
+{
+&quot;character&quot;:d,
+&quot;confidence&quot;:1.000000
+},
+
+{
+&quot;character&quot;:e,
+&quot;confidence&quot;:1.000000
+} ],
+&quot;itemstring&quot;:inside
+} ]
+},
+&quot;time&quot;:1.986
+}
+</code></pre><p>One example of a client app for fcgi_ocr API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_ocr_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of API: both C++ and python API.</p>
+<h3 id="1119-formula-api-usage-">11.1.9 formula API usage <div id="11_1_9"></div></h3>
+<p>fcgi_formula API is used to run inference on an image. It can recognize formulas and output formulas in latex format. Client app inputs one picture(image), fcgi_formula outputs the formula in latex format.</p>
+<p>fcgi_formula has only one working mode, local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_formula server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_formula" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_formula</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{&apos;ret&apos;: 0, &apos;msg&apos;: &apos;ok&apos;, &apos;data&apos;: &apos;1 1 1 v v ^ { 1 } + 7 . 7 9 o ^ { 1 } - o - 0 . 9 0 f ^ { 7 } s ^ { 7 }&apos;, &apos;time&apos;: 0.518}
+</code></pre><p>One example of a client app for fcgi_ocr API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_formula_py.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides only python API.</p>
+<h3 id="11110-handwritten-api-usage-">11.1.10 handwritten API usage <div id="11_1_10"></div></h3>
+<p>fcgi_handwritten API is used to run inference on an image, and recognize handwritten chinese from an image. Client app inputs one picture(image), fcgi_handwritten outputs the text information in the picture.</p>
+<p>fcgi_handwritten has one working mode, local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_handwritten server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_handwritten" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_handwritten</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{&apos;ret&apos;: 0, &apos;msg&apos;: &apos;ok&apos;, &apos;data&apos;: &apos;&#x7684;&#x4EBA;&#x4E0D;&#x4E00;&#x4E86;&#x662F;&#x4ED6;&#x6709;&#x4E3A;&#x5728;&#x8D23;&#x65B0;&#x4E2D;&#x4EFB;&#x81EA;&#x4E4B;&#x6211;&#x4EEC;&apos;, &apos;time&apos;: 0.405}
+</code></pre><p>One example of a client app for fcgi_handwritten API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_handwritten_py.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides only python API.</p>
+<h3 id="11111-ppocr-api-usage-">11.1.11 ppocr API usage <div id="11_1_11"></div></h3>
+<p>fcgi_ppocr API is used to run inference on an image, and recognize printed text from an image. Client app inputs one picture(image), fcgi_ppocr outputs the text information in the picture.</p>
+<p>fcgi_ppocr has one working mode, local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_ppocr server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_ppocr" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_ppocr</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example (OCR result with chinese characters):</p>
+<pre><code>{&apos;ret&apos;: 0, &apos;msg&apos;: &apos;ok&apos;, &apos;data&apos;: &apos; &#x7684;&#x4EBA;&#x4E0D;&#x4E00;&#x4E86;&#x662F;&#x4ED6;&#x6709;&#x4E3A;&#x5728;&#x8D23;&#x65B0;&#x4E2D;&#x4EFB;&#x81EA;&#x4E4B;&#x6211;&#x4EEC;\n &#x7684;&#x4EBA;&#x4E0D;&#x4E00;&#x4E86;&#x662F;&#x4ED6;&#x6709;&#x4E3A;&#x5728;&#x8D23;&#x65B0;&#x4E2D;&#x4EFB;&#x81EA;&#x4E4B;&#x6211;&#x4EEC;\n 4 7 4 W ^ { 1 } + 7 . 1 9 o ^ { 4 } - 6 - 0 . 9 6 L ^ { 1 } U\n &#x533A;&#x662F;&#x6211;&#x56FD;&#x8F7D;&#x4EBA;&#x822A;&#x5929;&#x5DE5;&#x7A0B;&#x7ACB;&#x9879;&#x5B9E;&#x65BD;&#x4EE5;&#x6765;&#x7684;&#x7B2C;19&#x6B21;&#x98DE;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x662F;&#x7A7A;&#x95F4;&#x7AD9;&#x9636;&#x6BB5;&#x7684;&#x9996;&#x6B21;&#x8F7D;\n &#x4EBA;&#x98DE;&#x884C;&#x4EFB;&#x52A1;&#x3002;&#x98DE;&#x8239;&#x5165;&#x8F68;&#x540E;&#xFF0C;&#x5C06;&#x6309;&#x7167;&#x9884;&#x5B9A;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E0E;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x8231;&#x8FDB;&#x884C;&#x81EA;&#x4E3B;&#x5FEB;&#x901F;&#x4EA4;&#x4F1A;&#x5BF9;&#x63A5;\n &#x81EA;&#x5408;&#x4F53;&#x98DE;&#x884C;&#x671F;&#x95F4;&#xFF0C;&#x822A;&#x5927;&#x5458;&#x5C06;&#x8FDB;&#x9A7B;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x80FD;&#xFF0C;&#x5B8C;&#x6210;&#x4E3A;&#x671F;3&#x4E2A;&#x6708;&#x7684;&#x5728;&#x8F68;&#x9A7B;&#x7559;&#xFF0C;&#x5F00;&#x5C55;&#x673A;&#x68B0;\n &#x64CD;&#x4F5C;&#x3001;&#x51FA;&#x8231;&#x6D3B;&#x52A8;&#x7B49;&#x5DE5;&#x4F5C;&#xFF0C;&#x9A8C;&#x8BC1;&#x822A;&#x5927;&#x5458;&#x957F;&#x671F;&#x5728;&#x8F68;&#x9A7B;&#x7559;&#x3001;&#x518D;&#x751F;&#x751F;&#x4FDD;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x5173;&#x952E;&#x6280;&#x672F;\n &#x81EA;&#x524D;&#xFF0C;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x8231;&#x4E0E;&#x5927;&#x821F;&#x4E8C;&#x53F7;&#x7684;&#x7EC4;&#x5408;&#x4F53;&#x8FD0;&#x884C;&#x5728;&#xFFFD;?90km&#x7684;&#x8FD1;&#x5706;&#x5BF9;&#x63A5;&#x8F68;&#x9053;&#xFF0C;&#x72B6;&#x6001;&#x826F;\n &#x597D;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E0E;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4EA4;&#x4F1A;&#x5BF9;&#x63A5;&#x7684;&#x4EFB;&#x52A1;&#x8981;&#x6C42;&#x548C;&#x822A;&#x5927;&#x5458;&#x8FDB;&#x9A7B;&#x6761;&#x4EF6;\n &#x9707;&#x64BC;&#xFF01;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4E0E;&#x5730;&#x7403;&#x540C;&#x6846;\n &#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x8F7D;&#x4EBA;&#x98DE;&#x8239;&#x5347;&#x7A7A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8231;&#xFFFD;?&#x540D;&#x822A;&#x5929;&#x5458;&#x72B6;&#x6001;&#x826F;&#x597D;&#xFF0C;&#x63A8;&#x8FDB;&#x8231;&#x5916;&#x6444;&#x50CF;&#x673A;&#x62CD;&#x6444;&#x5168;\n &#x4E86;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4E0E;&#x5730;&#x7403;&#x540C;&#x6846;&#x9707;&#x60F3;&#x9762;&#x9762;\n &#x81EA;&#x5173;&#x62A5;&#x9053;&#xFF1A;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x8F7D;&#x4EBA;&#x98DE;&#x8239;&#x98DE;&#x884C;&#x4E58;&#x7EC4;&#x786E;&#x5B9A;&#xFF01;&#x4ED6;&#x4EEC;&#x5728;&#x592A;&#x7A7A;&#x5C06;&#x600E;&#x6837;&#x751F;&#x6D3B;3&#x4E2A;&#x6708;\n&apos;, &apos;time&apos;: 0.308}
+</code></pre><p>One example of a client app for fcgi_ppocr API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_ppocr_py.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides only python API.</p>
+<h3 id="11112-segmentation-api-usage-">11.1.12 segmentation API usage <div id="11_1_12"></div></h3>
+<p>fcgi_segmentation API is used to run inference on an image, and recognize semantic segmentation from an image. Client app inputs one picture(image), fcgi_segmentation outputs a semantic segmentation picture.</p>
+<p>fcgi_segmentation has one working mode, local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_segmentation server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_segmentation" target="_blank">http://localhost:8080/cgi-bin/fcgi_segmentation</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>{ &quot;ret&quot;: 0, &quot;msg&quot;: &quot;ok&quot;, &quot;data&quot;:
+&quot;b&apos;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...AABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBBAABwQQAAcEEAAHBB&apos;&quot;,&quot;time&quot;:
+0.31}
+</code></pre><p>One example of a client app for fcgi_segmentation API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_segmentation_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of API: both C++ and python API.</p>
+<h3 id="11113-super-resolution-api-usage-">11.1.13 super resolution API usage <div id="11_1_13"></div></h3>
+<p>fcgi_super_resolution API is used to run inference on an image, and convert a small picture to a large picture. Client app inputs one picture(image), fcgi_super_resolution outputs a large picture.</p>
+<p>fcgi_super_resolution has one working mode, local mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_super_resolution server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_super_resolution" target="_blank">http://localhost:8080/cgi-bin/fcgi_super_resolution</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), only an &quot;image&quot; field is needed to be set.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example</p>
+<pre><code>{&quot;ret&quot;:0,
+&quot;msg&quot;:&quot;ok&quot;,&quot;data&quot;:&quot;/////+rX//////vm+9/K/uPO/+PO/+jU/+3a//Lf//Tg//fj//Tg//3o//3p//nm/+7a/+vY/+3a/+/d/+7c//Xj//jl//jm//De//Hf//Th//Ti//Ph//7r///s//nn/+7c/+/e/+/c/+rX/+LO/+le:...AAAAAAAAAAAAAAAAAAAAAACggDHx4ZLS0oMzMwNjc3tQ==&quot;,
+&quot;time&quot;:0.238}
+</code></pre><p>One example of a client app for fcgi_super_resolution API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_super_resolution_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It provides two types of API: both C++ and python API.</p>
+<h3 id="11114-digitalnote-api-usage-">11.1.14 digitalnote API usage <div id="11_1_14"></div></h3>
+<p>digitalnote API is used to run inference on an image, .Recognize and output the handwriting, machine writing and formulas in the picture. Client app inputs one picture(image), fcgi_digitalnote outputs the handwriting, machine writing and formulas in the picture.</p>
+<p>fcgi_digitalnote only has local mode and does not have remote mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_digitalnote server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_digitalnote" target="_blank">http://localhost:8080/cgi-bin/fcgi_digitalnote</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Type</th>
+<th>Range</th>
+<th>Example</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&apos;app_id&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>2128571502</td>
+<td>Application ID</td>
+</tr>
+<tr>
+<td>&apos;nonce_str&apos;</td>
+<td>string</td>
+<td>No more than 32 byte</td>
+<td>fa577ce340859f9fe</td>
+<td>Random string</td>
+</tr>
+<tr>
+<td>&apos;image&apos;</td>
+<td>string</td>
+<td>image data, often is a picture</td>
+<td></td>
+<td>Must be encoded by base64 method</td>
+</tr>
+<tr>
+<td>&apos;time_stamp&apos;</td>
+<td>Int</td>
+<td>Positive integer</td>
+<td>1493468759</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>&apos;appkey&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>di6ik9b9JiYfImUB</td>
+<td>Application key</td>
+</tr>
+<tr>
+<td>&apos;latex&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>&quot;365 234 &quot;</td>
+<td>Pixel coordinates of latex</td>
+</tr>
+<tr>
+<td>&apos;handwritten&apos;</td>
+<td>string</td>
+<td>string</td>
+<td>&quot;354 39 431 123 &quot;</td>
+<td>Pixel coordinates of latex</td>
+</tr>
+<tr>
+<td>&apos;html&apos;</td>
+<td>int</td>
+<td>{0,1}</td>
+<td>0</td>
+<td>0 for terminal client 1 for html client</td>
+</tr>
+</tbody>
+</table>
+<p>In Local mode(doing inference locally), &quot;image&quot; field ,formula, latex and html are needed to be set. Find the coordinates of a pixel in the formula from the picture and fill in the latex field. Find the coordinates of a pixel in the handwritten from the picture and fill in the handwritten field. Use spaces to connect coordinates. If you use a terminal client the html field is 0.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example</p>
+<pre><code>{&apos;ret&apos;: 0, &apos;msg&apos;: &apos;ok&apos;, &apos;data&apos;: &apos;&#x7684;&#x4EBA;&#x4E0D;&#x4E00;&#x4E86;&#x662F;&#x4ED6;&#x6709;&#x4E3A;&#x5728;&#x8D23;&#x65B0;&#x4E2D;&#x4EFB;&#x81EA;&#x4E4B;&#x6211;&#x4EEC;\n &#x7684;&#x4EBA;&#x4E0D;&#x4E00;&#x4E86;&#x662F;&#x4ED6;&#x6709;&#x4E3A;&#x5728;&#x8D23;&#x65B0;&#x4E2D;&#x4EFB;&#x81EA;&#x4E4B;&#x6211;&#x4EEC;\n 4 7 4 W ^ { 1 } + 7 . 1 9 o ^ { 4 } - 6 - 0 . 9 6 L ^ { 1 } U\n &#x533A;&#x662F;&#x6211;&#x56FD;&#x8F7D;&#x4EBA;&#x822A;&#x5929;&#x5DE5;&#x7A0B;&#x7ACB;&#x9879;&#x5B9E;&#x65BD;&#x4EE5;&#x6765;&#x7684;&#x7B2C;19&#x6B21;&#x98DE;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x4E5F;&#x662F;&#x7A7A;&#x95F4;&#x7AD9;&#x9636;&#x6BB5;&#x7684;&#x9996;&#x6B21;&#x8F7D;\n &#x4EBA;&#x98DE;&#x884C;&#x4EFB;&#x52A1;&#x3002;&#x98DE;&#x8239;&#x5165;&#x8F68;&#x540E;&#xFF0C;&#x5C06;&#x6309;&#x7167;&#x9884;&#x5B9A;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E0E;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x8231;&#x8FDB;&#x884C;&#x81EA;&#x4E3B;&#x5FEB;&#x901F;&#x4EA4;&#x4F1A;&#x5BF9;&#x63A5;\n &#x81EA;&#x5408;&#x4F53;&#x98DE;&#x884C;&#x671F;&#x95F4;&#xFF0C;&#x822A;&#x5927;&#x5458;&#x5C06;&#x8FDB;&#x9A7B;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x80FD;&#xFF0C;&#x5B8C;&#x6210;&#x4E3A;&#x671F;3&#x4E2A;&#x6708;&#x7684;&#x5728;&#x8F68;&#x9A7B;&#x7559;&#xFF0C;&#x5F00;&#x5C55;&#x673A;&#x68B0;\n &#x64CD;&#x4F5C;&#x3001;&#x51FA;&#x8231;&#x6D3B;&#x52A8;&#x7B49;&#x5DE5;&#x4F5C;&#xFF0C;&#x9A8C;&#x8BC1;&#x822A;&#x5927;&#x5458;&#x957F;&#x671F;&#x5728;&#x8F68;&#x9A7B;&#x7559;&#x3001;&#x518D;&#x751F;&#x751F;&#x4FDD;&#x7B49;&#x4E00;&#x7CFB;&#x5217;&#x5173;&#x952E;&#x6280;&#x672F;\n &#x81EA;&#x524D;&#xFF0C;&#x5927;&#x548C;&#x6838;&#x5FC3;&#x8231;&#x4E0E;&#x5927;&#x821F;&#x4E8C;&#x53F7;&#x7684;&#x7EC4;&#x5408;&#x4F53;&#x8FD0;&#x884C;&#x5728;&#xFFFD;?90km&#x7684;&#x8FD1;&#x5706;&#x5BF9;&#x63A5;&#x8F68;&#x9053;&#xFF0C;&#x72B6;&#x6001;&#x826F;\n &#x597D;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E0E;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4EA4;&#x4F1A;&#x5BF9;&#x63A5;&#x7684;&#x4EFB;&#x52A1;&#x8981;&#x6C42;&#x548C;&#x822A;&#x5927;&#x5458;&#x8FDB;&#x9A7B;&#x6761;&#x4EF6;\n &#x9707;&#x64BC;&#xFF01;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4E0E;&#x5730;&#x7403;&#x540C;&#x6846;\n &#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x8F7D;&#x4EBA;&#x98DE;&#x8239;&#x5347;&#x7A7A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8231;&#xFFFD;?&#x540D;&#x822A;&#x5929;&#x5458;&#x72B6;&#x6001;&#x826F;&#x597D;&#xFF0C;&#x63A8;&#x8FDB;&#x8231;&#x5916;&#x6444;&#x50CF;&#x673A;&#x62CD;&#x6444;&#x5168;\n &#x4E86;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x4E0E;&#x5730;&#x7403;&#x540C;&#x6846;&#x9707;&#x60F3;&#x9762;&#x9762;\n &#x81EA;&#x5173;&#x62A5;&#x9053;&#xFF1A;&#x795E;&#x821F;&#x5341;&#x4E8C;&#x53F7;&#x8F7D;&#x4EBA;&#x98DE;&#x8239;&#x98DE;&#x884C;&#x4E58;&#x7EC4;&#x786E;&#x5B9A;&#xFF01;&#x4ED6;&#x4EEC;&#x5728;&#x592A;&#x7A7A;&#x5C06;&#x600E;&#x6837;&#x751F;&#x6D3B;3&#x4E2A;&#x6708;\n &apos;,
+&apos;time&apos;: 1.095}
+</code></pre><p>One example of a client app for fcgi_super_resolution API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_digitalnote_c.py</em> &quot;.</p>
+<p>c) Notice</p>
+<p>It only provides python API.</p>
+<p>It can speed up the inference. The picture does not need to be sent three times
+to get three different results. Handwriting, machine writing and formula can be
+called by one request.</p>
+<h3 id="11115-video-pipeline-management-control-api-usage-">11.1.15 Video pipeline management (control) API usage <div id="11_1_15"></div></h3>
+<p>Video pipeline API is used to start, stop a video pipeline or read something
+from a video pipeline.</p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Request</p>
+<p>- url: &apos;<a href="http://localhost:8080/cgi-bin/streaming" target="_blank">http://localhost:8080/cgi-bin/streaming</a>&gt;&apos;</p>
+<p>- Content-Type: application/json</p>
+<p>- JSON object fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field name</th>
+<th>Type</th>
+<th>Range</th>
+<th>Example</th>
+<th>comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;pipeline&quot;</td>
+<td>string</td>
+<td>string</td>
+<td>&quot;launcher.object_detection&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>&quot;method&quot;</td>
+<td>string</td>
+<td>&quot;start&quot;/ &quot;stop&quot;/ &quot;read&quot;</td>
+<td>&quot;start&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>&quot;parameter&quot;</td>
+<td>string</td>
+<td>JSON string</td>
+<td>&quot;{ &quot;source&quot;:&quot;device=/dev/video0&quot;, &quot;sink&quot;:&quot;v4l2sink device=/dev/video2&quot;, &quot;resolution&quot;:&quot;width=800,height=600&quot;, &quot;framerate&apos;:&apos;inference-interval=1&quot;  }&quot;</td>
+<td>optional, example is the default value</td>
+</tr>
+</tbody>
+</table>
+<p>- example:</p>
+<pre><code>$&gt; curl -H &quot;Content-Type:application/json&quot; -X POST \
+
+http://localhost:8080/cgi-bin/streaming -d \
+
+&apos;{&quot;pipeline&quot;:&quot;launcher.object_detection&quot;, &quot;method&quot;:&quot;start&quot;}&apos;
+</code></pre><p>b) Response</p>
+<p>For the start/stop method, the response is a string, &quot;0&quot; means success, &quot;1&quot; means failure.</p>
+<p>For the read method, the response is the string of reading content.</p>
+<h3 id="11116-live-asr-api-usage-online-asr-case-">11.1.16 Live ASR API usage (online ASR case) <div id="11_1_16"></div></h3>
+<p>The fcgi live asr API is also a usage of Automatic-Speech-Recognition. It uses the same models as fcgi_asr API(ASR API usage in 11.1.2). The difference is that this API is an online ASR case while 11.1.2 is an offline ASR case. That means this live asr API continuously captures the voice from the MIC devices, do inference, and send out the sentences what the voice expressed. It is online working model of the fcgi_asr service.</p>
+<p>fcgi_live_asr case has only one working mode - local mode. It doesn&apos;t support proxy mode.</p>
+<p>Client app uses http protocol to communicate with fcgi_asr server.</p>
+<p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and
+response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_py_asr" target="_blank">http://localhost:8080/cgi-bin/fcgi_py_asr</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:
+For parameters, please refer to 11.1.2.</p>
+<p>For online mode, the &quot;realtime&quot; field should set to &apos;ONLINE_READ&apos; or &apos;ONLINE_STOP&apos;. &apos;ONLINE_READ&apos; is used to query ASR inference result on time. &apos;ONLINE_STOP&apos; is used to stop live asr mode. The &quot;audio_input&quot; field should set to &quot;MIC&quot; if the audio data is feed from MIC device. &quot;SIMULATION&quot; is used to verify live asr mode, and audio data is feed from a audio file which simulates the data from the mic device.</p>
+<p>b) Response</p>
+<p>The response of post request is json format, for example:</p>
+<pre><code>HOW ARE YOU DOING
+
+HELLO
+
+HA
+
+&apos;&apos;&apos;&apos;..
+
+Stop live asr ok!
+</code></pre><p>One example of a client app for fcgi live asr API is
+&quot;<em>api-gateway/cgi-bin/test-script/test-demo/post_local_asr_py.py</em>&quot;.</p>
+<pre><code> # python3 post_local_asr_py.py -l ENG -m Online -i MIC
+</code></pre><p>c) Notice</p>
+<p>This case supports both English utterance and Mathaland.
+For Mandarin model (IR format), please contact the author to get it.</p>
+<p>It only provides python APIs.</p>
+<p>In order to use this API, you need to enable the pulseaudio and health-monitor
+services.</p>
+<p>(1) On the host PC, install the pulseaudio package if this package hasn&apos;t been installed.</p>
+<p>For example:</p>
+<pre><code>#sudo apt-get install pulseaudio
+</code></pre><p>(2) Enable the TCP protocol of the pulseaudio.</p>
+<p>Edit the configuration file. for example:</p>
+<pre><code>#sudo vim /etc/pulse/default.pa
+</code></pre><p>Find out the following tcp configuration:</p>
+<pre><code>#load-module module-native-protocol-tcp
+</code></pre><p>Uncomment the tcp configuration(remove &quot;    #&quot;), and add authentication:</p>
+<pre><code>load-module module-native-protocol-tcp auth-anonymous=1
+</code></pre><p>Save and quit the configuration file.</p>
+<p>(3) Restart the pulseaudio service. For example:</p>
+<pre><code>Stop the pulseaudio:
+
+     # pulseaudio -k
+
+Start the pulseaudio:
+
+     #pulseaudio --start or #pulseaudio -D
+</code></pre><p>(4) Running the health-monitor service on the host pc if you don&apos;t run it.</p>
+<p>This service is used to monitor the CCAI container.</p>
+<h3 id="11117-pose-estimation-api-usage-">11.1.17 Pose estimation API usage <div id="11_1_17"></div></h3>
+<p>Pose estimation API is a specific usage of video pipeline management API(11.1.15).</p>
+<p>This estimation API is used to estimate the human pose status, such as head
+status, shoulder status, body status or eye status. The client app can get the status and detect whether the current pose is a correct pose by calling this API.</p>
+<p>Please refer to the section 11.1.15 for the detailed information of video pipeline management API.</p>
+<p>In this API, the client app uses http protocol to communicate with fcgi_streaming server.</p>
+<p>The host side must run X server in order to display video. Before running this case,  the following command must be executed on the host side to enable X server:</p>
+<pre><code>     #xhost +
+</code></pre><p>The sample code of sending post request in client app is:</p>
+<p><em>response = requests.post(url, post_parameter)</em></p>
+<p>The following are the detailed information about request parameters and response.</p>
+<p>a) Input parameters</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/streaming" target="_blank">http://localhost:8080/cgi-bin/streaming</a>&apos;</p>
+<p>- post parameter: this parameter should include these fields:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Range</strong></th>
+<th><strong>Content</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;pipeline&quot;</td>
+<td>string</td>
+<td>string</td>
+<td>&quot;launcher.pose_estimation&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td>&quot;method&quot;</td>
+<td>string</td>
+<td>&quot;start&quot;/ &quot;stop&quot;/ &quot;read&quot;</td>
+<td>&quot;start&apos; &quot;read&quot; &quot;stop&quot;</td>
+<td>Start pipeline/ Read pipeline/ Stop pipeline</td>
+</tr>
+<tr>
+<td>&quot;parameter&quot;</td>
+<td>string</td>
+<td>JSON string</td>
+<td>&quot;{ &quot;source&quot;:&quot;device=/dev/video0&quot;,  &quot;sink&quot;:&quot;fpsdisplaysink video-sink=ximagesink sync=false&quot;,  &quot;framerate&apos;:&apos;inference-interval=1&quot;  }&quot;</td>
+<td>For the start method, it must have this parameter field; for the read/stop method, this parameter field is optional.</td>
+</tr>
+</tbody>
+</table>
+<p>b) Response</p>
+<p>The response of post request is json format.</p>
+<p>For the start/stop method, the response is a string, &quot;0&quot; means success, &quot;1&quot; means failure.</p>
+<p>For the read method, the response is the string of reading content, like the
+following string:</p>
+<pre><code>{
+    &quot;Person0&quot;:{
+        &quot;available status&quot;:&quot;63&quot;,
+        &quot;header status&quot;:&quot;OK&quot;,
+        &quot;header angles&quot;:{
+        &quot;angle_y&quot;:-0.037771,
+        &quot;angle_p&quot;:0.230196,
+        &quot;angle_r&quot;:-1.108361
+    },
+    &quot;shoulder status&quot;:&quot;OK&quot;,
+    &quot;shoulder angle with horizontal&quot;: 1,
+    &quot;header to shoulder status&quot;:&quot;OK&quot;,
+    &quot;header-to-shoulder angle&quot;: 91,
+    &quot;left eye status&quot;:&quot;Open&quot;,
+    &quot;right eye status&quot;:&quot;Open&quot;,
+    &quot;body status&quot;:&quot;OK&quot;
+    }
+}
+</code></pre><p>One example of a client app for pose estimation API is
+&quot;<em>api-gateway/fcgi/streaming/cpp/post_local_streaming_c.py</em>&quot;.</p>
+<p>c) Notice</p>
+<p>&#x2022;    It only provides C++ APIs. </p>
+<p>&#x2022;    Must running the following command in the host side before running pose estimation case.</p>
+<pre><code>                           #xhost +
+</code></pre><p>&#x2022;    The host side must run X server for display. Please install the following package in the host side. </p>
+<pre><code>                           # sudo apt-get install x11-xserver-utils
+</code></pre><h3 id="11118-capability-api-usage-">11.1.18 Capability API usage <div id="11_1_18"></div></h3>
+<p>Capability API is used to retrive system information, including CPU, GPU, memory information and supported API list. These APIs support HTTP get and post method without parameters.</p>
+<p>a) CPU information</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_cpuinfo" target="_blank">http://localhost:8080/cgi-bin/fcgi_cpuinfo</a>&apos;</p>
+<p>The format of output is same as /proc/cpuinfo, please see <a href="https://man7.org/linux/man-pages/man5/proc.5.html" target="_blank">proc(5)</a> man page.</p>
+<p>b) GPU information</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_gpuinfo" target="_blank">http://localhost:8080/cgi-bin/fcgi_gpuinfo</a>&apos;</p>
+<p>GPU information includes GPU device vendor, model and supported freqencies. An example output is:</p>
+<pre><code>Vendor: Intel Corporation
+Device: RocketLake-S GT1 [UHD Graphics 750]
+max: 1300
+min: 350
+cur: 350
+RP0: 1300
+RP1: 350
+RPn: 350
+</code></pre><p>c) Memory information</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_meminfo" target="_blank">http://localhost:8080/cgi-bin/fcgi_meminfo</a>&apos;</p>
+<p>The format of output is same as /proc/meminfo, please see <a href="https://man7.org/linux/man-pages/man5/proc.5.html" target="_blank">proc(5)</a> man page.</p>
+<p>d) API information</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/fcgi_apiinfo" target="_blank">http://localhost:8080/cgi-bin/fcgi_apiinfo</a>&apos;</p>
+<p>The response is the list of all supportted FCGI APIs. An example is:</p>
+<pre><code>/cgi-bin/fcgi_py_policy
+/cgi-bin/fcgi_meminfo
+/cgi-bin/fcgi_policy
+/cgi-bin/fcgi_facial_landmark
+/cgi-bin/fcgi_cpuinfo
+/cgi-bin/fcgi_face_detection
+/cgi-bin/streaming
+/cgi-bin/fcgi_classification_tf
+/cgi-bin/fcgi_apiinfo
+/cgi-bin/fcgi_py_tts
+/cgi-bin/fcgi_classification
+/cgi-bin/fcgi_live_asr
+/cgi-bin/smartphoto
+/cgi-bin/fcgi_py_digitalnote
+/cgi-bin/fcgi_gpuinfo
+</code></pre><h2 id="112-grpc-apis-manual-">11.2 gRPC APIs Manual <div id="11_2"></div></h2>
+<p>CCAI framework not only provides FGCI APIs, but also provides many gRPC APIs.
+Client APPs can do inference by calling gRPC APIs.</p>
+<p><img src="../media/65f3197cf6967824bb566df16f29c644.png" alt=""></p>
+<p>The following are detailed gRPC APIs.</p>
+<h3 id="1121-proto-file-">11.2.1 proto file <div id="11_2_1"></div></h3>
+<pre><code>syntax = &quot;proto3&quot;;
+package inference_service;
+service Inference {  
+    rpc OCR (Input) returns (Result) {}  
+    rpc ASR (Input) returns (Result) {}  
+    rpc Classification (Input) returns (Result) {}  
+    rpc FaceDetection (Input) returns (Result) {}  
+    rpc FacialLandmark (Input) returns (Result) {} 
+    } 
+message Input {  
+    bytes buffer = 1; 
+    } 
+message Result {  
+    string json = 1; 
+    }
+</code></pre><p>In the .proto file the service interface, &apos;Inference&apos;, is defined, and rpc methods, &apos;OCR&apos;, &apos;Classification&apos;, &apos;FaceDetection&apos;, &apos;FacialLandmark&apos; and &apos;ASR&apos; are defined inside the service.</p>
+<h3 id="1122-ocr-method-">11.2.2 OCR method <div id="11_2_2"></div></h3>
+<p>Request:</p>
+<p>message Input</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>bytes</td>
+<td></td>
+<td>.jpg or .png image file buffer</td>
+</tr>
+</tbody>
+</table>
+<p>Response:</p>
+<p>message, Result</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string</td>
+<td>example: [  {  &quot;itemcoord&quot;:{  &quot;x&quot;:162,  &quot;y&quot;:91,  &quot;width&quot;:141,  &quot;height&quot;:81  },  &quot;itemstring&quot;:&quot;intel&quot;  },  {  &quot;itemcoord&quot;:{  &quot;x&quot;:205,  &quot;y&quot;:153,  &quot;width&quot;:175,  &quot;height&quot;:77  },  &quot;itemstring&quot;:&quot;inside&quot;  } ]</td>
+<td>the field is json format string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1123-asr-method-">11.2.3 ASR method <div id="11_2_3"></div></h3>
+<p>Request:</p>
+<p>message Input</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>bytes</td>
+<td></td>
+<td>.wav file buffer</td>
+</tr>
+</tbody>
+</table>
+<p>Response:</p>
+<p>message Result</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string</td>
+<td>example: {  &quot;text&quot;:&quot;HOW ARE YOU DOING&quot; }</td>
+<td>the field is json format string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1124-classification-method-">11.2.4 Classification method <div id="11_2_4"></div></h3>
+<p>Request:</p>
+<p>message Input</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>bytes</td>
+<td></td>
+<td>.jpg or .png image file buffer</td>
+</tr>
+</tbody>
+</table>
+<p>Response:</p>
+<p>message, Result</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string</td>
+<td>example: [  { &quot;Tag_name&quot;:&quot;sandal&quot;,&quot;tag_confidence&quot;:0.743236  } ]</td>
+<td>the field is json format string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1125-facedetection-method-">11.2.5 FaceDetection method <div id="11_2_5"></div></h3>
+<p>Request:</p>
+<p>message Input</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>bytes</td>
+<td></td>
+<td>.jpg or .png image file buffer</td>
+</tr>
+</tbody>
+</table>
+<p>Response:</p>
+<p>message, Result</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string</td>
+<td>example: [ {&quot;x1&quot;:611,&quot;y1&quot;:106,&quot;x2&quot;:827,&quot;y2&quot;:322}, {&quot;x1&quot;:37,&quot;y1&quot;:128,&quot;x2&quot;:298,&quot;y2&quot;:389} ]</td>
+<td>the field is json format string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1126-faciallandmark-method-">11.2.6 FacialLandmark method <div id="11_2_6"></div></h3>
+<p>Request:</p>
+<p>message Input</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td>bytes</td>
+<td></td>
+<td>.jpg or .png image file buffer</td>
+</tr>
+</tbody>
+</table>
+<p>Response:</p>
+<p>message, Result</p>
+<table>
+<thead>
+<tr>
+<th><strong>Field name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>json</td>
+<td>string</td>
+<td>example: [ {&quot;x&quot;:684,&quot;y&quot;:198}, {&quot;x&quot;:664,&quot;y&quot;:195},  &apos; ]</td>
+<td>the field is json format string</td>
+</tr>
+</tbody>
+</table>
+<h2 id="113-low-level-apis-manual-">11.3 Low level APIs Manual <div id="11_3"></div></h2>
+<p>Runtime service library provides APIs for upper layers, such as for fcgi or grpc
+layer etc. Runtime library supports different inference engines, such as
+Openvino or Pytorch. But the runtime library only provides one set of APIs to
+the upper layer. Upper layers select the inference engine by passing parameters
+to runtime APIs.</p>
+<p>Runtime APIs are <em>&quot;simple&quot;</em> APIs. <em>&quot;simple&quot;</em> means the number of APIs is
+limited. Although a few APIs, you can call these APIs to do inference for many cases, such as processing image, speech, or video etc. <em>&quot;simple&quot;</em> also means they can be used friendly and easily. For example, if you want to do inference on an image, you can finish this work by calling only one API, vino_ie_pipeline_infer_image(). You need not care about how to build up inference pipelines. They are opaque to the end user. All building work is done in the Runtime library.</p>
+<p>The runtime service library APIs are implemented by two kinds of languages, C++ and python. So it provides two types of APIs. One type is C++ APIs, it can be called by C++ programs directly. Another is python APIs, it is prepared for python programs.</p>
+<p><img src="../media/790a1cebb8e47e80e61a1eaa76156ab6.png" alt=""></p>
+<p><strong>Notice:</strong></p>
+<p>There are two versions of C++ API. Version 0 is described in section 10.3.1(C++ APIs for Openvino Backend Engine). It only supports Openvino as an inference engine, and doesn&apos;t support pytorch engine.</p>
+<p>Version 1 is described in section 10.3.3(C++ APIs for Different backend Engines). It supports both Openvino and Pytorch engie. Some APIs in version 0 can be replaced by APIs in version 1.</p>
+<p>Some C++ APIs in version 0 will be deprecated in the future. I encourage you to try to use C++ APIs in version 1 if APIs in version 0 are marked &quot;deprecated&quot;.</p>
+<h3 id="1131-c-apis-for-openvino-backend-engineversion-0-">11.3.1 C++ APIs for Openvino Backend Engine(Version 0) <div id="11_3_1"></div></h3>
+<h4 id="11311-return-value-deprecated-">11.3.1.1 Return value (deprecated) <div id="11_3_1_1"></div></h4>
+<pre><code>*/***
+**@brief Status code of inference*
+**/*
+  #define RT_INFER_ERROR  -1 //inference error*
+  #define RT_LOCAL_INFER_OK   0 //inference successfully on local*
+  #define RT_REMOTE_INFER_OK  1 //inference successfully on remote server*
+</code></pre><p>Some APIs have two work modes. One mode is local mode, which means doing inference on local XPU. Another is proxy mode. In proxy mode, API forwards requests to the remote server (such as QQ server or Tecent server). The remote server does inference.</p>
+<p>In local mode, the return value is</p>
+<pre><code>RT_LOCAL_INFER_OK (success)* or *RT_INFER_ERROR (failure).
+</code></pre><p>In proxy mode, the return value is</p>
+<pre><code>RT_REMOTE_INFER_OK (success)* or *RT_INFER_ERROR(failure)
+</code></pre><h4 id="11312-server-parameter-">11.3.1.2 Server parameter <div id="11_3_1_2"></div></h4>
+<pre><code>/***
+
+** @brief This is the parameters to do inference on remote server*
+
+**/*
+
+struct serverParams {
+    std::string url;  //the address of server
+    std::string urlParam; //the post parameter of request
+    std::string response; //the response data of server
+};
+</code></pre><p>This parameter is used by API in proxy mode. Set server address(serverParams.url) and request(serverParams.urlParam), get server response(serverParams.response).</p>
+<p>The example of usage:</p>
+<pre><code>std::string param = &quot;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&quot;;
+
+struct serverParams urlInfo{&quot;https://www.intel.cn/index.html&quot;, param};
+
+&apos;&apos;&apos;&apos;do inference on remote servers &apos;&apos;&apos;&apos;&apos;&apos;
+//get server response
+std::cout &lt;&lt; urlInfo.response &lt;&lt; std::endl;
+</code></pre><h4 id="11313-policy-configuration-api-">11.3.1.3 Policy configuration API <div id="11_3_1_3"></div></h4>
+<p>This API is used by users to change API behavior. Users can set API working mode
+(such as local mode or proxy mode), or assign inference devices (XPU) in local
+mode.</p>
+<p>1) API</p>
+<pre><code>    /***
+
+    ** @brief Set parameters to configure vino ie pipeline
+
+    ** @param configuration Parameters set from the end user.
+
+    **/
+
+    int vino_ie_pipeline_set_parameters(struct userCfgParams&amp; configuration);
+</code></pre><p>2) parameter</p>
+<pre><code>    /***
+    ** @brief This is the parameters setting from end user*
+    **/
+
+    struct userCfgParams {
+        bool isLocalInference; //do inference in local or remote
+        std::string inferDevice; //inference device: CPU, GPU or other device
+    };
+
+isLocalInference: true -C local mode, do inference in local XPU.
+
+False -C proxy mode, do inference on remote server.
+
+inferDevice: inference device in local mode, you can select: CPU, GPU, GNA_AUTO etc.
+</code></pre><p>3) example</p>
+<pre><code>struct userCfgParams cfg{true, &quot;CPU&quot;};
+
+int res = vino_ie_pipeline_set_parameters(cfg);
+</code></pre><p>4) Notice</p>
+<p>This API setting is a global setting. That means this setting affects all the following APIs behaviors.</p>
+<h4 id="11314-image-api-deprecated-">11.3.1.4 image API (deprecated) <div id="11_3_1_4"></div></h4>
+<p>This API is used to do inference on images. It is related to image processing.</p>
+<p>1) API</p>
+<pre><code>/***
+
+* @brief Do inference for image
+* @param image Images input for network
+* @param additionalInput Other inputs of network(except image input)
+* @param xmls Path of IE model file(xml)
+* @param rawDetectionResults Outputs of network, they are raw data.
+* @param remoteSeverInfo parameters to do inference on remote serve
+* @return Status code of inference
+*/
+
+int vino_ie_pipeline_infer_image(std::vector&lt;std::shared_ptr&lt;cv::Mat&gt;&gt;&amp; image,
+
+std::vector&lt;std::vector&lt;float&gt;&gt;&amp; additionalInput,
+
+std::string xmls,
+
+std::vector&lt;std::vector&lt;float&gt;*&gt;&amp; rawDetectionResults,
+
+struct serverParams&amp; remoteServerInfo);
+</code></pre><p>2) parameter</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>std::vector <std::shared_ptr<cv::mat>&gt;</std::shared_ptr<cv::mat></td>
+<td>The input data of the image. The data format of the image is cv::Mat. The input is a batch of images. The batch is expressed by std::vector&lt;&gt;. The vector size is batch size. Each item in the vector is a shared pointer, std::shared_ptr<cv::mat>, which points to one image data in the batch.</cv::mat></td>
+</tr>
+<tr>
+<td>additionalInput</td>
+<td>std::vector <std::vector<float>&gt;</std::vector<float></td>
+<td>For some networks, they have more than one input. This parameter is used for other inputs except image input. The type is also std::vector&lt;&gt;. Vector size is the number of inputs in a network except image input. For each input, the input data type is std::vector<float>.</float></td>
+</tr>
+<tr>
+<td>xml</td>
+<td>std::string</td>
+<td>The IE model file, which includes the file path. The file must be xml format.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>std::vector <std::vector<float>*&gt;</std::vector<float></td>
+<td>The inference results. For some networks, they have more than one output port. This parameter is defined to std::vector&lt;&gt;. The vector size is the number of output ports. Each item in the vector is a pointer, which points to a vector(std::vector<float>), this vector is the inference result of one output port.</float></td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>std::string img_file = &quot;./models/person-detection-retail-0013.png&quot;;
+
+std::string model_file = &quot;./models/person-detection-retail-0013.xml&quot;;
+
+std::vector&lt;float&gt; rawDetectionResult;
+
+std::vectorstd::vector&lt;float&gt; additionalInput;
+
+std::vectorstd::vector&lt;float&gt; rawDetectionResults;*
+
+rawDetectionResults.push_back(&amp;rawDetectionResult);
+
+std::vectorstd::shared_ptrcv::Mat images;
+
+std::shared_ptrcv::Mat frame_ptr =
+std::make_sharedcv::Mat(cv::imread(img_file, cv::IMREAD_COLOR));
+
+images.push_back(frame_ptr);
+
+std::string param = &quot;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&quot;;
+// = &quot;test&quot;;
+
+struct serverParams urlInfo{&quot;https://www.intel.cn/index.html&quot;, param};
+
+int res = vino_ie_pipeline_infer_image(images, additionalInput, model_file, rawDetectionResults, urlInfo);
+</code></pre><p>4) Notice</p>
+<p>Parameter - additionalInput: don&apos;t support cv::Mat data format.</p>
+<h4 id="11315-asr-api-deprecated-">11.3.1.5 ASR API (deprecated) <div id="11_3_1_5"></div></h4>
+<p>ASR means Automatic Speech Recognition, speech-to-text. This API is implemented
+based on some Intel speech libraries.</p>
+<p>Notice, from this release, this API isn&apos;t supported any longer. Please don&apos;t use it any more</p>
+<p>1) API</p>
+<pre><code>/**
+
+* @brief Do inference for speech (ASR). Using intel speech libraries.
+
+* @param samples Speech data buffer.
+
+* @param sampleLength Buffer size of speech data
+
+* @param bytesPerSample Size for each speech sample data (how many bytes for
+each sample)
+
+* @param rh_utterance_transcription Text result of speech. (ASR result)
+
+* @param remoteSeverInfo parameters to do inference on remote server.
+
+* @return Status code of inference
+
+*/
+
+int vino_ie_pipeline_infer_speech(const short samples,*
+int sampleLength,
+int bytesPerSample,
+std::string config_path,
+std::vector&lt;char&gt; &amp;rh_utterance_transcription,
+struct serverParams&amp; remoteServerInfo);
+</code></pre><p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>samples</td>
+<td>short int</td>
+<td>speech data, which format is PCM data. Each short int data is one PCM sample.</td>
+</tr>
+<tr>
+<td>sampleLength</td>
+<td>int</td>
+<td>The size of speech data</td>
+</tr>
+<tr>
+<td>bytesPerSample</td>
+<td>int</td>
+<td>the bytes number for each speech sample data. For PCM data, the value should be 2, which means each PCM sample is two bytes.</td>
+</tr>
+<tr>
+<td>config_path</td>
+<td>std::string</td>
+<td>The configuration file for the ASR model. This configuration file is used by intel speech libraries</td>
+</tr>
+<tr>
+<td>rh_utterance_transcription</td>
+<td>std::vector<char></char></td>
+<td>the inference result for speech data. The data format is char.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<p>Samples, sampleLength, and bytesPerSample are often obtained by parsing theheader of a wave file.</p>
+<p>3) example
+No eample code.</p>
+<p>4) Notice</p>
+<p>From this release(V1.3), this API isn&apos;t supported any longer.
+Please don&apos;t use it any more.</p>
+<h4 id="11316-common-api-deprecated-">11.3.1.6 common API (deprecated) <div id="11_3_1_6"></div></h4>
+<p>&quot;Common&quot; means this API is used for cases other than image and ASR. For example,
+the TTS case. If the input/output data of the model meet the requirements of
+API, then this API can be used in this case.</p>
+<p>1) API</p>
+<pre><code>/**
+
+* @brief Do inference for common models
+
+* @param inputData Data input for network. The data type is float.
+
+* @param additionalInput Other inputs of network(except image input)
+
+* @param xmls Path of IE model file(xml)
+
+* @param rawDetectionResults Outputs of network, they are raw data.
+
+* @param remoteSeverInfo parameters to do inference on remote server
+
+* @return Status code of inference
+
+*/
+
+int vino_ie_pipeline_infer_common(std::vectorstd::shared_ptr&lt;std::vector&lt;float&gt;&gt;&amp;
+
+inputData,
+
+std::vectorstd::vector&lt;float&gt;&amp; additionalInput,
+
+std::string xmls,
+
+std::vectorstd::vector&lt;float&gt;&amp; rawDetectionResults,*
+
+struct serverParams&amp; remoteServerInfo);
+</code></pre><p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inputData</td>
+<td>std::vector<std::shared_ptr<std::vector<float>&gt;&gt;</std::shared_ptr<std::vector<float></td>
+<td>Input data for the network. Similar to the image parameter of image API. The input data is a batch of vectors. The batch vectors are expressed by std::vector&lt;&gt;. The vector size is batch size. Each item of vector is a share pointer, std::shared_ptr<std::vector<float>&gt;, which points to one float vector.</std::vector<float></td>
+</tr>
+<tr>
+<td>additionalInput</td>
+<td>std::vector<std::vector<float>&gt;</std::vector<float></td>
+<td>For some networks, they have more than one input. This parameter is used for other inputs except inputData pin. The type is also std::vector&lt;&gt;. Vector size is the number of inputs in a network except inputData input port. For each input, the input data type is std::vector<float>.</float></td>
+</tr>
+<tr>
+<td>xml</td>
+<td>std::string</td>
+<td>The IE model file, which includes the file path. The file must be xml format.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>std::vector<std::vector<float>*&gt;</std::vector<float></td>
+<td>The inference results. For some networks, they have more than one output port. This parameter is defined to std::vector&lt;&gt;. The vector size is the number of output ports. Each item in the vector is a pointer, which points to one output result(std::vector<float>), this vector is the inference result of one output port.</float></td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>   std::string model_file = &quot;./models/frozen_infer_1_setence.xml&quot;;
+
+   std::vector&lt;float&gt; rawDetectionResult;
+
+   std::vectorstd::vector&lt;float&gt; additionalInput;
+
+   std::vectorstd::vector&lt;float&gt; rawDetectionResults;*
+
+   rawDetectionResults.push_back(&amp;rawDetectionResult);
+
+   std::vector&lt;float&gt; text_feature;
+
+   std::shared_ptrstd::vector&lt;float&gt; encoder_frame_ptr =
+
+   std::make_sharedstd::vector&lt;float&gt;(text_feature);
+
+   std::vectorstd::shared_ptr&lt;std::vector&lt;float&gt;&gt; encoder_vectors;
+
+   encoder_vectors.push_back(encoder_frame_ptr);
+
+   std::vector&lt;float&gt; y_hat(200400, 0.0f);*
+
+   additionalInput.push_back(y_hat);
+
+   std::string param = &quot;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&quot;;
+
+   struct serverParams urlInfo{&quot;https://www.intel.cn/index.html&quot;, param};
+
+   int res = vino_ie_pipeline_infer_common(encoder_vectors, additionalInput,
+   model_file, rawDetectionResults, urlInfo);
+</code></pre><p>4) Note</p>
+<h4 id="11317-video-api-">11.3.1.7 video API <div id="11_3_1_7"></div></h4>
+<p>This API is used to run inference for video streaming. The video API includes
+two APIs: one is used for initializing models, another is used for running
+inference.</p>
+<p>1) APIs</p>
+<pre><code>/**
+
+* @brief Initialization before video inference
+
+* @param modelXmlFile Path of IE model file(xml)
+
+* @param deviceName Inference on which device: CPU, GPU or others
+
+* @return Status code of inference
+
+*/
+
+int vino_ie_video_infer_init(const std::string&amp; modelXmlFile,
+
+const std::string&amp; deviceName);
+
+/**
+
+* @brief Do inference for video frame
+
+* @param frame Image frame input for network
+
+* @param additionalInput Other inputs of network(except image input)
+
+* @param modelXmlFile Path of IE model file(xml)
+
+* @param rawDetectionResults Outputs of network, they are raw data.
+
+* @return Status code of inference
+
+*/
+
+int vino_ie_video_infer_frame(const cv::Mat&amp; frame,
+
+std::vectorstd::vector&lt;float&gt;&amp; additionalInput,
+
+const std::string&amp; modelXmlFile,
+
+std::vectorstd::vector&lt;float&gt;&amp; rawDetectionResults);*
+</code></pre><p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>modelXmlFile</td>
+<td>std::string</td>
+<td>The IE model file, which includes the file path. The file must be xml format.</td>
+</tr>
+<tr>
+<td>deviceName</td>
+<td>std::string</td>
+<td>Inference device. This parameter selects inference devices, XPU(CPU, GPU, or others).</td>
+</tr>
+<tr>
+<td>frame</td>
+<td>cv::Mat</td>
+<td>Input video frame. Only one frame data, not support batch.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>std::vector<std::vector<float>*&gt;</std::vector<float></td>
+<td>The inference results. For some networks, they have more than one output port. This parameter is defined to std::vector&lt;&gt;. The vector size is the number of output ports. Each item in the vector is a pointer, which points to an output data(std::vector<float>), this vector is the inference result of one output port.</float></td>
+</tr>
+<tr>
+<td>additionalInput</td>
+<td>std::vector<std::vector<float>&gt;</std::vector<float></td>
+<td>For some networks, they have more than one input. This parameter is used for other inputs except image input. The type is also std::vector&lt;&gt;. Vector size is the number of inputs in a network except the image input port. For each input, the input data type is std::vector<float>.</float></td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>std::string img_file = &quot;./models/person-detection-retail-0013.png&quot;;
+
+std::string model_file = &quot;./models/person-detection-retail-0013.xml&quot;;
+
+std::vector&lt;float&gt; rawDetectionResult;
+
+std::vectorstd::vector&lt;float&gt; additionalInput;
+
+std::vectorstd::vector&lt;float&gt; rawDetectionResults;*
+
+rawDetectionResults.push_back(&amp;rawDetectionResult);
+
+cv::Mat frame = cv::imread(img_file, cv::IMREAD_COLOR);
+
+vino_ie_video_infer_init(model_file, &quot;CPU&quot;);
+
+int frame_num = 10;
+
+int i = 0;
+
+while (i++ &lt; frame_num) {
+
+&apos;&apos;&apos;&apos;&apos;..
+
+rawDetectionResult.clear();
+
+vino_ie_video_infer_frame(frame, additionalInput, model_file,
+
+rawDetectionResults);
+
+&apos;&apos;&apos;&apos;&apos;&apos;
+
+}
+</code></pre><p>4) notice</p>
+<p>(1) No policy logic in this API. The setting of policy API has no impact on this API.</p>
+<p>(2) It has only one working mode, local mode. Doesn&apos;t have proxy mode.</p>
+<h4 id="11318-load-openvino-model-from-buffer-api-">11.3.1.8 Load Openvino Model from Buffer API <div id="11_3_1_8"></div></h4>
+<p>This api is used for loading a Openvino model from a buffer. In some cases, the
+Openvino model isn&apos;t a file in the disk, it is located in the memory buffer. For
+these cases, we need to call this api to initialize the Openvino model.</p>
+<ol>
+<li><p>API</p>
+<pre><code> /**
+
+ * @brief Initial, load model from buffer
+
+ * @param xmls a unique string to handle the inference entity
+
+ * @param model model buffer
+
+ * @param weights weights buffer
+
+ * @param batch batch size
+
+ * @param isImgInput whether input of model is image
+
+ * @return Status code
+
+ */
+
+ int vino_ie_pipeline_init_from_buffer(std::string xmls,
+
+ const std::string &amp;model,
+
+ const std::string &amp;weights,
+
+ int batch,
+
+ bool isImgInput);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xmls</td>
+<td>std::string</td>
+<td>a unique string to represent IE model</td>
+</tr>
+<tr>
+<td>model</td>
+<td>std::string</td>
+<td>The memory buffer which includes the IE model.</td>
+</tr>
+<tr>
+<td>weights</td>
+<td>std::string</td>
+<td>This memory buffer which includes the weight data.</td>
+</tr>
+<tr>
+<td>batch</td>
+<td>int</td>
+<td>The batch size.</td>
+</tr>
+<tr>
+<td>isImgInput</td>
+<td>bool</td>
+<td>Whether the input of the model is image data.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="11319-configure-a-temporary-inference-device-api-">11.3.1.9 Configure a temporary inference device API <div id="11_3_1_9"></div></h4>
+<p>This API is used by users to set a temporary inference device for one case. The
+inference device is usually set by the Policy configuration API(11.4.1.3). But
+this setting of the Policy configuration API is a global setting which affects
+all cases. If the user wants to select another inference device which is
+different from the global one, he can call this API to override the global
+inference device. This temporary setting only affect the specific user case, not
+affects others.</p>
+<p>1) API</p>
+<pre><code>/**
+
+* @brief Set temporary inference device for the model.
+
+* @ This setting will override the policy setting.
+
+* @param set Set or clear the temporary inference device.
+
+* @param model Name of the model file, including the file path.
+
+* @param device The temporary inference device.
+
+*/
+
+int irt_set_temporary_infer_device(bool set, const std::string&amp; model, std::string device);
+</code></pre><p>2) parameter</p>
+<pre><code>set: Set(set==true) the temporary inference device;
+
+or cancel(set==false) the temporary inference device.
+
+model: Name of the model file, including the file path.
+
+device: The temporary inference device.
+</code></pre><p>3) example</p>
+<pre><code>// set a temporary device
+
+int res = irt_set_temporary_infer_device(true, model, &quot;CPU&quot;)
+
+&apos;&apos;&apos;..
+
+// clear a temprary device
+
+int res = irt_set_temporary_infer_device(false, model, &quot;CPU&quot;)
+</code></pre><p>4) Notice</p>
+<p>Don&apos;t forget to call this api to cancel the temporary device setting when the
+temporary</p>
+<p>device isn&apos;t used any longer.</p>
+<h3 id="1132-python-api-">11.3.2 Python API <div id="11_3_2"></div></h3>
+<p>Runtime service library also provides some python APIs to upper layers. These
+python APIs can be called by python APPs directly.</p>
+<p>Python API provides the same functions as C++ API. So they are mapped one-on-one
+to the C++ APIs.</p>
+<p>Python is a different language from C++, so the data structures used in python
+APIs are also different from C++ data structures. The following table lists the
+mapping of data structures between two languages.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Python</strong></th>
+<th><strong>C++</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>serverParams</td>
+<td>struct serverParams</td>
+</tr>
+<tr>
+<td>userCfgParams</td>
+<td>struct userCfgParams</td>
+</tr>
+<tr>
+<td>vectorChar</td>
+<td>std::vector<char></char></td>
+</tr>
+<tr>
+<td>vectorFloat</td>
+<td>std::vector<float></float></td>
+</tr>
+<tr>
+<td>vectorVecFloat</td>
+<td>std::vector<std::vector<float>&gt;</std::vector<float></td>
+</tr>
+<tr>
+<td>tripleVecFloat</td>
+<td>std::vector<std::vector<std::vector<float>&gt;&gt;</std::vector<std::vector<float></td>
+</tr>
+</tbody>
+</table>
+<h4 id="11321-image-apideprecated-">11.3.2.1 Image API(deprecated) <div id="11_3_2_1"></div></h4>
+<p>1) API</p>
+<p><em>infer_image(image, image_channel, additionalInput, xmls, rawDetectionResults, remoteServerInfo)</em></p>
+<p>This API is defined for OPENVINO backend engine only. It will be obsolete in the future.</p>
+<p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>image</td>
+<td>List[List[int]]</td>
+<td>The image data. The data format of the image is list[int], and each image is expressed in one list[]. The outer list[] means batch images. The outer list length is batch size. The inner list[] is the image data.</td>
+</tr>
+<tr>
+<td>Image_channel</td>
+<td>int</td>
+<td>This parameter defines the channels of the input image. For example: 3 - rgb, 1 - h</td>
+</tr>
+<tr>
+<td>AdditionalInput</td>
+<td>vectorVecFloat</td>
+<td>Other inputs except image input. The meaning is the same as C++ API</td>
+</tr>
+<tr>
+<td>Xmls</td>
+<td>str</td>
+<td>IE model file. The meaning is the same as C++ API.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>vectorVecFloat</td>
+<td>The inference results. The meaning is the same as C++ API.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>serverParams</td>
+<td>Server parameter. This is used in proxy mode. The meaning is the same as C++ API.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>import inferservice_python as rt_api
+
+model_xml = &quot;./models/person-detection-retail-0013.xml&quot;
+
+pic = list(pic)
+
+pics = [pic]     # pics should be list[list], [[],[],[]]
+
+other_pin = rt_api.vectorVecFloat()
+
+out1 = rt_api.vectorFloat()
+
+out = rt_api.vectorVecFloat()
+
+out.append(out1)
+
+urlinfo = rt_api.serverParams()
+
+urlinfo.url = &apos;https://www.baidu.com/s&apos;
+
+urlinfo.urlParam = &apos;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&apos;
+
+res = rt_api.infer_image(pics, 3, other_pin, model_xml, out, urlinfo)
+</code></pre><p>4) Notice</p>
+<p>The usage of this API is the same as C++ image API.</p>
+<h4 id="11322-image-api-">11.3.2.2 Image API <div id="11_3_2_2"></div></h4>
+<p>1) API</p>
+<p><em>infer_image_v1(images, image_channel, additionalInput, xmls, backendEngine, rawDetectionResults, remoteServerInfo)</em></p>
+<p>This image API is encouraged to be used for image inference. It supports different inference backend engines, such as  PENVINO, PYTORCH, TENSORFLOW, PADDLE or ONNX runtime. It is mapped to C++ image API, irt_infer_from_image(). Please refer to 10.4.3 for C++ image API.</p>
+<p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>images</td>
+<td>list[List[List[int]]]</td>
+<td>The image data. The data format of the image is list[int], and each image is expressed in one list[]. The inner list[int] is data of one image. The middle list[] means batch images. The middle list length is batch size. The outer list[] is the number of inputs, which means how many image inputs the model has.</td>
+</tr>
+<tr>
+<td>Image_channel</td>
+<td>int</td>
+<td>This parameter defines the channels of the input image. For example: 3 &#xFFFD;C rgb, 1 &#xFFFD;C h</td>
+</tr>
+<tr>
+<td>AdditionalInput</td>
+<td>vectorVecFloat</td>
+<td>Other inputs except image input. The meaning is the same as C++ API</td>
+</tr>
+<tr>
+<td>Xmls</td>
+<td>str</td>
+<td>IE model file. The meaning is the same as C++ API.</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>str</td>
+<td>Specify the inference engine, &quot;OPENVINO&quot;, &quot;PYTORCH&quot;, &quot;ONNXRT&quot;, &quot;PADDLE&quot; or &quot;TENSORFLOW&quot;.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>vectorVecFloat</td>
+<td>The inference results. The meaning is the same as C++ API.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>serverParams</td>
+<td>Server parameter. This is used in proxy mode. The meaning is the same as C++ API.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>import inferservice_python as rt_api
+
+model_xml = &quot;./models/person-detection-retail-0013.xml&quot;
+
+pic = list(pic)
+
+pics = [[pic]]     # pics should be list[list[list]], [[[ ],[ ],[ ]]]
+
+other_pin = rt_api.vectorVecFloat()
+
+out1 = rt_api.vectorFloat()
+
+out = rt_api.vectorVecFloat()
+
+out.append(out1)
+
+urlinfo = rt_api.serverParams()
+
+urlinfo.url = &apos;https://www.baidu.com/s&apos;
+
+urlinfo.urlParam = &apos;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&apos;
+
+res = rt_api.infer_image_v1(pics, 3, other_pin, model_xml, &quot;OPENVINO&quot;, out,
+urlinfo)
+</code></pre><p>4) Notice</p>
+<p>The usage of this API is the same as C++ image API.</p>
+<h4 id="11323-asr-api-">11.3.2.3 ASR API <div id="11_3_2_3"></div></h4>
+<p>1) API</p>
+<p><em>infer_speech(samples, bytesPerSample, config_path, backendEngine,
+rh_utterance_transcription, remoteServerInfo)</em></p>
+<p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>samples</td>
+<td>List[int]</td>
+<td>speech data, which format is PCM data. Each PCM sample is one short int data.</td>
+</tr>
+<tr>
+<td>bytesPerSample</td>
+<td>int</td>
+<td>the bytes number for each speech sample data. For PCM data, the value should be 2, which means each sample data includes two bytes.</td>
+</tr>
+<tr>
+<td>config_path</td>
+<td>str</td>
+<td>The configuration file for the ASR model. This configuration file is used by intel speech libraries</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>str</td>
+<td>Specify the inference engine, &quot;OPENVINO&quot;, &quot;PYTORCH&quot;, &quot;ONNXRT&quot;, &quot;PADDLE&quot; or &quot;TENSORFLOW&quot;.</td>
+</tr>
+<tr>
+<td>rh_utterance_transcription</td>
+<td>vectorChar</td>
+<td>the inference result for speech data. The data format is char.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>serverParams</td>
+<td>Server parameter. This is used in proxy mode. The meaning is the same as C++ API.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<p>Currently, no example uses this API.</p>
+<p>4) Notice</p>
+<p>The usage of this API is the same as C++ ASR API.
+Intel ASR model isn&apos;t supported by this API any longer.</p>
+<h4 id="11324-common-api-">11.3.2.4 Common API <div id="11_3_2_4"></div></h4>
+<p>This api is mapped to C++ common API, irt_infer_from_common(). It can be used in TTS cases. For C++ common API, please refer to 10.4.3.</p>
+<p>1) API</p>
+<p><em>infer_common(inputData, additionalInput, xml, backendEngine, rawDetectionResults, remoteServerInfo);</em></p>
+<p>2) parameters</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>inputData</td>
+<td>tripleVecFloat</td>
+<td>The input data for the network. Same as C++ API.</td>
+</tr>
+<tr>
+<td>additionalInput</td>
+<td>vectorVecFloat</td>
+<td>Other inputs except inputData pin. Same as C++ API.</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>str</td>
+<td>The IE model file, which includes the file path. The file must be xml format.</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>str</td>
+<td>Specify the inference engine, &quot;OPENVINO&quot;, &quot;PYTORCH&quot;, &quot;ONNXRT&quot;, &quot;PADDLE&quot; or &quot;TENSORFLOW&quot;.</td>
+</tr>
+<tr>
+<td>rawDetectionResults</td>
+<td>vectorVecFloat</td>
+<td>The inference results. Same as C++ API.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>serverParams</td>
+<td>Server parameter. This is used in proxy mode. Same as C++ API.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>import inferservice_python as rt_api
+
+model_xml = &quot;./models/tts-encoder-decoder.xml&quot;
+
+input_data = rt_api.vectorVecFloat()
+
+x_pin = rt_api.vectorFloat(tts_data)
+
+input_data.append(x_pin)
+
+input_vector = rt_api.tripleVecFloat()
+
+input_vector.append(input_data)
+
+other_pin = rt_api.vectorVecFloat()
+
+y_pin = rt_api.vectorFloat(other_pin_data)
+
+other_pin.append(y_pin)
+
+out1 = rt_api.vectorFloat()
+
+out = rt_api.vectorVecFloat()
+
+out.append(out1)
+
+urlinfo = rt_api.serverParams()
+
+urlinfo.url = &apos;https://www.baidu.com/s&apos;
+
+urlinfo.urlParam = &apos;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&apos;
+
+res = rt_api.infer_common(input_vector, other_pin, model_xml, &quot;OPENVINO&quot;, out,
+urlinfo)
+</code></pre><p>4) Notice</p>
+<p>The usage of this API is the same as C++ common API.</p>
+<h4 id="11325-policy-configuration-api-">11.3.2.5 Policy configuration API <div id="11_3_2_5"></div></h4>
+<p>1) API</p>
+<p><em>set_policy_params(configuration);</em></p>
+<p>2) parameter</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td>userCfgParams</td>
+<td>Same as C++ struct userCfgParams.</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code>  import inferservice_python as rt_api
+
+  #configuration:*
+  cfg_info = rt_api.userCfgParams()
+  cfg_info.isLocalInference = True
+  cfg_info.inferDevice = &apos;CPU&apos;
+  res = rt_api.set_policy_params(cfg_info)
+</code></pre><p>4) Notice</p>
+<p>The usage of this API is the same as C++ policy configuration API.</p>
+<h4 id="11326-set-temporary-inference-device-api-">11.3.2.6 Set temporary inference device API <div id="11_3_2_6"></div></h4>
+<p>1) API</p>
+<p>This API is a python version of configuring a temporary inference device API(11.4.1.11).</p>
+<p>Please refer to the section 11.4.1.11 for the detail usage.</p>
+<pre><code>set_temporary_infer_device(set, model, device);
+</code></pre><p>2) parameter</p>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set</td>
+<td>bool</td>
+<td>set/clear. Same as 11.4.1.11.</td>
+</tr>
+<tr>
+<td>model</td>
+<td>str</td>
+<td>The model file. Same as 11.4.1.11</td>
+</tr>
+<tr>
+<td>device</td>
+<td>str</td>
+<td>Temporary inference device. Same as 11.4.1.11</td>
+</tr>
+</tbody>
+</table>
+<p>3) example</p>
+<pre><code> import inferservice_python as rt_api
+ #set a temporary inference device:*
+ res = rt_api.set_temporary_infer_device(True, model, &quot;CPU&quot; )
+ &apos;&apos;&apos;..
+ #cancle a temporary inference device:*
+
+ res = rt_api.set_temporary_infer_device(False, model, &quot;CPU&quot; )
+</code></pre><p>4) Notice</p>
+<p>The usage of this API is the same as C++ configuring a temporary inference device API(11.4.1.11).</p>
+<h3 id="1133-c-apis-for-different-backend-engines-version-1-">11.3.3 C++ APIs for Different backend Engines (Version 1) <div id="11_3_3"></div></h3>
+<p>This set of C++ APIs(version 1) are the superset of the set of C++ APIs for Openvino backend engines (version 0). The difference between two versions is that version 1 supports different inference engines, such as Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. You can use APIs in version 1 to do the same things as APIs in version0.</p>
+<p>C++ APIs of version 1 are &quot;standard&quot; c++ APIs. In the future, some of the APIs in version 0 will be obselete. I encourage you to try to use C++ APIs in version 1.</p>
+<h4 id="11331-return-value-">11.3.3.1 Return Value <div id="11_3_3_1"></div></h4>
+<pre><code>/**
+
+*@enum irtStatusCode
+
+*@brief Status code of running inference
+
+*/
+
+enum irtStatusCode : int {
+
+RT_REMOTE_INFER_OK = 1,  //inference successfully on remote server
+
+RT_LOCAL_INFER_OK = 0,  //inference successfully on local HW
+
+RT_INFER_ERROR = -1 //inference error
+
+};
+</code></pre><p>Some APIs have two working modes. One mode is local mode, which means doing inference on local XPU. Another is proxy mode. In proxy mode, API forwards requests to the remote server (such as QQ server or Tencent server). The remote
+server runs inference, and returns the result.</p>
+<p>In local mode, the return value is <em>RT_LOCAL_INFER_OK (success)</em> or <em>RT_INFER_ERROR (failure)</em>.</p>
+<p>In proxy mode, the return value is <em>RT_REMOTE_INFER_OK (success)</em> or <em>RT_INFER_ERROR(failure)</em></p>
+<h4 id="11332-inference-engines-">11.3.3.2 Inference Engines <div id="11_3_3_2"></div></h4>
+<p>Currently, runtime libraries support five inference engines, they are Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. The PaddlePaddle is a new inference engine added in this release.</p>
+<p>There is a configuration file which defines which inference engines are supported in this runtime library. The name of this configuration file is inference_engine_library.txt. The content is:</p>
+<pre><code>#format: inference-engine-name library-name, for example: ONNX
+libonnxentry.so*
+
+#inference-engine-name: OPENVINO, ONNX, PYTORCH, PADDLE, TENSORFLOW*
+
+#You can add new inference engine to this file by following same format*
+
+*OPENVINO libopenvinoentry.so*
+
+*ONNXRT libonnxentry.so*
+
+*PYTORCH libpytorchentry.so*
+
+*TENSORFLOW libtensorflowentry.so*
+
+*PADDLE libpaddleentry.so*
+</code></pre><p>This file defines the name of the inference engine, and also the inference engine library.</p>
+<h4 id="11333-image-api-">11.3.3.3 Image API <div id="11_3_3_3"></div></h4>
+<p>The usage of this API is the same as image API in version 0.</p>
+<ol>
+<li>API</li>
+</ol>
+<pre><code>/**
+* @brief Run inference from image
+* @param tensorData Buffers for input/output tensors
+* @param modelFile The model file, include path
+* @param backendEngine Specify the inference engine, OPENVINO, PYTORCH, ONNXRT, PADDLE,
+or
+
+* TENSORFLOW.
+* @param remoteSeverInfo Parameters to do inference on remote server
+* @return Status code of inference
+*/
+
+enum irtStatusCode irt_infer_from_image(struct irtImageIOBuffers&amp; tensorData,
+const std::string&amp; modelFile,
+std::string backendEngine,
+struct serverParams&amp; remoteServerInfo);
+</code></pre><ol>
+<li>parameters</li>
+</ol>
+<pre><code>/**
+
+* @brief Buffers for running inference from image.
+
+* Includes pointers pointing to the input/output tensors data.
+
+* @There are two kinds of inputs, one is image inputs, another is assistant
+inputs.
+
+* The image input tensor is represents by
+vector&lt;vector&lt;vector_shared_ptr&gt;&gt;&gt;,
+
+* means [ports_number, batch, one_image_data]. It is expressed by
+
+* &lt;ports_number&lt;batch&lt;one_image_data&gt;&gt;&gt;.
+
+* The inner vector is a shared pointer pointing to a vector(one_image_data).
+
+* The outer vector.size() means the number of image input ports.
+
+* The middle vector means batch.
+
+* The assistant input tensor is represent by vector&lt;vector&lt;float&gt;&gt;, means
+
+* [ports_number, one_data_array].
+
+* @The output tensor is represented by vector&lt;vector_pointers&gt;.
+
+* The output tensor is [ports_number, one_data_arry]. It is expressed by
+
+* &lt;ports_number&lt;one_data_arry&gt;&gt;.
+
+* The inner vector is a pointer which points to a vector(one_data_array). This
+vector
+
+* includes the return value passed back by API.
+
+* The outer vector.size() means output ports number of the model.
+
+*/
+
+struct irtFloatIOBuffers {
+    /* Pointer points to main input data. The inner shared pointer points to float data */
+    std::vector&lt;std::vector&lt;ptrFloatVector&gt;&gt; *pMainInputs;
+    /* Pointer points to the assistant input data. */
+    std::vector&lt;std::vector&lt;float&gt;&gt; *pAdditionalInputs;
+    /* Pointer points to the output buffer. The inner pointer points to the result inferenced by 
+       runtime API */
+    std::vector&lt;std::vector&lt;float&gt;*&gt; *pInferenceResult;
+};
+</code></pre><table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tensorData</td>
+<td>irtImageIOBuffers</td>
+<td>Buffers for input/output tensors</td>
+</tr>
+<tr>
+<td>modelFile</td>
+<td>std::string</td>
+<td>The model file, which includes the file path.</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>std::string</td>
+<td>Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle or Tensorflow.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>example</li>
+</ol>
+<pre><code>std::string img_file = &quot;./models/person-detection-retail-0013.png&quot;;
+
+std::string model_file = &quot;./models/person-detection-retail-0013.xml&quot;;
+
+std::vector&lt;float&gt; rawDetectionResult;
+
+std::vectorstd::vector&lt;float&gt; additionalInput;
+
+std::vectorstd::vector&lt;float&gt; rawDetectionResults;*
+
+rawDetectionResults.push_back(&amp;rawDetectionResult);
+
+std::vectorstd::shared_ptr&lt;cv::Mat&gt; images;
+
+std::shared_ptrcv::Mat frame_ptr =
+std::make_sharedcv::Mat(cv::imread(img_file, cv::IMREAD_COLOR));
+
+images.push_back(frame_ptr);
+
+std::string param =
+&quot;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&quot;; // = &quot;test&quot;;
+
+struct serverParams urlInfo{&quot;https://www.intel.cn/index.html&quot;, param};
+
+std::vectorstd::vector&lt;ptrCVImage&gt; images_vecs;
+
+images_vecs.push_back(images);
+
+images.clear();
+
+struct irtImageIOBuffers modelAndBuffers{&amp;images_vecs, &amp;additionalInput, &amp;rawDetectionResults};
+
+enum irtStatusCode res = irt_infer_from_image(modelAndBuffers, model_file,&quot;OPENVINO&quot;, urlInfo);
+</code></pre><h4 id="11334-speech-api-">11.3.3.4 Speech API <div id="11_3_3_4"></div></h4>
+<p>The usage of this API is the same as ASR API in version 0.</p>
+<ol>
+<li>API</li>
+</ol>
+<pre><code>/**
+
+* @brief Run inference from speech(ASR)
+
+* @param waveData Parameters for speech data, includes data buffer and
+settings.
+
+* @param configurationFile The configuration file, includes path
+
+* @param inferenceResult Text result of speech. (ASR result)
+
+* @param backendEngine Specify the inference engine, OpenVINO, PYTORCH, ONNXRT, PADDLE,
+or
+
+* TENSORFLOW.
+
+* @param remoteSeverInfo Parameters to do inference on remote server
+
+* @return Status code of inference
+
+*/
+
+enum irtStatusCode irt_infer_from_speech(const struct irtWaveData&amp; waveData,
+
+std::string configurationFile,
+
+std::vector&lt;char&gt;&amp; inferenceResult,
+
+std::string backendEngine,
+
+struct serverParams&amp; remoteServerInfo);
+</code></pre><ol>
+<li>parameter</li>
+</ol>
+<pre><code>/**
+
+* @brief Parameters for wave data. Used by running inference for speech.
+
+* Wave data is PCM data.
+
+*/
+
+struct irtWaveData {
+    /* Pointer points to PCM data. */
+    short* samples;
+    /* PCM data length. */
+    int sampleLength;
+    /* Size of each PCM sample. */
+    int bytesPerSample;
+};
+</code></pre><table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>waveData</td>
+<td>irtWaveData</td>
+<td>Parameters for speech data, includes speech data buffer and definitions.</td>
+</tr>
+<tr>
+<td>configurationFile</td>
+<td>std::string</td>
+<td>The configuration file for the ASR model. Including path.</td>
+</tr>
+<tr>
+<td>inferenceResult</td>
+<td>std::vector<char></char></td>
+<td>Text result of inference. The data format is char.</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>std::string</td>
+<td>Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle and Tensorflow.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>example</li>
+</ol>
+<p>Currently, no example uses this API.</p>
+<h4 id="11335-common-api-">11.3.3.5 Common API <div id="11_3_3_5"></div></h4>
+<p>The usage of this API is the same as the common API in version 0.</p>
+<ol>
+<li>API</li>
+</ol>
+<pre><code>/**
+
+* @brief Run inference from common model
+
+* @param tensorData Buffers for input/output tensors
+
+* @param modelFile The model file, include path
+
+* @param backendEngine Specify the inference engine, OpenVINO,PYTORCH, ONNXRT, PADDLE,
+or
+
+* TENSORFLOW.
+
+* @param remoteSeverInfo Parameters to do inference on remote server
+
+* @return Status code of inference
+
+*/
+
+enum irtStatusCode irt_infer_from_common(struct irtFloatIOBuffers&amp; tensorData,
+
+const std::string&amp; modelFile,
+
+std::string backendEngine,
+
+struct serverParams&amp; remoteServerInfo);
+</code></pre><ol>
+<li>parameter</li>
+</ol>
+<pre><code>*/**
+
+* @brief Buffers for running inference from common model.
+
+* The structure is similar with irtImageIOBuffers, except the type of shared
+pointer is float,
+
+* not CV::Mat.
+
+*/
+
+struct irtFloatIOBuffers {
+    /* Pointer points to main input data. The inner shared pointer points to float data */
+    std::vector&lt;std::vector&lt;ptrFloatVector&gt;&gt; *pMainInputs;
+    /* Pointer points to the assistant input data. */
+    std::vector&lt;std::vector&lt;float&gt;&gt; *pAdditionalInputs;
+    /* Pointer points to the output buffer. The inner pointer points to the result inferenced by 
+       runtime API */
+    std::vector&lt;std::vector&lt;float&gt;*&gt; *pInferenceResult;
+};
+</code></pre><table>
+<thead>
+<tr>
+<th><strong>Parameter</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tensorData</td>
+<td>irtFloatIOBuffers</td>
+<td>Buffers for input/output tensors</td>
+</tr>
+<tr>
+<td>modelFile</td>
+<td>std::string</td>
+<td>The model file, which includes the file path.</td>
+</tr>
+<tr>
+<td>backendEngine</td>
+<td>std::string</td>
+<td>Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle and Tensorflow.</td>
+</tr>
+<tr>
+<td>remoteServerInfo</td>
+<td>struct serverParams</td>
+<td>Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>example</li>
+</ol>
+<pre><code>std::string encoder_model_file = &quot;./models/text-spotting-0001-recognizer-encoder.xml&quot;;
+ std::vector&lt;std::vector&lt;float&gt;&gt; additionalInput;
+ std::vector&lt;float&gt; rawDetectionResult;
+ std::vector&lt;std::vector&lt;float&gt;*&gt; rawDetectionResults;
+ rawDetectionResults.push_back(&amp;rawDetectionResult);
+ std::string param = &quot;f=8&amp;rsv_bp=1&amp;rsv_idx=1&amp;word=picture&amp;tn=98633779_hao_pg&quot;;
+ struct serverParams urlInfo{&quot;https://www.intel.cn/index.html&quot;, param};
+ std::vector&lt;float&gt; text_features;
+ std::shared_ptr&lt;std::vector&lt;float&gt;&gt; encoder_frame_ptr = 
+            std::make_shared&lt;std::vector&lt;float&gt;&gt;(text_feature);
+ std::vector&lt;std::shared_ptr&lt;std::vector&lt;float&gt;&gt;&gt; encoder_images;
+ encoder_images.push_back(encoder_frame_ptr);
+ std::vector&lt;std::vector&lt;ptrFloatVector&gt;&gt; mainInputs;
+ mainInputs.push_back(encoder_images);
+ struct irtFloatIOBuffers buffers{&amp;mainInputs, &amp;additionalInput, &amp;rawDetectionResults};
+ enum irtStatusCode res = irt_infer_from_common(buffers, encoder_model_file, &quot;OPENVINO&quot;, 
+            urlInfo);
+</code></pre><h3 id="1134-video-pipeline-management-construct-apis-">11.3.4 Video pipeline management (construct) APIs <div id="11_3_4"></div></h3>
+<p>This set of APIs will help developers construct their own video pipelines and manage those pipelines in their life cycle.</p>
+<p>This function below initializes the video pipeline environment. It should be called before calling other APIs. return value, 0 means success, non-zero means failure.</p>
+<p>1) API</p>
+<pre><code>int ccai_stream_init();
+</code></pre><p>This function below creates a video pipeline. pipeline_name is a string which should be supported by a video pipeline plugin, such as &quot;launcher.object_detection&quot;. user_data is plugin defined, and should be supported by the plugin.</p>
+<p>This function returns a pointer to a ccai_stream_pipeline, or NULL if the pipeline cannot be created.</p>
+<ol>
+<li><p>API</p>
+<pre><code> struct ccai_stream_pipeline *ccai_stream_pipeline_create(const char* pipeline_name,
+ void *user_data);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline_name</td>
+<td>const char *</td>
+<td>pipeline namel</td>
+</tr>
+<tr>
+<td>user_data</td>
+<td>void *</td>
+<td>plugin defined, supported by the plugin</td>
+</tr>
+</tbody>
+</table>
+<p>This function below starts a video pipeline. The pipe should be returned by &apos;<em>ccai_stream_pipeline_create</em>&apos;. user_data is plugin defined, and should be supported by the plugin. return value, 0 means success, non-zero means failure.</p>
+<ol>
+<li><p>API</p>
+<pre><code> int ccai_stream_pipeline_start(struct ccai_stream_pipelinepipe, void user_data);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline_name</td>
+<td>const char *</td>
+<td>pipeline namel</td>
+</tr>
+<tr>
+<td>user_data</td>
+<td>void *</td>
+<td>plugin defined, supported by the plugin</td>
+</tr>
+</tbody>
+</table>
+<p>This function below stops a video pipeline. pipe should be returned by &apos;<em>ccai_stream_pipeline_create</em>&apos;. user_data is plugin defined, and should be supported by the plugin. return value, 0 means success, non-zero means failure.</p>
+<ol>
+<li><p>API</p>
+<pre><code> int ccai_stream_pipeline_stop(struct ccai_stream_pipeline *pipe, void *user_data);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline_name</td>
+<td>const char *</td>
+<td>pipeline namel</td>
+</tr>
+<tr>
+<td>user_data</td>
+<td>void *</td>
+<td>plugin defined, supported by the plugin</td>
+</tr>
+</tbody>
+</table>
+<p>This function below removes a video pipeline. pipe should be returned by &apos;<em>ccai_stream_pipeline_create</em>&apos;. user_data is plugin defined, and should be supported by the plugin. return value, 0 means success, non-zero means failure.</p>
+<ol>
+<li><p>API</p>
+<pre><code> int ccai_stream_pipeline_remove(struct ccai_stream_pipelinepipe, void user_data);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline_name</td>
+<td>const char *</td>
+<td>pipeline namel</td>
+</tr>
+<tr>
+<td>user_data</td>
+<td>void *</td>
+<td>plugin defined, supported by the plugin</td>
+</tr>
+</tbody>
+</table>
+<p>This function below reads something from a video pipeline. The pipe should be the one returned by &apos;<em>ccai_stream_pipeline_create</em>&apos; API. The user_data is plugin defined, and should be supported by the plugin. The return value, 0 means success, non-zero means failure.</p>
+<ol>
+<li><p>API</p>
+<pre><code> int ccai_stream_pipeline_read(struct ccai_stream_pipelinepipe, void user_data);
+</code></pre></li>
+</ol>
+<ol>
+<li>Parameter</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Parameters</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pipeline_name</td>
+<td>const char *</td>
+<td>pipeline namel</td>
+</tr>
+<tr>
+<td>user_data</td>
+<td>void *</td>
+<td>plugin defined, supported by the plugin</td>
+</tr>
+</tbody>
+</table>
+<h2 id="114-how-to-extend-video-pipeline-with-video-pipeline-manager-">11.4 How to extend video pipeline with video pipeline manager <div id="11_4"></div></h2>
+<p>You can follow the steps below to implement a plugin to extend the video
+pipeline.</p>
+<h3 id="1141-construct-the-plugin-">11.4.1 construct the plugin <div id="11_4_1"></div></h3>
+<pre><code>
+  #include &lt;ccai_stream_plugin.h&gt;
+  #include &lt;ccai_stream_utils.h&gt;
+  #include &lt;gst/gst.h&gt;
+
+  static const char *pipe_name = &quot;sample&quot;;
+  static const char *gst_pipeline_desc = &quot;videotestsrc ! ximagesink&quot;;
+
+  /* 4. implement create/start/stop/remove function */
+  static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL)
+                  return -1;
+          desc-&gt;private_data = gst_parse_launch(gst_pipeline_desc, NULL);
+          if (!desc-&gt;private_data)
+                  return -1;
+          return 0;
+  }
+
+  static int start_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc-&gt;private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc-&gt;private_data;
+          ccai_gst_start_pipeline(gst_pipe);
+          return 0;
+  }
+
+  static int stop_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc-&gt;private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc-&gt;private_data;
+          if (gst_pipe == NULL)
+                  return -1;
+          ccai_gst_stop_pipeline(gst_pipe);
+          return 0;
+  }
+
+  static int remove_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc-&gt;private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc-&gt;private_data;
+          if (gst_pipe) {
+                  gst_object_unref(gst_pipe);
+                  desc-&gt;private_data = NULL;
+          }
+          return 0;
+  }
+
+  /* 2. implement init/exit function  */
+  static int sample_plugin_init()
+  {
+          struct ccai_stream_pipeline_desc *desc;
+
+          /* 3. new a ccai_stream_pipeline_desc */
+          if ((desc = g_try_new0(struct ccai_stream_pipeline_desc, 1)) == NULL)
+                  return -1;
+          desc-&gt;name = pipe_name;
+          desc-&gt;create = create_pipe;
+          desc-&gt;start = start_pipe;
+          desc-&gt;stop = stop_pipe;
+          desc-&gt;remove = remove_pipe;
+          desc-&gt;get_gst_pipeline = NULL;
+          desc-&gt;private_data = NULL;
+          ccai_stream_add_pipeline(desc);
+          return 0;
+  }
+
+  static void sample_plugin_exit()
+  {
+  }
+  /* 1. define a plugin */
+  CCAI_STREAM_PLUGIN_DEFINE(sample, &quot;1.0&quot;,
+                            CCAI_STREAM_PLUGIN_PRIORITY_DEFAULT,
+                            sample_plugin_init, sample_plugin_exit)
+</code></pre><p>In the source code, you must call or implement the following functions:</p>
+<ol>
+<li><p>CCAI_STREAM_PLUGIN_DEFINE</p>
+<p> Call this function to define a plugin, the video pipeline manager will load this plugin according to the information provided by this definition.</p>
+</li>
+<li><p>Implement init/exit function</p>
+<p> The video pipeline manager will call init when the plugin is loaded, and call exit when the plugin is unloaded.</p>
+</li>
+<li><p>Call ccai_stream_add_pipeline in the init function, ccai_stream_add_pipeline will register the pipeline supported by the plugin to the video pipeline manager.</p>
+</li>
+<li><p>Implement create/start/stop/remove function. When a client requests to start or stop a pipeline, the video pipeline manager will call those functions.</p>
+</li>
+</ol>
+<h3 id="1142-build-the-plugin-">11.4.2 Build the plugin <div id="11_4_2"></div></h3>
+<pre><code>    $&gt; gcc `pkg-config --cflags gstreamer-1.0` -g -O2 plugin_sample.c -o sample.so \ 
+    `pkg-config --libs gstreamer-1.0` -shared -lccai_stream
+</code></pre><h3 id="1143-install-the-plugin-to-destination-">11.4.3 Install the plugin to destination <div id="11_4_3"></div></h3>
+<pre><code>    $&gt; sudo cp sample.so /usr/lib/ccai_stream/plugins/
+</code></pre><h3 id="1144-test-your-plugin-">11.4.4 Test your plugin <div id="11_4_4"></div></h3>
+<pre><code>    $&gt; sv restart lighttpd
+
+    $&gt; curl -H &quot;Content-Type:application/json&quot; -X POST http://localhost:8080/cgi-bin/streaming - &apos;{&quot;pipeline&quot;:&quot;sample&quot;, &quot;method&quot;:&quot;start&quot;}&apos;
+    $&gt; curl -H &quot;Content-Type:application/json&quot; -X POST http://localhost:8080/cgi-bin/streaming - &apos;{&quot;pipeline&quot;:&quot;sample&quot;, &quot;method&quot;:&quot;stop&quot;}&apos;
+</code></pre><h1 id="115-smart-photo-search-">11.5 Smart Photo Search <div id="12"></div></h1>
+<p>CCAI smart photo search includes a service and a library to provide a set of APIs to support the photo indexing and searching via AI identified &apos;Tag&apos;.</p>
+<h3 id="1151-components-overview-">11.5.1 Components overview <div id="12_0_1"></div></h3>
+<p><img src="../media/945c30016213078421172027fc6d63b3.png" alt=""></p>
+<h3 id="1152-launch-smart-photo-search-service-">11.5.2 Launch smart photo search service <div id="12_0_2"></div></h3>
+<p>By default CCAI will auto start smart photo service, users only need to prepare the photo directory. By default photo directory will be set to &apos;/opt/intel/service_runtime/smartphoto&apos;, but you can modify the script, &apos;/opt/intel/service_runtime/service_runtime.sh&apos; to set the photo directory to any directory.</p>
+<h3 id="1153-photo-monitor-">11.5.3 Photo monitor <div id="12_0_3"></div></h3>
+<p>The photo monitor is a sample which was provided by CCAI. It will monitor the
+photo directory, and if the file in the directory is changed, the photo monitor
+will call smart photo service RESTful API to notify the service.</p>
+<p>Launch monitor</p>
+<pre><code>    $&gt; cd gateway-demo/smart-photo/photo-monitor/
+    $&gt; ./monitor.py -d /opt/intel/service_runtime/smartphoto
+</code></pre><h3 id="1154-photo-viewer-">11.5.4 Photo viewer <div id="12_0_4"></div></h3>
+<p>The photo viewer is a web app.</p>
+<p>Launch viewer</p>
+<pre><code>    $&gt; cd gateway-demo/smart-photo/photo-viewer/
+    $&gt; npm install
+    $&gt; npm run serve
+</code></pre><p>Open the URL in your browser as prompted by &apos;npm run serve&apos;</p>
+<h3 id="1155-restful-apis-">11.5.5 RESTful APIs <div id="12_0_5"></div></h3>
+<p>The photo viewer is a good example to show how to use the smart photo service
+RESTful API.</p>
+<p>- http url: such as: url= &apos;<a href="http://localhost:8080/cgi-bin/smartphoto" target="_blank">http://localhost:8080/cgi-bin/smartphoto</a>&apos;</p>
+<p>- parameter: parameter should be a json object</p>
+<p>The parameter must include a key named &apos;method&apos;.</p>
+<ol>
+<li>start scan</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>scan_start</td>
+<td>{ &quot;method&quot;: &quot;scan_start&quot;}</td>
+</tr>
+</tbody>
+</table>
+<p>b) response</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;result&quot;: 0 }</td>
+<td>0 means success, otherwides failure.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>stop scan</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>scan_stop</td>
+<td>{ &quot;method&quot;: &quot;scan_stop&quot; }</td>
+</tr>
+</tbody>
+</table>
+<p>b) response</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;result&quot;: 0 }</td>
+<td>0 means success, otherwides failure.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>list class</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>list_class</td>
+<td>{ &quot;method&quot;: &quot;list_class&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>b) response is json object array.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;id&quot;: 1, &quot;name&quot;: &quot;tree&quot; }</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>list person</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>list_person</td>
+<td>{ &quot;method&quot;: &quot;list_person&quot; }</td>
+</tr>
+</tbody>
+</table>
+<p>b) response is json object array.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>-</td>
+<td>{   &quot;id&quot;: 1,   &quot;name&quot;: &quot;mantou&quot;,  &quot;count&quot;:3 }</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>count</td>
+<td>int</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>list all photo</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>list_all_photo</td>
+<td>{ &quot;method&quot;: &quot;list_all_photo&quot;}</td>
+</tr>
+</tbody>
+</table>
+<p>b) response is json object array.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;id&quot;: 1, &quot;path&quot;: &quot;a.jpeg&quot; }</td>
+</tr>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>list photo by class</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>list_photo_by_class</td>
+<td>{   &quot;method&quot;: &quot;list_photo_by_class&quot;,  &quot;param&quot;: &quot;tree&quot; }</td>
+</tr>
+<tr>
+<td>param</td>
+<td>string</td>
+<td><em>class name</em></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>b) response is json object array.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;id&quot;: 1, &quot;path&quot;: &quot;a.jpeg&quot; }</td>
+</tr>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>list photo by person</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>list_photo_by_class</td>
+<td>{   &quot;method&quot;: &quot;list_photo_by_person&quot;,  &quot;param&quot;: &quot;1&quot; }</td>
+</tr>
+<tr>
+<td>param</td>
+<td>string</td>
+<td><em>person id</em></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>b) response is json object array.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;id&quot;: 1, &quot;path&quot;: &quot;a.jpeg&quot; }</td>
+</tr>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>add file</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>add_file</td>
+<td>{   &quot;method&quot;: &quot;add_file&quot;,  &quot;param&quot;: &quot;a.jpeg&quot; }</td>
+</tr>
+<tr>
+<td>param</td>
+<td>string</td>
+<td><em>file name</em></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>b) response</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;result&quot;: 0 }</td>
+<td>0 means success, otherwides failure.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>delete file</li>
+</ol>
+<p>a) request</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>delete_file</td>
+<td>{   &quot;method&quot;: &quot;delete_file&quot;,  &quot;param&quot;: &quot;a.jpeg&quot; }</td>
+</tr>
+<tr>
+<td>param</td>
+<td>string</td>
+<td><em>file name</em></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>b) response</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;result&quot;: 0 }</td>
+<td>0 means success, otherwides failure.</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>move file</p>
+<p>a) request</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>string</td>
+<td>move_file</td>
+<td>{   &quot;method&quot;: &quot;delete_file&quot;,  &quot;param&quot;: {   &quot;src&quot;: a.jpeg,  &quot;dest&quot;: b.jpeg  } }</td>
+</tr>
+<tr>
+<td>param</td>
+<td>json object</td>
+<td><em>src &amp; dest file name</em></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>b) response</p>
+<table>
+<thead>
+<tr>
+<th><strong>Key</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Value</strong></th>
+<th><strong>Example</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>int</td>
+<td>-</td>
+<td>{ &quot;result&quot;: 0 }</td>
+<td>0 means success, otherwides failure.</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../part10/#10" class="navigation navigation-prev " aria-label="Previous page: 10. How to enable DNS interception">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#11_1" class="navigation navigation-next " aria-label="Next page: 11.1 FCGI APIs Manual">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"11. APIs Reference List","level":"1.12","depth":1,"next":{"title":"11.1 FCGI APIs Manual","level":"1.12.1","depth":2,"anchor":"#11_1","path":"part11/README.md","ref":"part11/README.md#11_1","articles":[{"title":"11.1.1 TTS API usage","level":"1.12.1.1","depth":3,"anchor":"#11_1_1","path":"part11/README.md","ref":"part11/README.md#11_1_1","articles":[]},{"title":"11.1.2 ASR API usage (offline ASR case)","level":"1.12.1.2","depth":3,"anchor":"#11_1_2","path":"part11/README.md","ref":"part11/README.md#11_1_2","articles":[]},{"title":"11.1.3 API in Speech sample","level":"1.12.1.3","depth":3,"anchor":"#11_1_3","path":"part11/README.md","ref":"part11/README.md#11_1_3","articles":[]},{"title":"11.1.4 Policy API usage","level":"1.12.1.4","depth":3,"anchor":"#11_1_4","path":"part11/README.md","ref":"part11/README.md#11_1_4","articles":[]},{"title":"11.1.5 Classification API usage","level":"1.12.1.5","depth":3,"anchor":"#11_1_5","path":"part11/README.md","ref":"part11/README.md#11_1_5","articles":[]},{"title":"11.1.6 Face Detection API usage","level":"1.12.1.6","depth":3,"anchor":"#11_1_6","path":"part11/README.md","ref":"part11/README.md#11_1_6","articles":[]},{"title":"11.1.7 Facial Landmark API usage","level":"1.12.1.7","depth":3,"anchor":"#11_1_7","path":"part11/README.md","ref":"part11/README.md#11_1_7","articles":[]},{"title":"11.1.8 OCR API usage","level":"1.12.1.8","depth":3,"anchor":"#11_1_8","path":"part11/README.md","ref":"part11/README.md#11_1_8","articles":[]},{"title":"11.1.9 formula API usage","level":"1.12.1.9","depth":3,"anchor":"#11_1_9","path":"part11/README.md","ref":"part11/README.md#11_1_9","articles":[]},{"title":"11.1.10 handwritten API usage","level":"1.12.1.10","depth":3,"anchor":"#11_1_10","path":"part11/README.md","ref":"part11/README.md#11_1_10","articles":[]},{"title":"11.1.11 ppocr API usage","level":"1.12.1.11","depth":3,"anchor":"#11_1_11","path":"part11/README.md","ref":"part11/README.md#11_1_11","articles":[]},{"title":"11.1.12 segmentation API usage","level":"1.12.1.12","depth":3,"anchor":"#11_1_12","path":"part11/README.md","ref":"part11/README.md#11_1_12","articles":[]},{"title":"11.1.13 super resolution API usage","level":"1.12.1.13","depth":3,"anchor":"#11_1_13","path":"part11/README.md","ref":"part11/README.md#11_1_13","articles":[]},{"title":"11.1.14 digitalnote API usage","level":"1.12.1.14","depth":3,"anchor":"#11_1_14","path":"part11/README.md","ref":"part11/README.md#11_1_14","articles":[]},{"title":"11.1.15 Video pipeline management (control) API usage","level":"1.12.1.15","depth":3,"anchor":"#11_1_15","path":"part11/README.md","ref":"part11/README.md#11_1_15","articles":[]},{"title":"11.1.16 Live ASR API usage (online ASR case)","level":"1.12.1.16","depth":3,"anchor":"#11_1_16","path":"part11/README.md","ref":"part11/README.md#11_1_16","articles":[]},{"title":"11.1.17 Pose estimation API usage","level":"1.12.1.17","depth":3,"anchor":"#11_1_17","path":"part11/README.md","ref":"part11/README.md#11_1_17","articles":[]},{"title":"11.1.18 Capability API usage","level":"1.12.1.18","depth":3,"anchor":"#11_1_18","path":"part11/README.md","ref":"part11/README.md#11_1_18","articles":[]}]},"previous":{"title":"10. How to enable DNS interception","level":"1.11","depth":1,"anchor":"#10","path":"part10/README.md","ref":"part10/README.md#10","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["splitter","livereload"],"pluginsConfig":{"splitter":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"part11/README.md","mtime":"2022-07-15T06:08:08.519Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-15T06:21:15.276Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

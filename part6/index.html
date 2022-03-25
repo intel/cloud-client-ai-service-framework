@@ -1,0 +1,2502 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6. How to develop AI services for CCAI · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../part5/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../part1/">
+            
+                <a href="../part1/#1">
+            
+                    
+                    1. What is Intel Cloud-Client AI Service Framework (CCAI)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../part2/">
+            
+                <a href="../part2/#2">
+            
+                    
+                    2. How does CCAI work
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../part2/">
+            
+                <a href="../part2/#2_1">
+            
+                    
+                    2.1 The high level call flow of CCAI (1.2 release)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../part2/">
+            
+                <a href="../part2/#2_2">
+            
+                    
+                    2.2 CCAI (1.2 release) stack architecture
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../part3/">
+            
+                <a href="../part3/#3">
+            
+                    
+                    3. Integrate and use CCAI runtime environment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../part3/">
+            
+                <a href="../part3/#3_1">
+            
+                    
+                    3.1 How to install the pre-built runtime (if have) and verify it quickly
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../part3/">
+            
+                <a href="../part3/#3_1_1">
+            
+                    
+                    3.1.1 Prepare
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../part3/">
+            
+                <a href="../part3/#3_1_2">
+            
+                    
+                    3.1.2 Proxy setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../part3/">
+            
+                <a href="../part3/#3_1_3">
+            
+                    
+                    3.1.3 Container image preparation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../part3/">
+            
+                <a href="../part3/#3_1_4">
+            
+                    
+                    3.1.4 Download and install service-framework packages/test cases/docker files in host
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../part3/">
+            
+                <a href="../part3/#3_1_5">
+            
+                    
+                    3.1.5 Start/Stop service-framework
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../part3/">
+            
+                <a href="../part3/#3_2">
+            
+                    
+                    3.2 Verify CCAI functions with samples or test cases
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../part4/">
+            
+                <a href="../part4/#4">
+            
+                    
+                    4. How to setup development environment
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../part4/">
+            
+                <a href="../part4/#4_1">
+            
+                    
+                    4.1 Download and run development docker image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../part4/">
+            
+                <a href="../part4/#4_2">
+            
+                    
+                    4.2 Enter development container environment
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../part4/">
+            
+                <a href="../part4/#4_3">
+            
+                    
+                    4.3 Setup development environment directly in your machine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../part4/">
+            
+                <a href="../part4/#4_4">
+            
+                    
+                    4.4 Setup the Pulseaudio service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../part5/">
+            
+                <a href="../part5/#5">
+            
+                    
+                    5. How to generate CCAI packages and container image
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../part5/">
+            
+                <a href="../part5/#5_1">
+            
+                    
+                    5.1 Build CCAI packages and generate CCAI container image form pre-built binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../part5/">
+            
+                <a href="../part5/#5_2">
+            
+                    
+                    5.2 How to build from source
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../part5/">
+            
+                <a href="../part5/#5_2_1">
+            
+                    
+                    5.2.1 download initial project - container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../part5/">
+            
+                <a href="../part5/#5_2_2">
+            
+                    
+                    5.2.2 build host packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.3" data-path="../part5/">
+            
+                <a href="../part5/#5_2_3">
+            
+                    
+                    5.2.3 install CCAI services and image on host
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../part5/">
+            
+                <a href="../part5/#5_3">
+            
+                    
+                    5.3 How to check all component versions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../part5/">
+            
+                <a href="../part5/#5_4">
+            
+                    
+                    5.4 Generate CCAI OTA image
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./#6">
+            
+                    
+                    6. How to develop AI services for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="./">
+            
+                <a href="./#6_1">
+            
+                    
+                    6.1 CCAI service work mode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="./">
+            
+                <a href="./#6_2">
+            
+                    
+                    6.2 Preparation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.2.1" data-path="./">
+            
+                <a href="./#6_2_1">
+            
+                    
+                    6.2.1 Using OpenVINO as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.2" data-path="./">
+            
+                <a href="./#6_2_2">
+            
+                    
+                    6.2.2 Using PyTorch as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.3" data-path="./">
+            
+                <a href="./#6_2_3">
+            
+                    
+                    6.2.3 Using ONNX runtime as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.4" data-path="./">
+            
+                <a href="./#6_2_4">
+            
+                    
+                    6.2.4 Using TensorFlow as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2.5" data-path="./">
+            
+                <a href="./#6_2_5">
+            
+                    
+                    6.2.5 Using PaddlePaddle as inference engine in CCAI
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="./">
+            
+                <a href="./#6_3">
+            
+                    
+                    6.3 Development services
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.3.1" data-path="./">
+            
+                <a href="./#6_3_1">
+            
+                    
+                    6.3.1 Develop FCGI service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3.2" data-path="./">
+            
+                <a href="./#6_3_2">
+            
+                    
+                    6.3.2 Develop gRPC service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="./">
+            
+                <a href="./#6_4">
+            
+                    
+                    6.4 Deploy services for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.4.1" data-path="./">
+            
+                <a href="./#6_4_1">
+            
+                    
+                    6.4.1 Deploy into container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.2" data-path="./">
+            
+                <a href="./#6_4_2">
+            
+                    
+                    6.4.2 Deploy on host
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.3" data-path="./">
+            
+                <a href="./#6_4_3">
+            
+                    
+                    6.4.3 Specific to PyTorch service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.4" data-path="./">
+            
+                <a href="./#6_4_4">
+            
+                    
+                    6.4.4 Specific to Onnx service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.5" data-path="./">
+            
+                <a href="./#6_4_5">
+            
+                    
+                    6.4.5 Specific to Tensorflow service
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4.6" data-path="./">
+            
+                <a href="./#6_4_6">
+            
+                    
+                    6.4.6 Specific to PaddlePaddle service
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="./">
+            
+                <a href="./#6_5">
+            
+                    
+                    6.5 Sample: Add a service for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.5.1" data-path="./">
+            
+                <a href="./#6_5_1">
+            
+                    
+                    6.5.1 Install packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.2" data-path="./">
+            
+                <a href="./#6_5_2">
+            
+                    
+                    6.5.2 Compose the header file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.3" data-path="./">
+            
+                <a href="./#6_5_3">
+            
+                    
+                    6.5.3 Extract service runtime library from CCAI container
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.4" data-path="./">
+            
+                <a href="./#6_5_4">
+            
+                    
+                    6.5.4 Write the main source code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.5" data-path="./">
+            
+                <a href="./#6_5_5">
+            
+                    
+                    6.5.5 Build the program
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.6" data-path="./">
+            
+                <a href="./#6_5_6">
+            
+                    
+                    6.5.6 Write the configuration file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.7" data-path="./">
+            
+                <a href="./#6_5_7">
+            
+                    
+                    6.5.7 Build docker image
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5.8" data-path="./">
+            
+                <a href="./#6_5_8">
+            
+                    
+                    6.5.8 Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../part7/">
+            
+                <a href="../part7/#7">
+            
+                    
+                    7. How to use AI services provided by CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../part7/">
+            
+                <a href="../part7/#7_1">
+            
+                    
+                    7.1 Request serving via REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../part7/">
+            
+                <a href="../part7/#7_2">
+            
+                    
+                    7.2 Request serving via gRPC APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../part7/">
+            
+                <a href="../part7/#7_3">
+            
+                    
+                    7.3 Proxy setting
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../part8/">
+            
+                <a href="../part8/#8">
+            
+                    
+                    8. How to integrate new AI services with CCAI framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../part8/">
+            
+                <a href="../part8/#8_1">
+            
+                    
+                    8.1 Where to put those services file to
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../part8/">
+            
+                <a href="../part8/#8_2">
+            
+                    
+                    8.2 Where to put related Neural Network Models file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../part8/">
+            
+                <a href="../part8/#8_3">
+            
+                    
+                    8.3 How to enable services via API gateway
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../part8/">
+            
+                <a href="../part8/#8_4">
+            
+                    
+                    8.4 How to generate new container image
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../part9/">
+            
+                <a href="../part9/#9">
+            
+                    
+                    9. How to enable Encryption and Authentication for CCAI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../part9/">
+            
+                <a href="../part9/#9_1">
+            
+                    
+                    9.1 Encryption
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../part9/">
+            
+                <a href="../part9/#9_2">
+            
+                    
+                    9.2 Enable authentication
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../part10/">
+            
+                <a href="../part10/#10">
+            
+                    
+                    10. How to enable DNS interception
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../part11/">
+            
+                <a href="../part11/#11">
+            
+                    
+                    11. APIs Reference List
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../part11/">
+            
+                <a href="../part11/#11_1">
+            
+                    
+                    11.1 FCGI APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1.1" data-path="../part11/">
+            
+                <a href="../part11/#11_1_1">
+            
+                    
+                    11.1.1 TTS API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.2" data-path="../part11/">
+            
+                <a href="../part11/#11_1_2">
+            
+                    
+                    11.1.2 ASR API usage (offline ASR case)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.3" data-path="../part11/">
+            
+                <a href="../part11/#11_1_3">
+            
+                    
+                    11.1.3 API in Speech sample
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.4" data-path="../part11/">
+            
+                <a href="../part11/#11_1_4">
+            
+                    
+                    11.1.4 Policy API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.5" data-path="../part11/">
+            
+                <a href="../part11/#11_1_5">
+            
+                    
+                    11.1.5 Classification API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.6" data-path="../part11/">
+            
+                <a href="../part11/#11_1_6">
+            
+                    
+                    11.1.6 Face Detection API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.7" data-path="../part11/">
+            
+                <a href="../part11/#11_1_7">
+            
+                    
+                    11.1.7 Facial Landmark API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.8" data-path="../part11/">
+            
+                <a href="../part11/#11_1_8">
+            
+                    
+                    11.1.8 OCR API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.9" data-path="../part11/">
+            
+                <a href="../part11/#11_1_9">
+            
+                    
+                    11.1.9 formula API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.10" data-path="../part11/">
+            
+                <a href="../part11/#11_1_10">
+            
+                    
+                    11.1.10 handwritten API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.11" data-path="../part11/">
+            
+                <a href="../part11/#11_1_11">
+            
+                    
+                    11.1.11 ppocr API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.12" data-path="../part11/">
+            
+                <a href="../part11/#11_1_12">
+            
+                    
+                    11.1.12 segmentation API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.13" data-path="../part11/">
+            
+                <a href="../part11/#11_1_13">
+            
+                    
+                    11.1.13 super resolution API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.14" data-path="../part11/">
+            
+                <a href="../part11/#11_1_14">
+            
+                    
+                    11.1.14 digitalnote API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.15" data-path="../part11/">
+            
+                <a href="../part11/#11_1_15">
+            
+                    
+                    11.1.15 Video pipeline management (control) API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.16" data-path="../part11/">
+            
+                <a href="../part11/#11_1_16">
+            
+                    
+                    11.1.16 Live ASR API usage (online ASR case)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.17" data-path="../part11/">
+            
+                <a href="../part11/#11_1_17">
+            
+                    
+                    11.1.17 Pose estimation API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.1.18" data-path="../part11/">
+            
+                <a href="../part11/#11_1_18">
+            
+                    
+                    11.1.18 Capability API usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../part11/">
+            
+                <a href="../part11/#11_2">
+            
+                    
+                    11.2 gRPC APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.2.1" data-path="../part11/">
+            
+                <a href="../part11/#11_2_1">
+            
+                    
+                    11.2.1 proto file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.2" data-path="../part11/">
+            
+                <a href="../part11/#11_2_2">
+            
+                    
+                    11.2.2 OCR method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.3" data-path="../part11/">
+            
+                <a href="../part11/#11_2_3">
+            
+                    
+                    11.2.3 ASR method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.4" data-path="../part11/">
+            
+                <a href="../part11/#11_2_4">
+            
+                    
+                    11.2.4 Classification method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.5" data-path="../part11/">
+            
+                <a href="../part11/#11_2_5">
+            
+                    
+                    11.2.5 FaceDetection method
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2.6" data-path="../part11/">
+            
+                <a href="../part11/#11_2_6">
+            
+                    
+                    11.2.6 FacialLandmark method
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../part11/">
+            
+                <a href="../part11/#11_3">
+            
+                    
+                    11.3 Low level APIs Manual
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1">
+            
+                    
+                    11.3.1 C++ APIs for Openvino Backend Engine(Version 0)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.1.1" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_1">
+            
+                    
+                    11.3.1.1 Return value (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.2" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_2">
+            
+                    
+                    11.3.1.2 Server parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.3" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_3">
+            
+                    
+                    11.3.1.3 Policy configuration API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.4" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_4">
+            
+                    
+                    11.3.1.4 image API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.5" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_5">
+            
+                    
+                    11.3.1.5 ASR API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.6" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_6">
+            
+                    
+                    11.3.1.6 common API (deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.7" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_7">
+            
+                    
+                    11.3.1.7 video API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.8" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_8">
+            
+                    
+                    11.3.1.8 Load Openvino Model from Buffer API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.1.9" data-path="../part11/">
+            
+                <a href="../part11/#11_3_1_9">
+            
+                    
+                    11.3.1.9 Configure a temporary inference device API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2">
+            
+                    
+                    11.3.2 Python API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.2.1" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_1">
+            
+                    
+                    11.3.2.1 Image API(deprecated)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.2" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_2">
+            
+                    
+                    11.3.2.2 Image API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.3" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_3">
+            
+                    
+                    11.3.2.3 ASR API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.4" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_4">
+            
+                    
+                    11.3.2.4 Common API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.5" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_5">
+            
+                    
+                    11.3.2.5 Policy configuration API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.2.6" data-path="../part11/">
+            
+                <a href="../part11/#11_3_2_6">
+            
+                    
+                    11.3.2.6 Set temporary inference device API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3">
+            
+                    
+                    11.3.3 C++ APIs for Different backend Engines (Version 1)
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.3.3.1" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3_1">
+            
+                    
+                    11.3.3.1 Return Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.2" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3_2">
+            
+                    
+                    11.3.3.2 Inference Engines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.3" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3_3">
+            
+                    
+                    11.3.3.3 Image API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.4" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3_4">
+            
+                    
+                    11.3.3.4 Speech API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.3.5" data-path="../part11/">
+            
+                <a href="../part11/#11_3_3_5">
+            
+                    
+                    11.3.3.5 Common API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3.4" data-path="../part11/">
+            
+                <a href="../part11/#11_3_4">
+            
+                    
+                    11.3.4 Video pipeline management (construct) APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../part11/">
+            
+                <a href="../part11/#11_4">
+            
+                    
+                    11.4 How to extend video pipeline with video pipeline manager
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.4.1" data-path="../part11/">
+            
+                <a href="../part11/#11_4_1">
+            
+                    
+                    11.4.1 construct the plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.2" data-path="../part11/">
+            
+                <a href="../part11/#11_4_2">
+            
+                    
+                    11.4.2 Build the plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.3" data-path="../part11/">
+            
+                <a href="../part11/#11_4_3">
+            
+                    
+                    11.4.3 Install the plugin to destination
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.4" data-path="../part11/">
+            
+                <a href="../part11/#11_4_4">
+            
+                    
+                    11.4.4 Test your plugin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../part11/">
+            
+                <a href="../part11/#12">
+            
+                    
+                    11.5 Smart Photo Search
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../part12/">
+            
+                <a href="../part12/#12">
+            
+                    
+                    12. Test cases and packages installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../part12/">
+            
+                <a href="../part12/#12_1">
+            
+                    
+                    12.1 Enabled services for testing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../part12/">
+            
+                <a href="../part12/#12_2">
+            
+                    
+                    12.2 High Level APIs test cases
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.2.1" data-path="../part12/">
+            
+                <a href="../part12/#12_2_1">
+            
+                    
+                    12.2.1 For testing all provided API in a bunch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.2" data-path="../part12/">
+            
+                <a href="../part12/#12_2_2">
+            
+                    
+                    12.2.2 For testing python implementation of related REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.3" data-path="../part12/">
+            
+                <a href="../part12/#12_2_3">
+            
+                    
+                    12.2.3 For testing C++ implementation of related REST APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2.4" data-path="../part12/">
+            
+                <a href="../part12/#12_2_4">
+            
+                    
+                    12.2.4 For testing C++ implementation of related gRPC APIs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../part12/">
+            
+                <a href="../part12/#12_3">
+            
+                    
+                    12.3 Health-monitor mechanism test case
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.3.1" data-path="../part12/">
+            
+                <a href="../part12/#12_3_1">
+            
+                    
+                    12.3.1 Test case
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3.2" data-path="../part12/">
+            
+                <a href="../part12/#12_3_2">
+            
+                    
+                    12.3.2 How it works (in brief)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../part12/">
+            
+                <a href="../part12/#12_4">
+            
+                    
+                    12.4 Deb package for host installed application/service (if not install yet)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.5" data-path="../part12/">
+            
+                <a href="../part12/#12_5">
+            
+                    
+                    12.5 Deb package for host installed neural network models (if not install yet)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >6. How to develop AI services for CCAI</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="6-how-to-develop-ai-services-for-ccai-">6. How to develop AI services for CCAI <div id="6"></div></h1>
+<h2 id="61-ccai-service-work-mode-">6.1 CCAI service work mode <div id="6_1"></div></h2>
+<p><img src="../media/02849905817820bd1ccb2f929176f385.png" alt=""></p>
+<p>AI services for CCAI include two parts, one is client-side, the other is
+server-side. Customer applications are running on client-side. The CCAI services
+are running on server-side. Client-side sends http post requests or gRPC
+requests to server-side, and server-side replies responses to client-side. So
+developing AI services means development of server-side programs.</p>
+<h2 id="62-preparation-">6.2 Preparation <div id="6_2"></div></h2>
+<p>CCAI includes four inference engines. They are Openvino, Pytorch, Onnx and
+Tensorflow. Each engine supports one type of model. The following sections
+describe how to use different inference engines in CCAI.</p>
+<h3 id="621-using-openvino-as-inference-engine-in-ccai-">6.2.1 Using OpenVINO as inference engine in CCAI <div id="6_2_1"></div></h3>
+<p>Before developing, deploying your CCAI services which will use OpenVINO as
+inference engine, the following three are the preconditions you need to prepare:</p>
+<ol>
+<li><p>First of all, you must get ready with available openvino models for your AI services. You can get the neural network models in two ways, one is from open_model_zoo on github (<a href="https://github.com/openvinotoolkit/open_model_zoo" target="_blank">https://github.com/openvinotoolkit/open_model_zoo</a>), and the other one is obtaining those models by converting models from other frameworks by openvino tool --- Model Optimizer (MO).</p>
+</li>
+<li><p>For making those models accessible for CCAI, they need to be in the directory ---</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/models.</p>
+<p> a) *.xml(necessary)</p>
+<p> b) *.bin(necessary)</p>
+<p> c) *.labels(Optional)</p>
+</li>
+<li><p>There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/test_data.</p>
+</li>
+</ol>
+<h3 id="622-using-pytorch-as-inference-engine-in-ccai-">6.2.2 Using PyTorch as inference engine in CCAI <div id="6_2_2"></div></h3>
+<p>If you only have PyTorch models or cannot convert PyTorch models into OpenVINO
+format successfully, you can choose to use PyTorch as a backend inference engine
+in CCAI, then please make sure you are ready with the following requirements:</p>
+<ol>
+<li><p>Get your pytorch models, if your models include batch_normalization layers, you need to use model.eval() before saving models.</p>
+</li>
+<li><p>The weights need to be placed in the directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/models.</p>
+<p> (a) *.pt</p>
+<p> (b) *.txt(Optional for labels)</p>
+</li>
+<li><p>There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/test_data.</p>
+</li>
+</ol>
+<h3 id="623-using-onnx-runtime-as-inference-engine-in-ccai-">6.2.3 Using ONNX runtime as inference engine in CCAI <div id="6_2_3"></div></h3>
+<p>ONNX Runtime is an accelerator for machine learning models with multi platform support and a flexible interface to integrate with hardware-specific libraries.
+ONNX Runtime can be used with models from PyTorch, Tensorflow/Keras, TFLite,
+scikit-learn, and other frameworks.</p>
+<p>In CCAI, the ONNX runtime inference engine is used only for inferencing ONNX models.
+Before developing AI services using ONNX runtime inference engine, please finish the following preparations:</p>
+<ol>
+<li><p>Prepare your ONNX models. This model can be trained from any framework that
+ supports export/conversion to ONNX format.</p>
+</li>
+<li><p>The model need to be placed in the directory
+ container/script/integration_workdir/service_runtime_binary/lfs/models.</p>
+<p> a)*.onnx</p>
+</li>
+<li><p>There are default pictures in the test program. In order to facilitate
+ user testing, The test data need to be placed in this directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/test_data.</p>
+</li>
+</ol>
+<h3 id="624-using-tensorflow-as-inference-engine-in-ccai-">6.2.4 Using TensorFlow as inference engine in CCAI <div id="6_2_4"></div></h3>
+<p>Tensorflow is the most popular machine learning framework developed by Google.
+It can be used across a range of tasks but has a particular focus on training and inference of deep neural networks.</p>
+<p>CCAI can leverage the Tensorflow framework to support tensorflow models. To use Tensorflow backend, please make sure you are ready with the following requirements:</p>
+<ol>
+<li><p>The CCAI supports Tensforflow 2.x savedmodel format. The extension name is usually .pb. Currently, the 1.x format is not supported.</p>
+</li>
+<li><p>Place the model files into the directory container/script/integration_workdir/service_runtime_binary/lfs/models alone with label files if has.</p>
+</li>
+<li><p>There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory container/script/integration_workdir/service_runtime_binary/lfs/test_data.</p>
+</li>
+</ol>
+<h3 id="625-using-paddlepaddle-as-inference-engine-in-ccai-">6.2.5 Using PaddlePaddle as inference engine in CCAI <div id="6_2_5"></div></h3>
+<p>If you only have PaddlePaddle models or cannot convert Paddle models into OpenVINO
+format successfully, you can choose to use Paddle as a backend inference engine
+in CCAI, then please make sure you are ready with the following requirements:</p>
+<ol>
+<li><p>Get your paddlepaddle models.</p>
+</li>
+<li><p>The weights need to be placed in the directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/models.</p>
+<p> (a) *.pdmodel</p>
+<p> (b) *.txt(Optional for labels)</p>
+</li>
+<li><p>There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory</p>
+<p> container/script/integration_workdir/service_runtime_binary/lfs/test_data.</p>
+</li>
+</ol>
+<h2 id="63-development-services-">6.3 Development services <div id="6_3"></div></h2>
+<p>CCAI included a key component known as API gateway, which provides both Fast-CGI support and gRPC support to export services to externals of CCAI containers. So you can develop CGI based services or gRPC based services for CCAI as the following sections describe.</p>
+<p>Notes: in those following sections, when we refer to a path with prefix
+&quot;container&quot; or &quot;api-gateway&quot;, like &quot;container/...&quot; or &quot;api-gateway/...&quot;, they are meaning the relative path under the project &quot;container&quot; which, as we had mentioned before, is the whole CCAI repositorys entry project, or relative path under the project &quot;api-gateway&quot; which is the project for developing all services.</p>
+<h3 id="631-develop-fcgi-service-">6.3.1 Develop FCGI service <div id="6_3_1"></div></h3>
+<p>Develop fcgi AI services: you need to add new files or modify existing files
+under the directory api-gateway/cgi-bin</p>
+<p>a) Add fcgi c++ services</p>
+<blockquote>
+<ul>
+<li><p>i) 16-*.conf : The file includes the configuration information of fastcgi. You can select one existing configuration file as a reference. For example, add a new conf file by copying the 16-classfication.conf file. Replace the classification in the conf file with the new service name.</p>
+</li>
+<li><p>ii) fcgi_*.cpp: it is a fast_cgi server-side programthe file includes the neural network inference and fastcgi processing program.
+&gt;</p>
+<blockquote>
+<ol>
+<li>For example, in the fcgi_classfication.cpp, the classification<pre><code>       function does neural network inference and gets the results.
+</code></pre></li>
+<li>You can create a new cpp file by copying the<pre><code>       fcgi_classfication.cpp file. And replace the classification
+       function in the cpp file with your own service inference
+       function. Keep unchanged for the fastcgi processing part. For
+       your own inference function, it should include both
+       preprocessing and postprocessing parts.
+</code></pre></li>
+<li>You also need to change the model_file param based on your<pre><code>       models name in
+       container/script/integration_workdir/service_runtime_binary/lfs/models  .
+</code></pre></li>
+<li>You need to change serverParams param to the real service url, just like the sample as &quot;<a href="https://api.ai.qq.com/" target="_blank">https://api.ai.qq.com/</a>&gt;&quot;.</li>
+<li>Neural network inference functions call low level runtime library APIs to do inference. Please refer to section 10 for the detailed description of runtime library APIs. For example, the classification inference function calls the API, vino_ie_pipeline_infer_image, to do inference. The parameters of this API are images, additionalInput , model_file, urlInfo, and rawDetectionResults. If the return value of API equals to 1 (res == 1), it gets the results from a local device. If it equals 0 (res==0), it gets the results from a remote device.</li>
+<li>Finally, using your own post-processing logic to process the inference result.</li>
+</ol>
+</blockquote>
+</li>
+<li><p>iii) test-script/test-demo/post<em>local</em>*_c.py: this is the fast cgi client-side test program. You can add a new file by copying the post_local_classfication_c.py file. Replace the classification in the file with the new service name. Modify the logic which is needed by your test file.</p>
+</li>
+<li><p>iv) CMakeLists.txt: Add new service compilation by add_fcgi_binary()</p>
+</li>
+</ul>
+<p>b) Develop fcgi python services: Adding fcgi python services is very similar to adding fcgi c++ services. The only difference is that you need to call low level python APIs to do inference. To add a new fcgi python service, you need to implement the following three files.</p>
+<blockquote>
+<p>i) 16-<em>-py.conf
+ii) fcgi_</em>.py:
+iii) test-script/test-demo/post<em>local</em>*_py.py:</p>
+</blockquote>
+</blockquote>
+<h3 id="632-develop-grpc-service-">6.3.2 Develop gRPC service <div id="6_3_2"></div></h3>
+<p>If you would like to modify the existing gRPC services, you can do by:</p>
+<p>a) Change service program for server-side in api-gateway/grpc/grpc_inference_service.cc</p>
+<p>b) Change test program for client-side in api-gateway/grpc/grpc_inference_service_test.py</p>
+<p>c) Change message in api-gateway/grpc/inference_service.proto Then compile to get the new binaries.</p>
+<p>You also can add a new gRPC server/client by your own, it is straightforward like general gRPC application development.</p>
+<h2 id="64-deploy-services-for-ccai-">6.4 Deploy services for CCAI <div id="6_4"></div></h2>
+<h3 id="641-deploy-into-container-">6.4.1 Deploy into container <div id="6_4_1"></div></h3>
+<p>After you complete service development, you can compile those services to binary (for C++). And then deploy them in your host or into the CCAI container so that you can verify your services from outside of the CCAI container.</p>
+<p>a) If you are developing with our pre-constructed development container, you can copy generated binaries or python applications to specific folders so that API gateway can recognize them and enable them. For example, if your working space is under your host $HOME which was mounted into the containe while the container booted.</p>
+<p>Note: the following commands should be executed within docker</p>
+<p>*copy fastcgi configuration file to target path</p>
+<pre><code>$&gt;sudo cp your_fcgi.conf /etc/lighttpd/conf-enabled
+</code></pre><p>*according to your_fcgi.conf, copy your binary or python script to     correct path, for example:</p>
+<pre><code>$&gt; sudo cp your_fcgi_service_binary /opt/fcgi/cgi-bi
+</code></pre><p>*reboot CGI API gateway</p>
+<pre><code>$&gt; sudo sv restart lighttpd
+</code></pre><p>For gRPC service part, if youd like to change your service port (default is 8081 for our gRPC service), you need to add a line in file /etc/nghttpx/nghttpx.conf, for example:</p>
+<pre><code>$&gt; sudo echo &quot;backend=localhost,&lt;your_service_port&gt;;/&lt;pacakge_name&gt;.&lt;service_name&gt;/&lt;function&gt;;proto=h2&quot; &gt;&gt; /etc/nghttpx/nghttpx.conf
+</code></pre><p>To make the changes effective, restart the service:</p>
+<pre><code>$&gt; sudo sv restart nghttpx
+</code></pre><p>Now you can verify your services by your test application from the host.</p>
+<p>b) If you are developing with your own development environment, then for
+    testing your services, you can do as section a) above but change the path to
+    your host path. .</p>
+<p>c) For services generated from both a) and b), you can always copy them to
+    project api-gateway and regenerate the CCAI container by following
+    instructions in section 3.3.1 and 5.1.</p>
+<h3 id="642-deploy-on-host-">6.4.2 Deploy on host <div id="6_4_2"></div></h3>
+<ol>
+<li>Create a directory /opt/intel/service_runtime/service/your-service/ and put your binary file in this directory. Create a directory /opt/intel/service_runtime/service/lighttpd/conf-enabled/ and put your configuration file to this directory. The directory hierarchy example:
+<img src="../media/b928eccc621eb36ec2172f1df515f46e.png" alt=""></li>
+<li><p>Give permission for the user www-data to access your files, example:</p>
+<p> $&gt; chown -R www-data.www-data /opt/intel/service_runtime/service/</p>
+</li>
+<li><p>Binaries and configuration files will be mounted to the same path in the container as the host, so your should set the bin-path to /opt/intel/service_runtime/service/your-service/your-binary in your configuration file, example:</p>
+<p> &quot;bin-path&quot; =&gt; &quot;/opt/intel/service_runtime/service/your-serviceyour-binary&quot;</p>
+</li>
+</ol>
+<h3 id="643-specific-to-pytorch-service-">6.4.3 Specific to PyTorch service <div id="6_4_3"></div></h3>
+<p>a) Currently the runtime inference library provides APIs to support Pytorch as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the &quot;PYTORCH&quot; string to the API parameter to specify Pytorch as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , &quot;PYTORCH&quot; and urlinfo, the outputs are rawDetectionResults of tensorData.</p>
+<p>b) In the inference with pytorch, the normalization of the input image should be done using opencv. In the inference of openvino, the normalization of the picture can be transferred to the model file through the &quot;mean_values&quot; and &quot;scale_values&quot; of MO of openvino.</p>
+<h3 id="644-specific-to-onnx-service-">6.4.4 Specific to Onnx service <div id="6_4_4"></div></h3>
+<p>a) The runtime inference library provides APIs to support ONNX as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the &quot;ONNXRT&quot; string to the API parameter to specify ONNX as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , &quot;ONNXRT&quot; and urlinfo, the outputs are rawDetectionResults of tensorData.</p>
+<p>b) The ONNX model may need to do preprocessing for input data, such as,transpose or normalization. Please add these preprocessing parts to your Onnx service.</p>
+<h3 id="645-specific-to-tensorflow-service-">6.4.5 Specific to Tensorflow service <div id="6_4_5"></div></h3>
+<p>a) The runtime inference library provides APIs to support Tensorflow as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the &quot;TENSORFLOW&quot; string to the API parameter to specify TENSORFLOW as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , &quot;TENSORFLOW&quot; and urlinfo, the outputs are rawDetectionResults of tensorData.</p>
+<p>b) The Tensorflow model may need to do preprocessing for input data, such as, transpose or normalization. Please add these preprocessing parts to your Tensorflow service.</p>
+<h3 id="646-specific-to-paddlepaddle-service-">6.4.6 Specific to PaddlePaddle service <div id="6_4_6"></div></h3>
+<p>a) Currently the runtime inference library provides APIs to support PaddlePaddle as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the &quot;PADDLE&quot; string to the API parameter to specify PaddlePaddle as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , &quot;PADDLE&quot; and urlinfo, the outputs are rawDetectionResults of tensorData.</p>
+<p>b) The PADDLE model may need to do preprocessing for input data, such as,transpose or normalization. Please add these preprocessing parts to your Paddlepaddle service.</p>
+<h2 id="65-sample-add-a-service-for-ccai-">6.5 Sample: Add a service for CCAI <div id="6_5"></div></h2>
+<h3 id="651-install-packages-">6.5.1 Install packages <div id="6_5_1"></div></h3>
+<p>NOTE: If you are using the CCAI development docker image, you can skip this
+step. For more details about the CCAI development docker image, please refer to <a href="#4-how-to-setup-development-environment">Chapter 4</a>.</p>
+<pre><code>a. libfcgi-dev
+
+b. libpython3.8-dev
+
+c. Openvino (must be the same version in CCAI container)
+</code></pre><h3 id="652-compose-the-header-file-">6.5.2 Compose the header file <div id="6_5_2"></div></h3>
+<p>Collect necessary parts from section 10.4.1 of this manual, copy and paste them
+into the header file &quot;inferenceservice.h&quot;. For example, we will use the image
+API. So the header should be:</p>
+<pre><code>#pragma once
+// add necessary dependent headers
+#include &lt;memory&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;opencv2/core.hpp&gt;
+// from 10.4.1.1
+
+/**
+*@brief Status code of inference
+*/
+#define RT_INFER_ERROR -1 //inference error
+#define RT_LOCAL_INFER_OK 0 //inference successfully on local
+#define RT_REMOTE_INFER_OK 1 //inference successfully on remote server
+
+// from 10.4.1.2
+/**
+* @brief This is the parameters to do inference on remote server
+*/
+
+struct serverParams {
+    std::string url; //the address of server
+    std::string urlParam; //the post parameter of request
+    std::string response; //the response data of server
+};
+
+// from 10.4.1.4
+/**
+
+* @brief Do inference for image
+* @param image Images input for network
+* @param additionalInput Other inputs of network(except image input)
+* @param xmls Path of IE model file(xml)
+* @param rawDetectionResults Outputs of network, they are raw data.
+* @param remoteSeverInfo parameters to do inference on remote server
+* @return Status code of inference
+*/
+int vino_ie_pipeline_infer_image(
+std::vector&lt;std::shared_ptr&lt;cv::Mat&gt;&gt;&amp;image, 
+std::vector&lt;std::vector&lt;float&gt;&gt;&amp; additionalInput, std::string xmls,
+std::vector&lt;std::vector&lt;float&gt;*&gt;&amp; rawDetectionResults,
+struct serverParams&amp; remoteServerInfo);
+</code></pre><h3 id="653-extract-service-runtime-library-from-ccai-container-">6.5.3 Extract service runtime library from CCAI container <div id="6_5_3"></div></h3>
+<p>NOTE: If you are using the CCAI development docker image, you can skip this
+step. For more details about the CCAI development docker image, please refer to <a href="#4-how-to-setup-development-environment">Chapter 4.</a></p>
+<pre><code>$&gt; docker run --rm &lt;image&gt; tar -C /usr/lib/x86_64-linux-gnu -cf -libinferservice.so | tar -xf -
+</code></pre><h3 id="654-write-the-main-source-code-">6.5.4 Write the main source code <div id="6_5_4"></div></h3>
+<p>Create file &quot;demo.cpp&quot;:</p>
+<pre><code>#include &lt;algorithm&gt;
+#include &lt;fstream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;fcgiapp.h&gt;
+#include &lt;opencv2/imgcodecs.hpp&gt;
+#include &quot;inferenceservice.h&quot;
+
+const char* model_path = &quot;./models/bvlc_alexnet.xml&quot;;
+const char* label_path = &quot;./models/bvlc_alexnet.labels&quot;;
+
+int main(int argc, char *argv[]) {
+// read label file
+std::vector&lt;std::string&gt; labels;
+std::ifstream label_stream(label_path);
+
+if (label_stream.is_open()) {
+    std::string line;
+    while (std::getline(label_stream, line)) {
+        size_t s, l;
+        if ((s = l = line.find(&apos;\\&apos;&apos;)) == std::string::npos)
+            s = 0;
+        else if ((l = line.find(&apos;\\&apos;&apos;, ++s)) != std::string::npos )
+            l = l - s;
+        labels.emplace_back(line, s, l);
+    }
+}
+// init fcgi handle
+FCGX_Request cgi;
+if (FCGX_Init() || FCGX_InitRequest(&amp;cgi, 0, 0))
+    return 1;
+
+while (!FCGX_Accept_r(&amp;cgi)) {
+    std::string response = &quot;Status: &quot;;
+    size_t length;
+    char *val;
+
+    if (!(val = FCGX_GetParam(&quot;CONTENT_TYPE&quot;, cgi.envp)) ||
+    strcmp(val, &quot;application/octet-stream&quot;)) {
+        response += &quot;415 Unsupported Media Type&quot;;
+    } else if (!(val = FCGX_GetParam(&quot;CONTENT_LENGTH&quot;, cgi.envp)) ||
+    !(length = strtoul(val, \&amp;val, 10)) || *val) {
+        response += &quot;411 Length Required&quot;;
+    } else {
+    // read body
+    std::vector&lt;char&gt; data(length);
+    FCGX_GetStr(data.data(), length, cgi.in);
+    // do inference
+    std::vector&lt;float&gt; result;
+    std::vector&lt;std::vector&lt;float&gt;&gt; supplement;
+    std::vector&lt;std::vector&lt;float&gt;*&gt; results = { \&amp;result };
+    struct serverParams remote_info;
+    cv::Mat image = cv::imdecode(data, 1);
+    std::vector&lt;std::shared_ptr&lt;cv::Mat&gt;&gt; images = {
+        std::make_shared&lt;cv::Mat&gt;(image)
+    };
+
+    int rc = vino_ie_pipeline_infer_image(images, supplementmodel_path, results, remote_info);
+    // generate response
+    response += &quot;200 OK\r\n&quot; &quot;Content-Type: text/plain\r\n\r\n&quot;;
+    if (rc == RT_REMOTE_INFER_OK) {
+        response = &quot;Status: 501 Not Implemented&quot;;
+    } else if (rc) {
+        response += &quot;inference error&quot;;
+    } else {
+        auto max = std::max_element(result.cbegin(), result.cend());int idx = std::distance(result.cbegin(), max);
+        response += &quot;tag: &quot; + labels[idx] + &quot;\n&quot;
+        &quot;confidence: &quot; + std::to_string(*max) + &quot;\n&quot;;
+        }
+    }
+    FCGX_PutStr(response.c_str(), response.size(), cgi.out);
+}
+
+FCGX_Free(&amp;cgi, 1);
+return 0;
+}
+</code></pre><h3 id="655-build-the-program-">6.5.5 Build the program <div id="6_5_5"></div></h3>
+<pre><code>g++ -o fcgi_demo -I /opt/intel/openvino/opencv/include demo.cpp libinferservice.so -L/opt/intel/openvino/opencv/lib -lopencv_imgcodecs -lopencv_core -lfcgi -Wl,--allow-shlib-undefined,--no-as-needed -lpython3.8
+</code></pre><h3 id="656-write-the-configuration-file-">6.5.6 Write the configuration file <div id="6_5_6"></div></h3>
+<pre><code>Create file &quot;16-demo.conf&quot;:
+
+fastcgi.server += (
+&quot;/cgi-bin/fcgi_demo&quot; =&gt; ((
+&quot;socket&quot; =&gt; &quot;/tmp/fcgi_demo.socket&quot;,
+&quot;bin-path&quot; =&gt; &quot;/opt/fcgi/cgi-bin/fcgi_demo&quot;,
+&quot;check-local&quot; =&gt; &quot;disable&quot;,
+&quot;max-procs&quot; =&gt; 1,
+&quot;bin-copy-environment&quot; =&gt; (&quot;PATH&quot;, &quot;SHELL&quot;, &quot;USER&quot;,
+&quot;http_proxy&quot;, &quot;HTTP_PROXY&quot;,
+&quot;https_proxy&quot;, &quot;HTTPS_PROXY&quot;,
+&quot;no_proxy&quot;, &quot;NO_PROXY&quot;, &quot;cl_cache_dir&quot;),
+&quot;bin-environment&quot;=&gt;(
+&quot;LD_LIBRARY_PATH&quot;=&gt;&quot;/opt/intel/openvino/opencv/lib:/opt/intel/openvino/deployment_tools/ngraph/lib:/opt/intel/openvino/deployment_tools/inference_engine/external/tbb/lib:/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64&quot;
+        ),
+    ))
+)
+</code></pre><h3 id="657-build-docker-image-">6.5.7 Build docker image <div id="6_5_7"></div></h3>
+<p>Create the Dockerfile:</p>
+<pre><code>FROM service_runtime
+COPY --chown=www-data:www-data fcgi_demo /opt/fcgi/cgi-bin/
+COPY 16-demo.conf /etc/lighttpd/conf-enabled/
+
+Build image:
+
+docker build -t ccai-demo .
+</code></pre><h3 id="658-test-">6.5.8 Test <div id="6_5_8"></div></h3>
+<p>Start the ccai-demo container and run command:</p>
+<pre><code>curl -X POST -H &quot;Content-Type: application/octet-stream&quot; --data-binary @picture.jpg http://localhost:8080/cgi-bin/fcgi_demo
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../part5/#5_4" class="navigation navigation-prev " aria-label="Previous page: 5.4 Generate CCAI OTA image">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#6_1" class="navigation navigation-next " aria-label="Next page: 6.1 CCAI service work mode">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6. How to develop AI services for CCAI","level":"1.7","depth":1,"next":{"title":"6.1 CCAI service work mode","level":"1.7.1","depth":2,"anchor":"#6_1","path":"part6/README.md","ref":"part6/README.md#6_1","articles":[]},"previous":{"title":"5.4 Generate CCAI OTA image","level":"1.6.4","depth":2,"anchor":"#5_4","path":"part5/README.md","ref":"part5/README.md#5_4","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["splitter","livereload"],"pluginsConfig":{"splitter":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"part6/README.md","mtime":"2022-07-15T06:08:08.511Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-15T06:21:15.276Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
