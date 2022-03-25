@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CFC</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js">
+</script>
+
+<style type="text/css">
+p.pos_speech{
+	position:absolute;
+	left:400px;
+	top:560px
+}
+button.pos_submit{
+	position:absolute;
+	left:980px;
+	top:580px
+}
+p.pos_asr{
+	position:absolute;
+	left:350px;
+	top:50px;
+}
+
+p.pos_classification{
+	position:absolute;
+	left:500px;
+	top:50px;
+}
+
+p.pos_face{
+	position:absolute;
+	left:650px;
+	top:50px;
+}
+p.pos_facial{
+	position:absolute;
+	left:800px;
+	top:50px;
+}
+p.pos_ocr{
+	position:absolute;
+	left:950px;
+	top:50px;
+}
+
+a:link,a:visited{
+
+
+	display:block;
+	font-weight:bold;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#000000;
+	width:130px;
+	text-align:center;
+	padding:8px;
+	text-decoration:none;
+	border-style: solid;
+	border-width: 1px
+
+}
+
+a.one:link {background-color:#168fff;}
+
+
+
+p.cfc_send{
+	position:absolute;
+	left:70px;
+	top:240px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_receive{
+	position:absolute;
+	left:70px;
+	top:340px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_time{
+	position:absolute;
+	left:80px;
+	top:440px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_flag{
+	position:absolute;
+	left:80px;
+	top:200px;
+	font-size:25px;
+	width:140px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+p.qq_send{
+	position:absolute;
+	left:500px;
+	top:240px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_receive{
+	position:absolute;
+	left:500px;
+	top:340px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_time{
+	position:absolute;
+	left:510px;
+	top:440px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_flag{
+	position:absolute;
+	left:510px;
+	top:200px;
+	font-size:25px;
+	width:110px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+
+
+p.tencent_send{
+	position:absolute;
+	left:930px;
+	top:240px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_receive{
+	position:absolute;
+	left:930px;
+	top:340px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_time{
+	position:absolute;
+	left:940px;
+	top:440px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_flag{
+	position:absolute;
+	left:940px;
+	top:200px;
+	font-size:25px;
+	width:90px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+
+
+</style>
+</head>
+
+<body>
+	<p class="pos_speech">音频文件: <input type="file" name="wav_file" id="file" />
+	speech: <input type="text" name="speech" id="base64" /></p>
+</body>
+
+<script>
+	var base64Data = '';
+	document.getElementById('file').onchange=function(e){
+	var file = e.target.files[0];
+	if(window.FileReader) {
+		var fr = new FileReader();
+		fr.onloadend = function(e) {
+			base64Data = e.target.result;
+			base64Data = base64Data.substring(base64Data.indexOf(",")+1);
+			document.getElementById('base64').value = base64Data;
+		}
+		fr.readAsDataURL(file);
+	}
+}
+
+$(document).ready(function(){
+	$("#btn2").click(function(){
+		$("#cfc_send").text("send:requests.post('http://localhost:8080/cgi-bin/fcgi_asr',data=params)");
+		//var timebegin = (new Date()).getTime();
+		$.post("/cgi-bin/fcgi_asr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			speech:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+			$("#inference_result").text("receive:"+data);
+			$("#cfc_time").text("time:"+data.split('time":')[1].split("}")[0]);
+		});
+
+
+		$("#qq_send").text("send:requests.post('https://api.ai.qq.com/fcgi-bin/aai/aai_asr',data=params)");
+		$.post("/cgi-bin/fcgi_py_qq_asr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			speech:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+			//$("#inference_result_qq").text("sending");
+			$("#inference_result_qq").text("receive:"+data);
+			$("#qq_time").text("time:"+data.split('time":')[1].split("}")[0]);
+		});
+
+
+		$("#tencent_send").text("send:requests.post('https://asr.tencentcloudapi.com/?Action=CreateRecTask',data=params)");
+		$.post("/cgi-bin/fcgi_py_tencent_asr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			speech:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+                        $("#inference_result_tencent").text("receive:"+data);
+                        var pos_start=data.indexOf('time')+7;
+                        var pos_end=data.indexOf('.',pos_start)+4;
+                        var time=data.substring(pos_start,pos_end);
+                        $("#tencent_time").text("time:"+time);
+
+		});
+
+
+	});
+});
+
+</script>
+
+
+
+
+<body>
+
+	<button class="pos_submit" id="btn2">submit</button>
+	<p class="pos_asr"><b><a class="one" href="/asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_classification"><b><a href="/classification.html" target="_self">Classfication</a></b></p>
+	<p class="pos_face"><b><a href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_ocr"><b><a href="/ocr.html" target="_self">OCR</a></b></p>
+	<p class="cfc_send" id="cfc_send" >send:</p>
+	<p class="cfc_receive" id="inference_result">receive:</p>
+	<p class="cfc_time" id="cfc_time" >time:</p>
+	<p class="cfc_flag"  >Cloud-Client</p>
+	<p class="tencent_receive" id="inference_result_tencent">receive:</p>
+	<p class="tencent_send" id="tencent_send">send:</p>
+	<p class="tencent_time" id="tencent_time">time:</p>
+	<p class="tencent_flag" >Tencent</p>
+    <p class="qq_receive" id="inference_result_qq">receive:</p>
+	<p class="qq_send" id="qq_send">send:</p>
+	<p class="qq_time" id="qq_time">time:</p>
+	<p class="qq_flag" >ai.qq.com</p>
+</body>

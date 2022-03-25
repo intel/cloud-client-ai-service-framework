@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Face detection</title>
+	<script type="text/javascript"
+		src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="main.css">
+
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		$("#tts_start").click(function(){
+			console.log('text', $("#tts_text").val());
+			$("#tts_start").attr("disabled", true);
+
+			$.post("/cgi-bin/fcgi_py_tts", {
+				aht:"0",
+				apc:"58",
+				format:"2",
+				speeker:"1",
+				speed:"100",
+				text:$("#tts_text").val(),
+				app_id:"2128571502",
+				nonce_str:"random_let",
+				sign:"",
+				time_stamp:"11111",
+				volume:0
+			}, function(data, status) {
+				$("#tts_start").attr("disabled", false);
+				console.log('resp', status, data)
+			});
+		});
+		});
+	</script>
+</head>
+
+
+<body>
+	<p class="pos_face"><b><a href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_classification"><b><a href="/classification.html" target="_self">Classification</a></b></p>
+	<p class="pos_note"><b><a href="/note.html" target="_self">Digital note</a></b></p>
+	<p class="pos_live_asr"><b><a href="/live-asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_tts"><b><a class="one" href="/tts.html" target="_self">TTS</a></b></p>
+
+	<p class="asr_description">Enter a piece of text in the text box below, and then click the 'Start' button, the result of Text To Speech will be output to the speaker.
+       Note: Currently only English is supported.</p>
+
+	<button class="pos_asr_start" id="tts_start">Start</button>
+
+	<p class="pos_tts_text">
+
+	<textarea cols="40" rows="5" id="tts_text">The dirch canoe slid on the smooth planks.</textarea>
+	</p>
+</body>

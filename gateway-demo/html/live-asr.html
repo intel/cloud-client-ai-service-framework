@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Face detection</title>
+	<script type="text/javascript"
+		src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="main.css">
+
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		var stop_asr = false;
+
+		function get_live_asr_result() {
+			console.log('get_live_asr_result')
+			$.post("/cgi-bin/fcgi_live_asr", {
+				mode:"1",
+				sign:"",
+			}, function(data, status) {
+				console.log('get resp', status, data);
+				json_obj = JSON.parse(data)
+				console.log('json', json_obj.data.text);
+				$("#asr_inference_result").text(json_obj.data.text);
+
+				if (!stop_asr) {
+					setTimeout(get_live_asr_result, 100);
+				}
+			});
+		};
+
+		function stop_live_asr() {
+			stop_asr = true;
+			console.log('stop_live_asr')
+			$.post("/cgi-bin/fcgi_live_asr", {
+				mode:"2",
+				sign:"",
+			}, function(data, status) {
+				console.log('stop resp', status, data)
+			});
+			$("#asr_start").attr("disabled", false);
+		};
+
+		$("#asr_start").click(function(){
+			$.post("/cgi-bin/fcgi_live_asr", {
+				mode:"0",
+				sign:"",
+			}, function(data, status) {
+				$("#asr_start").attr("disabled", true);
+				console.log('start resp', status, data)
+				setTimeout(get_live_asr_result, 1000);
+				setTimeout(stop_live_asr, 15000);
+			});
+		});
+	});
+	</script>
+</head>
+
+
+<body>
+	<p class="pos_face"><b><a href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_classification"><b><a href="/classification.html" target="_self">Classification</a></b></p>
+	<p class="pos_note"><b><a href="/note.html" target="_self">Digital note</a></b></p>
+	<p class="pos_live_asr"><b><a class="one" href="/live-asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_tts"><b><a href="/tts.html" target="_self">TTS</a></b></p>
+
+
+	<p class="asr_description">After clicking the start button, please input the voice through the microphone within 15 seconds. You will see the result of the Speech Recognition below.
+	Note: currently only English voice is supported.</p>
+
+	<button class="pos_asr_start" id="asr_start">Start</button>
+	<p class="cfc_asr_receive" id="asr_inference_result"></p>
+</body>

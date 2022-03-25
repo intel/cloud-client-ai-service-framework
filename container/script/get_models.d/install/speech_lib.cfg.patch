@@ -1,0 +1,26 @@
+--- template.cfg	2022-03-18 12:22:09.010228582 +0800
++++ speech_lib.cfg	2022-03-18 12:23:30.870225375 +0800
+@@ -1,10 +1,11 @@
+--dec:wfst:acousticModelFName __MODELS_ROOT__lspeech_s5_ext
++#Speech recognition configuration file
++-dec:wfst:acousticModelFName ./models/lspeech_s5_ext/FP32/lspeech_s5_ext
+ -dec:wfst:acousticScaleFactor 0.08
+ -dec:wfst:confidenceAcousticScaleFactor 1.0
+ -dec:wfst:confidenceLMScaleFactor 1.0
+ -dec:wfst:beamWidth 13.0
+--dec:wfst:outSymsFName __MODELS_ROOT__labels.bin
+--dec:wfst:fsmFName __MODELS_ROOT__hclg.fst
++-dec:wfst:outSymsFName ./models/lspeech_s5_ext/FP32/labels.bin
++-dec:wfst:fsmFName ./models/lspeech_s5_ext/FP32/hclg.fst
+ #-dec:wfst:hmmModelFName
+ #-dec:wfstotf:gramFsmFName
+ -dec:wfst:latticeWidth 5
+@@ -25,7 +26,7 @@
+ -fe:rt:contextRight 5
+ -fe:rt:hpfBeta 0.0
+ -fe:rt:inputDataType INT16_16KHZ
+--fe:rt:featureTransform __MODELS_ROOT__lspeech_s5_ext.feature_transform
++-fe:rt:featureTransform ./models/lspeech_s5_ext/FP32/lspeech_s5_ext.feature_transform
+ -fe:rt:maxChunkSize 16000
+ -fe:rt:numCeps 13
+ -fe:rt:noDct 0

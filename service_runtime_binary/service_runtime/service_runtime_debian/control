@@ -1,0 +1,25 @@
+Source: service-runtime
+Section: misc
+Priority: optional
+Maintainer: Lu Biao <biao.lu@intel.com>
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.4.1
+Homepage:
+
+Package: service-runtime
+Architecture: amd64
+Depends: docker.io, ${misc:Depends}
+Description: service-runtime
+ service-runtime
+
+Package: service-runtime-test
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-test
+ service-runtime-test
+
+Package: service-runtime-simlib-test
+Architecture: amd64
+Depends: ${misc:Depends}
+Description: service-runtime-simlib-test
+ service-runtime-simlib-test

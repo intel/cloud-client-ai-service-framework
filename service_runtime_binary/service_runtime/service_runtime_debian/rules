@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+export DH_VERBOSE = 1
+
+%:
+	dh $@
+execute_after_dh_fixperms:
+	chmod 777 debian/service-runtime/opt/intel/service_runtime/models/cl_cache
+	chmod 666 debian/service-runtime/opt/intel/service_runtime/models/cl_cache/*
+
+override_dh_installsystemd:
+	dh_installsystemd --name=service-runtime-health-monitor
+	dh_installsystemd --name=service-runtime

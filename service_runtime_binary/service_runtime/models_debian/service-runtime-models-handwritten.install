@@ -1,0 +1,3 @@
+handwritten-simplified-chinese-recognition-0001.xml opt/intel/service_runtime/models
+handwritten-simplified-chinese-recognition-0001.bin opt/intel/service_runtime/models
+scut_ept_char_list.txt opt/intel/service_runtime/models

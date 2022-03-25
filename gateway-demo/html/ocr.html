@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CFC</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js">
+</script>
+
+<style type="text/css">
+
+p.pos_image{
+	position:absolute;
+	left:300px;
+	top:730px;
+}
+
+
+
+button.pos_submit{
+	position:absolute;
+	left:880px;
+	top:750px
+}
+p.pos_asr{
+	position:absolute;
+	left:350px;
+	top:50px;
+}
+
+p.pos_classification{
+	position:absolute;
+	left:500px;
+	top:50px;
+}
+
+p.pos_face{
+	position:absolute;
+	left:650px;
+	top:50px;
+}
+p.pos_facial{
+	position:absolute;
+	left:800px;
+	top:50px;
+}
+p.pos_ocr{
+	position:absolute;
+	left:950px;
+	top:50px;
+}
+
+a:link,a:visited{
+
+	display:block;
+	font-weight:bold;
+	font-size:14px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#000000;
+	width:130px;
+	text-align:center;
+	padding:8px;
+	text-decoration:none;
+	border-style: solid;
+	border-width: 1px
+
+}
+a.one:link {background-color:#168fff;}
+
+
+img.pos_picture{
+	position:absolute;
+	left:80px;
+	top:155px;
+	border-style: solid;
+	border-width: 1px
+}
+
+img.pos_picture_qq{
+	position:absolute;
+	left:510px;
+	top:155px;
+	border-style: solid;
+	border-width: 1px
+}
+
+img.pos_picture_tencent{
+	position:absolute;
+	left:940px;
+	top:155px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_send{
+	position:absolute;
+	left:70px;
+	top:440px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_receive{
+	position:absolute;
+	left:70px;
+	top:540px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_time{
+	position:absolute;
+	left:80px;
+	top:640px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+p.cfc_flag{
+	position:absolute;
+	left:80px;
+	top:100px;
+	font-size:25px;
+	width:140px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+p.qq_send{
+	position:absolute;
+	left:500px;
+	top:440px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_receive{
+	position:absolute;
+	left:500px;
+	top:540px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_time{
+	position:absolute;
+	left:510px;
+	top:640px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.qq_flag{
+	position:absolute;
+	left:510px;
+	top:100px;
+	font-size:25px;
+	width:110px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+
+
+p.tencent_send{
+	position:absolute;
+	left:930px;
+	top:440px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_receive{
+	position:absolute;
+	left:930px;
+	top:540px;
+	margin-left:10px;
+	overflow-y:scroll;
+	overflow-x:scroll;
+	width:400px; height:100px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_time{
+	position:absolute;
+	left:940px;
+	top:640px;
+	width:400px; height:50px;
+	border-style: solid;
+	border-width: 1px
+}
+
+p.tencent_flag{
+	position:absolute;
+	left:940px;
+	top:100px;
+	font-size:25px;
+	width:90px; height:30px;
+	border-style: solid;
+	border-width: 1px
+}
+
+</style>
+</head>
+
+<body>
+	<img class="pos_picture" id="image"src="intel.jpg" width="400" height="300"/></img>
+	<img class="pos_picture_qq" id="image1"src="qq.jpg" width="400" height="300"/></img>
+	<img class="pos_picture_tencent" id="image2"src="tencent.jpg" width="400" height="300"/></img>
+	<p class="pos_image">picture: <input  type="file" onchange="selectImage(this);" id="file" />image:  <input type="text" name="speech" id="base64" /></p>
+</body>
+
+<script>
+
+
+var base64Data = '';
+var image = '';
+
+document.getElementById('file').onchange=function(e){
+	var file = e.target.files[0];
+	if(window.FileReader) {
+		var fr = new FileReader();
+		fr.onloadend = function(e) {
+			base64Data = e.target.result;
+			base64Data = base64Data.substring(base64Data.indexOf(",")+1);
+			document.getElementById('base64').value = base64Data;
+		}
+		fr.onload = function (evt) {
+			document.getElementById('image').src = evt.target.result;
+			document.getElementById('image1').src = evt.target.result;
+			document.getElementById('image2').src = evt.target.result;
+			image = evt.target.result;
+		}
+		fr.readAsDataURL(file);
+	}
+}
+
+
+$(document).ready(function(){
+	$("#btn2").click(function(){
+		$("#cfc_send").text("send:requests.post('http://localhost:8080/cgi-bin/fcgi_ocr',data=params)");
+		$.post("/cgi-bin/fcgi_ocr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			image:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+			$("#inference_result").text("receive:"+data);
+			$("#cfc_time").text("time:"+data.split('time":')[1].split("}")[0]);
+		});
+	});
+});
+
+
+
+$(document).ready(function(){
+	$("#btn2").click(function(){
+		$("#qq_send").text("send:requests.post('https://api.ai.qq.com/fcgi-bin/ocr/ocr_generalocr',data=params)");
+		$.post("/cgi-bin/fcgi_py_qq_ocr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			image:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+			//$("#inference_result_qq").text("sending");
+			$("#inference_result_qq").text("receive:"+data);
+			$("#qq_time").text("time:"+data.split('time":')[1].split("}")[0]);
+		});
+	});
+});
+
+$(document).ready(function(){
+	$("#btn2").click(function(){
+		$("#tencent_send").text("send:requests.post('https://ocr.tencentcloudapi.com/?Action=GeneralHandwritingOCR',data=params)");
+		$.post("/cgi-bin/fcgi_py_tencent_ocr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			image:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+                        $("#inference_result_tencent").text("receive:"+data);
+                        var pos_start=data.indexOf('time')+7;
+                        var pos_end=data.indexOf('.',pos_start)+4;
+                        var time=data.substring(pos_start,pos_end);
+                        $("#tencent_time").text("time:"+time);
+		});
+	});
+});
+
+
+
+</script>
+
+
+
+
+<body>
+
+	<button class="pos_submit" id="btn2">submit</button>
+	<p class="pos_asr"><b><a href="/asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_classification"><b><a href="/classification.html" target="_self">Classfication</a></b></p>
+	<p class="pos_face"><b><a href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_ocr"><b><a class="one" href="/ocr.html" target="_self">OCR</a></b></p>
+	<p class="cfc_send" id="cfc_send" >send:</p>
+	<p class="cfc_receive" id="inference_result">receive:</p>
+	<p class="cfc_time" id="cfc_time" >time:</p>
+	<p class="cfc_flag"  >Cloud-Client</p>
+	<p class="tencent_receive" id="inference_result_tencent">receive:</p>
+	<p class="tencent_send" id="tencent_send">send:</p>
+	<p class="tencent_time" id="tencent_time">time:</p>
+	<p class="tencent_flag" >Tencent</p>
+    <p class="qq_receive" id="inference_result_qq">receive:</p>
+	<p class="qq_send" id="qq_send">send:</p>
+	<p class="qq_time" id="qq_time">time:</p>
+	<p class="qq_flag" >ai.qq.com</p>
+</body>

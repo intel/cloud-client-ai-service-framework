@@ -1,0 +1,14 @@
+#!/bin/bash
+
+frontend="0.0.0.0,8081"
+
+if [[ -r "${AIAPI_SERVER_KEY:=/etc/lighttpd/server.key}" &&
+      -r "${AIAPI_SERVER_CERT:=/etc/lighttpd/server.pem}" ]]; then
+    set -- "--no-ocsp" "$AIAPI_SERVER_KEY" "$AIAPI_SERVER_CERT"
+    openssl verify "$AIAPI_SERVER_CERT" >& /dev/null && shift
+else
+    set --
+    frontend+=";no-tls"
+fi
+
+exec /usr/sbin/nghttpx -f "$frontend" "$@"

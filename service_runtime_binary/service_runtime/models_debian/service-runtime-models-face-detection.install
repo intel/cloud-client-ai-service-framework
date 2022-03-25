@@ -1,0 +1,2 @@
+face-detection-adas-0001.xml opt/intel/service_runtime/models
+face-detection-adas-0001.bin opt/intel/service_runtime/models

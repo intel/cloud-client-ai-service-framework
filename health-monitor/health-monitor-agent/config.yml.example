@@ -1,0 +1,7 @@
+daemon_targets:
+- lighttpd
+- policy_daemon
+grpc_targets:
+fcgi_targets:
+- fcgi_ocr.py
+- fcgi_ocr

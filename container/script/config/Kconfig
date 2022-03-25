@@ -1,0 +1,52 @@
+mainmenu "CCAI configuration"
+
+menu "CCAI service framework backend"
+
+config OPENVINO
+bool "OpenVINO"
+default y
+
+config PYTORCH
+bool "PyTorch"
+default y
+
+config ONNX
+bool "ONNX"
+default y
+
+config TENSORFLOW
+bool "Tensorflow"
+default n
+
+endmenu
+
+menu "Service"
+
+menuconfig RESTFUL_SERVICE
+bool "RESTful service"
+default y
+if RESTFUL_SERVICE
+
+config RESTFUL_CAPABILITY
+bool "capability"
+default y
+
+config RESTFUL_SAMPLE
+bool "sample"
+default y
+
+endif
+
+menuconfig GRPC_SERVICE
+bool "gRPC service"
+default y
+if GRPC_SERVICE
+
+config GRPC_SAMPLE
+bool "sample"
+default y
+
+
+endif
+
+endmenu

@@ -1,0 +1,3 @@
+mobilenet-ssd.bin opt/intel/service_runtime/models
+mobilenet-ssd.xml opt/intel/service_runtime/models
+mobilenet-ssd.json opt/intel/service_runtime/models

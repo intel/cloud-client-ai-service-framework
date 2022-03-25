@@ -1,0 +1,19 @@
+/* Copyright (C) 2020 Intel Corporation */
+
+syntax = "proto3";
+
+package service_runtime_health_monitor;
+
+service Monitor {
+	rpc notify (AgentStatus) returns (Empty) {}
+}
+
+message AgentStatus {
+	repeated string dead_targets = 1;
+	repeated string new_dead_targets = 2;
+	repeated string dead_healthcheck_targets = 3;
+	repeated string new_dead_healthcheck_targets = 4;
+}
+
+message Empty {
+}

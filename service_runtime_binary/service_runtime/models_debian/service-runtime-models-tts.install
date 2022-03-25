@@ -1,0 +1,4 @@
+tts-encoder-decoder.bin opt/intel/service_runtime/models
+tts-encoder-decoder.xml opt/intel/service_runtime/models
+tts-postprocessing.bin opt/intel/service_runtime/models
+tts-postprocessing.xml opt/intel/service_runtime/models

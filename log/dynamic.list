@@ -1,0 +1,6 @@
+{
+    ccai_log_ident;
+    ccai_log_stderr;
+    ccai_log_server;
+    ccai_log_threshold;
+};

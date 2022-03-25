@@ -1,0 +1,52 @@
+# Copyright (C) 2020 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM    service_runtime_inference_engine:ubuntu_20.04
+
+ARG     CONFIG_RESTFUL_SERVICE=n
+ARG     CONFIG_RESTFUL_CAPABILITY=n
+ARG     CONFIG_RESTFUL_SAMPLE=n
+ARG     CONFIG_GRPC_SERVICE=n
+ARG     CONFIG_GRPC_SIMLIB=n
+ARG     CONFIG_GRPC_SAMPLE=n
+
+# app dep
+RUN     apt-get update && \
+		apt-get -y install --no-install-recommends \
+		sudo \
+		intel-gpu-tools \
+		libcurl4 python3-yaml pciutils \
+		gstreamer1.0-libav gstreamer1.0-x \
+		libpython3.8 python3 python3-pip && \
+		pip3 --no-cache-dir install \
+		llvmlite==0.31.0 numba==0.48 librosa==0.6.3 shapely==1.7.1 pyclipper==1.2.1 SoundCard==0.4.1 && \
+		pip3 --no-cache-dir install --only-binary=:all: \
+		requests grpcio protobuf && \
+		apt-get --purge autoremove -y python3-pip && \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists
+
+COPY    app_rootfs/ /
+RUN     ldconfig
+
+RUN     mkdir -p /opt/fcgi && \
+		chown -R www-data.www-data /opt/fcgi && \
+		chown -R www-data.www-data /etc/sv && \
+		chown -R www-data.www-data /etc/runit && \
+		groupadd -g 109 render && \
+		usermod -G video,render -a www-data
+
+USER    www-data
+# start service
+CMD     ["/start.sh"]

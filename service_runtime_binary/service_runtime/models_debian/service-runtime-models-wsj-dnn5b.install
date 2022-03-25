@@ -1,0 +1,2 @@
+wsj_dnn5b.xml opt/intel/service_runtime/models
+wsj_dnn5b.bin opt/intel/service_runtime/models

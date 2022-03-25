@@ -1,0 +1,2 @@
+resnet18.pt opt/intel/service_runtime/models
+resnet18.txt opt/intel/service_runtime/models

@@ -1,0 +1,78 @@
+# Copyright (C) 2020 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM    service_runtime_base:ubuntu_20.04
+
+ARG     CONFIG_OPENVINO=n
+ARG     CONFIG_PYTORCH=n
+ARG     CONFIG_ONNX=n
+ARG     CONFIG_TENSORFLOW=n
+
+WORKDIR /tmp
+
+RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
+	wget https://apt.repos.intel.com/openvino/2021/GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
+	apt-key add GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
+	rm GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
+	echo "deb https://apt.repos.intel.com/openvino/2021 all main" > \
+		/etc/apt/sources.list.d/intel-openvino-2021.list && \
+	apt-get update && apt-get -y install --no-install-recommends \
+		intel-openvino-runtime-ubuntu20-2021.4.752 \
+		intel-openvino-gstreamer-rt-ubuntu-focal-2021.4.752 \
+		intel-openvino-gva-rt-ubuntu-focal-2021.4.752 && \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists/* ; \
+	fi
+
+RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
+	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-gmmlib_20.3.1_amd64.deb && \
+	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.5186/intel-igc-core_1.0.5186_amd64.deb && \
+	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.5186/intel-igc-opencl_1.0.5186_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-opencl_20.41.18123_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-ocloc_20.41.18123_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-level-zero-gpu_1.0.18123_amd64.deb && \
+	dpkg -i *.deb && rm -f *.deb; \
+	fi
+
+RUN     if [ "x${CONFIG_PYTORCH}" = "xy" ]; then \
+        wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.1%2Bcpu.zip && \
+        unzip libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip  && \
+        cp libtorch/lib/libc10.so /usr/lib/x86_64-linux-gnu/ && \
+        cp libtorch/lib/libgomp-75eea7e8.so.1 /usr/lib/x86_64-linux-gnu/ && \
+        cp libtorch/lib/libtorch_cpu.so /usr/lib/x86_64-linux-gnu/ && \
+        cp libtorch/lib/libtorch.so  /usr/lib/x86_64-linux-gnu/ && \
+        rm libtorch -rf && \
+        rm libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip ; \
+        fi
+
+RUN     if [ "x${CONFIG_ONNX}" = "xy" ]; then \
+        wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz && \
+        tar -zxvf onnxruntime-linux-x64-1.7.0.tgz && \
+        cp -a onnxruntime-linux-x64-1.7.0/lib/* /usr/lib/x86_64-linux-gnu/ && \
+        rm onnxruntime-linux-* -rf ; \
+        fi
+
+RUN     if [ "x${CONFIG_TENSORFLOW}" = "xy" ]; then \
+	wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	mkdir -p tf && \
+	tar -C tf -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	cp -a tf/lib/* /usr/lib/x86_64-linux-gnu/ && \
+	rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	rm -rf tf/ ; \
+	fi
+
+RUN     ldconfig
+
+
+WORKDIR /

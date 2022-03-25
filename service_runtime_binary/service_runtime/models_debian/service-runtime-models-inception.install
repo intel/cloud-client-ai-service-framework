@@ -1,0 +1,2 @@
+imagenet_slim_labels.txt opt/intel/service_runtime/models
+inception_v3_2016_08_28_frozen.pb opt/intel/service_runtime/models

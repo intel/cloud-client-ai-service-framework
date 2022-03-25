@@ -1,0 +1,70 @@
+service-runtime-models (1.1-210923) unstable; urgency=medium
+
+  * 1.1-210923
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 23 Sep 2021 11:53:18 +0800
+
+service-runtime-models (1.1-210915) unstable; urgency=medium
+
+  * 1.1-210915
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 15 Sep 2021 11:53:18 +0800
+
+service-runtime-models (1.0-210201) unstable; urgency=medium
+
+  * 1.0-210201
+
+ -- Biao Lu <biao.lu@intel.com> Mon, 1 Feb 2021 11:53:18 +0800
+
+service-runtime-models (0.9b-210104) unstable; urgency=medium
+
+  * 0.9b-210104
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 31 Dec 2020 11:53:18 +0800
+
+service-runtime-models (0.8b-201228) unstable; urgency=medium
+
+  * a tmp version to test power consumption
+
+ -- Biao Lu <biao.lu@intel.com> Mon, 28 Dec 2020 11:53:18 +0800
+
+service-runtime-models (0.8b-201221) unstable; urgency=medium
+
+  * update models version
+
+ -- Biao Lu <biao.lu@intel.com> Tue, 17 Dec 2020 11:53:18 +0800
+
+service-runtime-models (0.6b-201204) unstable; urgency=medium
+
+  * update models version following service-runtime
+
+ -- Lu Biao <biao.lu@intel.com> Fri, 4 Dec 2020 11:53:18 +0800
+
+service-runtime-models (0.6b-201128) unstable; urgency=medium
+
+  * update models version following service-runtime
+
+ -- Lu Biao <biao.lu@intel.com> Sat, 28 Nov 2020 11:53:18 +0800
+service-runtime-models (0.5b-201120) unstable; urgency=medium
+
+  * update models version following service-runtime
+
+ -- Lu Biao <biao.lu@intel.com> Fri, 20 Nov 2020 12:02:36 +0800
+service-runtime-models (1.0-3) unstable; urgency=medium
+
+  * update models version following service-runtime
+
+ -- Lu Biao <biao.lu@intel.com> Fri, 6 Nov 2020 10:43:51 +0800
+service-runtime-models (1.0-2) unstable; urgency=medium
+
+  * Added GNA support: test case, API parameters, model
+  * Added log keywords: AI-Service-Framework
+  * Added simulation lib support APIs (only APIs part for Elevoc case)
+  * A few bug fixings
+
+ -- Lu Biao <biao.lu@intel.com>  Tue, 25 Oct 2020 21:56:24 +0800
+service-runtime-models (1.0-1) unstable; urgency=medium
+
+  * Initial release
+
+ -- Lu Biao <biao.lu@intel.com>  Fri, 09 Oct 2020 21:56:24 +0800

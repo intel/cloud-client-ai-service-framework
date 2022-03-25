@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CFC</title>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js">
+</script>
+
+<link rel="stylesheet" href="main.css">
+
+</head>
+
+<script>
+var base64Data = '';
+var image = '';
+
+$(document).ready(function(){
+	document.getElementById('file').onchange=function(e){
+		var file = e.target.files[0];
+		if(window.FileReader) {
+			var fr = new FileReader();
+			fr.onloadend = function(e) {
+				base64Data = e.target.result;
+				base64Data = base64Data.substring(base64Data.indexOf(",")+1);
+				document.getElementById('base64').value = base64Data;
+			}
+			fr.onload = function (evt) {
+				document.getElementById('image').src = evt.target.result;
+				image = evt.target.result;
+			}
+			fr.readAsDataURL(file);
+		}
+	};
+
+	function getBase64Image(img) {
+		var canvas = document.createElement("canvas");
+		canvas.width = img.width;
+		canvas.height = img.height;
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(img, 0, 0);
+		var dataURL = canvas.toDataURL("image/png");
+		console.log("dataURL:", dataURL);
+		return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+	}
+
+	<!--document.getElementById('base64').value =-->
+			<!--getBase64Image(document.getElementById("image"));-->
+
+	function toDataUrl(url, callback) {
+		var xhr = new XMLHttpRequest();
+		xhr.onload = function() {
+			var reader = new FileReader();
+			reader.onloadend = function() {
+				callback(reader.result);
+			}
+			reader.readAsDataURL(xhr.response);
+		};
+		xhr.open('GET', url);
+		xhr.responseType = 'blob';
+		xhr.send();
+	}
+
+
+	let pic_url = window.location.protocol +
+		'//' + window.location.hostname +
+		':' + window.location.port + '/sandal.jpg';
+
+	console.log('RESULT:', pic_url)
+
+	toDataUrl(pic_url, function(myBase64) {
+		document.getElementById('base64').value =
+			myBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+	});
+
+
+	$("#btn2").click(function(){
+		$("#cfc_send").text("send:requests.post('http://localhost:8080/cgi-bin/fcgi_classification',data=params)");
+		var timebegin = (new Date()).getTime();
+		$.post("/cgi-bin/fcgi_classification",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			image:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+			$("#inference_result").text("receive:"+data);
+			var timeend = (new Date()).getTime();
+			$("#cfc_time").text("time:"+data.split('time":')[1].split("}")[0]);
+		});
+	});
+});
+</script>
+
+
+
+
+<body>
+	<img class="pos_picture" id="image"src="sandal.jpg" width="400" height="300"/></img>
+	<p class="pos_image">picture: <input  type="file" onchange="selectImage(this);" id="file" />image:  <input type="text" name="speech" id="base64" /></p>
+
+	<button class="pos_submit" id="btn2">submit</button>
+	<p class="pos_face"><b><a href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_classification"><b><a class="one" href="/classification.html" target="_self">Classification</a></b></p>
+	<p class="pos_note"><b><a href="/note.html" target="_self">Digital note</a></b></p>
+	<p class="pos_live_asr"><b><a href="/live-asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_tts"><b><a href="/tts.html" target="_self">TTS</a></b></p>
+
+
+	<p class="cfc_send" id="cfc_send" >send:</p>
+	<p class="cfc_receive" id="inference_result">receive:</p>
+	<p class="cfc_time" id="cfc_time" >time:</p>
+</body>

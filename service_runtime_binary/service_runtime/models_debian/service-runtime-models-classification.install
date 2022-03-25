@@ -1,0 +1,3 @@
+bvlc_alexnet.bin opt/intel/service_runtime/models
+bvlc_alexnet.xml opt/intel/service_runtime/models
+bvlc_alexnet.labels opt/intel/service_runtime/models

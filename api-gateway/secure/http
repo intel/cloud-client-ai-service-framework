@@ -1,0 +1,10 @@
+# Copyright (C) 2020 Intel Corporation
+
+auth     sufficient     pam_userdb.so  crypt=crypt db=/etc/lighttpd/apiuser
+auth     [default=bad]  pam_exec.so    type=auth /bin/bash -c [\
+	read -d '' < /proc/$PPID/cmdline && \
+	exec logger --id=$PPID -t "${REPLY/*\//}" -p user.error User "'$PAM_USER'" login failed\
+]
+auth     optional       pam_faildelay.so  delay=2000000
+
+account  sufficient     pam_permit.so

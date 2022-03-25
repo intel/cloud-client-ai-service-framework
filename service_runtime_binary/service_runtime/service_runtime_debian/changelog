@@ -1,0 +1,90 @@
+service-runtime (1.1-210923) unstable; urgency=medium
+
+  * 1.1-210923
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 23 Sep 2021 11:53:18 +0800
+
+service-runtime (1.1-210915) unstable; urgency=medium
+
+  * 1.1-210915
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 15 Sep 2021 11:53:18 +0800
+
+service-runtime (1.0-210201) unstable; urgency=medium
+
+  * Improve OTA logics and merge health-monitor, simulation lib deb packages
+    into service-runtime package, all for making the OTA process robust enough.
+  * Fixed issue which led to inference failure against GPU as accelerator for
+    both i5 and Pentium platforms.
+  * disable all sample services by default and can enable them for test only
+    via actions on the host side during the testing stage.
+
+ -- Biao Lu <biao.lu@intel.com> Mon, 1 Feb 2021 11:53:18 +0800
+
+service-runtime (0.9b-210104) unstable; urgency=medium
+
+  * Security enhancement
+  * Power consumption optimization
+
+ -- Biao Lu <biao.lu@intel.com> Thu, 31 Dec 2020 11:53:18 +0800
+
+service-runtime (0.8b-201228) unstable; urgency=medium
+
+  * a tmp version for test power consumption
+
+ -- Biao Lu <biao.lu@intel.com> Mon, 28 Dec 2020 11:53:18 +0800
+
+service-runtime (0.8b-201221) unstable; urgency=medium
+
+  * Security enhancement.
+
+ -- Biao Lu <biao.lu@intel.com> Tue, 17 Dec 2020 11:53:18 +0800
+
+service-runtime (0.6b-201204) unstable; urgency=medium
+
+  * Enable authentication configuration
+  * Enable input buffer as model content.
+  * Security enhancement
+  * Trivial bug fixings
+
+ -- Lu Biao <biao.lu@intel.com> Fe, 4 Dec 2020 11:53:18 +0800
+
+service-runtime (0.6b-201128) unstable; urgency=medium
+
+  * Enable authentication configuration.
+  * Enable input buffer as model.
+  * Trivial bug fixings.
+
+ -- Lu Biao <biao.lu@intel.com> Sat, 28 Nov 2020 11:53:18 +0800
+service-runtime (0.5b-201120) unstable; urgency=medium
+
+  * Fixed the issue of ASR long time running leads to memory leakage.
+  * Removed the input characters limitation for TTS case.
+  * Some config improvements for GPU as an accelerator situation.
+  * Health-monitor enhancement to cover more corner cases.
+  * Install service_runtime to /opt/intel
+  * move simlib samples to package, ‘simlib-test’
+  * Trivial bug fixings.
+
+ -- Lu Biao <biao.lu@intel.com> Fri, 20 Nov 2020 12:02:36 +0800
+service-runtime (1.0-3) unstable; urgency=medium
+
+  * Fixed issue in simulation test case/lib to comply with Elevoc model
+  * Support cmd parameter as input to all test cases
+  * Update base container image to ubuntu 20.04
+  * Update components according to CCG request: NEO driver, M-SDK
+
+ -- Lu Biao <biao.lu@intel.com> Fri, 6 Nov 2020 10:43:51 +0800
+service-runtime (1.0-2) unstable; urgency=medium
+
+  * Added GNA support: test case, API parameters, model
+  * Added log keywords: AI-Service-Framework
+  * Added simulation lib support APIs (only APIs part for Elevoc case)
+  * A few bug fixings
+
+ -- Lu Biao <biao.lu@intel.com>  Tue, 25 Oct 2020 21:56:24 +0800
+service-runtime (1.0-1) unstable; urgency=medium
+
+  * Initial release
+
+ -- Lu Biao <biao.lu@intel.com>  Fri, 09 Oct 2020 21:56:24 +0800

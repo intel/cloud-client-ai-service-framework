@@ -1,0 +1,62 @@
+# Copyright (C) 2020 Intel Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+FROM    ubuntu:20.04
+
+ARG     CONFIG_OPENVINO=n
+
+RUN     apt-get update && \
+		apt-get -y install --no-install-recommends \
+		lighttpd lighttpd-mod-authn-pam libfcgi \
+		nghttp2-proxy libgrpc++1 \
+		runit \
+		wget gnupg \
+		unzip && \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists/*
+
+RUN     apt-get update && \
+		apt-get -y install --no-install-recommends \
+		python3  python3-pip && \
+		pip3 --no-cache-dir install --only-binary :all: flup && \
+		apt-get --purge autoremove -y python3-pip && \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists/*
+
+# opencl driver & OpenVINO python sample deps
+RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
+		apt-get update && \
+		apt-get -y install --no-install-recommends \
+		libnuma1 ocl-icd-libopencl1 && \
+		apt-get -y install --no-install-recommends \
+		libpython3.6 python3-pip python3-setuptools libgtk-3-0 && \
+		pip3 --no-cache-dir install --only-binary :all: \
+		    numpy opencv-python cython \
+		    nibabel scikit-learn scipy tqdm && \
+		pip3 --no-cache-dir install progress && \
+		apt-get --purge autoremove -y python3-pip && \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists/* ; \
+	fi
+
+# gva python deps
+RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
+		apt-get update && \
+		apt-get -y install --no-install-recommends \
+		gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
+		python3-gi libxv1 \
+		&& \
+		apt-get clean && \
+		rm -rf /var/lib/apt/lists/* ; \
+	fi

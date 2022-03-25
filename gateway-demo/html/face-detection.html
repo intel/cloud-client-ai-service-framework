@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Face detection</title>
+	<script type="text/javascript"
+		src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="main.css">
+
+<script type="text/javascript">
+	$(document).ready(function (e) {
+
+		function getBase64Image(img) {
+			  var canvas = document.createElement("canvas");
+			  canvas.width = img.width;
+			  canvas.height = img.height;
+			  var ctx = canvas.getContext("2d");
+			  ctx.drawImage(img, 0, 0);
+			  var dataURL = canvas.toDataURL("image/png");
+			  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+		}
+
+		<!--document.getElementById('b64').innerHTML =-->
+			<!--getBase64Image(document.getElementById("img_view"));-->
+
+
+		function toDataUrl(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function() {
+				var reader = new FileReader();
+				reader.onloadend = function() {
+					callback(reader.result);
+				}
+				reader.readAsDataURL(xhr.response);
+			};
+			xhr.open('GET', url);
+			xhr.responseType = 'blob';
+			xhr.send();
+		}
+
+
+		let pic_url = window.location.protocol +
+			'//' + window.location.hostname +
+			':' + window.location.port + '/face.jpg';
+
+		console.log('RESULT:', pic_url)
+
+		toDataUrl(pic_url, function(myBase64) {
+			document.getElementById('b64').innerHTML =
+				myBase64.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+		});
+
+
+		function read_url(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					document.getElementById("img_view").src  = e.target.result;
+					base64Data = e.target.result;
+					base64Data = base64Data.substring(base64Data.indexOf(",")+1);
+					document.getElementById('b64').innerHTML = base64Data;
+				}
+				reader.readAsDataURL(input.files[0]); // convert to base64 string
+			}
+		}
+
+		$("#img_input").change(function() {
+			read_url(this);
+		});
+		$('#upload').on('click', function () {
+			$("#cfc_send").text(
+		"send:requests.post('http://localhost:8080/cgi-bin/fcgi_face_detection',data=params)");
+			$.post("/cgi-bin/fcgi_face_detection", {
+				app_id:"2128571502",
+				nonce_str:"random_let",
+				sign:"",
+				image:document.getElementById("b64").innerHTML,
+				test:"test",
+				time_stamp:"11111"
+			}, function(data,status) {
+				$("#inference_result").text('receive:'+data);
+				var timeend = (new Date()).getTime();
+				var img = document.getElementById("img_view");
+				var cnvs = document.getElementById("img_convas");
+
+				cnvs.style.position = "absolute";
+				cnvs.style.left = img.offsetLeft + "px";
+				cnvs.style.top = img.offsetTop + "px";
+				cnvs.style.display = "block"
+
+				var obj = JSON.parse(data)
+				var rects = obj.data.face_list;
+				var ctx;
+				ctx = cnvs.getContext("2d");
+				ctx.strokeStyle = "#FF0000";
+				ctx.beginPath();
+				ctx.clearRect(0,0,425,425);
+				//ctx.rect(20, 20, 20, 20);
+				$("#cfc_time").text("time:"+data.split('time":')[1].split("}")[0]);
+				for (var i=0;i<obj.data.face_list.length;i++){
+					var rect=obj.data.face_list[i];
+					var x1 = rect.x1 * img.width / img.naturalWidth
+					var y1 = rect.y1 * img.height / img.naturalHeight
+					var x2 = rect.x2 * img.width / img.naturalWidth
+					var y2 = rect.y2 * img.height / img.naturalHeight
+					ctx.rect(x1, y1, x2-x1, y2-y1);
+					ctx.stroke();};
+				});
+			});
+		});
+	</script>
+</head>
+
+
+
+<body>
+	<p class="pos_face"><b><a class="one" href="/face-detection.html" target="_self">Face-detection</a></b></p>
+	<p class="pos_facial"><b><a href="/facial-landmark.html" target="_self">Facial-landmark</a></b></p>
+	<p class="pos_classification"><b><a href="/classification.html" target="_self">Classification</a></b></p>
+	<p class="pos_note"><b><a href="/note.html" target="_self">Digital note</a></b></p>
+	<p class="pos_live_asr"><b><a href="/live-asr.html" target="_self">ASR</a></b></p>
+	<p class="pos_tts"><b><a href="/tts.html" target="_self">TTS</a></b></p>
+
+
+	<p class="pos_image">picture: <input   type='file' id="img_input" /><p>
+	<button class="pos_submit" id="upload">submit</button>
+
+	<img class="pos_picture" id="img_view" src="face.jpg" alt="." width="400" height="300" />
+	<canvas id='img_convas' width="700" height="300" style="display: none;">></canvas>
+	<p id="b64" style="display: none;"></p>
+	<!--<p id="b64" > </p>-->
+	<p class="cfc_send" id="cfc_send" >send:</p>
+	<p class="cfc_receive" id="inference_result">receive:</p>
+	<p class="cfc_time" id="cfc_time" >time:</p>
+
+</body>

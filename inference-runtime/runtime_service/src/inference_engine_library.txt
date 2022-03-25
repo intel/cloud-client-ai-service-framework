@@ -1,0 +1,8 @@
+#format: -inference-engine-name library-name, for example: -ONNX libonnxentry.so
+#inference-engine-name: OPENVINO, ONNX, PYTORCH, TENSORFLOW
+#You can add new inference engine to this file by following same format
+
+  OPENVINO      libopenvinoentry.so
+  ONNXRT        libonnxentry.so
+  PYTORCH       libpytorchentry.so
+  TENSORFLOW    libtensorflowentry.so

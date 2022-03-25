@@ -1,0 +1,4 @@
+text-detection-0003.xml opt/intel/service_runtime/models
+text-detection-0003.bin opt/intel/service_runtime/models
+text-recognition-0012.xml opt/intel/service_runtime/models
+text-recognition-0012.bin opt/intel/service_runtime/models

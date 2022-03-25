@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CFC</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+
+<style type="text/css">
+
+p.pos_image{
+  position:fixed;
+  left:300px;
+  top:600px;
+}
+
+button.pos_submit{
+  position:fixed;
+  left:880px;
+  top:620px
+}
+p.pos_asr{
+position:fixed;
+left:300px;
+top:250px;
+}
+
+p.pos_classification{
+position:fixed;
+left:440px;
+top:250px;
+}
+
+p.pos_face{
+position:fixed;
+left:580px;
+top:250px;
+}
+p.pos_facial{
+position:fixed;
+left:720px;
+top:250px;
+}
+p.pos_ocr{
+position:fixed;
+left:860px;
+top:250px;
+}
+p.pos_lpr{
+position:fixed;
+left:1000px;
+top:250px;
+}
+a:link,a:visited{
+
+  display:block;
+  font-weight:bold;
+  font-size:14px;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+  color:#000000;
+
+  width:120px;
+  text-align:center;
+  padding:8px;
+  text-decoration:none;
+  border-style: solid;
+  border-width: 1px
+
+}
+table{
+  border-collapse:collapse;
+  position:fixed;
+  left:720px;
+  top:305px; 
+}
+
+table, td, th{
+  border:1px solid black;
+  height:300px;
+  width:430px;
+}
+
+img.pos_picture{
+position:fixed;
+left:290px;
+top:305px;
+}
+
+</style>
+</head>
+
+<body>
+ <img class="pos_picture" id="image"src="" width="425" height="300"/></img>
+   <p class="pos_image">picture: <input  type="file" onchange="selectImage(this);" id="file" />
+
+  image:  <input type="text" name="speech" id="base64" /></p>
+</body>
+
+<script>
+
+  
+var base64Data = '';
+var image = '';
+
+document.getElementById('file').onchange=function(e){
+  var file = e.target.files[0];
+  if(window.FileReader) {
+	  var fr = new FileReader();
+  	fr.onloadend = function(e) {
+  		base64Data = e.target.result;
+  		base64Data = base64Data.substring(base64Data.indexOf(",")+1);
+  		document.getElementById('base64').value = base64Data;
+  	}
+       fr.onload = function (evt) {
+            document.getElementById('image').src = evt.target.result;
+            image = evt.target.result;
+        }
+  	fr.readAsDataURL(file);
+	
+  }
+}
+
+
+$(document).ready(function(){
+	$("#btn2").click(function(){
+		$.post("cgi-bin/fcgi_lpr",{
+			app_id:"222222",
+			nonce_str:"random_let",
+			sign:"",
+			image:$("#base64").val(),
+			time_stamp:"11111"
+		},
+		function(data,status){
+           	 
+	          $("#inference_result").text(data);
+		});
+	});
+});
+</script>
+
+
+
+
+<body>
+
+<button class="pos_submit" id="btn2">submit</button>
+<p class="pos_asr"><b><a href="/asr.html" target="_blank">ASR</a></b></p>
+<p class="pos_classification"><b><a href="/classification.html" target="_blank">Classfication</a></b></p>
+<p class="pos_face"><b><a href="/face-detection.html" target="_blank">Face-detection</a></b></p>
+<p class="pos_facial"><b><a href="/facial-landmark.html" target="_blank">Facial</a></b></p>
+<p class="pos_ocr"><b><a href="/ocr.html" target="_blank">OCR</a></b></p>
+<p class="pos_lpr"><b><a href="/lpr.html" target="_blank">LPR</a></b></p>
+  <table>
+    <tr>
+      <th id="inference_result">nothing ...</th>
+    </tr>
+  </table>
+</body>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+#
+# CCAI service framework backend
+#
+CONFIG_OPENVINO=y
+CONFIG_PYTORCH=y
+CONFIG_ONNX=y
+CONFIG_TENSORFLOW=y
+# end of CCAI service framework backend
+
+#
+# Service
+#
+CONFIG_RESTFUL_SERVICE=y
+CONFIG_RESTFUL_CAPABILITY=y
+CONFIG_RESTFUL_SAMPLE=y
+CONFIG_GRPC_SERVICE=y
+CONFIG_GRPC_SAMPLE=y
+# end of Service

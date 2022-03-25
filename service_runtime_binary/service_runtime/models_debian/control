@@ -1,0 +1,122 @@
+Source: service-runtime-models
+Section: misc
+Priority: optional
+Maintainer: Lu Biao <biao.lu@intel.com>
+Build-Depends: debhelper-compat (= 12)
+Standards-Version: 4.4.1
+Homepage:
+
+Package: service-runtime-models-cl-cache
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-ocr
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-tts
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-wsj-dnn5b
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-lspeech-s5-ext
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-classification
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-face-detection
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-facial-landmarks
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-deeplab
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-emotion
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-formula
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-handwritten
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-mobilenetssd
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-ppocr
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+Package: service-runtime-models-super-resolution
+Architecture: all
+Depends: ${misc:Depends}
+Description: service-runtime-models
+ service-runtime-models
+
+#Package: service-runtime-models-inception
+#Architecture: all
+#Depends: ${misc:Depends}
+#Description: service-runtime-models
+# service-runtime-models
+
+#Package: service-runtime-models-resnet18
+#Architecture: all
+#Depends: ${misc:Depends}
+#Description: service-runtime-models
+# service-runtime-models
+
+#Package: service-runtime-models-vggface2
+#Architecture: all
+#Depends: ${misc:Depends}
+#Description: service-runtime-models
+# service-runtime-models
+
+#Package: service-runtime-models-rfb
+#Architecture: all
+#Depends: ${misc:Depends}
+#Description: service-runtime-models
+# service-runtime-models
+

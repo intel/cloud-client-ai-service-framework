@@ -1,0 +1,5 @@
+formula-recognition-medium-scan-0001-im2latex-decoder.bin opt/intel/service_runtime/models
+formula-recognition-medium-scan-0001-im2latex-decoder.xml opt/intel/service_runtime/models
+formula-recognition-medium-scan-0001-im2latex-encoder.bin opt/intel/service_runtime/models
+formula-recognition-medium-scan-0001-im2latex-encoder.xml opt/intel/service_runtime/models
+vocab.json opt/intel/service_runtime/models

@@ -1,0 +1,7 @@
+*.so
+*.o
+.depend
+*.swp
+tags
+__pycache__
+build

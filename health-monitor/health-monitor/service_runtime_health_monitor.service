@@ -1,0 +1,10 @@
+[Unit]
+Description=Cloud Client AI Service Framework health monitor
+After=service_runtime.service
+
+[Service]
+ExecStart=/opt/intel/service_runtime/service_runtime_health_monitor
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

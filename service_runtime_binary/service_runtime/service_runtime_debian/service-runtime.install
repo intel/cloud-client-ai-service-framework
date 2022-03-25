@@ -1,0 +1,10 @@
+service_runtime.sh opt/intel/service_runtime
+ota/service_runtime_ota.sh usr/bin
+docker_image opt/intel/service_runtime
+docker_image_tag opt/intel/service_runtime
+service_runtime_health_monitor opt/intel/service_runtime
+simlib/libinference_engine.so opt/intel/service_runtime/simlib
+simlib/sr_inference_engine.hpp opt/intel/service_runtime/simlib
+models/cl_cache/readme.txt opt/intel/service_runtime/models/cl_cache
+CCAI.png opt/intel/service_runtime
+ccai.desktop usr/share/applications

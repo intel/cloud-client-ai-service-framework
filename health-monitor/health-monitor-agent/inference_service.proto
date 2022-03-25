@@ -1,0 +1,28 @@
+/* Copyright (C) 2020 Intel Corporation */
+
+syntax = "proto3";
+package inference_service;
+
+service Inference {
+	rpc Classification (Input) returns (Result) {}
+	rpc FaceDetection (Input) returns (Result) {}
+	rpc FacialLandmark (Input) returns (Result) {}
+	rpc OCR (Input) returns (Result) {}
+	rpc ASR (Input) returns (Result) {}
+	rpc HealthCheck (Empty) returns (HealthStatus) {}
+}
+message Input {
+	bytes buffer = 1;
+}
+message Result {
+	string json = 1;
+}
+message Empty {
+}
+message HealthStatus {
+	enum Status {
+		SUCCESS = 0;
+		TIMEOUT = 1;
+	}
+	Status status = 1;
+}

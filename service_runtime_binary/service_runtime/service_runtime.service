@@ -1,0 +1,12 @@
+[Unit]
+Description=Cloud Client AI Service Framework launcher
+After=docker.socket
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/opt/intel/service_runtime/service_runtime.sh start --port-rest-api 8080 --port-grpc 8081
+ExecStop=/opt/intel/service_runtime/service_runtime.sh stop
+
+[Install]
+WantedBy=multi-user.target

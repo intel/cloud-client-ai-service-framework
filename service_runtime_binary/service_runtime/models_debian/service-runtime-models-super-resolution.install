@@ -1,0 +1,2 @@
+single-image-super-resolution-1032.xml opt/intel/service_runtime/models
+single-image-super-resolution-1032.bin opt/intel/service_runtime/models
