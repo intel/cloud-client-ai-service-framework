@@ -1,5 +1,7 @@
 # Intel Cloud-Client AI Service Framework
 
+[Documentation](https://intel.github.io/cloud-client-ai-service-framework/)
+
 ## How to build Cloud-Client AI Service Framework
 Make sure your Build Host meets the following requirements:
 - Ubuntu 20.04.
