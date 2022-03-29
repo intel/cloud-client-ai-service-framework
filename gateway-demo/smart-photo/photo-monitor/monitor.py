@@ -5,6 +5,33 @@ import argparse
 import os
 import requests
 import json
+import sys
+from PIL import Image, ExifTags
+
+_photo_dir = ''
+_thumbnail_dir = ''
+
+def gen_thumbnail(inf, outf):
+    img = Image.open(inf)
+    exif = img.info.get('exif', None)
+    width, height = img.size
+    if (width < height):
+        l = width
+    else:
+        l = height
+
+    left = (width - l)/2
+    top = (height - l)/2
+    right = (width + l)/2
+    bottom = (height + l)/2
+
+    img = img.crop((left, top, right, bottom))
+    img = img.resize((200, 200))
+
+    if exif:
+        img.save(outf, exif=exif)
+    else:
+        img.save(outf)
 
 def service_path(p):
     return os.path.join('/smartphoto/photos/', p)
@@ -45,6 +72,8 @@ def main(monitor_dir):
         print("PATH=[{}] FILENAME=[{}] EVENT_TYPES={}".format(
                    path, fname, type_names))
         if 'IN_CLOSE_WRITE' in type_names:
+            gen_thumbnail(_photo_dir + fname, _thumbnail_dir + "/crop_" + fname)
+
             post_add_file(fname)
         if 'IN_DELETE' in type_names:
             post_delete_file(fname)
@@ -61,4 +90,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', type=str, help='directory', required=True)
     args = parser.parse_args()
 
-    main(args.d)
+    _photo_dir = args.d + "/"
+    _thumbnail_dir = _photo_dir + "/../thumbnail/"
+
+    main(_photo_dir)
