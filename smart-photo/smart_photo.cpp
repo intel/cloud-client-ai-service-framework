@@ -18,7 +18,7 @@
 #define FACE_REIDENTIFICATION_MODEL   \
 	MODEL_DIR"/face-recognition-resnet100-arcface-onnx.xml"
 #define SEGMENTATION_MODEL       MODEL_DIR"/hrnet-v2-c1-segmentation.xml"
-#define SEGMENTATION_LABELS      MODEL_DIR"/hrnet-v2-c1-segmentation.label"
+#define SEGMENTATION_LABELS      MODEL_DIR"/hrnet-v2-c1-segmentation.labels"
 
 #define CONFIDENCE	0.7
 
