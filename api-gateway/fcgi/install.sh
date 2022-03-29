@@ -16,13 +16,13 @@ fi
 
 DESTDIR_DEVEL=$DESTDIR/../devel_rootfs
 
-SCRIPT_DIR=$(cd $(dirname $0)>/dev/null 2>&1;pwd -P)
-echo $SCRIPT_DIR
+MYSCRIPT_DIR=$(cd $(dirname $0)>/dev/null 2>&1;pwd -P)
+echo $MYSCRIPT_DIR
 
 
 mkdir -p $DESTDIR/etc/lighttpd/
-cp $SCRIPT_DIR/lighttpd.conf $DESTDIR/etc/lighttpd/
-cp $SCRIPT_DIR/auth-conf.sh $DESTDIR/etc/lighttpd/
+cp $MYSCRIPT_DIR/lighttpd.conf $DESTDIR/etc/lighttpd/
+cp $MYSCRIPT_DIR/auth-conf.sh $DESTDIR/etc/lighttpd/
 
 # install fcgi config files
 mkdir -p $DESTDIR/etc/lighttpd/conf-available
@@ -36,7 +36,7 @@ capability_service_conf_files="\
 
 if [ "x$CONFIG_RESTFUL_CAPABILITY" = "xy" ]; then
     for conf in ${capability_service_conf_files}; do
-        cp $SCRIPT_DIR/info/cpp/$conf $DESTDIR/etc/lighttpd/conf-available/
+        cp $MYSCRIPT_DIR/info/cpp/$conf $DESTDIR/etc/lighttpd/conf-available/
     done
 fi
 
@@ -81,10 +81,9 @@ for conf in $enabled_list; do
 done
 popd
 
-cp -f $SCRIPT_DIR/../../health-monitor/health-monitor/service_runtime_health_monitor.proto ./
-rm -rf $SCRIPT_DIR/build
-mkdir -p $SCRIPT_DIR/build
-pushd $SCRIPT_DIR/build
+cp -f $MYSCRIPT_DIR/../../health-monitor/health-monitor/service_runtime_health_monitor.proto ./
+mkdir -p $MYSCRIPT_DIR/build
+pushd $MYSCRIPT_DIR/build
 
 source /opt/intel/openvino/bin/setupvars.sh
 cmake -DCMAKE_FIND_ROOT_PATH=$DESTDIR_DEVEL ..
@@ -93,4 +92,4 @@ make DESTDIR=$DESTDIR install/strip
 
 popd
 
-rm -rf $SCRIPT_DIR/build
+#rm -rf $MYSCRIPT_DIR/build
