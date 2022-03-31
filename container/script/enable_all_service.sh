@@ -10,6 +10,8 @@ if [ ! -e "service_runtime.sh" ]; then
 fi
 
 mkdir -p ./rootfs/d/etc/runit/runsvdir/default
+touch ./rootfs/d/etc/runit/runsvdir/default/.ccai-volume
+
 sudo chown www-data.www-data ./rootfs/d/etc/runit/runsvdir/default
 
 ./service_runtime.sh restart

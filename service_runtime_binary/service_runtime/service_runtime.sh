@@ -88,7 +88,8 @@ override_rootfs()
 	rootfs=$SCRIPT_DIR/rootfs/d
 	if test -d $rootfs; then
 		pushd $rootfs > /dev/null
-		find . -type d -links -3 | sed 's|^./||' | while read -r d; do
+		find . -type f -name ".ccai-volume" |  sed 's|^./||' \
+			| xargs dirname | while read -r d; do
 			if test "$d" = "."; then
 				continue
 			fi

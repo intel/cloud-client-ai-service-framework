@@ -10,6 +10,7 @@ if [ ! -e "service_runtime.sh" ]; then
 fi
 
 mkdir -p ./rootfs/d/etc/lighttpd/conf-enabled/
+touch ./rootfs/d/etc/lighttpd/conf-enabled/.ccai-volume
 sudo chown www-data.www-data ./rootfs/d/etc/lighttpd/conf-enabled/
 
 ./service_runtime.sh restart
