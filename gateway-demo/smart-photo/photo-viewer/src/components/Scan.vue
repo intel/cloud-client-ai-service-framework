@@ -71,9 +71,9 @@ export default {
   name: 'Scan',
   data() {
     return {
-      api_url: 'http://localhost:8080/cgi-bin/smartphoto',
-      picture_server: 'http://localhost:8080/smartphoto/',
-      upload_action_rul: 'http://localhost:8080/photo-upload/upload.py',
+      api_url: '/cgi-bin/smartphoto',
+      picture_server: 'smartphoto/',
+      upload_action_rul: '/photo-upload/upload.py',
 
       reflushCount: 0,
       scaning: false,
@@ -95,7 +95,7 @@ export default {
   },
 
   mounted() {
-    console.log('mounted')
+    console.log('mounted, location.origin=', location.origin)
     this.listClass()
     this.listPerson()
   },

@@ -17,8 +17,8 @@ export default {
   data() {
     return {
       images: [],
-      api_url: 'http://localhost:8080/cgi-bin/smartphoto',
-      picture_server: 'http://localhost:8080/smartphoto/'
+      api_url: '/cgi-bin/smartphoto',
+      picture_server: '/smartphoto/'
     }
   },
 
