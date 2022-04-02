@@ -136,10 +136,22 @@ static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
 	if (generate_gst_pipeline_desc(desc, user_data) != 0)
 		return -1;
 
-	private->gst_pipe = gst_parse_launch(private->pipeline_desc, NULL);
-	D("gst_pipe=%p\n", private->gst_pipe);
-	if (private->gst_pipe == NULL)
+	GError *error = NULL;
+	private->gst_pipe = gst_parse_launch(private->pipeline_desc, &error);
+	if (error) {
+		E("gst_parse_launch error: %s\n", error->message);
+		if (private->gst_pipe) {
+			gst_object_unref(private->gst_pipe);
+			private->gst_pipe = NULL;
+		}
+		g_error_free(error);
 		return -1;
+	}
+	D("gst_pipe=%p\n", private->gst_pipe);
+	if (private->gst_pipe == NULL) {
+		E("gst_parse_launch error: gst_pipe NULL\n");
+		return -1;
+	}
 
 	return 0;
 }
