@@ -16,10 +16,13 @@
 #define CONFIG_FILE_2 "/usr/lib/ccai_stream/plugins/general_launcher.conf"
 
 struct desc_private {
-	GstElement *gst_pipe;
-	pthread_t tid;
 	const char *pipeline_desc;
 	const char *pipeline_desc_fmt;
+
+	/* gst pipeline */
+	GstElement *gst_pipe;
+	pthread_t msg_proc_tid;
+	int  msg_proc_running;
 };
 
 static  char *new_gst_pipeline_desc(const char *fmt,
@@ -125,6 +128,46 @@ error:
 	return ret;
 }
 
+static void *pipe_msg_proc(void* x)
+{
+	GstBus *bus;
+	GstMessage *msg;
+
+	struct desc_private *private = (struct desc_private *)x;
+
+	D("pipe_msg_proc start\n");
+
+	bus = gst_element_get_bus(private->gst_pipe);
+	while (private->msg_proc_running) {
+		/* 1s timeout */
+		msg = gst_bus_timed_pop_filtered(bus, 1000000000,
+						 GST_MESSAGE_ANY);
+		if (msg == NULL)
+			continue;
+
+		const GstMessageType t = GST_MESSAGE_TYPE(msg);
+		gchar *s = gst_structure_to_string(
+			gst_message_get_structure(msg));
+
+		D("message type: %s\n",
+		  gst_message_type_get_name(GST_MESSAGE_TYPE(msg)));
+		D("message: %s\n", s);
+
+		g_free(s);
+		gst_message_unref(msg);
+
+		if (t == GST_MESSAGE_ERROR || t == GST_MESSAGE_EOS)
+			break;
+	}
+	gst_object_unref(bus);
+
+	D("pipe_msg_proc exit.\n");
+	private->msg_proc_running = 0;
+
+	return NULL;
+}
+
+
 static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
 {
 	D("desc->name=%s\n", desc->name);
@@ -151,6 +194,15 @@ static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
 	if (private->gst_pipe == NULL) {
 		E("gst_parse_launch error: gst_pipe NULL\n");
 		return -1;
+	}
+
+	D("__ccai_stream_debug=%d\n", __ccai_stream_debug)
+	if (__ccai_stream_debug) {
+		private->msg_proc_running = 1;
+		if (pthread_create(&private->msg_proc_tid, NULL,
+				   &pipe_msg_proc, private) != 0) {
+			private->msg_proc_running = 0;
+		}
 	}
 
 	return 0;
@@ -194,6 +246,13 @@ static int remove_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
 	if (private->gst_pipe) {
 		gst_object_unref(private->gst_pipe);
 		private->gst_pipe = NULL;
+	}
+
+	/* stop msg proc */
+	if (private->msg_proc_running) {
+		private->msg_proc_running = 0;
+		pthread_join(private->msg_proc_tid, NULL);
+		D("msg_proc stopped.\n");
 	}
 
 	return 0;
