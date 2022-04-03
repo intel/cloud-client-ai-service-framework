@@ -139,6 +139,8 @@ static int stop_pipeline(const char *name, const char *param)
 	p = it->second;
 	if (ccai_stream_pipeline_stop(p, (void *)param) != 0)
 		return -1;
+	if (ccai_stream_pipeline_remove(p, (void *)param) != 0)
+		return -1;
 
 	pipelines.erase(it);
 
