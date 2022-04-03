@@ -165,9 +165,7 @@ static int start_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
 
 	struct desc_private *private = desc->private_data;
 
-	ccai_gst_start_pipeline(private->gst_pipe);
-
-	return 0;
+	return ccai_gst_start_pipeline(private->gst_pipe);
 }
 
 static int stop_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)

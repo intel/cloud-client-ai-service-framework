@@ -89,12 +89,31 @@ int ccai_stream_add_pipeline(struct ccai_stream_pipeline_desc *desc)
 	return 0;
 }
 
-void ccai_gst_start_pipeline(GstElement *gst_pipe)
+int ccai_gst_start_pipeline(GstElement *gst_pipe)
 {
 	GstStateChangeReturn ret =
 		gst_element_set_state(gst_pipe, GST_STATE_PLAYING);
 	CS_D("gst_element_set_state GST_STATE_PLAYING ret=%d\n", ret);
-	/* TODO: should check gst element state */
+
+	switch (ret) {
+	case GST_STATE_CHANGE_FAILURE:
+		CS_E("gst_element_set_state GST_STATE_PLAYING failed\n");
+		return -1;
+	case GST_STATE_CHANGE_ASYNC:
+		ret = gst_element_get_state(gst_pipe, NULL, NULL,
+					    GST_CLOCK_TIME_NONE);
+		CS_D("gst_element_get_state ret=%d\n", ret);
+		if (ret != GST_STATE_CHANGE_SUCCESS &&
+		    ret != GST_STATE_CHANGE_NO_PREROLL) {
+			CS_E("change state to playing failed\n");
+			return -1;
+		}
+		return 0;
+	default:
+		break;
+	}
+
+	return 0;
 }
 
 void ccai_gst_stop_pipeline(GstElement *gst_pipe)
@@ -102,7 +121,15 @@ void ccai_gst_stop_pipeline(GstElement *gst_pipe)
 	GstStateChangeReturn ret =
 		gst_element_set_state(gst_pipe, GST_STATE_NULL);
 	CS_D("gst_element_set_state GST_STATE_NULL ret=%d\n", ret);
-	/* TODO: should check pipeline state */
+
+	// wait pipeline change to stop state.
+	ret = gst_element_get_state(gst_pipe, NULL, NULL, GST_CLOCK_TIME_NONE);
+	CS_D("gst_element_get_state ret=%d\n", ret);
+
+	if (ret != GST_STATE_CHANGE_SUCCESS &&
+	    ret != GST_STATE_CHANGE_NO_PREROLL) {
+		CS_E("change state to GST_STATE_NULL failed\n");
+	}
 }
 
 static void *gst_pipeline_proc(void* x)
