@@ -186,7 +186,6 @@ static std::map<int, std::string> position_result = {{-1, "-"}, {0, "OK"}, {1, "
 
 static int read_pipeline(const char *name, std::string& result)
 {
-        ccai_stream_pipeline *p = NULL;
         std::map<std::string, ccai_stream_pipeline*>::iterator it;
 
         it = pipelines.find(name);
@@ -194,7 +193,6 @@ static int read_pipeline(const char *name, std::string& result)
                 I("cannot find pipeline: %s, ignore method read\n", name);
                 return 0;
         }
-        p = it->second;
 
         if (strncmp(name, "launcher.pose_estimation", 24) == 0) {
                 struct humans tmpHumans;
