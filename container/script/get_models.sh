@@ -87,7 +87,7 @@ download_and_convert()
 		if [ "x${model:0:1}" = "x#" ]; then
 			continue
 		fi
-		$converter -d $cache_dir -precisions FP32 --name $model
+		$converter -d $cache_dir --precisions FP32 --name $model
 	done
 
 	run_download_script
