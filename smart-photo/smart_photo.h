@@ -16,10 +16,10 @@ struct smart_photo {
 	std::vector<std::string> changed_photos;
 	std::mutex mutex;
 	pthread_t scan_thread;
-	int scan_flag;
+	int scan_runing;
 
 	smart_photo() {
-		scan_flag = SP_SCAN_STOPED;
+		scan_runing = 0;
 	}
 };
 

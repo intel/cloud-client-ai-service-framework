@@ -217,7 +217,7 @@ int db_photo_table_add(sqlite3 *db, const char *path, int64_t *id)
 		return -1;
 
 	char *err_msg = NULL;
-	std::string sql = "DELETE FROM Photo WHERE path='";
+	std::string sql = "PRAGMA foreign_keys=ON; DELETE FROM Photo WHERE path='";
 	sql += path;
 	sql += "';";
 	int rc = sqlite3_exec(db, sql.c_str(), 0, 0, &err_msg);

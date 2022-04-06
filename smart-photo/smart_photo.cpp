@@ -3,6 +3,10 @@
 #include <dirent.h>
 #include <pthread.h>
 #include <unistd.h>
+#include <linux/limits.h>
+#include <limits.h>
+#include <stdlib.h>
+#include <errno.h>
 #include <iostream>
 #include <fstream>
 #include "vino_ie_pipe.hpp"
@@ -45,6 +49,7 @@ int ccai_sp_init(void **sp_handle, const char *db_path)
 		goto err;
 
 	sp = new smart_photo;
+
 	if ((rc = db_init(&sp->db, db_path)) != 0) {
 		D(<< "db_init error:" << rc);
 		goto err;
@@ -60,7 +65,7 @@ err:
 
 static int wait_scan_thread_stop(struct smart_photo *sp)
 {
-	if (sp->scan_flag == SP_SCAN_STOPED)
+	if (!sp->scan_runing)
 		return 0;
 
 	pthread_join(sp->scan_thread, NULL);
@@ -129,11 +134,18 @@ static std::string to_container_path(const std::string &host_path)
 	return std::string(host_path);
 }
 
-static int add_photo(struct smart_photo *sp, const std::string &host_path)
+static int add_photo(struct smart_photo *sp, const std::string &path)
 {
-	D(<< host_path);
+	D(<< path);
 
-	int r = db_changed_table_add(sp->db, host_path.c_str());
+	char pp[PATH_MAX];
+
+	if (realpath(path.c_str(), pp) == NULL) {
+		E(<< "add_photo failed, path=" << path << " errno=" << errno);
+		return -1;
+	}
+
+	int r = db_changed_table_add(sp->db, pp);
 	if (r != 0) {
 		E(<< "db error: db_changed_table_add");
 		return -1;
@@ -210,8 +222,11 @@ int ccai_sp_move_file(void *sp_handle, const char *from, const char *to)
 	return db_photo_table_move(sp->db, from, to);
 }
 
-static int scan_callback(void *data, int argc, char **argv, char **col_name)
+static int changed_for_each_callback(void *data, int argc, char **argv,
+				     char **col_name)
 {
+	D();
+
 	struct smart_photo *sp = (struct smart_photo *)data;
 	const std::string path_col_name = "path";
 
@@ -220,13 +235,10 @@ static int scan_callback(void *data, int argc, char **argv, char **col_name)
 			if (argv[i] == NULL)
 				continue;
 
-			smart_photo_lock(sp);
-			if (sp->scan_flag == SP_SCAN_STOPPING) {
-				smart_photo_unlock(sp);
+			if (!sp->scan_runing)
 				break;
-			}
+
 			sp->changed_photos.push_back(std::string(argv[i]));
-			smart_photo_unlock(sp);
 		}
 	}
 
@@ -510,92 +522,104 @@ static void *scan_thread(void *p)
 	if (sp == NULL)
 		return NULL;
 
-	db_changed_table_for_each_row(sp->db, scan_callback, sp);
-
 	smart_photo_lock(sp);
-	for (auto p : sp->changed_photos) {
-		if (sp->scan_flag == SP_SCAN_STOPPING) {
+
+	while (sp->scan_runing) {
+		db_changed_table_for_each_row(sp->db,
+					      changed_for_each_callback, sp);
+		if (sp->changed_photos.size() == 0)
 			break;
-		}
-		smart_photo_unlock(sp);
-
-		// ***** infer
-		D("infer: " << p);
-		cv::Mat img = cv::imread(p);
-		if (img.empty()) {
-			E("can not load photo: " << p);
-			continue;
-		}
-
-		// face detection
-		std::vector<std::vector<float> > vs;
-		face_detection(img, &vs);
-
-		// segmentation
-		std::vector<std::string> labels;
-		segmentation(img, &labels);
-
-		// *****  update db
-		smart_photo_lock(sp);
 
 		db_transaction_begin(sp->db);
 
-		// remove p from db
-		db_changed_table_remove(sp->db, p.c_str());
+		for (auto p : sp->changed_photos) {
+			if (!sp->scan_runing)
+				break;
 
-		// object to db
-		int64_t p_id;
-		db_photo_table_add(sp->db, p.c_str(), &p_id);
+			smart_photo_unlock(sp);
 
-		for (auto &l : labels) {
-			D("LABEL: "<< l);
-			int64_t id;
-			db_object_table_add(sp->db, l.c_str(), &id);
-			D("id=" << id);
-			db_photo_object_table_add(sp->db, p_id, id);
-		}
+			//---------------- infer
+			D("infer: " << p);
+			cv::Mat img = cv::imread(p);
 
-		// face id to db
-		std::vector<std::vector<float> > new_persion_vs;
-		for (auto &v : vs) {
-			D("v.size()=" << v.size());
-			cv::Mat m(v);
+			if (img.empty()) {
+				E("can not load photo: " << p << " remove from db");
 
-			struct match_face mf;
-			mf.sp = sp;
-			mf.m = m;
-			mf.ids.clear();
+				// remove the photo cannot loaded by cv.
+				smart_photo_lock(sp);
+				db_changed_table_remove(sp->db, p.c_str());
 
-			db_person_table_for_each_row(sp->db,
-					person_for_each_callback, &mf);
+				continue;
+			}
 
-			D("mf.ids.size()=" << mf.ids.size());
-			if (mf.ids.size()) {
-				//
-				D("face id found");
-				for (auto id: mf.ids) {
-					D("face id=" << id);
-					db_photo_person_table_add(sp->db, p_id,
-								  id);
+			// face detection
+			std::vector<std::vector<float> > vs;
+			face_detection(img, &vs);
+
+			// segmentation
+			std::vector<std::string> labels;
+			segmentation(img, &labels);
+
+			//---------------- update db
+			smart_photo_lock(sp);
+
+
+			// remove p from db
+			db_changed_table_remove(sp->db, p.c_str());
+
+			// object to db
+			int64_t p_id;
+			db_photo_table_add(sp->db, p.c_str(), &p_id);
+
+			for (auto &l : labels) {
+				D("LABEL: "<< l);
+				int64_t id;
+				db_object_table_add(sp->db, l.c_str(), &id);
+				D("id=" << id);
+				db_photo_object_table_add(sp->db, p_id, id);
+			}
+
+			// face id to db
+			std::vector<std::vector<float> > new_persion_vs;
+			for (auto &v : vs) {
+				D("v.size()=" << v.size());
+				cv::Mat m(v);
+
+				struct match_face mf;
+				mf.sp = sp;
+				mf.m = m;
+				mf.ids.clear();
+
+				db_person_table_for_each_row(sp->db,
+							     person_for_each_callback, &mf);
+
+				D("mf.ids.size()=" << mf.ids.size());
+				if (mf.ids.size()) {
+					//
+					D("face id found");
+					for (auto id: mf.ids) {
+						D("face id=" << id);
+						db_photo_person_table_add(sp->db, p_id,
+									  id);
+					}
+				} else {
+					new_persion_vs.push_back(v);
 				}
-			} else {
-				new_persion_vs.push_back(v);
+			}
+			for (auto &v : new_persion_vs) {
+				int64_t id = 0;
+				db_person_table_add(sp->db, v, &id);
+				db_photo_person_table_add(sp->db, p_id, id);
+				D("new face id=" << id);
 			}
 		}
-		for (auto &v : new_persion_vs) {
-			int64_t id = 0;
-			db_person_table_add(sp->db, v, &id);
-			db_photo_person_table_add(sp->db, p_id, id);
-			D("new face id=" << id);
-		}
+
+		db_transaction_end(sp->db);
+		sp->changed_photos.clear();
 	}
 
-	sp->scan_flag = SP_SCAN_STOPED;
-	sp->changed_photos.clear();
+	sp->scan_runing = 0;
 	D(<< "scan stoped");
-
-	db_transaction_end(sp->db);
-
 	smart_photo_unlock(sp);
 
 	return NULL;
@@ -609,10 +633,10 @@ int ccai_sp_scan(void *sp_handle)
 	if (sp == NULL)
 		return -1;
 	smart_photo_auto_lock(sp);
-	if (sp->scan_flag != SP_SCAN_STOPED)
+	if (sp->scan_runing)
 		return -1;
 
-	sp->scan_flag = SP_SCAN_STARTED;
+	sp->scan_runing = 1;
 	pthread_create(&sp->scan_thread, NULL, scan_thread, sp_handle);
 
 	return 0;
@@ -627,11 +651,11 @@ int ccai_sp_stop_scan(void *sp_handle)
 		return -1;
 
 	smart_photo_lock(sp);
-	if (sp->scan_flag != SP_SCAN_STARTED) {
+	if (!sp->scan_runing) {
 		smart_photo_unlock(sp);
 		return -1;
 	}
-	sp->scan_flag = SP_SCAN_STOPPING;
+	sp->scan_runing = 0;
 	smart_photo_unlock(sp);
 
 	pthread_join(sp->scan_thread, NULL);
@@ -647,7 +671,7 @@ int ccai_sp_wait_scan(void *sp_handle)
 	if (sp == NULL)
 		return -1;
 	smart_photo_lock(sp);
-	if (sp->scan_flag != SP_SCAN_STARTED) {
+	if (!sp->scan_runing) {
 		smart_photo_unlock(sp);
 		return -1;
 	}
