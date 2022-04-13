@@ -17,14 +17,17 @@
 #include "db.h"
 
 #define MODEL_DIR                "/opt/fcgi/cgi-bin/models"
-#define FACE_DETECTION_MODEL     \
-	MODEL_DIR"/face-detection-adas-0001.xml"
-#define FACE_REIDENTIFICATION_MODEL   \
+#define FACE_DETECTION_MODEL     MODEL_DIR"/face-detection-adas-0001.xml"
+#define FACE_REIDENTIFICATION_MODEL	\
 	MODEL_DIR"/face-recognition-resnet100-arcface-onnx.xml"
+#define HEAD_POSE_MODEL          MODEL_DIR"/head-pose-estimation-adas-0001.xml"
 #define SEGMENTATION_MODEL       MODEL_DIR"/hrnet-v2-c1-segmentation.xml"
 #define SEGMENTATION_LABELS      MODEL_DIR"/hrnet-v2-c1-segmentation.labels"
 
-#define CONFIDENCE	0.7
+#define FACE_DETECTION_CONFIDENCE	0.8
+#define SEGMENTATION_CONFIDENCE		0.9
+#define FACE_MIN_PERCENT 		0.1
+#define HEAD_POSE_MAX_ANGLE		30.0
 
 struct match_face {
 	struct smart_photo *sp;
@@ -126,12 +129,6 @@ void init()
 		setvbuf(stderr, NULL, _IONBF, 1024);
 		fprintf(stdout, "[SPLIB][init] loaded\n");
 	}
-}
-
-static std::string to_container_path(const std::string &host_path)
-{
-	// FIXME: add a prefix in container path
-	return std::string(host_path);
 }
 
 static int add_photo(struct smart_photo *sp, const std::string &path)
@@ -313,7 +310,7 @@ static int face_detection_ex(cv::Mat img,
 			break;
 
 		// confidence
-		if (detections[offset+2] < CONFIDENCE)
+		if (detections[offset+2] < FACE_DETECTION_CONFIDENCE)
 			continue;
 
 		D("confidence=" << detections[offset + 2]);
@@ -339,6 +336,38 @@ static int face_detection_ex(cv::Mat img,
 	return 0;
 }
 
+static bool ignore_face(cv::Mat &face_img)
+{
+	std::vector<std::vector<float>*> raw_results;
+	std::vector<float> yaw;
+	std::vector<float> pitch;
+	std::vector<float> roll;
+	raw_results.push_back(&pitch);
+	raw_results.push_back(&roll);
+	raw_results.push_back(&yaw);
+
+	int rc = infer(face_img, HEAD_POSE_MODEL, raw_results);
+	if (rc != RT_LOCAL_INFER_OK) {
+		E("head pose infer failed");
+		return true;
+	}
+	if (yaw.size() != 1 || pitch.size() != 1 || roll.size() != 1) {
+		E("head pose result size error");
+		return true;
+	}
+
+	float y = fabs(yaw[0]);
+	float p = fabs(pitch[0]);
+	float r = fabs(roll[0]);
+	D("head pose abs value y:" << y << " p:" << p << " r:" << r);
+	if (y > HEAD_POSE_MAX_ANGLE || p > HEAD_POSE_MAX_ANGLE) {
+		D("head pose angle too large, ignore this face.");
+		return true;
+	}
+
+	return false;
+}
+
 static int face_detection(cv::Mat img, std::vector<std::vector<float> >* vs)
 {
 	if (!vs)
@@ -353,11 +382,23 @@ static int face_detection(cv::Mat img, std::vector<std::vector<float> >* vs)
 		auto clipped_size = rect & cv::Rect(0, 0, img_w, img_h);
 		D("clip=" << clipped_size);
 
+		// ignore if face size too small
+		if ((float)clipped_size.width / (float)img_w < FACE_MIN_PERCENT
+		    || (float)clipped_size.height / (float)img_h
+		    < FACE_MIN_PERCENT) {
+			D("face size too small");
+			return;
+		}
+		// face image
+		cv::Mat face_img = cv::Mat(img, clipped_size);
+		if (ignore_face(face_img)) {
+			D("ignore this face");
+			return;
+		}
+
 		std::vector<float> detections;
 		std::vector<std::vector<float>*> raw_results;
 		raw_results.push_back(&detections);
-		// face image
-		cv::Mat face_img = cv::Mat(img, clipped_size);
 
 		int rc = infer(face_img,
 			       FACE_REIDENTIFICATION_MODEL, raw_results);
@@ -444,7 +485,7 @@ static int segmentation(cv::Mat img, std::vector<std::string> *markers)
 				clss = i;
 			}
 		}
-		if (probability > 0.9) {
+		if (probability > SEGMENTATION_CONFIDENCE) {
 			marker_ids[clss] = labels[clss];
 			marker_counts[clss] += 1;
 		}
