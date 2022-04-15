@@ -151,21 +151,16 @@ static int add_photo(struct smart_photo *sp, const std::string &path)
 	return 0;
 }
 
-int ccai_sp_add_dir(void *sp_handle, const char *dir)
+static int add_dir(struct smart_photo *sp, const std::string &dir)
 {
 	DIR *d = NULL;
-	if ((d = opendir(dir)) == NULL) {
+	if ((d = opendir(dir.c_str())) == NULL) {
 		E(<< "Cannot open dir: " << dir << " to scan");
 		return -1;
 	}
 
-	struct smart_photo *sp = (struct smart_photo *)sp_handle;
-	if (sp == NULL)
-		return -1;
-	smart_photo_auto_lock(sp);
+	int r = 0;
 
-	// begin a transaction to quickly insert rows to db
-	db_transaction_begin(sp->db);
 	struct dirent *de = NULL;
 	while ((de = readdir(d)) != NULL) {
 		const std::string dot = ".";
@@ -176,11 +171,34 @@ int ccai_sp_add_dir(void *sp_handle, const char *dir)
 		std::string p(dir);
 		p += '/';
 		p += de->d_name;
-		add_photo(sp, p);
+
+		if (de->d_type & DT_DIR) {
+			if (add_dir(sp, p) != 0)
+				r = -1;
+		} else {
+			if (add_photo(sp, p) != 0)
+				r = -1;
+		}
 	}
+
+	return r ;
+}
+
+int ccai_sp_add_dir(void *sp_handle, const char *dir)
+{
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	if (sp == NULL)
+		return -1;
+	smart_photo_auto_lock(sp);
+
+	// begin a transaction to quickly insert rows to db
+	db_transaction_begin(sp->db);
+
+	int r = add_dir(sp, dir);
+
 	db_transaction_end(sp->db);
 
-	return 0;
+	return r;
 }
 
 int ccai_sp_add_file(void *sp_handle, const char *file)
@@ -190,9 +208,7 @@ int ccai_sp_add_file(void *sp_handle, const char *file)
 		return -1;
 	smart_photo_auto_lock(sp);
 
-	add_photo(sp, file);
-
-	return 0;
+	return add_photo(sp, file);
 }
 
 int ccai_sp_remove_file(void *sp_handle, const char *file)
