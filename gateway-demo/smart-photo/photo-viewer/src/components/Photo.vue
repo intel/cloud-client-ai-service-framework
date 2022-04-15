@@ -18,11 +18,20 @@ export default {
     return {
       images: [],
       api_url: '/cgi-bin/smartphoto',
-      picture_server: '/smartphoto/'
+      picture_server: ''
     }
   },
 
   mounted() {
+    function photos_to_view(vc, photos) {
+      vc.images.length = 0
+      let s = vc.picture_server
+      for (let p of photos) {
+        let filename = p.path
+        let t = filename.replace(/\/smartphoto\/[^/]+/, '/smartphoto/thumbnail')
+        vc.images.push({ image: s+filename, thumb: s+t, });
+      }
+    }
     console.log('params:', this.$route.params)
     const type = this.$route.params['type']
     const id = this.$route.params['id']
@@ -34,14 +43,7 @@ export default {
         param: id,
       }).then(function (response) {
         console.log('### list_photo_by_class response:', response)
-        vc.images.length = 0
-        let s = vc.picture_server + '/photos/'
-        let t = vc.picture_server + '/thumbnail/crop_'
-
-        for (let p of response.data.photos) {
-          let filename = p.path.replace(/^.*(\\|\/)/, '')
-          vc.images.push({ image: s+filename, thumb: t+filename, });
-        }
+        photos_to_view(vc, response.data.photos)
       }).catch(function (error) {
         console.log('smartphoto error:', error)
       })
@@ -51,18 +53,7 @@ export default {
         param: id,
       }).then(function (response) {
         console.log('### list_photo_by_person response:', response)
-
-        vc.images.length = 0
-
-        let s = vc.picture_server + '/photos/'
-        let t = vc.picture_server + '/thumbnail/crop_'
-
-        for (let p of response.data.photos) {
-          let filename = p.path.replace(/^.*(\\|\/)/, '')
-
-          vc.images.push({ image: s+filename, thumb: t+filename, });
-        }
-
+        photos_to_view(vc, response.data.photos)
       }).catch(function (error) {
         console.log('smartphoto error:', error)
       })
@@ -72,18 +63,7 @@ export default {
         param: id,
       }).then(function (response) {
         console.log('### list_photo_by_person response:', response)
-
-        vc.images.length = 0
-
-        let s = vc.picture_server + '/photos/'
-        let t = vc.picture_server + '/thumbnail/crop_'
-
-        for (let p of response.data.photos) {
-          let filename = p.path.replace(/^.*(\\|\/)/, '')
-
-          vc.images.push({ image: s+filename, thumb: t+filename, });
-        }
-
+        photos_to_view(vc, response.data.photos)
       }).catch(function (error) {
         console.log('smartphoto error:', error)
       })

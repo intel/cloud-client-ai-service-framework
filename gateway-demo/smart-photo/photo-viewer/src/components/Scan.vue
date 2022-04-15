@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       api_url: '/cgi-bin/smartphoto',
-      picture_server: 'smartphoto/',
+      picture_server: '',
       upload_action_rul: '/photo-upload/upload.py',
 
       reflushCount: 0,
@@ -217,13 +217,10 @@ export default {
         param: label,
       }).then(function (response) {
         console.log('### list_photo_by_class response:', response)
-
-        /*let s = vc.picture_server + '/photos/'*/
-        const t = vc.picture_server + '/thumbnail/crop_'
-
+        const s = vc.picture_server
         for (let p of response.data.photos) {
-          let filename = p.path.replace(/^.*(\\|\/)/, '')
-          Vue.set(vc.categories, clss, t + filename)
+          const t = p.path.replace(/\/smartphoto\/[^/]+/, '/smartphoto/thumbnail')
+          Vue.set(vc.categories, clss, s + t)
         }
       }).catch(function (error) {
         console.log('list_photo_by_class error:', error)
@@ -237,12 +234,10 @@ export default {
         param: person,
       }).then(function (response) {
         console.log('### list_photo_by_person response:', response)
-        const t = vc.picture_server + '/thumbnail/crop_'
-
+        const s = vc.picture_server
         for (let p of response.data.photos) {
-          let filename = p.path.replace(/^.*(\\|\/)/, '')
-          console.log('### list_photo_by_person filename:', filename)
-          Vue.set(vc.people, person, t + filename)
+          const t = p.path.replace(/\/smartphoto\/[^/]+/, '/smartphoto/thumbnail')
+          Vue.set(vc.people, person, s + t)
         }
       }).catch(function (error) {
         console.log('list_photo_by_person error:', error)
