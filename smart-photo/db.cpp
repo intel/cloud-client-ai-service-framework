@@ -614,3 +614,57 @@ int db_photo_table_move(sqlite3 *db, const char *from, const char *to)
 
 	return 0;
 }
+
+int db_list_class_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback, void *data,
+			   const char *path)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT o.id, o.name FROM Object o "
+			  "INNER JOIN PhotoObject po ON o.id = po.object_id "
+			  "INNER JOIN Photo p ON p.id = po.photo_id "
+			  "WHERE p.path = '";
+	sql += path;
+	sql += "';";
+
+	int rc = sqlite3_exec(db, sql.c_str(), callback, data, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "list class by photo select failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}
+
+int db_list_person_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
+			    void *data, const char *path)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT ps.id, ps.name FROM Person ps "
+			  "INNER JOIN PhotoPerson pp ON ps.id = pp.person_id "
+			  "INNER JOIN Photo p ON p.id = pp.photo_id "
+			  "WHERE p.path = '";
+	sql += path;
+	sql += "';";
+
+	int rc = sqlite3_exec(db, sql.c_str(), callback, data, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "list person by photo select failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}

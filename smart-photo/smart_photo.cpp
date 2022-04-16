@@ -36,6 +36,8 @@ struct match_face {
 };
 
 typedef int DB_LIST_FUNCTION(sqlite3 *, DB_EXEC_CALLBACK, void *);
+typedef int DB_LIST_BY_PHOTO_FUNCTION(sqlite3 *, DB_EXEC_CALLBACK, void *,
+				      const char *);
 
 int __ccai_sp_debug_log_enabled = 0;
 syslog::ostream * __ccai_sp_syslog = NULL;
@@ -573,6 +575,55 @@ static int person_for_each_callback(void *data, int argc, char **argv, char
 	return 0;
 }
 
+static void object_to_db(struct smart_photo *sp, int64_t p_id,
+			 const std::vector<std::string> &labels)
+{
+	for (auto &l : labels) {
+		D("LABEL: "<< l);
+		int64_t id;
+		db_object_table_add(sp->db, l.c_str(), &id);
+		D("id=" << id);
+		db_photo_object_table_add(sp->db, p_id, id);
+	}
+}
+
+static void face_id_to_db(struct smart_photo *sp, int64_t p_id,
+			  const std::vector<std::vector<float> > &vs)
+{
+	std::vector<std::vector<float> > new_persion_vs;
+	for (auto &v : vs) {
+		D("v.size()=" << v.size());
+		cv::Mat m(v);
+
+		struct match_face mf;
+		mf.sp = sp;
+		mf.m = m;
+		mf.ids.clear();
+
+		db_person_table_for_each_row(sp->db,
+					     person_for_each_callback, &mf);
+
+		D("mf.ids.size()=" << mf.ids.size());
+		if (mf.ids.size()) {
+			//
+			D("face id found");
+			for (auto id: mf.ids) {
+				D("face id=" << id);
+				db_photo_person_table_add(sp->db, p_id,
+							  id);
+			}
+		} else {
+			new_persion_vs.push_back(v);
+		}
+	}
+	for (auto &v : new_persion_vs) {
+		int64_t id = 0;
+		db_person_table_add(sp->db, v, &id);
+		db_photo_person_table_add(sp->db, p_id, id);
+		D("new face id=" << id);
+	}
+}
+
 static void *scan_thread(void *p)
 {
 	struct smart_photo *sp = (struct smart_photo *)p;
@@ -620,55 +671,14 @@ static void *scan_thread(void *p)
 			//---------------- update db
 			smart_photo_lock(sp);
 
-
 			// remove p from db
 			db_changed_table_remove(sp->db, p.c_str());
-
-			// object to db
 			int64_t p_id;
 			db_photo_table_add(sp->db, p.c_str(), &p_id);
 
-			for (auto &l : labels) {
-				D("LABEL: "<< l);
-				int64_t id;
-				db_object_table_add(sp->db, l.c_str(), &id);
-				D("id=" << id);
-				db_photo_object_table_add(sp->db, p_id, id);
-			}
+			object_to_db(sp, p_id, labels);
+			face_id_to_db(sp, p_id, vs);
 
-			// face id to db
-			std::vector<std::vector<float> > new_persion_vs;
-			for (auto &v : vs) {
-				D("v.size()=" << v.size());
-				cv::Mat m(v);
-
-				struct match_face mf;
-				mf.sp = sp;
-				mf.m = m;
-				mf.ids.clear();
-
-				db_person_table_for_each_row(sp->db,
-							     person_for_each_callback, &mf);
-
-				D("mf.ids.size()=" << mf.ids.size());
-				if (mf.ids.size()) {
-					//
-					D("face id found");
-					for (auto id: mf.ids) {
-						D("face id=" << id);
-						db_photo_person_table_add(sp->db, p_id,
-									  id);
-					}
-				} else {
-					new_persion_vs.push_back(v);
-				}
-			}
-			for (auto &v : new_persion_vs) {
-				int64_t id = 0;
-				db_person_table_add(sp->db, v, &id);
-				db_photo_person_table_add(sp->db, p_id, id);
-				D("new face id=" << id);
-			}
 		}
 
 		db_transaction_end(sp->db);
@@ -940,3 +950,92 @@ int ccai_sp_list_all_class(void *sp_handle, CCAI_SP_LIST_CB callback,
 	return 0;
 }
 
+int ccai_sp_scan_file_buffer(void *sp_handle, const char *path,
+			     const char *buffer, int len)
+{
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+
+	cv::Mat img = cv::imdecode(cv::Mat(1, len, CV_8UC1, (void *)buffer),
+				   cv::IMREAD_UNCHANGED);
+	if (img.empty())
+		return -1;
+
+	// face detection
+	std::vector<std::vector<float> > vs;
+	face_detection(img, &vs);
+
+	// segmentation
+	std::vector<std::string> labels;
+	segmentation(img, &labels);
+
+	smart_photo_auto_lock(sp);
+
+	// remove p from db
+	db_changed_table_remove(sp->db, path);
+	int64_t p_id;
+	db_photo_table_add(sp->db, path, &p_id);
+
+	object_to_db(sp, p_id, labels);
+	face_id_to_db(sp, p_id, vs);
+
+	return 0;
+}
+
+static int list_by_photo(struct smart_photo *sp, const char *path,
+			 CCAI_SP_LIST_CB callback, void *data,
+			 DB_LIST_BY_PHOTO_FUNCTION list_func)
+{
+	struct callback_data {
+		CCAI_SP_LIST_CB *callback;
+		void *data;
+	};
+
+	auto cb = [] (void* data, int argc, char** argv,
+			    char** col_name) -> int {
+
+		struct callback_data *cd = (struct callback_data *)data;
+		const std::string str_id = "id";
+		const std::string str_name = "name";
+		int64_t id = 0;
+		char *name = NULL;
+
+		for (int i = 0; i < argc; i++) {
+			if (str_id == col_name[i]) {
+				id = stoll(argv[i]);
+			} else if (str_name == col_name[i]) {
+				if (argv[i])
+					name = argv[i];
+			}
+		}
+
+		return cd->callback(cd->data, id, name);
+	};
+
+	struct callback_data cd;
+	cd.callback = callback;
+	cd.data = data;
+
+	return list_func(sp->db, cb, (void *)&cd, path);
+}
+
+int ccai_sp_list_class_by_photo(void *sp_handle, const char *path,
+				CCAI_SP_LIST_CB callback, void *data)
+{
+	if (sp_handle == NULL || callback == NULL)
+		return -1;
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	smart_photo_auto_lock(sp);
+
+	return list_by_photo(sp, path, callback, data, db_list_class_by_photo);
+}
+
+int ccai_sp_list_person_by_photo(void *sp_handle, const char *path,
+				 CCAI_SP_LIST_CB callback, void *data)
+{
+	if (sp_handle == NULL || callback == NULL)
+		return -1;
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	smart_photo_auto_lock(sp);
+
+	return list_by_photo(sp, path, callback, data, db_list_person_by_photo);
+}

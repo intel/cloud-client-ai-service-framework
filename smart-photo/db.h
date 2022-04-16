@@ -52,7 +52,12 @@ int db_list_photo_by_person(sqlite3 *db, DB_EXEC_CALLBACK callback,
 			    void *data, int64_t person_id);
 int db_list_photo_by_class(sqlite3 *db, DB_EXEC_CALLBACK callback,
 			   void *data, const char *class_name);
+int db_list_class_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
+			   void *data, const char *path);
+int db_list_person_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
+			    void *data, const char *path);
 #ifdef __cplusplus
 }
 #endif
 #endif
+

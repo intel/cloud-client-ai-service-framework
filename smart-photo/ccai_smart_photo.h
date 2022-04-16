@@ -34,6 +34,15 @@ int ccai_sp_count_photo_by_person(void *sp_handle, int64_t id);
 int ccai_sp_list_all_class(void *sp_handle, CCAI_SP_LIST_CB callback,
 			   void *data);
 
+int ccai_sp_scan_file_buffer(void *sp_handle, const char *path,
+			     const char *buffer, int len);
+
+int ccai_sp_list_class_by_photo(void *sp_handle, const char *path,
+				CCAI_SP_LIST_CB callback, void *data);
+
+int ccai_sp_list_person_by_photo(void *sp_handle, const char *path,
+				 CCAI_SP_LIST_CB callback, void *data);
+
 #ifdef __cplusplus
 }
 #endif
