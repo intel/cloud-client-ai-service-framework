@@ -353,6 +353,10 @@ std::string smartphoto_resp(const char *post_data, void *sp)
 		D("ccai_sp_move_file r=" << r);
 		json_object_object_add(resp, "result", json_object_new_int(r));
 		resp_str = json_object_to_json_string(resp);
+	} else if (method == "del_all_file") {
+		int r = ccai_sp_remove_all_file(sp);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
 	} else {
 		E("Unknow method: " << method);
 	}
