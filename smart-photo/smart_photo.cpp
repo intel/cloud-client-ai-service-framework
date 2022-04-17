@@ -713,7 +713,7 @@ int ccai_sp_scan(void *sp_handle)
 		return -1;
 	smart_photo_auto_lock(sp);
 	if (sp->scan_runing)
-		return -1;
+		return 0;
 
 	sp->scan_runing = 1;
 	pthread_create(&sp->scan_thread, NULL, scan_thread, sp_handle);
