@@ -668,3 +668,30 @@ int db_list_person_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
 
 	return 0;
 }
+
+int db_photo_table_remove_all(sqlite3 *db)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql =
+		"PRAGMA foreign_keys=ON;"
+		"DELETE FROM ChangedPhoto;"
+		"DELETE FROM Photo;"
+		"DELETE FROM Object;"
+		"DELETE FROM PhotoObject;"
+		"DELETE FROM Person;"
+		"DELETE FROM PhotoPerson;";
+
+	int rc = sqlite3_exec(db, sql.c_str(), 0, 0, &err_msg);
+	if (rc != SQLITE_OK) {
+		D(<< "remove all failed rc: " << rc << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}

@@ -225,6 +225,18 @@ int ccai_sp_remove_file(void *sp_handle, const char *file)
 	return db_photo_table_remove(sp->db, file);
 }
 
+int ccai_sp_remove_all_file(void *sp_handle)
+{
+	D();
+
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	if (sp == NULL)
+		return -1;
+	smart_photo_auto_lock(sp);
+
+	return db_photo_table_remove_all(sp->db);
+}
+
 int ccai_sp_move_file(void *sp_handle, const char *from, const char *to)
 {
 	D();

@@ -13,6 +13,7 @@ int ccai_sp_release(void *sp_handle);
 int ccai_sp_add_dir(void *sp_handle, const char *dir);
 int ccai_sp_add_file(void *sp_handle, const char *file);
 int ccai_sp_remove_file(void *sp_handle, const char *file);
+int ccai_sp_remove_all_file(void *sp_handle);
 int ccai_sp_move_file(void *sp_handle, const char *from, const char *to);
 
 int ccai_sp_scan(void *sp_handle);

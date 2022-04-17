@@ -56,6 +56,7 @@ int db_list_class_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
 			   void *data, const char *path);
 int db_list_person_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
 			    void *data, const char *path);
+int db_photo_table_remove_all(sqlite3 *db);
 #ifdef __cplusplus
 }
 #endif
