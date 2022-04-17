@@ -146,17 +146,27 @@ export default {
 
     onScanStart() {
       let vc = this
-      axios.post(this.api_url, {
-        method: 'scan_start',
+      axios.post(vc.api_url, {
+        method: 'add_dir',
+        param: '/smartphoto/photos'
       }).then(function (response) {
-        vc.scaning = true
-        vc.reflushCount = 0
-        vc.categories = {}
-        vc.people = {}
-        console.log('smartphoto response:', response)
-        setTimeout(vc.reflushClassView, 3000)
+        console.log('add_dir response:', response)
+        if (response.data.result == 0) {
+          axios.post(vc.api_url, {
+            method: 'scan_start',
+          }).then(function (response) {
+            vc.scaning = true
+            vc.reflushCount = 0
+            vc.categories = {}
+            vc.people = {}
+            console.log('smartphoto response:', response)
+            setTimeout(vc.reflushClassView, 3000)
+          }).catch(function (error) {
+            console.log('smartphoto error:', error)
+          })
+        }
       }).catch(function (error) {
-        console.log('smartphoto error:', error)
+          console.log('add_dir error:', error)
       })
     },
 
@@ -167,7 +177,7 @@ export default {
 
     listClass() {
       let vc = this
-      axios.post(this.api_url, {
+      axios.post(vc.api_url, {
         method: 'list_class',
       }).then(function (response) {
         console.log('smartphoto response:', response)
@@ -188,7 +198,7 @@ export default {
 
     listPerson() {
       let vc = this
-      axios.post(this.api_url, {
+      axios.post(vc.api_url, {
         method: 'list_person',
       }).then(function (response) {
         console.log('smartphoto response:', response)
@@ -211,8 +221,7 @@ export default {
 
     getClssThumbnailByLabel(label, clss) {
       let vc = this
-
-      axios.post(this.api_url, {
+      axios.post(vc.api_url, {
         method: 'list_photo_by_class',
         param: label,
       }).then(function (response) {
@@ -229,7 +238,7 @@ export default {
 
     getPersonProfile(person) {
       let vc = this
-      axios.post(this.api_url, {
+      axios.post(vc.api_url, {
         method: 'list_photo_by_person',
         param: person,
       }).then(function (response) {
