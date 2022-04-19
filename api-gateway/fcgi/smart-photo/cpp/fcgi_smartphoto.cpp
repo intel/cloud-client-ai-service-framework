@@ -92,6 +92,21 @@ std::string smartphoto_resp(const char *post_data, void *sp)
 		D("ccai_sp_scan r=" << r);
 		json_object_object_add(resp, "result", json_object_new_int(r));
 		resp_str = json_object_to_json_string(resp);
+	} else if (method == "scan_running") {
+		int scan_running = ccai_sp_scan_running(sp);
+		D("ccai_sp_scan_running=" << scan_running);
+		json_object_object_add(resp, "result", json_object_new_int(0));
+		json_object_object_add(resp, "running",
+				       json_object_new_boolean(scan_running));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "waiting_scan_count") {
+		int count = ccai_sp_waiting_scan_count(sp);
+		D("waiting_scan_count=" << count);
+		int r = count < 0 ? -1 : 0;
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		json_object_object_add(resp, "count",
+				       json_object_new_int(count));
+		resp_str = json_object_to_json_string(resp);
 	} else if (method == "list_all_class") {
 		// list class
 		struct json_object *clsses = json_object_new_array();
