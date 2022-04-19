@@ -695,3 +695,37 @@ int db_photo_table_remove_all(sqlite3 *db)
 
 	return 0;
 }
+
+int64_t db_changed_table_count(sqlite3 *db)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT COUNT(*) from ChangedPhoto;";
+
+	auto cb = [] (void* data, int argc, char** argv,
+			    char** col_name) -> int {
+		D("argc=" << argc);
+		int64_t *c = (int64_t *)data;
+		if (argc != 1)
+			return -1;
+		*c = stoll(argv[0]);
+		return 0;
+	};
+
+	int64_t count = -1;
+
+	int rc = sqlite3_exec(db, sql.c_str(), cb, &count, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "changed table count failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return count;
+}
+

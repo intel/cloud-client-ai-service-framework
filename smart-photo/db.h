@@ -20,6 +20,7 @@ int db_changed_table_remove(sqlite3 *db, const char *path);
 
 int db_changed_table_for_each_row(sqlite3 *db, DB_EXEC_CALLBACK callback,
 				  void *data);
+int64_t db_changed_table_count(sqlite3 *db);
 
 int db_photo_table_add(sqlite3 *db, const char *path, int64_t *id);
 int db_photo_table_remove(sqlite3 *db, const char *path);

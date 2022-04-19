@@ -1051,3 +1051,24 @@ int ccai_sp_list_person_by_photo(void *sp_handle, const char *path,
 
 	return list_by_photo(sp, path, callback, data, db_list_person_by_photo);
 }
+
+int ccai_sp_scan_running(void *sp_handle)
+{
+	if (sp_handle == NULL)
+		return -1;
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	smart_photo_auto_lock(sp);
+
+	return sp->scan_runing;
+}
+
+int64_t ccai_sp_waiting_scan_count(void *sp_handle)
+{
+	if (sp_handle == NULL)
+		return -1;
+	struct smart_photo *sp = (struct smart_photo *)sp_handle;
+	smart_photo_auto_lock(sp);
+
+	return db_changed_table_count(sp->db);
+}
+

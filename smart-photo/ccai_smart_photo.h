@@ -44,6 +44,9 @@ int ccai_sp_list_class_by_photo(void *sp_handle, const char *path,
 int ccai_sp_list_person_by_photo(void *sp_handle, const char *path,
 				 CCAI_SP_LIST_CB callback, void *data);
 
+int ccai_sp_scan_running(void *sp_handle);
+int64_t ccai_sp_waiting_scan_count(void *sp_handle);
+
 #ifdef __cplusplus
 }
 #endif
