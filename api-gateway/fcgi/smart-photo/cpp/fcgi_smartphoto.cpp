@@ -99,6 +99,10 @@ std::string smartphoto_resp(const char *post_data, void *sp)
 		json_object_object_add(resp, "running",
 				       json_object_new_boolean(scan_running));
 		resp_str = json_object_to_json_string(resp);
+	} else if (method == "scan_stop") {
+		int r = ccai_sp_stop_scan(sp);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
 	} else if (method == "waiting_scan_count") {
 		int count = ccai_sp_waiting_scan_count(sp);
 		D("waiting_scan_count=" << count);
