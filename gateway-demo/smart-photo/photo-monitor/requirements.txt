@@ -1,2 +1,3 @@
 inotify
 requests
+pillow

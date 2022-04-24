@@ -55,7 +55,7 @@ struct Result {
 std::string segmentation(cv::Mat img, std::string params_str) {
     CCAI_NOTICE("segmentation c++ service");
 
-    std::string model_file = "./models/deeplab_fp32/frozen_inference_graph.xml";
+    std::string model_file = "./models/deeplabv3.xml";
     std::vector<std::vector<float>> additionalInput;
     std::vector<float> rawDetectionResult;
     std::vector<std::vector<float>*> rawDetectionResults;

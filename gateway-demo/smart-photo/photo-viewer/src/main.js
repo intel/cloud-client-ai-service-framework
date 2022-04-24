@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router/index.js'
+
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
-
 
 import {
 	Tree,
@@ -32,6 +33,8 @@ import {
 	CollapseItem,
 	DatePicker,
 	Tag,
+  Loading,
+  Upload,
 } from 'element-ui'
 
 Vue.use(Tree)
@@ -60,6 +63,8 @@ Vue.use(Collapse)
 Vue.use(CollapseItem)
 Vue.use(DatePicker)
 Vue.use(Tag)
+Vue.use(Loading)
+Vue.use(Upload)
 
 
 import 'viewerjs/dist/viewer.css'
@@ -69,4 +74,5 @@ Viewer.setDefaults({ url: "data-src", })
 
 new Vue({
   render: h => h(App),
+  router: router,
 }).$mount('#app')

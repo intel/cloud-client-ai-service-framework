@@ -53,7 +53,7 @@ struct ccai_stream_pipeline_desc {
 int ccai_stream_add_pipeline(struct ccai_stream_pipeline_desc *pipe);
 GstElement *ccai_stream_get_gst_pipeline(struct ccai_stream_pipeline *pipe);
 
-void ccai_gst_start_pipeline(GstElement *gst_pipe);
+int ccai_gst_start_pipeline(GstElement *gst_pipe);
 void ccai_gst_stop_pipeline(GstElement *gst_pipe);
 
 int ccai_gst_start_pipeline_thread(GstElement *gst_pipe, pthread_t *tid);

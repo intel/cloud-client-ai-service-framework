@@ -217,7 +217,7 @@ int db_photo_table_add(sqlite3 *db, const char *path, int64_t *id)
 		return -1;
 
 	char *err_msg = NULL;
-	std::string sql = "DELETE FROM Photo WHERE path='";
+	std::string sql = "PRAGMA foreign_keys=ON; DELETE FROM Photo WHERE path='";
 	sql += path;
 	sql += "';";
 	int rc = sqlite3_exec(db, sql.c_str(), 0, 0, &err_msg);
@@ -614,3 +614,118 @@ int db_photo_table_move(sqlite3 *db, const char *from, const char *to)
 
 	return 0;
 }
+
+int db_list_class_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback, void *data,
+			   const char *path)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT o.id, o.name FROM Object o "
+			  "INNER JOIN PhotoObject po ON o.id = po.object_id "
+			  "INNER JOIN Photo p ON p.id = po.photo_id "
+			  "WHERE p.path = '";
+	sql += path;
+	sql += "';";
+
+	int rc = sqlite3_exec(db, sql.c_str(), callback, data, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "list class by photo select failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}
+
+int db_list_person_by_photo(sqlite3 *db, DB_EXEC_CALLBACK callback,
+			    void *data, const char *path)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT ps.id, ps.name FROM Person ps "
+			  "INNER JOIN PhotoPerson pp ON ps.id = pp.person_id "
+			  "INNER JOIN Photo p ON p.id = pp.photo_id "
+			  "WHERE p.path = '";
+	sql += path;
+	sql += "';";
+
+	int rc = sqlite3_exec(db, sql.c_str(), callback, data, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "list person by photo select failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}
+
+int db_photo_table_remove_all(sqlite3 *db)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql =
+		"PRAGMA foreign_keys=ON;"
+		"DELETE FROM ChangedPhoto;"
+		"DELETE FROM Photo;"
+		"DELETE FROM Object;"
+		"DELETE FROM PhotoObject;"
+		"DELETE FROM Person;"
+		"DELETE FROM PhotoPerson;";
+
+	int rc = sqlite3_exec(db, sql.c_str(), 0, 0, &err_msg);
+	if (rc != SQLITE_OK) {
+		D(<< "remove all failed rc: " << rc << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return 0;
+}
+
+int64_t db_changed_table_count(sqlite3 *db)
+{
+	D();
+	if (db == NULL)
+		return -1;
+
+	char *err_msg = NULL;
+	std::string sql = "SELECT COUNT(*) from ChangedPhoto;";
+
+	auto cb = [] (void* data, int argc, char** argv,
+			    char** col_name) -> int {
+		D("argc=" << argc);
+		int64_t *c = (int64_t *)data;
+		if (argc != 1)
+			return -1;
+		*c = stoll(argv[0]);
+		return 0;
+	};
+
+	int64_t count = -1;
+
+	int rc = sqlite3_exec(db, sql.c_str(), cb, &count, &err_msg);
+	if (rc != SQLITE_OK) {
+		E(<< "changed table count failed rc: " << rc
+		  << " err_msg: "
+		  << err_msg);
+		sqlite3_free(err_msg);
+		return -1;
+	}
+
+	return count;
+}
+

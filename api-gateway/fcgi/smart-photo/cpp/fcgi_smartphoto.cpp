@@ -31,20 +31,15 @@ curl -d '{
 #define DEFAULT_SMART_PHOTO_DIR		"/smartphoto/"
 
 
-static char _smartphoto_dir[PATH_MAX];
 static char _smartphoto_db_file[PATH_MAX];
 
 void init_smartphoto_dir()
 {
 	char *d = getenv("CCAI_SMARTPHOTO_DIR");
 	if (d != NULL) {
-		snprintf(_smartphoto_dir, sizeof(_smartphoto_dir),
-			 "%s/photos/", d);
 		snprintf(_smartphoto_db_file, sizeof(_smartphoto_db_file),
 			 "%s/%s", d, ".smartphoto.db");
 	} else {
-		snprintf(_smartphoto_dir, sizeof(_smartphoto_dir),
-			 "%s/photos/", DEFAULT_SMART_PHOTO_DIR);
 		snprintf(_smartphoto_db_file, sizeof(_smartphoto_db_file),
 			 DEFAULT_SMART_PHOTO_DIR"/%s", ".smartphoto.db");
 	}
@@ -82,18 +77,39 @@ std::string smartphoto_resp(const char *post_data, void *sp)
 	}
 
 	D("method=" << method);
-	if (method == "scan_start") {
-		int r = ccai_sp_add_dir(sp, _smartphoto_dir);
-		D("ccai_sp_add_dir r=" << r);
-		if (r == 0) {
-			r = ccai_sp_scan(sp);
-			D("ccai_sp_scan r=" << r);
-			json_object_object_add(resp, "result",
-					       json_object_new_int(r));
-		} else {
-			json_object_object_add(resp, "result",
-					       json_object_new_int(r));
+	if (method == "add_dir") {
+		if (req_param == NULL) {
+			E("add_dir need param");
+			goto out;
 		}
+		const char *path = json_object_get_string(req_param);
+		int r = ccai_sp_add_dir(sp, path);
+		D("ccai_sp_add_dir r=" << r << ", dir=" << path);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "scan_start") {
+		int  r = ccai_sp_scan(sp);
+		D("ccai_sp_scan r=" << r);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "scan_running") {
+		int scan_running = ccai_sp_scan_running(sp);
+		D("ccai_sp_scan_running=" << scan_running);
+		json_object_object_add(resp, "result", json_object_new_int(0));
+		json_object_object_add(resp, "running",
+				       json_object_new_boolean(scan_running));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "scan_stop") {
+		int r = ccai_sp_stop_scan(sp);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "waiting_scan_count") {
+		int count = ccai_sp_waiting_scan_count(sp);
+		D("waiting_scan_count=" << count);
+		int r = count < 0 ? -1 : 0;
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		json_object_object_add(resp, "count",
+				       json_object_new_int(count));
 		resp_str = json_object_to_json_string(resp);
 	} else if (method == "list_all_class") {
 		// list class
@@ -351,6 +367,10 @@ std::string smartphoto_resp(const char *post_data, void *sp)
 		int r = ccai_sp_move_file(sp, from_file.c_str(),
 					  to_file.c_str());
 		D("ccai_sp_move_file r=" << r);
+		json_object_object_add(resp, "result", json_object_new_int(r));
+		resp_str = json_object_to_json_string(resp);
+	} else if (method == "del_all_file") {
+		int r = ccai_sp_remove_all_file(sp);
 		json_object_object_add(resp, "result", json_object_new_int(r));
 		resp_str = json_object_to_json_string(resp);
 	} else {
