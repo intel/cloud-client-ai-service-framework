@@ -467,7 +467,7 @@ std::string ocr(cv::Mat img, std::string params_str){
 
                             flag_character ++;
                             ie_result = ie_result + "\t\t\t{\n";
-                            ie_result = ie_result + "\t\t\t\t\"character\":" + symbol + ",\n";
+                            ie_result = ie_result + "\t\t\t\t\"character\":\"" + symbol + "\",\n";
                             ie_result = ie_result + "\t\t\t\t\"confidence\":" + std::to_string(c_accuracy) + "\n";
                             ie_result = ie_result + "\t\t\t}";
 
@@ -477,7 +477,7 @@ std::string ocr(cv::Mat img, std::string params_str){
                     }
                 }
                 ie_result = ie_result + "\t\t\t],\n";
-                ie_result = ie_result + "\t\t\t\"itemstring\":" + s_result + "\n";
+                ie_result = ie_result + "\t\t\t\"itemstring\":\"" + s_result + "\"\n";
                 ie_result = ie_result + "\t\t}";
 
             }
