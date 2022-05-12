@@ -109,7 +109,12 @@ std::string classification(cv::Mat img, std::string params_str) {
             std::vector<float>::iterator biggest = std::max_element(std::begin(detection), std::end(detection));
             int position = std::distance(std::begin(detection), biggest);
             if (*biggest > 0.5) {
-                ie_result = ie_result + "\t\t\t{\"tag_name\":" + labels[position].substr(labels[position].find("'"));
+                std::string label;
+                label = labels[position].substr(labels[position].find("'"));
+                int length;
+                length = label.length();
+                label = "\"" + label.substr(1, length-3) + "\",";
+                ie_result = ie_result + "\t\t\t{\"tag_name\":" + label;
                 ie_result = ie_result + "\"tag_confidence\":" + std::to_string(*biggest) + "}\n";
             }
             *biggest = 0;

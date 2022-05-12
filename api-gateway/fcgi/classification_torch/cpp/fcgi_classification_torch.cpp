@@ -112,8 +112,10 @@ std::string classification(cv::Mat img, std::string params_str) {
             }
         }
 
-        ie_result = ie_result + "\t\t\t{\"tag_name\":" + labels[position] + ",";
+        ie_result = ie_result + "\t\t\t{\"tag_name\":\"" + labels[position] + "\",";
         ie_result = ie_result + "\"tag_confidence\":" + std::to_string(*biggest) + "}\n";
+        ie_result += "\t\t]\r\n";
+        ie_result += "\t},\r\n";
 
     } else {
         ie_result += "{\r\n";
