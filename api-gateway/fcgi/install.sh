@@ -64,6 +64,7 @@ pushd $DESTDIR/etc/lighttpd/conf-enabled
 enabled_list="\
 ${capability_service_conf_files} \
 16-classification.conf \
+16-classification-tf.conf \
 16-face-detection.conf \
 16-facial-landmark.conf \
 16-digitalnote-py.conf \
