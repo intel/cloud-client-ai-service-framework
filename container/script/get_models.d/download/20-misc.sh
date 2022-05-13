@@ -12,6 +12,7 @@ pushd $output_dir
 wget -c https://github.com/timesler/facenet-pytorch/releases/download/v2.2.9/20180402-114759-vggface2.pt
 wget -c https://storage.googleapis.com/download.tensorflow.org/models/inception_v3_2016_08_28_frozen.pb.tar.gz
 tar xvf inception_v3_2016_08_28_frozen.pb.tar.gz
+chmod o+r inception_v3_2016_08_28_frozen.pb imagenet_slim_labels.txt
 wget -c https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt -O resnet18.txt
 wget -c https://github.com/openvinotoolkit/open_model_zoo/blob/4db5a93f17627ca5efaeccaa97f8a06af6ba4417/data/dataset_classes/scut_ept.txt -O scut_ept_char_list.txt
 wget -c https://github.com/xmba15/onnx_runtime_cpp/blob/master/data/version-RFB-640.onnx

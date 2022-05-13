@@ -34,6 +34,7 @@ gst-launch-1.0 -vvv v4l2src device=/dev/video2 ! decodebin ! videoconvert ! xima
 
 #include <thread>
 #include <mutex>
+#include <chrono>
 
 #include <ccai_log.h>
 #include "limbs_status.hpp"
@@ -49,10 +50,17 @@ gst-launch-1.0 -vvv v4l2src device=/dev/video2 ! decodebin ! videoconvert ! xima
 	"\"resolution\":\"width=800,height=600\"" \
 	"}"
 
+#define DELAY_TIME      300 //second 300s=5min
+
 struct humans {
         struct human_limbs peple[MAX_PEOPLE];
 	int numbers;
 };
+
+struct delayTimer {
+       bool enableTimer; // true: started  false: end
+       std::chrono::steady_clock::time_point startTime;
+} gDelayTimer;
 
 static struct humans gHumans;
 static std::mutex gMtx;
@@ -199,6 +207,24 @@ static int read_pipeline(const char *name, std::string& result)
 		{
                     std::lock_guard<std::mutex> lck(gMtx);
                     tmpHumans = gHumans;
+		}
+
+                if (tmpHumans.numbers == 0) {
+		    auto current_time = std::chrono::steady_clock::now();
+                    if (!gDelayTimer.enableTimer) {
+                        gDelayTimer.enableTimer = true;
+			gDelayTimer.startTime = current_time;
+		    } else if (std::chrono::duration_cast<std::chrono::seconds>(current_time - gDelayTimer.startTime).count() > DELAY_TIME) {
+                        gDelayTimer.enableTimer = false;
+			std::string message = "Can not detect face for more than 5 minutes, stop the pipeline to save power. Please restart it if you like!";
+		        result += "\r\n{\r\n";
+                        result += "\t\"Warnning\":\"" + message + "\"\r\n";
+                        result += "}\r\n";
+
+		        return -1;
+		    }
+		} else {
+                    gDelayTimer.enableTimer = false;
 		}
 
 		result += "\r\n{\r\n";
@@ -359,6 +385,16 @@ static void pooling_human_status() {
        }
 }
 
+static void stop_thread()
+{
+       {
+            std::lock_guard<std::mutex> lck(gMtx);
+            pooling = false;
+       }
+
+       if (thread_fun.joinable()) thread_fun.join();
+}
+
 std::string do_streaming(const char *post_data)
 {
 	int ret = -1;
@@ -394,6 +430,7 @@ std::string do_streaming(const char *post_data)
 	if (method == NULL || pipe_name == NULL)
 		goto out;
 	if (strncmp(method, "start", 5) == 0) {
+                gDelayTimer.enableTimer = false;
 		if (parameter == NULL)
 			parameter = DEFAULT_PARAMETER;
 		if (start_pipeline(pipe_name, parameter, config) != 0)
@@ -404,16 +441,18 @@ std::string do_streaming(const char *post_data)
 		        thread_fun = std::thread(pooling_human_status);
 		}
 	} else if (strncmp(method, "stop", 4) == 0) {
-		if (strncmp(pipe_name, "launcher.pose_estimation", 24) == 0) {
-                        std::lock_guard<std::mutex> lck(gMtx);
-			pooling = false;
-		}
-		if (thread_fun.joinable()) thread_fun.join();
+                gDelayTimer.enableTimer = false;
+		if (strncmp(pipe_name, "launcher.pose_estimation", 24) == 0)
+			stop_thread();
 	        if (stop_pipeline(pipe_name, parameter) != 0)
 	 	        goto out;
 	} else if (strncmp(method, "read", 4) == 0) {
-		if (read_pipeline(pipe_name, read_string) != 0)
+		int status = read_pipeline(pipe_name, read_string);
+		if ((status == -1) && (strncmp(pipe_name, "launcher.pose_estimation", 24) == 0)) {
+			stop_thread();
+	                stop_pipeline(pipe_name, parameter);
 			goto out;
+		}
 	} else if (strncmp(method, "config", 6) == 0) {
 		if (config_pipeline(pipe_name, config) != 0)
 			goto out;
@@ -448,6 +487,7 @@ int main(int argc, char **argv)
 		return 2;
 	}
 
+        gDelayTimer.enableTimer = false;
 	while (1) {
 		err = FCGX_Accept_r(&cgi);
 		if (err) {
