@@ -266,20 +266,20 @@ std::string asr(std::string params_str, std::string wave_filename) {
 
         CCAI_NOTICE("local inference");
         ie_result += "{\r\n";
-        ie_result += "\t\"ret\":0,\r\n";
-        ie_result += "\t\"msg\":\"ok\",\r\n";
+        ie_result += "\t\"ret\":\"0\",\n";
+        ie_result += "\t\"msg\":\"ok\",\n";
 
-        ie_result += "\t\"data\":{\r\n";
-        ie_result = ie_result + "\t\t\"text\":" + rh_utterance_transcription.data() + "\n";
-        ie_result += "\t},\r\n";
+        ie_result += "\t\"data\":{\n";
+        ie_result = ie_result + "\t\t\"text\":\"" + rh_utterance_transcription.data() + "\"\n";
+        ie_result += "\t}\r\n";
+	ie_result += "}\n";
     } else {
         ie_result += "{\r\n";
-        ie_result += "\t\"ret\":1,\r\n";
-        ie_result += "\t\"msg\":\"inference error\",\r\n";
+        ie_result += "\t\"ret\":\"1\",\n";
+        ie_result += "\t\"msg\":\"inference error\"\r\n";
+	ie_result += "}\n";
         CCAI_NOTICE("can not get inference results");
-
     }
-
 
     if(wave_data) {
         delete []wave_data;
