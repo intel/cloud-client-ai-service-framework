@@ -269,15 +269,18 @@ std::string asr(std::string params_str, std::string wave_filename) {
         ie_result += "\t\"ret\":\"0\",\n";
         ie_result += "\t\"msg\":\"ok\",\n";
 
+	size_t str_len = std::strlen(rh_utterance_transcription.data());
+        if ((rh_utterance_transcription[str_len - 1] == '\n') ||
+	    (rh_utterance_transcription[str_len - 1] == '\r'))
+            rh_utterance_transcription[str_len - 1] = '\0';
+
         ie_result += "\t\"data\":{\n";
         ie_result = ie_result + "\t\t\"text\":\"" + rh_utterance_transcription.data() + "\"\n";
-        ie_result += "\t}\r\n";
-	ie_result += "}\n";
+        ie_result += "\t},\r\n";
     } else {
         ie_result += "{\r\n";
         ie_result += "\t\"ret\":\"1\",\n";
-        ie_result += "\t\"msg\":\"inference error\"\r\n";
-	ie_result += "}\n";
+        ie_result += "\t\"msg\":\"inference error\",\r\n";
         CCAI_NOTICE("can not get inference results");
     }
 
