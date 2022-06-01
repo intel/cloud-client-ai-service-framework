@@ -7,10 +7,13 @@ CFLAGS=-Wall -g -O2 -fPIC -I. \
        $(shell pkg-config --cflags gstreamer-1.0) \
        $(shell pkg-config --cflags dl-streamer) \
        -I thirdparty  \
-       -I /opt/intel/openvino/opencv/include \
+       -I /opt/intel/openvino_2022/extras/opencv/include \
        -I ../inference-runtime/release/include
+
 CXXFLAGS=$(CFLAGS) -std=c++17
-LIBS=$(shell pkg-config --libs gstreamer-1.0)
+LIBS=$(shell pkg-config --libs gstreamer-1.0) \
+     -L /opt/intel/openvino_2022/extras/opencv/lib
+
 LDFLAGS=-Wl,-z,now -Wl,-z,relro \
        -L ../inference-runtime/release/lib
 
@@ -66,14 +69,12 @@ $(launcher_plugin):$(launcher_plugin_OBJS) $(lib)
 $(backgroundblur_plugin):$(backgroundblur_plugin_OBJS) $(lib)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(backgroundblur_plugin_OBJS) \
 		-shared -lccai_stream -L. $(LIBS) \
-		-L/opt/intel/openvino/opencv/lib \
 		-lopencv_core -lopencv_imgproc \
 		-linferservice -lpython3.8
 
 $(emotion_plugin):$(emotion_plugin_OBJS) $(lib)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(emotion_plugin_OBJS) \
 		-shared -lccai_stream -L. $(LIBS) \
-		-L/opt/intel/openvino/opencv/lib \
 		-lopencv_core -lopencv_imgproc \
 		-linferservice -lpython3.8 \
 		$(shell pkg-config --libs gstreamer-video-1.0)
@@ -81,7 +82,6 @@ $(emotion_plugin):$(emotion_plugin_OBJS) $(lib)
 $(pose_plugin):$(pose_plugin_OBJS) $(lib)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@ $(pose_plugin_OBJS) \
 		-shared -lccai_stream -L. $(LIBS) \
-		-L/opt/intel/openvino/opencv/lib \
 		-linferservice -lopenvinoentry \
 		-lopencv_core -lopencv_imgproc -lopencv_imgcodecs \
 		$(shell pkg-config --libs gstreamer-video-1.0) \
