@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "iinfer_entity.hpp"
-#include "speech_library.h"
 
 class infer_openvino_entity : public IInfer_entity {
   public:
@@ -53,8 +52,4 @@ class infer_openvino_entity : public IInfer_entity {
                  int bytesPerSample, std::string config_path,
                  const std::string& device,
                  std::vector<char> &rh_utterance_transcription);
-
-  private:
-    int PushWaveData(SpeechLibraryHandle handle, const short* samples,
-                     int sampleLength, int bytesPerSample, bool readResidueData);
 };
