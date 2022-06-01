@@ -16,7 +16,7 @@ rm -rf release
 rm -rf ie_runtime_build
 
 pushd runtime_service/
-source /opt/intel/openvino/bin/setupvars.sh
+source /opt/intel/openvino_2022/setupvars.sh
 HOME=$(pwd)/../ ./build_runtime_lib.sh
 popd
 
