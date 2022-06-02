@@ -86,7 +86,7 @@ cp -f $MYSCRIPT_DIR/../../health-monitor/health-monitor/service_runtime_health_m
 mkdir -p $MYSCRIPT_DIR/build
 pushd $MYSCRIPT_DIR/build
 
-source /opt/intel/openvino/bin/setupvars.sh
+source /opt/intel/openvino_2022/setupvars.sh
 cmake -DCMAKE_FIND_ROOT_PATH=$DESTDIR_DEVEL ..
 make -j$(nproc --all) VERBOSE=1
 make DESTDIR=$DESTDIR install/strip
