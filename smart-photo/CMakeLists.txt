@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 2.8.11)
 project (smartphoto)
 
-list (APPEND CMAKE_MODULE_PATH "/opt/intel/openvino/opencv/cmake")
 find_package (PkgConfig REQUIRED)
 pkg_check_modules (SQLITE3 REQUIRED sqlite3)
 find_package (InferenceEngine REQUIRED)
