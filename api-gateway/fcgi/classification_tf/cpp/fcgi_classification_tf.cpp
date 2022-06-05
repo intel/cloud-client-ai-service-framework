@@ -40,7 +40,7 @@ std::string classification(cv::Mat img, std::string params_str) {
     std::vector<std::shared_ptr<cv::Mat>> images;
     std::shared_ptr<cv::Mat> frame_ptr = std::make_shared<cv::Mat>(img);
     std::ifstream inputFile;
-    std::string ie_result = "";
+    std::string ie_result = "{\n";
     images.push_back(frame_ptr);
     struct serverParams urlInfo {"https://api.ai.qq.com/fcgi-bin/image/image_tag", params_str};
 
@@ -53,12 +53,11 @@ std::string classification(cv::Mat img, std::string params_str) {
     if (res == 0){
         //--------------------------get the result locally --------------------------------
         CCAI_NOTICE("local inference");
-        ie_result += "{\r\n";
-        ie_result += "\t\"ret\":0,\r\n";
-        ie_result += "\t\"msg\":\"ok\",\r\n";
+        ie_result += "\t\"ret\":0,\n";
+        ie_result += "\t\"msg\":\"ok\",\n";
 
-        ie_result += "\t\"data\":{\r\n";
-        ie_result += "\t\t\"tag_list\":[\r\n";
+        ie_result += "\t\"data\":{\n";
+        ie_result += "\t\t\"tag_list\":[\n";
 
         std::vector<float> &detection = rawDetectionResult;
         std::vector<float>::iterator biggest = std::max_element(std::begin(detection), std::end(detection));
@@ -72,13 +71,12 @@ std::string classification(cv::Mat img, std::string params_str) {
             }
         }
 
-        ie_result = ie_result + "\t\t\t{\"tag_name\":" + labels[position] + ",";
-        ie_result = ie_result + "\"tag_confidence\":" + std::to_string(*biggest) + "}\n";
-
+        ie_result += std::string("\t\t\t{\"tag_name\":\"") + labels[position] + "\",";
+        ie_result += std::string("\"tag_confidence\":") + std::to_string(*biggest) + "}\n";
+        ie_result += "\t\t]\n\t},\n";
     } else {
-        ie_result += "{\r\n";
-        ie_result += "\t\"ret\":1,\r\n";
-        ie_result += "\t\"msg\":\"inference error\",\r\n";
+        ie_result += "\t\"ret\":1,\n";
+        ie_result += "\t\"msg\":\"inference error\",\n";
         CCAI_NOTICE("can not get inference results");
     }
     return ie_result;
