@@ -1,7 +1,8 @@
 #!/bin/bash
 
 cd /opt/fcgi/cgi-bin
-. /opt/intel/openvino/bin/setupvars.sh
+
+export LD_LIBRARY_PATH=/opt/intel/openvino_2022/extras/opencv/lib:/opt/intel/openvino_2022/tools/compile_tool:/opt/intel/openvino_2022/runtime/3rdparty/tbb/lib:/opt/intel/openvino_2022/runtime/3rdparty/hddl/lib:/opt/intel/openvino_2022/runtime/lib/intel64
 
 dbpath() {
     sed -n 's/^auth .* pam_userdb\.so .* db=\([^ ]*\).*$/\1.db/p' $1
