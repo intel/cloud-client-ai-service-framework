@@ -22,26 +22,26 @@ ARG     CONFIG_TENSORFLOW=n
 WORKDIR /tmp
 
 RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-	wget https://apt.repos.intel.com/openvino/2021/GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
-	apt-key add GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
-	rm GPG-PUB-KEY-INTEL-OPENVINO-2021 && \
-	echo "deb https://apt.repos.intel.com/openvino/2021 all main" > \
-		/etc/apt/sources.list.d/intel-openvino-2021.list && \
+	wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
+	apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
+	rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
+	echo "deb https://apt.repos.intel.com/openvino/2022 \
+`. /etc/os-release && echo ${UBUNTU_CODENAME}` main" |  \
+	tee /etc/apt/sources.list.d/intel-openvino-2022.list && \
 	apt-get update && apt-get -y install --no-install-recommends \
-		intel-openvino-runtime-ubuntu20-2021.4.752 \
-		intel-openvino-gstreamer-rt-ubuntu-focal-2021.4.752 \
-		intel-openvino-gva-rt-ubuntu-focal-2021.4.752 && \
+		openvino-libraries-2022.1.0 \
+		openvino-opencv-2022.1.0 \
+		intel-dlstreamer && \
 		apt-get clean && \
 		rm -rf /var/lib/apt/lists/* ; \
 	fi
 
 RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-gmmlib_20.3.1_amd64.deb && \
-	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.5186/intel-igc-core_1.0.5186_amd64.deb && \
-	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.5186/intel-igc-opencl_1.0.5186_amd64.deb && \
-	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-opencl_20.41.18123_amd64.deb && \
-	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-ocloc_20.41.18123_amd64.deb && \
-	wget https://github.com/intel/compute-runtime/releases/download/20.41.18123/intel-level-zero-gpu_1.0.18123_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-gmmlib_21.3.3_amd64.deb && \
+	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-core_1.0.9441_amd64.deb && \
+	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-opencl_1.0.9441_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-opencl-icd_21.48.21782_amd64.deb && \
+	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-level-zero-gpu_1.2.21782_amd64.deb && \
 	dpkg -i *.deb && rm -f *.deb; \
 	fi
 
