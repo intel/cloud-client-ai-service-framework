@@ -49,7 +49,6 @@ app_rootfs:
 	# openvino_2021 dose not create the link, '/opt/intel/openvino'.
 	# Create the link in rootfs to avoid to modify app
 	mkdir -p docker/app_rootfs/opt/intel/
-	ln -sf openvino_2021 docker/app_rootfs/opt/intel/openvino
 
 	../link_writable_folder.sh ./docker/app_rootfs/
 
