@@ -86,6 +86,7 @@
         * [11.1.15 Video pipeline management (control) API usage](part11/README.md#11.1.15)
         * [11.1.16 Live ASR API usage (online ASR case)](part11/README.md#11.1.16)
         * [11.1.17 Pose estimation API usage](part11/README.md#11.1.17)
+        * [11.1.18 Capability API usage](part11/README.md#11.1.18)
     * [11.2 gRPC APIs Manual](part11/README.md#11.2)
         * [11.2.1 proto file](part11/README.md#11.2.1)
         * [11.2.2 OCR method](part11/README.md#11.2.2)

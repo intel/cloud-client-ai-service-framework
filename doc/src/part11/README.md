@@ -1169,6 +1169,62 @@ c) Notice
 •	The host side must run X server for display. Please install the following package in the host side. 
                                # sudo apt-get install x11-xserver-utils
 
+### 11.1.18 Capability API usage {#11.1.18}
+
+Capability API is used to retrive system information, including CPU, GPU, memory information and supported API list. These APIs support HTTP get and post method without parameters.
+
+a) CPU information
+
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_cpuinfo'
+
+The format of output is same as /proc/cpuinfo, please see [proc(5)](https://man7.org/linux/man-pages/man5/proc.5.html) man page.
+
+b) GPU information
+
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_gpuinfo'
+
+GPU information includes GPU device vendor, model and supported freqencies. An example output is:
+
+```
+Vendor: Intel Corporation
+Device: RocketLake-S GT1 [UHD Graphics 750]
+max: 1300
+min: 350
+cur: 350
+RP0: 1300
+RP1: 350
+RPn: 350
+```
+
+c) Memory information
+
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_meminfo'
+
+The format of output is same as /proc/meminfo, please see [proc(5)](https://man7.org/linux/man-pages/man5/proc.5.html) man page.
+
+d) API information
+
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_apiinfo'
+
+The response is the list of all supportted FCGI APIs. An example is:
+
+```
+/cgi-bin/fcgi_py_policy
+/cgi-bin/fcgi_meminfo
+/cgi-bin/fcgi_policy
+/cgi-bin/fcgi_facial_landmark
+/cgi-bin/fcgi_cpuinfo
+/cgi-bin/fcgi_face_detection
+/cgi-bin/streaming
+/cgi-bin/fcgi_classification_tf
+/cgi-bin/fcgi_apiinfo
+/cgi-bin/fcgi_py_tts
+/cgi-bin/fcgi_classification
+/cgi-bin/fcgi_live_asr
+/cgi-bin/smartphoto
+/cgi-bin/fcgi_py_digitalnote
+/cgi-bin/fcgi_gpuinfo
+```
 
 # 11.2 gRPC APIs Manual {#11.2}
 
