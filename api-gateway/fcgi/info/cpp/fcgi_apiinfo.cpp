@@ -1,16 +1,14 @@
 // Copyright (C) 2020 Intel Corporation
 
-
-// apt-get install libfcgi-dev
-// gcc fcgitest.c -lfcgi
-#include <syslog.h>
-#include <string>
-#include <string.h>
 #include <dirent.h>
 #include <stdio.h>
+#include <string.h>
+#include <syslog.h>
+
+#include <string>
+
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
 
 #define LISTENSOCK_FILENO 0
 #define LISTENSOCK_FLAGS 0

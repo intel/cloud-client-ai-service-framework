@@ -10,18 +10,13 @@ curl -d '{
 
 */
 
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
-
-#include <fcgiapp.h>
-#include <fcgio.h>
-#include <fcgi_stdio.h>
-#include <json-c/json.h>
-
 #include <string>
 #include <stdio.h>
 #include <sys/time.h>
+
+#include <fcgiapp.h>
+#include <fcgio.h>
+#include <json-c/json.h>
 
 #include <ccai_smart_photo.h>
 #include "smart_photo_log.h"
