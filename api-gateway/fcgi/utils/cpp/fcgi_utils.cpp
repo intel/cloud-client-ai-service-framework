@@ -1,9 +1,7 @@
 // Copyright (C) 2020 Intel Corporation
-#include "fcgi_utils.h"
+#include <opencv2/imgcodecs.hpp>
 
-#ifdef WITH_EXTENSIONS
-#include <ext_list.hpp>
-#endif
+#include "fcgi_utils.h"
 
 std::string EncodeBase(const unsigned char* input_data, int input_num) {
     const char encode_table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

@@ -1,7 +1,6 @@
 if ("$ENV{CONFIG_RESTFUL_SAMPLE}" STREQUAL "y")
 	if ("$ENV{CONFIG_OPENVINO}" STREQUAL "y")
 		find_package (PkgConfig REQUIRED)
-		pkg_check_modules (SQLITE3 REQUIRED sqlite3)
 		pkg_check_modules (JSON_C REQUIRED json-c)
 		if (NOT JSON_C_FOUND)
 			message (FATAL_ERROR "json-c is not found")
@@ -18,7 +17,6 @@ if ("$ENV{CONFIG_RESTFUL_SAMPLE}" STREQUAL "y")
 			return()
 		endif()
 
-		message ("ok: " ${SQLITE3_LIBRARIES})
 		message ("ok: " ${JSON_C_LIBRARIES})
 
 		add_fcgi_binary(fcgi_smartphoto)

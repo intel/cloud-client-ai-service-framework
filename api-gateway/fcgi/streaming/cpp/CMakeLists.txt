@@ -6,7 +6,7 @@ if ("$ENV{CONFIG_RESTFUL_SAMPLE}" STREQUAL "y")
 		find_library(ccai_stream_LIBRARY NAMES libccai_stream.so)
 
 		if (NOT ccai_stream_LIBRARY)
-			message("ccai_stream is not found: "${CMAKE_FIND_ROOT_PATH})
+			message("ccai_stream is not found: ${CMAKE_FIND_ROOT_PATH}")
 			message(FATAL_ERROR "ccai_stream is not found")
 			return()
 		endif()

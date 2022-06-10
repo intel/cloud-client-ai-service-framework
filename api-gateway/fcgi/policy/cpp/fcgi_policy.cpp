@@ -5,26 +5,20 @@
 
 #include <stdlib.h>
 #include <string.h>
+
 #include <string>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
+
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
-#include <memory>
-#include "vino_ie_pipe.hpp"
+
 #include <ccai_log.h>
+#include <vino_ie_pipe.hpp>
 #include "fcgi_utils.h"
 
-#ifdef WITH_EXTENSIONS
-#include <ext_list.hpp>
-#endif
 
 #define LISTENSOCK_FILENO 0
 #define LISTENSOCK_FLAGS 0
 
-using namespace std;
 
 int main(int argc, char **argv) {
     int err = FCGX_Init(); /* call before Accept in multithreaded apps */
@@ -54,7 +48,7 @@ int main(int argc, char **argv) {
         char *pContent = FCGX_GetParam("CONTENT_TYPE", cgi.envp);
         if ((pContent == NULL) || (strstr(pContent, "application/x-www-form-urlencoded") == NULL)) {
             CCAI_NOTICE("get content error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "not Acceptable";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;
@@ -66,7 +60,7 @@ int main(int argc, char **argv) {
         if (pLenstr == NULL ||
            (data_length = strtoul(pLenstr, NULL, 10)) > INT32_MAX) {
             CCAI_NOTICE("get length error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "get content length error";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;
@@ -76,7 +70,7 @@ int main(int argc, char **argv) {
         post_data = (char *)malloc(data_length);
         if (post_data == NULL) {
             CCAI_NOTICE("malloc buffer error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "malloc buffer error";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;
