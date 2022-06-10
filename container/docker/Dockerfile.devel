@@ -34,7 +34,6 @@ RUN     apt-get -y install --no-install-recommends \
 		protobuf-compiler-grpc python3-dev \
 		libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
 		gstreamer1.0-tools \
-		gstreamer1.0-x \
 		libpci-dev pciutils docker.io \
 		libjson-c-dev \
 		libsqlite3-dev \
