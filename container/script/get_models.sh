@@ -4,10 +4,11 @@ set -xe
 
 script_dir=$(readlink -e $(dirname $0))
 current_dir=$(pwd -P)
-destdir=$current_dir/service_runtime/models
-cache_dir=$current_dir/get_models_cache
+destdir=$current_dir/service_runtime/models/
+workdir=$current_dir/get_models_cache/
+omz_cache_dir=$workdir/omz_cache/
 mkdir -p $destdir
-mkdir -p $cache_dir
+mkdir -p $omz_cache_dir
 
 download_script=$(find $script_dir/get_models.d/download/ -name "*.sh" | sort)
 convert_script=$(find $script_dir/get_models.d/convert/ -name "*.sh" | sort)
@@ -42,52 +43,49 @@ open-closed-eye-0001
 "
 
 copy_from_local_files="
-/opt/intel/openvino/data_processing/dl_streamer/samples/model_proc/intel/object_attribute_estimation/emotions-recognition-retail-0003.json
-/opt/intel/openvino/data_processing/dl_streamer/samples/model_proc/public/object_detection/mobilenet-ssd.json
+/opt/intel/dlstreamer/samples/model_proc/intel/emotions-recognition-retail-0003.json
 "
 
-downloader="python3 /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/downloader.py"
-converter="python3 /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/converter.py"
+downloader="omz_downloader"
+converter="omz_converter"
 
 run_download_script()
 {
 	for script in $download_script; do
-		$script $cache_dir
+		$script $workdir
 	done
 }
 
 run_convert_script()
 {
 	for script in $convert_script; do
-		$script $cache_dir
+		$script $workdir
 	done
 }
 
 run_install_script()
 {
 	for script in $install_script; do
-		$script $cache_dir $destdir
+		$script $workdir $destdir
 	done
 }
 
 
 download_and_convert()
 {
-	. /opt/intel/openvino/bin/setupvars.sh
-
 	for model in $download_models; do
 		echo $model
 		if [ "x${model:0:1}" = "x#" ]; then
 			continue
 		fi
-		$downloader --cache_dir $cache_dir  --precisions FP32 --name $model
+		$downloader --cache_dir $omz_cache_dir  --precisions FP32 --name $model
 	done
 	for model in $convert_models; do
 		echo $model
 		if [ "x${model:0:1}" = "x#" ]; then
 			continue
 		fi
-		$converter -d $cache_dir --precisions FP32 --name $model
+		$converter -d $workdir --precisions FP32 --name $model
 	done
 
 	run_download_script
@@ -104,15 +102,17 @@ do_install()
 		cp -a $local_file $destdir/
 	done
 
-	for bin_file in $(find $cache_dir/public -name "*.xml" -o -name "*.bin" | grep FP32); do
+	for bin_file in $(find $workdir/public -name "*.xml" -o -name "*.bin" | grep FP32); do
 		cp -a $bin_file $destdir/
 	done
-	for bin_file in $(find $cache_dir/intel -name "*.xml" -o -name "*.bin" | grep FP32); do
+	for bin_file in $(find $workdir/intel -name "*.xml" -o -name "*.bin" | grep FP32); do
 		cp -a $bin_file $destdir/
 	done
 
 	run_install_script
 }
+
+cd $workdir
 
 if [ "x$1" != "x--install-only" ] && [ "x$1" != "x-i" ]; then
 	download_and_convert

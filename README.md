@@ -16,18 +16,17 @@ sudo apt install git build-essential docker.io wget cmake python3-pip unzip \
         python3-dev \
         libpci-dev pciutils  libjson-c-dev libsqlite3-dev \
         curl gpg-agent software-properties-common
-	
+
 curl https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | sudo apt-key add -
 echo "deb https://apt.repos.intel.com/openvino/2022 `. /etc/os-release && echo ${UBUNTU_CODENAME}` main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2022.list
 
-sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 intel-dlstreamer-dev 
+sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 intel-dlstreamer-dev
 sudo /opt/intel/openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
 sudo /opt/intel/dlstreamer/install_dependencies/install_media_driver.sh
 
+sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install pytest grpcio-tools kconfiglib torch torchvision paddlepaddle paddle2onnx
-
-sudo python3 -m pip install -r /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/requirements.in
-sudo python3 -m pip install -r /opt/intel/openvino/deployment_tools/model_optimizer/requirements.txt
+sudo python3 -m pip install openvino-dev[caffe,kaldi,mxnet,onnx,pytorch,tensorflow,tensorflow2]==2022.1.0
 
 git clone https://github.com/pybind/pybind11
 cd pybind11 && git checkout -b tmp f31df73
