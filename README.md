@@ -5,25 +5,27 @@
 ## How to build Cloud-Client AI Service Framework
 Make sure your Build Host meets the following requirements:
 - Ubuntu 20.04.
-- OpenVINO 2021.4.
 
 You must install essential host packages on your build host.
 The following command installs the host packages:
 ```
-sudo ln -sf /opt/intel/openvino_2021 /opt/intel/openvino
+sudo apt update
+sudo apt install git build-essential docker.io wget cmake python3-pip unzip \
+        libfcgi-dev libcurl4-openssl-dev libssl-dev libpam0g-dev \
+        libgrpc-dev libgrpc++-dev libprotobuf-dev protobuf-compiler protobuf-compiler-grpc \
+        python3-dev \
+        libpci-dev pciutils  libjson-c-dev libsqlite3-dev \
+        curl gpg-agent software-properties-common
+	
+curl https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | sudo apt-key add -
+echo "deb https://apt.repos.intel.com/openvino/2022 `. /etc/os-release && echo ${UBUNTU_CODENAME}` main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2022.list
 
-sudo apt-get update
-sudo apt-get install docker.io build-essential wget cmake python3-pip unzip \
-	    libfcgi-dev libcurl4-openssl-dev libssl-dev libpam0g-dev \
-	    libgrpc-dev libgrpc++-dev libprotobuf-dev protobuf-compiler  \
-	    protobuf-compiler-grpc \
-	    python3-dev \
-	    libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
-	    gstreamer1.0-tools gstreamer1.0-x \
-	    libpci-dev pciutils  libjson-c-dev libsqlite3-dev
+sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 intel-dlstreamer-dev 
+sudo /opt/intel/openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
+sudo /opt/intel/dlstreamer/install_dependencies/install_media_driver.sh
 
-sudo python3 -m pip install pytest grpcio-tools kconfiglib torch torchvision \
-	     paddlepaddle paddle2onnx
+sudo python3 -m pip install pytest grpcio-tools kconfiglib torch torchvision paddlepaddle paddle2onnx
+
 sudo python3 -m pip install -r /opt/intel/openvino/deployment_tools/open_model_zoo/tools/downloader/requirements.in
 sudo python3 -m pip install -r /opt/intel/openvino/deployment_tools/model_optimizer/requirements.txt
 
