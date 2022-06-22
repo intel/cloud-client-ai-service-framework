@@ -38,7 +38,7 @@ docker/Dockerfile.%: ../../docker/Dockerfile.%
 demo_rootfs:
 	rm -rf docker/demo_rootfs/
 	mkdir -p docker/demo_rootfs/
-	./gateway-demo/install.sh $(abspath docker/demo_rootfs/)
+	../../../gateway-demo/install.sh $(abspath docker/demo_rootfs/)
 
 app_rootfs:
 	mkdir -p docker/
