@@ -61,12 +61,10 @@ Policy::Policy(std::string& cfgFile) {
 int Policy::CommShm(int size, int shmflag) {
     key_t key = ftok(PATHNAME, PROJ_ID);
     if(key < 0){
-        syslog(LOG_ERR, "AI-Service-Framework: ftok error!");
         return -1;
     }
     int shmid = shmget(key,  size, shmflag);
     if(shmid < 0){
-        syslog(LOG_ERR, "AI-Service-Framework: shmget error");
         return -2;
     }
 
@@ -77,9 +75,6 @@ int Policy::CreateShm(int size) {
     int shmid = GetShmid(size);
     if(shmid < 0) {
         shmid = CommShm(size, IPC_CREAT|IPC_EXCL|0666);
-        syslog(LOG_ERR, "AI-Service-Framework: create a new shm!");
-    } else {
-        syslog(LOG_ERR, "AI-Service-Framework: shm already exist!");
     }
 
     return shmid;
@@ -88,11 +83,8 @@ int Policy::CreateShm(int size) {
 int Policy::DestroyShm(int shmid) {
 
     if(shmctl(shmid, IPC_RMID, NULL) < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: shmctl error");
         return -1;
      }
-
-    std::cout << "shmdestry:" << shmid << std::endl;
 
     return 0;
 }
@@ -105,7 +97,6 @@ int Policy::ReadShareMemory(struct CfgParams& cfgParam, struct XPUStatus& xpuSta
 
     int shmid = GetShmid(sizeof(struct ShareMemory));
     if (shmid < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: get share memeory error");
         return -1;
     }
 
@@ -120,7 +111,7 @@ int Policy::ReadShareMemory(struct CfgParams& cfgParam, struct XPUStatus& xpuSta
 
     //detech share memory
     if(shmdt(reinterpret_cast<void*>(buf)) == -1) {
-        syslog(LOG_ERR, "AI-Service-Framework: ERROR: detetch share memory error!");
+        syslog(LOG_ERR, "AI-Service-Framework: ERROR: detach share memory error!");
     }
     std::cout <<"cpu idle:" << sample_occupy.idle_occupation << ",gpu:" << gpuStatus << std::endl;
 
@@ -140,7 +131,6 @@ int Policy::ReadShareMemory(struct CfgParams& cfgParam, struct XPUStatus& xpuSta
 int Policy::SaveCfgParams(struct CfgParams& cfgParam, struct ShareMemory* buf) {
 
     if (!buf) {
-        syslog(LOG_ERR, "AI-Service-Framework: share memeory empty");
         return -1;
     }
 
@@ -158,7 +148,6 @@ int Policy::UserSetCfgParams(bool& offload, std::string& inferDevice) {
 
     int shmid = GetShmid(sizeof(struct ShareMemory));
     if (shmid < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: get share memeory error");
         return -1;
     }
 
@@ -184,7 +173,7 @@ int Policy::UserSetCfgParams(bool& offload, std::string& inferDevice) {
 
     //detech share memory
     if(shmdt(reinterpret_cast<void*>(buf)) == -1) {
-        syslog(LOG_ERR, "AI-Service-Framework: ERROR: detetch share memory error!");
+        syslog(LOG_ERR, "AI-Service-Framework: failed to detach share memory !");
     }
 
     return 0;
@@ -296,7 +285,7 @@ int Policy::GetInferDevice(std::string& inferDevice) {
 
     int shmid = GetShmid(sizeof(struct ShareMemory));
     if (shmid < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: get share memeory error");
+        syslog(LOG_ERR, "AI-Service-Framework: unable to get share memeory");
         return -1;
     }
 
@@ -305,7 +294,7 @@ int Policy::GetInferDevice(std::string& inferDevice) {
     inferDevice = buf->cfgInferDev;
 
     if(shmdt(reinterpret_cast<void*>(buf)) == -1) {
-        syslog(LOG_ERR, "AI-Service-Framework: ERROR: detetch share memory error!");
+        syslog(LOG_ERR, "AI-Service-Framework: failed to detach share memory error!");
     }
 
     return 0;
@@ -322,7 +311,7 @@ bool Policy::IsCfgFileChanged(std::string cfgFile) {
             res = true;
         }
     } else {
-        syslog(LOG_ERR, "AI-Service-Framework: config file status error!");
+        syslog(LOG_ERR, "AI-Service-Framework: config file status is changed!");
         res = true;
     }
 
@@ -388,7 +377,7 @@ int Policy::CheckSymbolic(const char* filename) {
 int Policy::WakeupDaemon() {
     int shmid = GetShmid(sizeof(struct ShareMemory));
     if (shmid < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: get share memeory error");
+        syslog(LOG_ERR, "AI-Service-Framework: unable to get share memeory!");
         return -1;
     }
 
@@ -397,7 +386,7 @@ int Policy::WakeupDaemon() {
 
     //detech share memory
     if(shmdt(reinterpret_cast<void*>(buf)) == -1) {
-        syslog(LOG_ERR, "AI-Service-Framework: ERROR: detetch share memory error!");
+        syslog(LOG_ERR, "AI-Service-Framework: failed to detach share memory!");
     }
 
     kill(daemon_pid, SIGUSR1);
