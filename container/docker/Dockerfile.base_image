@@ -46,11 +46,3 @@ RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
 		rm -rf /var/lib/apt/lists/* ; \
 	fi
 
-# gva python deps
-RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-		apt-get update && \
-		apt-get -y install --no-install-recommends \
-		gstreamer1.0-plugins-good gstreamer1.0-plugins-bad && \
-		apt-get clean && \
-		rm -rf /var/lib/apt/lists/* ; \
-	fi
