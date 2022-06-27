@@ -52,6 +52,11 @@ if [ "x$CONFIG_RESTFUL_SAMPLE" = "xy" ]; then
         cp $sample_conf/fcgi_*.py $DESTDIR/opt/fcgi/cgi-bin/
     done
 
+    if [ -d "$MYSCRIPT_DIR/asr/python/" ]; then
+        mkdir -p $DESTDIR/opt/fcgi/cgi-bin/asr/
+        mkdir -p $DESTDIR/opt/fcgi/cgi-bin/asr/ctcdecode_numpy/
+        cp -rf $MYSCRIPT_DIR/asr/python/asr_utils $DESTDIR/opt/fcgi/cgi-bin/asr/
+    fi
 fi
 
 # enable default services
@@ -69,7 +74,6 @@ ${capability_service_conf_files} \
 16-facial-landmark.conf \
 16-digitalnote-py.conf \
 16-tts-py.conf \
-16-live-asr-py.conf \
 16-policy-py.conf \
 16-policy.conf \
 16-streaming.conf \
