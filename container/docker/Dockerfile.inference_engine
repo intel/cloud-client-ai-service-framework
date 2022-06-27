@@ -57,9 +57,9 @@ RUN     if [ "x${CONFIG_PYTORCH}" = "xy" ]; then \
         fi
 
 RUN     if [ "x${CONFIG_ONNX}" = "xy" ]; then \
-        wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz && \
-        tar -zxvf onnxruntime-linux-x64-1.7.0.tgz && \
-        cp -a onnxruntime-linux-x64-1.7.0/lib/* /usr/lib/x86_64-linux-gnu/ && \
+        wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.11.0/onnxruntime-linux-x64-1.11.0.tgz && \
+        tar -zxvf onnxruntime-linux-x64-1.11.0.tgz && \
+        cp -a onnxruntime-linux-x64-1.11.0/lib/* /usr/lib/x86_64-linux-gnu/ && \
         rm onnxruntime-linux-* -rf ; \
         fi
 
