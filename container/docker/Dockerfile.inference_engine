@@ -18,6 +18,7 @@ ARG     CONFIG_OPENVINO=n
 ARG     CONFIG_PYTORCH=n
 ARG     CONFIG_ONNX=n
 ARG     CONFIG_TENSORFLOW=n
+ARG     CONFIG_PADDLE=n
 
 WORKDIR /tmp
 
@@ -71,6 +72,13 @@ RUN     if [ "x${CONFIG_TENSORFLOW}" = "xy" ]; then \
 	rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
 	rm -rf tf/ ; \
 	fi
+
+RUN     if [ "x${CONFIG_PADDLE}" = "xy" ]; then \
+        wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.1%2Bcpu.zip && \
+        tar -zxvf paddle_inference.tgz  && \
+        cp paddle_inference/paddle/lib/libpaddle_inference.so /usr/lib/x86_64-linux-gnu/ && \
+        rm paddle_inference -rf ; \
+        fi
 
 RUN     ldconfig
 

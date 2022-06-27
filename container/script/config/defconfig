@@ -6,6 +6,7 @@ CONFIG_OPENVINO=y
 CONFIG_PYTORCH=y
 CONFIG_ONNX=y
 CONFIG_TENSORFLOW=y
+CONFIG_PADDLE=y
 # end of CCAI service framework backend
 
 #
