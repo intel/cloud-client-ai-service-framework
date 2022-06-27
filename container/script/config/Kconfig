@@ -18,6 +18,10 @@ config TENSORFLOW
 bool "Tensorflow"
 default n
 
+config PADDLE
+bool "PADDLE"
+default y
+
 endmenu
 
 menu "Service"

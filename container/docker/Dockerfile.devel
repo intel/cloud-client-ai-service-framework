@@ -59,6 +59,10 @@ RUN     wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorfl
 	tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 
+RUN 	wget https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
+	tar -C /opt/ -zxvf paddle_inference.tgz && \
+	rm -f paddle_inference.tgz
+
 RUN     apt-get -y install --no-install-recommends \
 		vim \
 		iproute2 \
