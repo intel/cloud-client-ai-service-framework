@@ -89,22 +89,6 @@ int py_infer_speech(std::vector<short>& samples, int bytesPerSample,
     return res;
 }
 
-int py_ie_pipeline_live_asr(int mode,
-                            std::vector<short>& samples,
-                            int bytesPerSample,  // =2 if 16Kbits
-                            std::string config_path,
-                            std::string device,
-                            std::vector<char> &rh_utterance_transcription) {
-
-    short* sampleData = reinterpret_cast<short*>(samples.data());
-    int dataLen = samples.size() * bytesPerSample;
-
-    int res = vino_ie_pipeline_live_asr(mode, sampleData, dataLen, bytesPerSample, config_path,
-                                        device, rh_utterance_transcription);
-
-    return res;
-}
-
 int py_ie_pipeline_infer_tts(std::vector<std::vector<float>>& inputData,
                              std::vector<std::vector<float>>& additionalInput,
                              std::string xmls,
@@ -182,7 +166,6 @@ PYBIND11_MODULE(inferservice_python, m)
     m.def("infer_image",  &py_ie_pipeline_infer_image,  "image inference");
     m.def("infer_image_v1", &py_infer_image, "image inference supporting multiple image inputs");
     m.def("infer_speech", &py_infer_speech, "speech inference");
-    m.def("live_asr", &py_ie_pipeline_live_asr, "live asr inference");
     m.def("infer_tts", &py_ie_pipeline_infer_tts, "text-to-speech inference");
     m.def("infer_common", &py_infer_common, "common case inference");
     m.def("set_policy_params", &vino_ie_pipeline_set_parameters, "parameters of policy configuration");
