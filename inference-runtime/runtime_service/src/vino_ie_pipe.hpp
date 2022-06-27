@@ -165,24 +165,6 @@ int vino_ie_pipeline_infer_speech(const short* samples,
                                   struct serverParams& remoteServerInfo);
 
 /**
- * @brief Continously do inference for speech (ASR). Using intel speech libraries.
- * @param mode Working status of ASR. Start/inference/stop
- * @param samples Speech data buffer.
- * @param sampleLength Buffer size of speech data
- * @param bytesPerSample Size for each speech sample data (how many bytes for each sample)
- * @param rh_utterance_transcription Text result of speech. (ASR result)
- * @param config_path The file path for configuration file.
- * @param device The inference device.
- * @return Status code of infernce
- */
-int vino_ie_pipeline_live_asr(int mode,  // 1 -- start  2 -- inference 0 -- stop
-                              const short* samples,
-                              int sampleLength,
-                              int bytesPerSample,  // =2 if 16Kbits
-                              std::string config_path,
-                              std::string device,
-                              std::vector<char> &rh_utterance_transcription);
-/**
  * @brief Do inference for common models
  * @param inputData Data input for network. The data type is float.
  * @param additionalInput Other inputs of network(except image input)

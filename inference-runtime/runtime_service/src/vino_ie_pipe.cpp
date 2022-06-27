@@ -293,39 +293,6 @@ int vino_ie_pipeline_infer_speech(const short* samples,
     return res;
 }
 
-int vino_ie_pipeline_live_asr(int mode,  // 1 -- start  2 -- inference 0 -- stop
-                              const short* samples,
-                              int sampleLength,
-                              int bytesPerSample,  // =2 if 16Kbits
-                              std::string config_path,
-                              std::string device,
-                              std::vector<char> &rh_utterance_transcription) {
-
-    std::string backendStr("OPENVINO");
-    inference_entity* p_entity = gIrtInf.getInferenceEntity(backendStr);
-    if (p_entity == nullptr) {
-        CCAI_ERROR("AI-Service-Framework: can not find this entity!");
-        return RT_INFER_ERROR;
-    }
-
-    auto entity = p_entity->findEntityPointer();
-
-    int res = RT_INFER_ERROR;
-    std::string func = "vino_live_asr";
-    void* p = p_entity->findSymbol(func);
-    if (p != nullptr) {
-        using EntryF = int(std::shared_ptr<IInfer_entity>&,
-                           int, const short*, int, int,
-                           std::string, const std::string&,
-                           std::vector<char>&);
-        res = reinterpret_cast<EntryF*>(p)(entity, mode, samples, sampleLength, bytesPerSample, config_path, device, rh_utterance_transcription);
-    } else {
-        CCAI_ERROR("AI-Service-Framework: can not find function symbol - %s!", func.c_str());
-    }
-
-    return res; //RT_LOCAL_INFER_OK;
-}
-
 int vino_simulate_ie_init(const std::string& modelXmlFile,
                           uint32_t& batch, //default=1
                           const std::string& deviceName,
