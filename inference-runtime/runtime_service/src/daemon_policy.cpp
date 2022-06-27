@@ -333,13 +333,11 @@ static int stateTransfer(uint64_t &pss, long &timeout, int &iter, int iter_limit
     if (pss > limit) {
         timeout = gDefaultTimeout;
         iter = 0;
-        std::cout << "pss:"<< pss << ",limit:" << limit << std::endl;
     } else if (iter == iter_limit){
         auto next_timeout = (timeout == gDefaultTimeout) ? (timeout << 1) : (timeout << 2);
         auto longest = (gDefaultTimeout << 10) + (gDefaultTimeout << 8); //==640s
         timeout = (next_timeout >= longest) ? longest : next_timeout;
         iter = 0;
-        std::cout << "transfer to " << timeout << std::endl;
     } else {
         iter++;
     }
@@ -357,7 +355,6 @@ static int gotoSleep(int &iter, uint64_t pss, std::future<bool> &activity) {
         stateTransfer(pss, gTimeout, iter, 0);
 
     if (activity.wait_for(std::chrono::milliseconds(gTimeout)) == std::future_status::ready) {
-        syslog(LOG_ERR, "AI-Service-Framework: by wakeup");
         gTimeout = gDefaultTimeout;
         iter = 0;
     }
@@ -403,7 +400,7 @@ int main(int argc, char *argv[]) {
 
     int shmid = policy.CreateShm(sizeof(struct ShareMemory));
     if (shmid < 0) {
-        syslog(LOG_ERR, "AI-Service-Framework: Error: create share memory. Eixt daemon");
+        syslog(LOG_ERR, "AI-Service-Framework: failed to create share memory. Policy daemon exit.");
         return 0;    
     }
 
