@@ -6,3 +6,4 @@
   ONNXRT        libonnxentry.so
   PYTORCH       libpytorchentry.so
   TENSORFLOW    libtensorflowentry.so
+  PADDLE        libpaddleentry.so

@@ -60,6 +60,7 @@ cp -f $build_dir/intel64/Release/lib/libonnxentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libopenvinoentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libpytorchentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libtensorflowentry.so ../release/lib/
+cp -f $build_dir/intel64/Release/lib/libpaddleentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/inferservice_python.*.so ../release/lib/
 cp -f $build_dir/intel64/Release/policy_daemon ../release/bin/
 cp -f $build_dir/intel64/Release/encrypt ../release/bin/
