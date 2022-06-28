@@ -58,8 +58,8 @@
    infer_speech()
 
 6: install libtorch in /opt/
-   wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.1%2Bcpu.zip
-   unzip libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip
+   wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip
+   unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip
    cp -r /libtorch /opt/
 
    Must use C++14 to compile libtorch.
