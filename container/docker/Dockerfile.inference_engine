@@ -47,14 +47,14 @@ RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
 	fi
 
 RUN     if [ "x${CONFIG_PYTORCH}" = "xy" ]; then \
-        wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.1%2Bcpu.zip && \
-        unzip libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip  && \
+        wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
+        unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip  && \
         cp libtorch/lib/libc10.so /usr/lib/x86_64-linux-gnu/ && \
-        cp libtorch/lib/libgomp-75eea7e8.so.1 /usr/lib/x86_64-linux-gnu/ && \
+        cp libtorch/lib/libgomp*.so.1 /usr/lib/x86_64-linux-gnu/ && \
         cp libtorch/lib/libtorch_cpu.so /usr/lib/x86_64-linux-gnu/ && \
         cp libtorch/lib/libtorch.so  /usr/lib/x86_64-linux-gnu/ && \
         rm libtorch -rf && \
-        rm libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip ; \
+        rm libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip ; \
         fi
 
 RUN     if [ "x${CONFIG_ONNX}" = "xy" ]; then \

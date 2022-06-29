@@ -33,8 +33,8 @@ cd pybind11 && git checkout -b tmp f31df73
 mkdir build && cd build && cmake ..
 sudo make -j$(nproc --all) install
 
-wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.7.1%2Bcpu.zip
-unzip libtorch-cxx11-abi-shared-with-deps-1.7.1+cpu.zip
+wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip
+unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip
 sudo cp -r libtorch/ /opt/ && rm -rf libtorch*
 
 wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz
