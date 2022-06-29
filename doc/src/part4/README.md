@@ -124,11 +124,11 @@ Please follow instructions below:
     
     $>sudo cp -r libtorch/ /opt/
     
-    $>wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+    $>wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
     
     $>sudo mkdir /opt/tensorflow
     
-    $>sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+    $>sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
     
     $>sudo apt-get install intel-openvino-dev-ubuntu20-2021.1.1 \
     

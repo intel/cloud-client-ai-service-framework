@@ -54,10 +54,10 @@ RUN     wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.
 	tar -zxvf onnxruntime-linux-x64-1.7.0.tgz && \
 	mv onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
 
-RUN     wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+RUN     wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	mkdir -p /opt/tensorflow && \
-	tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
-	rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+	tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
+	rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 
 RUN     apt-get -y install --no-install-recommends \
 		vim \
