@@ -46,6 +46,9 @@ sudo mkdir -p /opt/tensorflow
 sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
 rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
 
+wget  https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz
+tar -zxvf paddle_inference.tgz
+sudo mv paddle_inference/ /opt/
 ```
 build Cloud-Client AI Service Framework with the following command
 ```
