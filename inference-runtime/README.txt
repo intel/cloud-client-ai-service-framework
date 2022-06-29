@@ -70,6 +70,6 @@
    #sudo cp -rf onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
 
 8: Download and install TensorFlow runtime library
-   # wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+   # wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
    # sudo mkdir /opt/tensorflow
-   # sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+   # sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz

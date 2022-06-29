@@ -41,10 +41,10 @@ wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxru
 tar -zxvf onnxruntime-linux-x64-1.7.0.tgz
 sudo mv onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
 
-wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 sudo mkdir -p /opt/tensorflow
-sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
-rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz
+sudo tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
+rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 
 ```
 build Cloud-Client AI Service Framework with the following command

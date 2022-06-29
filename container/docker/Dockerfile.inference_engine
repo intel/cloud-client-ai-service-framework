@@ -64,11 +64,11 @@ RUN     if [ "x${CONFIG_ONNX}" = "xy" ]; then \
         fi
 
 RUN     if [ "x${CONFIG_TENSORFLOW}" = "xy" ]; then \
-	wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	mkdir -p tf && \
-	tar -C tf -zxvf libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	tar -C tf -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	cp -a tf/lib/* /usr/lib/x86_64-linux-gnu/ && \
-	rm -f libtensorflow-cpu-linux-x86_64-2.5.0.tar.gz && \
+	rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	rm -rf tf/ ; \
 	fi
 
