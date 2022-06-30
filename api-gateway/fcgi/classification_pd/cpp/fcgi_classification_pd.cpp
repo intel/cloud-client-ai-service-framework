@@ -2,46 +2,27 @@
 
 // apt-get install libfcgi-dev
 // gcc fcgitest.c -lfcgi
-#include <inference_engine.hpp>
 #include <stdlib.h>
 #include <string.h>
-#include <alloca.h>
+#include <sys/time.h>
+
+#include <fstream>
+#include <memory>
 #include <string>
-#include <stdio.h>
-#include <iostream>
-#include <opencv2/highgui/highgui.hpp>
+#include <vector>
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
-#include <vector>
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
-#include <functional>
-#include <random>
-#include <memory>
-#include <chrono>
-#include <utility>
-#include <algorithm>
-#include <iterator>
-#include <map>
-#include <sstream>
-#include <unistd.h>
-#include <format_reader_ptr.h>
-#include <samples/ocv_common.hpp>
-#include "vino_ie_pipe.hpp"
+
 #include <ccai_log.h>
-#include <sys/time.h>
+#include <vino_ie_pipe.hpp>
 #include "fcgi_utils.h"
-
-
-#ifdef WITH_EXTENSIONS
-#include <ext_list.hpp>
-#endif
 
 #define LISTENSOCK_FILENO 0
 #define LISTENSOCK_FLAGS 0
 
-using namespace InferenceEngine;
 using namespace std;
 using namespace cv;
 
@@ -64,7 +45,7 @@ std::string classification(cv::Mat img, std::string params_str) {
     std::vector<cv::Mat> img_channels(3);
     cv::split(img,img_channels);
 
-    for (auto i = 0; i <img_channels.size(); i++) {
+    for (unsigned int i = 0; i < img_channels.size(); i++) {
         img_channels[i].convertTo(img_channels[i], CV_32FC1, 1.0 / img_std[i], (0.0 - img_mean[i]) / img_std[i]);
     }
 

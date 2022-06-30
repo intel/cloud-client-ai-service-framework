@@ -50,6 +50,7 @@ add_subdirectory(openvino)
 add_subdirectory(onnx)
 add_subdirectory(tensorflow)
 add_subdirectory(pytorch)
+add_subdirectory(paddle)
 
 set(POLICY_DAEMON_NAME policy_daemon)
 set(DAEMON_SOURCES daemon_policy.cpp cpu_state.cpp policy.cpp)
