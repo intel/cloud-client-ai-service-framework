@@ -38,25 +38,11 @@ RUN     apt-get update && \
 RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
 		apt-get update && \
 		apt-get -y install --no-install-recommends \
-		libnuma1 ocl-icd-libopencl1 && \
-		apt-get -y install --no-install-recommends \
-		libpython3.6 python3-pip python3-setuptools libgtk-3-0 && \
+		ocl-icd-libopencl1 python3-pip python3-setuptools && \
 		pip3 --no-cache-dir install --only-binary :all: \
-		    numpy opencv-python cython \
-		    nibabel scikit-learn scipy tqdm && \
-		pip3 --no-cache-dir install progress && \
+		    numpy opencv-python scipy && \
 		apt-get --purge autoremove -y python3-pip && \
 		apt-get clean && \
 		rm -rf /var/lib/apt/lists/* ; \
 	fi
 
-# gva python deps
-RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-		apt-get update && \
-		apt-get -y install --no-install-recommends \
-		gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
-		python3-gi libxv1 \
-		&& \
-		apt-get clean && \
-		rm -rf /var/lib/apt/lists/* ; \
-	fi

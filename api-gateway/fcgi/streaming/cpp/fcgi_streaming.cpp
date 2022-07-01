@@ -17,14 +17,10 @@ gst-launch-1.0 -vvv v4l2src device=/dev/video2 ! decodebin ! videoconvert ! xima
 
 */
 
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
 #include "fcgi_utils.h"
 
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
 #include <ccai_stream.h>
 #include <json-c/json.h>
 

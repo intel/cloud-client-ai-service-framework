@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ctcdecode-numpy
+Version: 0.3.0
+Summary: CTC Decoder for NumPy based on implementation from PaddlePaddle-Deepspeech and Parlance ctcdecode
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

@@ -1,6 +1,6 @@
 # Copyright (C) 2020 Intel Corporation
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 project(service_runtime_grpc_service)
 
 if (CMAKE_BUILD_TYPE STREQUAL Debug)
@@ -21,13 +21,7 @@ include(FindPkgConfig)
 pkg_check_modules(GRPC REQUIRED IMPORTED_TARGET grpc++>=1.3.2)
 pkg_check_modules(PROTOBUF REQUIRED IMPORTED_TARGET protobuf>=3.0.0)
 
-find_package(OpenCV REQUIRED)
-find_package(InferenceEngine REQUIRED)
-find_package(PythonInterp 3.6 REQUIRED)
-find_package(PythonLibs REQUIRED)
-if (PythonLibs_FOUND)
-  message("ok: " ${PYTHON_LIBRARY})
-endif()
+find_package(OpenCV REQUIRED core imgproc imgcodecs)
 
 set(CCAI_LOG_DIR ${CMAKE_SOURCE_DIR}/../../log)
 find_library(CCAI_LOG_LIBRARY
@@ -83,10 +77,8 @@ macro(add_service service_name)
                              ${CCAI_LOG_INCLUDE})
   target_link_libraries(${service_name}
     ${GRPC_LIBRARIES} ${PROTOBUF_LIBRARIES}
-    ${OpenCV_LIBRARIES} ${InferenceEngine_LIBRARIES}
+    ${OpenCV_LIBRARIES}
     ${Runtime_LIBRARIES} ${CCAI_LOG_LIBRARY}
-    ${PYTHON_LIBRARY}
-    -L${INFER_SERVICE_LIB}
     -lpam)
   install(TARGETS ${service_name} DESTINATION /usr/sbin)
 endmacro()

@@ -12,7 +12,6 @@
 #include <inference_engine.hpp>
 #include <syslog.h>
 
-#include "command_line_parser.h"
 #include "ie_wrapper.hpp"
 #include "infer_openvino_entity.hpp"
 
@@ -140,122 +139,8 @@ int infer_openvino_entity::infer_speech(const short* samples, int sampleLength,
                                         const std::string& device,
                                         std::vector<char> &rh_utterance_transcription) noexcept {
 
-    if (!samples || (bytesPerSample == 0)) {
-        syslog(LOG_ERR, "AI-Service-Framework: Error: Input sample buffer is empty or bytesPerSample=0!\n");
-        return -1;
-    }
+    return 0;
 
-    std::string deviceName("CPU");
-    if (!device.empty())
-        deviceName = device;
-
-    int pipefds[2];
-    int returnStatus;
-    returnStatus = pipe(pipefds);
-    if (returnStatus == -1) {
-        syslog(LOG_ERR, "AI-Service-Framework: Error: Unable to create pipe!\n");
-        return -1;
-    }
-    int& write_fd = pipefds[1];
-    int& read_fd = pipefds[0];
-
-    pid_t pid = fork();
-    if (pid == 0) { //child process
-
-        SpeechLibraryHandle handle = nullptr;
-        auto status = SpeechLibraryCreate(&handle);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to create speech library instance. Status:%d \n", status);
-            return -1;
-        }
-
-        status = SpeechLibraryInitialize(handle, config_path.c_str());
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to initialize speech library. Status:%d \n", status);
-            status = SpeechLibraryRelease(&handle);
-            if (status != SPEECH_LIBRARY_SUCCESS) {
-                syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n", status);
-            }
-            return -1;
-        }
-
-        SpeechLibraryParameter deviceParam = SPEECH_LIBRARY_PARAMETER_INFERENCE_DEVICE;
-        status = SpeechLibrarySetParameter(handle, deviceParam, deviceName.c_str(), deviceName.length() + 1);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to change device name. Status:%d \n", status);
-            status = SpeechLibraryRelease(&handle);
-            if (status != SPEECH_LIBRARY_SUCCESS) {
-                syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n", status);
-            }
-            return -1;
-        }
-
-        SpeechLibraryReset(handle);
-        PushWaveData(handle, samples, sampleLength, bytesPerSample, true);
-        SpeechLibraryGetResult(handle, SPEECH_LIBRARY_RESULT_TYPE_FINAL,
-                               rh_utterance_transcription.data(), rh_utterance_transcription.size());
-
-        status = SpeechLibraryRelease(&handle);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n ", status);
-            return -1;
-        }
-
-        close(read_fd);
-        int ret = write(write_fd, rh_utterance_transcription.data(), rh_utterance_transcription.size());
-        close(write_fd);
-
-        _exit(0);
-    } else if (pid > 0) { //parent process
-
-        close(write_fd);
-        int returnValue = read(read_fd, rh_utterance_transcription.data(), rh_utterance_transcription.size());
-        close(read_fd);
-
-        pid_t child = waitpid(pid, NULL, 0);
-        returnValue = -1;
-        if (child == pid) {
-            returnValue = 0;
-        } else {
-            syslog(LOG_ERR, "AI-Service-Framework: asr child process exit status error (%s)! \n", strerror(errno));
-        }
-
-        return returnValue;
-    } else {
-        syslog(LOG_ERR, "AI-Service-Framework: intel asr process rror ! \n ");
-
-        return -1;
-    }
-}
-
-int infer_openvino_entity::PushWaveData(SpeechLibraryHandle handle, const short* samples,
-                                        int sampleLength, int bytesPerSample,
-                                        bool readResidueData) {
-
-    if (!samples || (bytesPerSample == 0))
-        return ERROR_STATUS;
-
-    int number_of_samples_read = sampleLength / bytesPerSample;
-
-    const int CHUNK_SIZE = 4000;
-    int samples_pushed = 0;
-    for (samples_pushed = 0; samples_pushed < number_of_samples_read; ) {
-        int current_chunk_size = CHUNK_SIZE <= number_of_samples_read - samples_pushed ?
-            CHUNK_SIZE : number_of_samples_read - samples_pushed;
-
-        SpeechLibraryProcessingInfo info = { 0 };
-        int result = SpeechLibraryPushData(handle, samples + samples_pushed, current_chunk_size, &info);
-        if (result < 0)  break;
-
-        samples_pushed += current_chunk_size;
-    }
-
-    if (readResidueData) {
-        SpeechLibraryProcessingInfo info = { 0 };
-        SpeechLibraryProcessResidueData(handle, &info);
-    }
-
-    return SUCCESS_STATUS;
 }
 
 int infer_openvino_entity::infer_common(std::vector<std::shared_ptr<std::vector<float>>>& inputData,
@@ -560,79 +445,5 @@ int infer_openvino_entity::live_asr(int mode, const short* samples,
                                     int sampleLength, int bytesPerSample,
                                     std::string config_path, const std::string& device,
                                     std::vector<char> &rh_utterance_transcription) {
-
-    static SpeechLibraryHandle handle = nullptr;
-
-    if (mode == 1) { //start
-        if (handle) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: handle not empty! \n");
-            return -1;
-        }
-
-        std::string deviceName("CPU");
-        if (!device.empty()) {
-            syslog(LOG_NOTICE, "AI-Service-Framework: the infer device is empty, use CPU as default device!\n");
-            deviceName = device;
-        }
-
-        auto status = SpeechLibraryCreate(&handle);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to create speech library instance. Status:%d \n", status);
-            return -1;
-        }
-
-        status = SpeechLibraryInitialize(handle, config_path.c_str());
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            status = SpeechLibraryRelease(&handle);
-            if (status != SPEECH_LIBRARY_SUCCESS) {
-                syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n", status);
-            }
-            return -1;
-        }
-
-        SpeechLibraryParameter deviceParam = SPEECH_LIBRARY_PARAMETER_INFERENCE_DEVICE;
-        status = SpeechLibrarySetParameter(handle, deviceParam, deviceName.c_str(), deviceName.length() + 1);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to change device name. Status:%d \n", status);
-            status = SpeechLibraryRelease(&handle);
-            if (status != SPEECH_LIBRARY_SUCCESS) {
-                syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n", status);
-            }
-            return -1;
-        }
-
-        SpeechLibraryReset(handle);
-    } else if (mode == 0) { //stop
-        SpeechLibraryProcessingInfo info = { 0 };
-        SpeechLibraryProcessResidueData(handle, &info);
-        //FIXME: i think no need to think about info.is_result_stable, preview or final
-        SpeechLibraryGetResult(handle, SPEECH_LIBRARY_RESULT_TYPE_FINAL,
-                               rh_utterance_transcription.data(), rh_utterance_transcription.size());
-
-        auto status = SpeechLibraryRelease(&handle);
-        if (status != SPEECH_LIBRARY_SUCCESS) {
-            syslog(LOG_ERR, "AI-Service-Framework: Error: Failed to release speech library. Status:%d \n ", status);
-            return -1;
-        }
-
-        handle = nullptr;
-    } else if (mode == 2) { //inference
-
-        if (!samples || (bytesPerSample == 0)) {
-           syslog(LOG_ERR, "AI-Service-Framework: Error: Input sample buffer is empty!\n");
-           return -1;
-        }
-
-        int number_of_samples_read = sampleLength / bytesPerSample;
-        PushWaveData(handle, samples, sampleLength, bytesPerSample, false);
-
-        auto result_type = SPEECH_LIBRARY_RESULT_TYPE_FINAL;
-        SpeechLibraryGetResult(handle, result_type,
-                               rh_utterance_transcription.data(), rh_utterance_transcription.size());
-    } else {
-           syslog(LOG_ERR, "AI-Service-Framework: Error: mode error!\n");
-           return -1;
-    }
-
     return 0;
 }

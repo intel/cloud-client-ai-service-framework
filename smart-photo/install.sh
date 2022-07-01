@@ -20,7 +20,7 @@ mkdir -p $LIB_DIR
 mkdir -p $SCRIPT_DIR/build
 cd $SCRIPT_DIR/build
 
-. /opt/intel/openvino/bin/setupvars.sh
+. /opt/intel/openvino_2022/setupvars.sh
 cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 make -j$(nproc --all) DESTDIR=$DEVEL_ROOTFS install/strip
 

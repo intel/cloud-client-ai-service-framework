@@ -1,49 +1,27 @@
 // Copyright (C) 2020 Intel Corporation
 
-// apt-get install libfcgi-dev
-// gcc fcgitest.c -lfcgi
-#include <inference_engine.hpp>
 #include <stdlib.h>
 #include <string.h>
-#include <alloca.h>
+#include <sys/time.h>
+
+#include <fstream>
+#include <memory>
 #include <string>
-#include <stdio.h>
-#include <iostream>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
 #include <vector>
+
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
-#include <functional>
-#include <random>
-#include <memory>
-#include <chrono>
-#include <utility>
-#include <algorithm>
-#include <iterator>
-#include <map>
-#include <sstream>
-#include <unistd.h>
-#include <format_reader_ptr.h>
-#include <samples/ocv_common.hpp>
-#include "vino_ie_pipe.hpp"
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
+
 #include <ccai_log.h>
-#include <sys/time.h>
+#include <vino_ie_pipe.hpp>
 #include "fcgi_utils.h"
 
-
-#ifdef WITH_EXTENSIONS
-#include <ext_list.hpp>
-#endif
 
 #define LISTENSOCK_FILENO 0
 #define LISTENSOCK_FLAGS 0
 
-using namespace InferenceEngine;
-using namespace std;
-using namespace cv;
 
 std::string classification(cv::Mat img, std::string params_str) {
     CCAI_NOTICE("torch classification c++ service");
@@ -65,7 +43,7 @@ std::string classification(cv::Mat img, std::string params_str) {
     std::vector<cv::Mat> img_channels(3);
     cv::split(img,img_channels);
 
-    for (auto i = 0; i <img_channels.size(); i++) {
+    for (size_t i = 0; i < img_channels.size(); i++) {
         img_channels[i].convertTo(img_channels[i], CV_32FC1, 1.0 / img_std[i], (0.0 - img_mean[i]) / img_std[i]);
     }
 
@@ -156,7 +134,7 @@ int main(int argc, char **argv) {
         char *pContent = FCGX_GetParam("CONTENT_TYPE", cgi.envp);
         if ((pContent == NULL) || (strstr(pContent, "application/x-www-form-urlencoded") == 0)) {
             CCAI_NOTICE("get content error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "not Acceptable";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;
@@ -172,19 +150,19 @@ int main(int argc, char **argv) {
         if (pLenstr == NULL ||
             (data_length += strtoul(pLenstr, NULL, 10)) > INT32_MAX) {
             CCAI_NOTICE("get length error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "get content length error";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;
         }
 
         std::string ie_result = "";
-        string s_base64;
+        std::string s_base64;
         cv::Mat img;
         post_data = (char *)malloc(data_length);
         if (post_data == NULL) {
             CCAI_NOTICE("malloc buffer error");
-            string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
+            std::string result("Status: 404 error\r\nContent-Type: text/html\r\n\r\n");
             result += "malloc buffer error";
             FCGX_PutStr(result.c_str(), result.length(), cgi.out);
             continue;

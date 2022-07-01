@@ -15,8 +15,10 @@ DEVEL_ROOTFS=$DESTDIR/../devel_rootfs
 MYSCRIPT_DIR=$(readlink -e $(dirname $0))
 pushd $MYSCRIPT_DIR/
 
-. /opt/intel/openvino/bin/setupvars.sh
-make DESTDIR=$DEVEL_ROOTFS install
+. /opt/intel/dlstreamer/setupvars.sh
+. /opt/intel/openvino_2022/setupvars.sh
+
+make -j$(nproc) DESTDIR=$DEVEL_ROOTFS install
 
 popd
 

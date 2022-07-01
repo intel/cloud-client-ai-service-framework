@@ -1,42 +1,22 @@
 // Copyright (C) 2020 Intel Corporation
 
-
-// apt-get install libfcgi-dev
-// gcc fcgitest.c -lfcgi
-#include <inference_engine.hpp>
 #include <stdlib.h>
 #include <string.h>
-#include <alloca.h>
+#include <sys/time.h>
+
+#include <memory>
+#include <numeric>
 #include <string>
-#include <stdio.h>
-#include <iostream>
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc.hpp>
 #include <vector>
+
 #include <fcgiapp.h>
 #include <fcgio.h>
-#include <fcgi_stdio.h>
-#include <functional>
-#include <random>
-#include <memory>
-#include <chrono>
-#include <utility>
-#include <algorithm>
-#include <iterator>
-#include <map>
-#include <sstream>
-#include <unistd.h>
-#include <format_reader_ptr.h>
-#include <samples/ocv_common.hpp>
-#include "vino_ie_pipe.hpp"
-#include <ccai_log.h>
-#include <sys/time.h>
-#include "fcgi_utils.h"
+#include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
 
-#ifdef WITH_EXTENSIONS
-#include <ext_list.hpp>
-#endif
+#include <ccai_log.h>
+#include <vino_ie_pipe.hpp>
+#include "fcgi_utils.h"
 
 
 #define LISTENSOCK_FILENO 0

@@ -43,15 +43,21 @@ fi
 
 if [ "x$CONFIG_RESTFUL_SAMPLE" = "xy" ]; then
     for conf in `find . -name "16-*.conf"`; do
-        sample_conf="$conf"
-        cp $sample_conf $DESTDIR/etc/lighttpd/conf-available/
+        cp $conf $DESTDIR/etc/lighttpd/conf-available/
     done
 
-    for conf in `find . -name "python"`; do
-        sample_conf="$conf"
-        cp $sample_conf/fcgi_*.py $DESTDIR/opt/fcgi/cgi-bin/
+    for pydir in `find . -type d -name "python" -not -path "./build/*"`; do
+        sample_pydir="$pydir"
+        if [ -e $sample_pydir/fcgi_*.py ]; then
+            cp $sample_pydir/fcgi_*.py $DESTDIR/opt/fcgi/cgi-bin/
+        fi
     done
 
+    if [ -d "$MYSCRIPT_DIR/asr/python/" ]; then
+        mkdir -p $DESTDIR/opt/fcgi/cgi-bin/asr/
+        mkdir -p $DESTDIR/opt/fcgi/cgi-bin/asr/ctcdecode_numpy/
+        cp -rf $MYSCRIPT_DIR/asr/python/asr_utils $DESTDIR/opt/fcgi/cgi-bin/asr/
+    fi
 fi
 
 # enable default services
@@ -69,7 +75,6 @@ ${capability_service_conf_files} \
 16-facial-landmark.conf \
 16-digitalnote-py.conf \
 16-tts-py.conf \
-16-live-asr-py.conf \
 16-policy-py.conf \
 16-policy.conf \
 16-streaming.conf \
@@ -86,7 +91,7 @@ cp -f $MYSCRIPT_DIR/../../health-monitor/health-monitor/service_runtime_health_m
 mkdir -p $MYSCRIPT_DIR/build
 pushd $MYSCRIPT_DIR/build
 
-source /opt/intel/openvino/bin/setupvars.sh
+source /opt/intel/openvino_2022/setupvars.sh
 cmake -DCMAKE_FIND_ROOT_PATH=$DESTDIR_DEVEL ..
 make -j$(nproc --all) VERBOSE=1
 make DESTDIR=$DESTDIR install/strip

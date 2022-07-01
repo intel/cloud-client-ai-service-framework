@@ -60,12 +60,12 @@ cp -f $build_dir/intel64/Release/lib/libonnxentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libopenvinoentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libpytorchentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/libtensorflowentry.so ../release/lib/
+cp -f $build_dir/intel64/Release/lib/libpaddleentry.so ../release/lib/
 cp -f $build_dir/intel64/Release/lib/inferservice_python.*.so ../release/lib/
 cp -f $build_dir/intel64/Release/policy_daemon ../release/bin/
 cp -f $build_dir/intel64/Release/encrypt ../release/bin/
 cp -f ./src/policy_setting.cfg ../release/
 cp -f ./src/inference_engine_library.txt ../release/lib/
 cp -f ./src/vino_ie_pipe.hpp ../release/include/
-cp -f ./lib/* ../release/lib/
 
 printf "\nBuild completed, you can find binaries in the %s subfolder.\n\n" "$build_dir/$OS_PATH/Release"
