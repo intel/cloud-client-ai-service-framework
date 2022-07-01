@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+find_package (Python3 REQUIRED COMPONENTS Interpreter Development NumPy)
+
 set(target_name ctcdecode_numpy_impl)
 
 set(COMPILER_IS_GCC_LIKE TRUE)
@@ -18,8 +20,8 @@ source_group("src" FILES ${SOURCES})
 add_library(${target_name} MODULE ${HEADERS} ${SOURCES})
 
 target_include_directories(${target_name} PRIVATE
-    ${PYTHON_INCLUDE_DIRS} ${NUMPY_INCLUDE_DIR} third_party/ThreadPool)
-target_link_libraries(${target_name} ${PYTHON_LIBRARIES})
+    ${Python3_INCLUDE_DIRS} ${Python3_NumPy_INCLUDE_DIRS} third_party/ThreadPool)
+target_link_libraries(${target_name} ${Python3_LIBRARIES})
 
 set_target_properties(${target_name} PROPERTIES
     PREFIX ""

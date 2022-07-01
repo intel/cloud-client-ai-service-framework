@@ -43,13 +43,14 @@ fi
 
 if [ "x$CONFIG_RESTFUL_SAMPLE" = "xy" ]; then
     for conf in `find . -name "16-*.conf"`; do
-        sample_conf="$conf"
-        cp $sample_conf $DESTDIR/etc/lighttpd/conf-available/
+        cp $conf $DESTDIR/etc/lighttpd/conf-available/
     done
 
-    for conf in `find . -name "python"`; do
-        sample_conf="$conf"
-        cp $sample_conf/fcgi_*.py $DESTDIR/opt/fcgi/cgi-bin/
+    for pydir in `find . -type d -name "python" -not -path "./build/*"`; do
+        sample_pydir="$pydir"
+        if [ -e $sample_pydir/fcgi_*.py ]; then
+            cp $sample_pydir/fcgi_*.py $DESTDIR/opt/fcgi/cgi-bin/
+        fi
     done
 
     if [ -d "$MYSCRIPT_DIR/asr/python/" ]; then
