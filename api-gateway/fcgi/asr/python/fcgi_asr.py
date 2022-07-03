@@ -161,7 +161,7 @@ def get_profile(profile_name):
 
 def create_stt(language, realtime):
 
-    model_xml = '/opt/fcgi/cgi-bin/models/deepspeech-0.8.2-models.xml'
+    model_xml = '/opt/fcgi/cgi-bin/models/mozilla-deepspeech-0.8.2.xml'
     lm_file = '/opt/fcgi/cgi-bin/models/deepspeech-0.8.2-models.kenlm'
     args_profile = 'mds08x_en'
     if language == 'CHINESE':
