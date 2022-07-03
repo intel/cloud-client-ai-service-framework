@@ -31,6 +31,7 @@ hrnet-v2-c1-segmentation
 deeplabv3
 mobilenet-ssd
 open-closed-eye-0001
+mozilla-deepspeech-0.8.2
 "
 
 convert_models="
@@ -40,6 +41,7 @@ hrnet-v2-c1-segmentation
 deeplabv3
 mobilenet-ssd
 open-closed-eye-0001
+mozilla-deepspeech-0.8.2
 "
 
 copy_from_local_files="
@@ -106,6 +108,9 @@ do_install()
 		cp -a $bin_file $destdir/
 	done
 	for bin_file in $(find $workdir/intel -name "*.xml" -o -name "*.bin" | grep FP32); do
+		cp -a $bin_file $destdir/
+	done
+	for bin_file in $(find $workdir/public -name "*.kenlm"); do
 		cp -a $bin_file $destdir/
 	done
 
