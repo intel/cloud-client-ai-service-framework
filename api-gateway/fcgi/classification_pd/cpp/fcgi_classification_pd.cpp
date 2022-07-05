@@ -28,7 +28,7 @@ using namespace cv;
 
 std::string classification(cv::Mat img, std::string params_str) {
     CCAI_NOTICE("paddle classification c++ service");
-    std::string model_file = "./models/resnet18.pdmodel";
+    std::string model_file = "./models/paddlepaddle/ResNet18_infer/inference.pdmodel";
     std::string labelFileName = "./models/resnet18.txt";
     std::vector<std::vector<float>> additionalInput;
     std::vector<float> rawDetectionResult;
