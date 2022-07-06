@@ -21,7 +21,7 @@ RUN     apt-get update && \
 		lighttpd lighttpd-mod-authn-pam libfcgi \
 		nghttp2-proxy libgrpc++1 \
 		runit \
-		wget gnupg \
+		curl \
 		unzip && \
 		apt-get clean && \
 		rm -rf /var/lib/apt/lists/*

@@ -22,7 +22,7 @@ RUN     apt-get -y install --no-install-recommends \
 		intel-openvino-dev-ubuntu20-2021.4.752
 RUN     apt-get -y install --no-install-recommends \
 		build-essential \
-		wget \
+		curl \
 		cmake \
 		git \
 		openssh-client \
@@ -46,20 +46,20 @@ RUN     apt-get -y install --no-install-recommends \
 		mkdir build && cd build && cmake .. && \
 		make -j$(nproc --all) install
 
-RUN     wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
-		unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip && \
+RUN     curl -L -O  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
+		unzip libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
 		cp -r libtorch/ /opt/ && rm -rf libtorch*
 
-RUN     wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz && \
+RUN     curl -L -O https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz && \
 	tar -zxvf onnxruntime-linux-x64-1.7.0.tgz && \
 	mv onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
 
-RUN     wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
+RUN     curl -L -O https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	mkdir -p /opt/tensorflow && \
 	tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 
-RUN 	wget https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
+RUN 	curl -L -O https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
 	tar -C /opt/ -zxvf paddle_inference.tgz && \
 	rm -f paddle_inference.tgz
 
