@@ -23,9 +23,9 @@ ARG     CONFIG_PADDLE=n
 WORKDIR /tmp
 
 RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-	wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
-	apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
-	rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB && \
+	apt-get update && apt-get -y install --no-install-recommends gnupg && \
+	curl https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | \
+		apt-key add - && \
 	echo "deb https://apt.repos.intel.com/openvino/2022 \
 `. /etc/os-release && echo ${UBUNTU_CODENAME}` main" |  \
 	tee /etc/apt/sources.list.d/intel-openvino-2022.list && \
@@ -33,39 +33,39 @@ RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
 		openvino-libraries-2022.1.0 \
 		openvino-opencv-2022.1.0 \
 		intel-dlstreamer && \
-		apt-get clean && \
+	apt-get -y autoremove gnupg && \
+	apt-get clean && \
 		rm -rf /var/lib/apt/lists/* ; \
 	fi
 
 RUN     if [ "x${CONFIG_OPENVINO}" = "xy" ]; then \
-	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-gmmlib_21.3.3_amd64.deb && \
-	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-core_1.0.9441_amd64.deb && \
-	wget https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-opencl_1.0.9441_amd64.deb && \
-	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-opencl-icd_21.48.21782_amd64.deb && \
-	wget https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-level-zero-gpu_1.2.21782_amd64.deb && \
+	curl -L -O https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-gmmlib_21.3.3_amd64.deb && \
+	curl -L -O https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-core_1.0.9441_amd64.deb && \
+	curl -L -O  https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.9441/intel-igc-opencl_1.0.9441_amd64.deb && \
+	curl -L -O https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-opencl-icd_21.48.21782_amd64.deb && \
+	curl -L -O https://github.com/intel/compute-runtime/releases/download/21.48.21782/intel-level-zero-gpu_1.2.21782_amd64.deb && \
 	dpkg -i *.deb && rm -f *.deb; \
 	fi
 
 RUN     if [ "x${CONFIG_PYTORCH}" = "xy" ]; then \
-        wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
-        unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip  && \
+        curl -L -O  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip && \
+        unzip libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcpu.zip  && \
         cp libtorch/lib/libc10.so /usr/lib/x86_64-linux-gnu/ && \
         cp libtorch/lib/libgomp*.so.1 /usr/lib/x86_64-linux-gnu/ && \
         cp libtorch/lib/libtorch_cpu.so /usr/lib/x86_64-linux-gnu/ && \
         cp libtorch/lib/libtorch.so  /usr/lib/x86_64-linux-gnu/ && \
-        rm libtorch -rf && \
-        rm libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip ; \
+        rm libtorch* -rf ; \
         fi
 
 RUN     if [ "x${CONFIG_ONNX}" = "xy" ]; then \
-        wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.11.0/onnxruntime-linux-x64-1.11.0.tgz && \
+        curl -L -O https://github.com/microsoft/onnxruntime/releases/download/v1.11.0/onnxruntime-linux-x64-1.11.0.tgz && \
         tar -zxvf onnxruntime-linux-x64-1.11.0.tgz && \
         cp -a onnxruntime-linux-x64-1.11.0/lib/* /usr/lib/x86_64-linux-gnu/ && \
         rm onnxruntime-linux-* -rf ; \
         fi
 
 RUN     if [ "x${CONFIG_TENSORFLOW}" = "xy" ]; then \
-	wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
+	curl -L -O https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	mkdir -p tf && \
 	tar -C tf -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	cp -a tf/lib/* /usr/lib/x86_64-linux-gnu/ && \
@@ -74,7 +74,7 @@ RUN     if [ "x${CONFIG_TENSORFLOW}" = "xy" ]; then \
 	fi
 
 RUN     if [ "x${CONFIG_PADDLE}" = "xy" ]; then \
-        wget  https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
+        curl -L -O https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
         tar -zxvf paddle_inference.tgz  && \
         cp paddle_inference/paddle/lib/libpaddle_inference.so /usr/lib/x86_64-linux-gnu/ && \
         rm paddle_inference -rf ; \
