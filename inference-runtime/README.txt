@@ -65,9 +65,9 @@
    Must use C++14 to compile libtorch.
 
 7: Download and install Onnx runtime library
-   #wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz
-   #tar -zxvf onnxruntime-linux-x64-1.7.0.tgz
-   #sudo cp -rf onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
+   #wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.11.0/onnxruntime-linux-x64-1.11.0.tgz
+   #tar -zxvf onnxruntime-linux-x64-1.11.0.tgz
+   #sudo cp -rf onnxruntime-linux-x64-1.11.0 /opt/onnxruntime
 
 8: Download and install TensorFlow runtime library
    # wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
