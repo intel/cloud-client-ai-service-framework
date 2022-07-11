@@ -92,6 +92,26 @@ CCAI can leverage the Tensorflow framework to support tensorflow models. To use 
 
 3. There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
+### 6.2.5 Using PaddlePaddle as inference engine in CCAI {#6.2.5}
+
+If you only have PaddlePaddle models or cannot convert Paddle models into OpenVINO
+format successfully, you can choose to use Paddle as a backend inference engine
+in CCAI, then please make sure you are ready with the following requirements:
+
+1. Get your paddlepaddle models.
+
+2. The weights need to be placed in the directory
+
+    container/script/integration_workdir/service_runtime_binary/lfs/models.
+
+    (a) *.pdmodel
+
+    (b) *.txt(Optional for labels)
+
+3. There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory
+
+    container/script/integration_workdir/service_runtime_binary/lfs/test_data.
+
 ## 6.3 Development services {#6.3}
 
 CCAI included a key component known as API gateway, which provides both Fast-CGI support and gRPC support to export services to externals of CCAI containers. So you can develop CGI based services or gRPC based services for CCAI as the following sections describe.
@@ -215,6 +235,12 @@ b) The ONNX model may need to do preprocessing for input data, such as,transpose
 a) The runtime inference library provides APIs to support Tensorflow as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "TENSORFLOW" string to the API parameter to specify TENSORFLOW as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "TENSORFLOW" and urlinfo, the outputs are rawDetectionResults of tensorData.
 
 b) The Tensorflow model may need to do preprocessing for input data, such as, transpose or normalization. Please add these preprocessing parts to your Tensorflow service.
+
+### 6.4.6 Specific to PaddlePaddle service {#6.4.6}
+
+a) Currently the runtime inference library provides APIs to support PaddlePaddle as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "PADDLE" string to the API parameter to specify PaddlePaddle as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "PADDLE" and urlinfo, the outputs are rawDetectionResults of tensorData.
+
+b) The PADDLE model may need to do preprocessing for input data, such as,transpose or normalization. Please add these preprocessing parts to your Paddlepaddle service.
 
 ## 6.5 Sample: Add a service for CCAI {#6.5}
 

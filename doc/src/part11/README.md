@@ -124,12 +124,10 @@ Uncomment the tcp configuration(remove "    #"), and add authentication:
 Save and quit the configuration file.
 
 (3) Restart the pulseaudio service. For example:
-
-    #sudo systemctl restart pulseaudio
-
-or kill the pulseaudio thread
-
-    #sudo kill -9 xxxx(pulseaudio thread number)
+    Stop the pulseaudio:
+        # pulseaudio -k
+    Start the pulseaudio:
+        #pulseaudio --start or #pulseaudio -D
 
 (4) Running the health-monitor service on the host pc if you don't run it.
 This service is used to monitor the CCAI container.
@@ -138,7 +136,7 @@ This service is used to monitor the CCAI container.
 
 fcgi_asr API is a usage of Automatic-Speech-Recognition. This is an end-to-end speech recognition. It includes several libraries released by the OpenVINO? toolkit. These libraries perform feature extraction, OpenVINO?-based neural-network speech recognition, and decoding to produce text from scores. All these libraries provide an end-to-end pipeline converting speech to text. Client app inputs an utterance (speech), fcgi_asr outputs the text directly expressed by this utterance.
 
-Same as fcgi_tts, fcgi_asr also has two working modes, local mode and proxy mode.
+fcgi_asr has only one working modes - local mode.
 
 Client app uses http protocol to communicate with fcgi_asr server.
 
@@ -151,24 +149,23 @@ response.
 
 a) Input parameters
 
-\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_asr'
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_py_asr'
 
 \- post parameter: this parameter should include these fields:
 
 | **Field name** | **Type** | **Range**                        | **Example**       | **comments**                     |
 |----------------|----------|----------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer                 | 2128571502        | Application ID                   |
-| 'format'       | Int      | Positive integer                 | 2                 | 1:PCM 2:WAV 3:AMR 4:SILK         |
-| 'nonce_str'    | string   | No more than 32 byte             | fa577ce340859f9fe | Random string                    |
+| 'samplewidth'  | Int      | Positive integer                 | 2                 | 1:PCM 2:WAV 3:AMR 4:SILK         |
+| 'rate'         | Int      | Positive integer                 | 16000             | sample frequency                 |
+| 'language'     | string   | "ENGLISH" or "CHINESE"           | ENGLISH           | language type                    |
+| 'realtime'     | string   | 'OFFLINE','ONLINE_READ','ONLINE_STOP' | OFFLINE      | working mode: offline or live asr|
 | 'speech'       | string   | Utterance data. Usually PCM data |                   | Must be encoded by base64 method |
-| 'time_stamp'   | Int      | Positive integer                 | 1493468759        | timestamp                        |
+| 'audio_input'  | string   | 'SIMULATION' or 'MIC'            | SIMULATION        | Used in live asr mode.           |
+| 'time_stamp'   | Int      | Positive integer                 | 1493468759        | Timestamp                        |
 
-In local mode(doing inference locally), only a "speech" field is needed to be set.
-
-In proxy mode(doing inference on a remote server), all fields are needed to be set.
-
-In proxy mode, 'appid' and 'appkey' are the necessary parameters in order to get the right results from the remote server(www.ai.qq.com). You should register on www.ai.qq.com and get 'appid' and 'appkey'. Please refer to
-*<https://ai.qq.com/doc/aaiasr.shtml>* , find out how to apply these fields and how to write a post request for the remote server.
+For offline mode, the "realtime" field should set to "OFFLINE", the "audio_input" field should set to "SIMULATION".
+Because an audio file should be PCM WAV 16 kHz mono format in this case, the "samplewidth" field should be 2, and the
+"rate" field should be 16000.
 
 b) Response
 
@@ -190,13 +187,14 @@ The response of post request is json format, for example:
     
     }
 
-One example of a client app for fcgi_asr API is "*api-gateway/cgi-bin/test-script/test-demo/post_local_asr_c.py*".
+One example of a client app for fcgi_asr API is "*api-gateway/cgi-bin/test-script/test-demo/post_local_asr_py.py*".
+   # python3 post_local_asr_py.py -l ENG -m Offline -f path_of_audio_file
 
 c) Notice
+This model supports both English utterance and Mathaland. For Mandarin model (IR format), please contact the author to get it.
+Please refer to README.txt file under api-gateway/fcgi/asr/python folder. 
 
-Currently, this model only supports English utterance, not Mathaland.
-
-It provides two types of APIs: both C++ and python API.
+It provides only python API.
 
 ### 11.1.3 API in Speech sample {#11.1.3}
 
@@ -1011,11 +1009,11 @@ For the read method, the response is the string of reading content.
 
 ### 11.1.16 Live ASR API usage (online ASR case) {#11.1.16}
 
-fcgi_live_asr API is also a usage of Automatic-Speech-Recognition. It uses the same models as fcgi_asr API(ASR API usage in 10.1.2). The difference is that this API is an online ASR case while 10.1.2 is an offline ASR case. That means this live asr API continuously captures the voice from the MIC devices, do inference, and send out the sentences what the voice expressed.
+The fcgi live asr API is also a usage of Automatic-Speech-Recognition. It uses the same models as fcgi_asr API(ASR API usage in 11.1.2). The difference is that this API is an online ASR case while 11.1.2 is an offline ASR case. That means this live asr API continuously captures the voice from the MIC devices, do inference, and send out the sentences what the voice expressed. It is online working model of the fcgi_asr service.
 
 fcgi_live_asr case has only one working mode - local mode. It doesn't support proxy mode.
 
-Client app uses http protocol to communicate with fcgi_live_asr server.
+Client app uses http protocol to communicate with fcgi_asr server.
 
 The sample code of sending post request in client app is:
 
@@ -1026,20 +1024,18 @@ response.
 
 a) Input parameters
 
-\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_live_asr'
+\- http url: such as: url= 'http://localhost:8080/cgi-bin/fcgi_py_asr'
 
 \- post parameter: this parameter should include these fields:
+For parameters, please refer to 11.1.2.
 
-| **Field name** | **Type** | **Range** | **Example** | **comments**                                                                                                                                                 |
-|----------------|----------|-----------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 'mode'         | Int      | 0,1,2     | 0           | To control the running mode of fcgi_live_asr service: 0: starting the live asr service 1: do inference and get the result sentences. 2: stop live ar service |
+For online mode, the "realtime" field should set to 'ONLINE_READ' or 'ONLINE_STOP'. 'ONLINE_READ' is used to query ASR inference result on time. 'ONLINE_STOP' is used to stop live asr mode. The "audio_input" field should set to "MIC" if the audio data is feed from MIC device. "SIMULATION" is used to verify live asr mode, and audio data is feed from a audio file which simulates the data from the mic device.
+
 
 b) Response
 
 The response of post request is json format, for example:
 
-    Starting live asr ok!
-    
     HOW ARE YOU DOING
     
     HELLO
@@ -1050,14 +1046,16 @@ The response of post request is json format, for example:
     
     Stop live asr ok!
 
-One example of a client app for fcgi_live_asr API is
-"*api-gateway/cgi-bin/test-script/test-demo/post_local_live_asr.py*".
+One example of a client app for fcgi live asr API is
+"*api-gateway/cgi-bin/test-script/test-demo/post_local_asr_py.py*".
+     # python3 post_local_asr_py.py -l ENG -m Online -i MIC
 
 c) Notice
 
-Currently, this model only supports English utterance, not Mathaland.
+This case supports both English utterance and Mathaland.
+For Mandarin model (IR format), please contact the author to get it.
 
-It only provides C++ APIs.
+It only provides python APIs.
 
 In order to use this API, you need to enable the pulseaudio and health-monitor
 services.
@@ -1086,11 +1084,13 @@ Save and quit the configuration file.
 
 (3) Restart the pulseaudio service. For example:
 
-    #sudo systemctl restart pulseaudio
+    Stop the pulseaudio:
 
-or kill the pulseaudio thread
+         # pulseaudio -k
 
-    #sudo kill -9 xxxx(pulseaudio thread number)
+    Start the pulseaudio:
+
+         #pulseaudio --start or #pulseaudio -D
 
 (4) Running the health-monitor service on the host pc if you don't run it.
 
@@ -1489,6 +1489,8 @@ Parameter - additionalInput: don't support cv::Mat data format.
 ASR means Automatic Speech Recognition, speech-to-text. This API is implemented
 based on some Intel speech libraries.
 
+Notice, from this release, this API isn't supported any longer. Please don't use it any more
+
 1) API
 
 ```
@@ -1535,40 +1537,12 @@ struct serverParams& remoteServerInfo);
 Samples, sampleLength, and bytesPerSample are often obtained by parsing theheader of a wave file.
 
 3) example
-
-```
-std::string wave_filename = "./models/how_are_you_doing.wav";
-
-std::string config_filename = "./models/lspeech_s5_ext/FP32/speech_lib.cfg";
-
-short samples = nullptr;*
-
-int sampleLength = 0;
-
-int bytesPerSample = 0;
-
-unsigned int size = 0;
-
-uint8_t wave_data = ReadBinaryFile(wave_filename.c_str(), &size);*
-
-parseWaveFile(wave_data, size, samples, sampleLength, bytesPerSample);
-
-std::vector<char> rh_utterance_transcription(1024 1024);*
-
-std::string param = "f=8&rsv_bp=1&rsv_idx=1&word=picture&tn=98633779_hao_pg";
-
-struct serverParams urlInfo{"https://www.intel.cn/index.html", param};
-
-int res = vino_ie_pipeline_infer_speech(samples, sampleLength,
-
-bytesPerSample, config_filename, rh_utterance_transcription, urlInfo);
-```
-
-
+No eample code.
 
 4) Notice
 
-This ASR model only supports English, not Chinese.
+From this release(V1.3), this API isn't supported any longer.
+Please don't use it any more.
 
 #### 11.3.1.6 common API (deprecated)  {#11.3.1.6}
 
@@ -1819,117 +1793,7 @@ these cases, we need to call this api to initialize the Openvino model.
 | batch          | int          | The batch size.                                    |
 | isImgInput     | bool         | Whether the input of the model is image data.      |
 
-#### 11.3.1.9 Live ASR API  {#11.3.1.9}
-
-ASR means Automatic Speech Recognition, speech-to-text. This API is implemented
-based on some Intel speech libraries. This API is similar to the ASR
-API(10.4.1.5). The difference is that this API does continuous inference and
-outputs the text while the previous ASR API only does one time inference.
-
-1) API
-
-```
-/**
-
-* @brief Continuously do inference for speech (ASR). Using intel speech
-libraries.
-
-* @param mode Working status of ASR. Start/inference/stop
-
-* @param samples Speech data buffer.
-
-* @param sampleLength Buffer size of speech data
-
-* @param bytesPerSample Size for each speech sample data (how many bytes for
-each sample)
-
-* @param rh_utterance_transcription Text result of speech. (ASR result)
-
-* @param config_path The file path for configuration file.
-
-* @param device The inference device.
-
-* @return Status code of inference
-
-*/
-
-int vino_ie_pipeline_infer_speech(int mode, // 1 -- start 2 -- inference 0 --
-stop
-
-const short samples,*
-
-int sampleLength,
-
-int bytesPerSample,
-
-std::string config_path,
-
-std::string device,
-
-std::vector<char> &rh_utterance_transcription);
-```
-
-
-
-2) parameters
-
-| **Parameter**              | **Type**            | **Comments**                                                                                                                 |
-|----------------------------|---------------------|------------------------------------------------------------------------------------------------------------------------------|
-| mode                       | int                 | The working mode of the ASR process.  0 - stop to do inference 1 - start to do inference 2 - do inference                    |
-| samples                    | short int           | speech data, which format is PCM data. Each short int data is one PCM sample.                                                |
-| sampleLength               | int                 | The size of speech data                                                                                                      |
-| bytesPerSample             | int                 | the bytes number for each speech sample data. For PCM data, the value should be 2, which means each PCM sample is two bytes. |
-| config_path                | std::string         | The configuration file for the ASR model. This configuration file is used by intel speech libraries                          |
-| rh_utterance_transcription | std::vector<char> | the inference result for speech data. The data format is char.                                                               |
-| device                     | std::string         | The inference device: CPU or GNA                                                                                             |
-
-Samples, sampleLength, and bytesPerSample are often obtained by parsing the
-header of a wave file.
-
-3) example
-
-```
-std::string wave_filename = "./models/how_are_you_doing.wav";
-
-std::string config_filename = "./models/lspeech_s5_ext/FP32/speech_lib.cfg";
-
-short samples = nullptr;*
-
-int sampleLength = 0;
-
-int bytesPerSample = 0;
-
-unsigned int size = 0;
-
-uint8_t wave_data = ReadBinaryFile(wave_filename.c_str(), &size);*
-
-parseWaveFile(wave_data, size, samples, sampleLength, bytesPerSample);
-
-std::vector<char> rh_utterance_transcription(1024 1024);*
-
-// starting live asr mode (mode==1)
-
-int res = vino_ie_pipeline_live_asr(1, samples, sampleLength, bytesPerSample,
-config_filename, "CPU", rh_utterance_transcription);
-
-// do inference (mode==2)
-
-res = vino_ie_pipeline_live_asr(2, samples, sampleLength, bytesPerSample,
-config_filename, "CPU", rh_utterance_transcription);
-
-// stopping live asr mode(mode==0)
-
-res = vino_ie_pipeline_live_asr(0, samples, sampleLength, bytesPerSample,
-config_filename, "CPU", rh_utterance_transcription);
-```
-
-
-
-4) Notice
-
-This ASR model only supports English, not Chinese.
-
-#### 11.3.1.10 Configure a temporary inference device API  {#11.3.1.10}
+#### 11.3.1.9 Configure a temporary inference device API  {#11.3.1.10}
 
 This API is used by users to set a temporary inference device for one case. The
 inference device is usually set by the Policy configuration API(11.4.1.3). But
@@ -2078,7 +1942,7 @@ The usage of this API is the same as C++ image API.
 
 *infer_image_v1(images, image_channel, additionalInput, xmls, backendEngine, rawDetectionResults, remoteServerInfo)*
 
-This image API is encouraged to be used for image inference. It supports different inference backend engines, such as  PENVINO, PYTORCH, TENSORFLOW or ONNX runtime. It is mapped to C++ image API, irt_infer_from_image(). Please refer to 10.4.3 for C++ image API.
+This image API is encouraged to be used for image inference. It supports different inference backend engines, such as  PENVINO, PYTORCH, TENSORFLOW, PADDLE or ONNX runtime. It is mapped to C++ image API, irt_infer_from_image(). Please refer to 10.4.3 for C++ image API.
 
 2) parameters
 
@@ -2088,7 +1952,7 @@ This image API is encouraged to be used for image inference. It supports differe
 | Image_channel       | int                   | This parameter defines the channels of the input image. For example: 3 �C rgb, 1 �C h |
 | AdditionalInput     | vectorVecFloat        | Other inputs except image input. The meaning is the same as C++ API |
 | Xmls                | str                   | IE model file. The meaning is the same as C++ API.           |
-| backendEngine       | str                   | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT" or "TENSORFLOW". |
+| backendEngine       | str                   | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT", "PADDLE" or "TENSORFLOW". |
 | rawDetectionResults | vectorVecFloat        | The inference results. The meaning is the same as C++ API.   |
 | remoteServerInfo    | serverParams          | Server parameter. This is used in proxy mode. The meaning is the same as C++ API. |
 
@@ -2141,38 +2005,18 @@ rh_utterance_transcription, remoteServerInfo)*
 | samples                    | List[int]    | speech data, which format is PCM data. Each PCM sample is one short int data. |
 | bytesPerSample             | int          | the bytes number for each speech sample data. For PCM data, the value should be 2, which means each sample data includes two bytes. |
 | config_path                | str          | The configuration file for the ASR model. This configuration file is used by intel speech libraries |
-| backendEngine              | str          | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT" or "TENSORFLOW". |
+| backendEngine              | str          | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT", "PADDLE" or "TENSORFLOW". |
 | rh_utterance_transcription | vectorChar   | the inference result for speech data. The data format is char. |
 | remoteServerInfo           | serverParams | Server parameter. This is used in proxy mode. The meaning is the same as C++ API. |
 
 3) example
 
-```
-import inferservice_python as rt_api
-
-model_xml = './models/lspeech_s5_ext/FP32/speech_lib.cfg'
-
-speech, samplewidth = parse_wavefile()
-
-buf = np.zeros((100100), dtype = np.int8)*
-
-utt_res = rt_api.vectorChar(buf)
-
-urlinfo = rt_api.serverParams()
-
-urlinfo.url = 'https://www.baidu.com/s'
-
-urlinfo.urlParam = 'f=8&rsv_bp=1&rsv_idx=1&word=picture&tn=98633779_hao_pg'
-
-res = rt_api.infer_speech(speech, sampwidth, model_xml, "OPENVINO", utt_res,
-urlinfo)
-```
-
-
+Currently, no example uses this API.
 
 4) Notice
 
 The usage of this API is the same as C++ ASR API.
+Intel ASR model isn't supported by this API any longer.
 
 #### 11.3.2.4 Common API {#11.3.2.4}
 
@@ -2189,7 +2033,7 @@ This api is mapped to C++ common API, irt_infer_from_common(). It can be used in
 | inputData           | tripleVecFloat | The input data for the network. Same as C++ API.             |
 | additionalInput     | vectorVecFloat | Other inputs except inputData pin. Same as C++ API.          |
 | xml                 | str            | The IE model file, which includes the file path. The file must be xml format. |
-| backendEngine       | str            | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT" or "TENSORFLOW". |
+| backendEngine       | str            | Specify the inference engine, "OPENVINO", "PYTORCH", "ONNXRT", "PADDLE" or "TENSORFLOW". |
 | rawDetectionResults | vectorVecFloat | The inference results. Same as C++ API.                      |
 | remoteServerInfo    | serverParams   | Server parameter. This is used in proxy mode. Same as C++ API. |
 
@@ -2272,58 +2116,7 @@ res = rt_api.set_policy_params(cfg_info)
 
 The usage of this API is the same as C++ policy configuration API.
 
-#### 11.3.2.6 Live ASR API {#11.3.2.6}
-
-1) API
-
-*live_asr(mode, samples, bytesPerSample, config_path, device, rh_utterance_transcription)*
-
-2) parameters
-
-| **Parameters**             | **Type**    | **Comments**                                                                                                                        |
-|----------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| mode                       | int         | The working mode of the ASR process.  0 - stop to do inference 1 - start to do inference 2 - do inference                           |
-| samples                    | List[int]   | speech data, which format is PCM data. Each PCM sample is one short int data.                                                       |
-| bytesPerSample             | int         | the bytes number for each speech sample data. For PCM data, the value should be 2, which means each sample data includes two bytes. |
-| config_path                | str         | The configuration file for the ASR model. This configuration file is used by intel speech libraries                                 |
-| rh_utterance_transcription | vectorChar  | the inference result for speech data. The data format is char.                                                                      |
-| device                     | std::string | The inference device: CPU or GNA                                                                                                    |
-
-3) example
-
-```
-import inferservice_python as rt_api
-
-model_xml = './models/lspeech_s5_ext/FP32/speech_lib.cfg'
-
-speech, samplewidth = parse_wavefile()
-
-buf = np.zeros((100100), dtype = np.int8)*
-
-utt_res = rt_api.vectorChar(buf)
-
-device = "CPU"
-
-mode = 1     #    # starting inference
-
-res = rt_api.live_asr(mode, speech, sampwidth, model_xml, device, utt_res)
-
-mode = 2     #    # doing inference
-
-res = rt_api.live_asr(mode, speech, sampwidth, model_xml, device, utt_res)
-
-mode = 0     #    # stopping inference
-
-res = rt_api.live_asr(mode, speech, sampwidth, model_xml, device, utt_res)
-```
-
-
-
-4) Notice
-
-The usage of this API is the same as C++ Live ASR API.
-
-#### 11.3.2.7 Set temporary inference device API {#11.3.2.7}
+#### 11.3.2.6 Set temporary inference device API {#11.3.2.6}
 
 1) API
 
@@ -2369,7 +2162,7 @@ The usage of this API is the same as C++ configuring a temporary inference devic
 
 ### 11.3.3 C++ APIs for Different backend Engines (Version 1) {#11.3.3}
 
-This set of C++ APIs(version 1) are the superset of the set of C++ APIs for Openvino backend engines (version 0). The difference between two versions is that version 1 supports different inference engines, such as Openvino, Pytorch, Onnx, and Tensorflow. You can use APIs in version 1 to do the same things as APIs in version0.
+This set of C++ APIs(version 1) are the superset of the set of C++ APIs for Openvino backend engines (version 0). The difference between two versions is that version 1 supports different inference engines, such as Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. You can use APIs in version 1 to do the same things as APIs in version0.
 
 C++ APIs of version 1 are "standard" c++ APIs. In the future, some of the APIs in version 0 will be obselete. I encourage you to try to use C++ APIs in version 1.
 
@@ -2404,14 +2197,14 @@ In proxy mode, the return value is *RT_REMOTE_INFER_OK (success)* or *RT_INFER_E
 
 #### 11.3.3.2 Inference Engines {#11.3.3.2}
 
-Currently, runtime libraries support four inference engines, they are Openvino, Pytorch, Onnx and Tensorflow.
+Currently, runtime libraries support five inference engines, they are Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. The PaddlePaddle is a new inference engine added in this release.
 
 There is a configuration file which defines which inference engines are supported in this runtime library. The name of this configuration file is inference_engine_library.txt. The content is:
 
     #format: inference-engine-name library-name, for example: ONNX
     libonnxentry.so*
 
-    #inference-engine-name: OPENVINO, ONNX, PYTORCH, TENSORFLOW*
+    #inference-engine-name: OPENVINO, ONNX, PYTORCH, PADDLE, TENSORFLOW*
 
     #You can add new inference engine to this file by following same format*
 
@@ -2422,6 +2215,9 @@ There is a configuration file which defines which inference engines are supporte
     *PYTORCH libpytorchentry.so*
 
     *TENSORFLOW libtensorflowentry.so*
+
+    *PADDLE libpaddleentry.so*
+
 
 This file defines the name of the inference engine, and also the inference engine library.
 
@@ -2440,7 +2236,7 @@ The usage of this API is the same as image API in version 0.
 
 * @param modelFile The model file, include path
 
-* @param backendEngine Specify the inference engine, OPENVINO, PYTORCH, ONNXRT
+* @param backendEngine Specify the inference engine, OPENVINO, PYTORCH, ONNXRT, PADDLE,
 or
 
 * TENSORFLOW.
@@ -2520,7 +2316,7 @@ struct irtFloatIOBuffers {
 |------------------|---------------------|---------------------------------------------------------------------------------------------|
 | tensorData       | irtImageIOBuffers   | Buffers for input/output tensors                                                            |
 | modelFile        | std::string         | The model file, which includes the file path.                                               |
-| backendEngine    | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime or Tensorflow.                |
+| backendEngine    | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle or Tensorflow.  |
 | remoteServerInfo | struct serverParams | Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information. |
 
 3. example
@@ -2581,7 +2377,7 @@ settings.
 
 * @param inferenceResult Text result of speech. (ASR result)
 
-* @param backendEngine Specify the inference engine, OpenVINO, PYTORCH, ONNXRT
+* @param backendEngine Specify the inference engine, OpenVINO, PYTORCH, ONNXRT, PADDLE,
 or
 
 * TENSORFLOW.
@@ -2631,31 +2427,13 @@ struct irtWaveData {
 |-------------------|---------------------|---------------------------------------------------------------------------------------------|
 | waveData          |  irtWaveData        | Parameters for speech data, includes speech data buffer and definitions.                    |
 | configurationFile | std::string         | The configuration file for the ASR model. Including path.                                   |
-| inferenceResult   | std::vector<char> | Text result of inference. The data format is char.                                          |
-| backendEngine     | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime and Tensorflow.               |
+| inferenceResult   | std::vector<char> | Text result of inference. The data format is char.                                            |
+| backendEngine     | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle and Tensorflow. |
 | remoteServerInfo  | struct serverParams | Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information. |
 
 3. example
 
-```
-std::string wave_filename = "./models/how_are_you_doing.wav";
-	std::string config_filename = "./models/lspeech_s5_ext/FP32/speech_lib.cfg";
-	short* samples = nullptr;
-	int sampleLength = 0;
-	int bytesPerSample = 0;
-	unsigned int size = 0;
-	uint8_t* wave_data = ReadBinaryFile(wave_filename.c_str(), &size);
-	parseWaveFile(wave_data, size, samples, sampleLength, bytesPerSample);
-	std::vector<char> rh_utterance_transcription(1024 * 1024);
-	std::string param = "f=8&rsv_bp=1&rsv_idx=1&word=picture&tn=98633779_hao_pg";
-	struct serverParams urlInfo{"https://www.intel.cn/index.html", param};
-                        struct irtWaveData sampleData{samples, sampleLength, bytesPerSample};
-                        enum irtStatusCode res = irt_infer_from_speech(sampleData, config_filename, 
-                                 rh_utterance_transcription, "OPENVINO", urlInfo); 
-
-```
-
-
+Currently, no example uses this API.
 
 #### 11.3.3.5 Common API {#11.3.3.5}
 
@@ -2672,7 +2450,7 @@ The usage of this API is the same as the common API in version 0.
 
 * @param modelFile The model file, include path
 
-* @param backendEngine Specify the inference engine, OpenVINO,PYTORCH, ONNXRT
+* @param backendEngine Specify the inference engine, OpenVINO,PYTORCH, ONNXRT, PADDLE,
 or
 
 * TENSORFLOW.
@@ -2726,7 +2504,7 @@ struct irtFloatIOBuffers {
 |------------------|---------------------|---------------------------------------------------------------------------------------------|
 | tensorData       | irtFloatIOBuffers   | Buffers for input/output tensors                                                            |
 | modelFile        | std::string         | The model file, which includes the file path.                                               |
-| backendEngine    | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime and Tensorflow.               |
+| backendEngine    | std::string         | Specify the inference engine, OpenVINO, Pytorch, Onnx runtime, PaddlePaddle and Tensorflow. |
 | remoteServerInfo | struct serverParams | Server parameter. This is used in proxy mode. Please refer to 1.2 for detailed information. |
 
 3. example
