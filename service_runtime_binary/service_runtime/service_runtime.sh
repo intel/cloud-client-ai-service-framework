@@ -54,20 +54,20 @@ wait_remove_container()
 	return 1
 }
 
-attach_gna_devices()
+attach_device()
 {
-	shopt -s nullglob
-	for gna_dev in /dev/gna*; do
-		printf -- "--device %s " "$gna_dev"
-	done
-	shopt -u nullglob
+	device=$1
+	if [ -e ${device} ]; then
+		printf -- "--device %s " "${device}"
+	fi
 }
 
-attach_video_devices()
+attach_devices()
 {
+	device_nodes=$1
 	shopt -s nullglob
-	for video_dev in /dev/video*; do
-		printf -- "--device %s " "$video_dev"
+	for dev in /dev/${device_nodes}*; do
+		printf -- "--device %s " "$dev"
 	done
 	shopt -u nullglob
 }
@@ -205,9 +205,9 @@ start_service_runtime()
 		$(override_rootfs) \
 		$(mount_smartphoto) \
 		-v /dev/log:/dev/log \
-		--device /dev/dri \
-		$(attach_gna_devices) \
-		$(attach_video_devices) \
+		$(attach_device /dev/dri) \
+		$(attach_devices gna) \
+		$(attach_devices video) \
 		$(xorg_opts) \
 		--mount type=bind,source="$SCRIPT_DIR"/models,target=/opt/fcgi/cgi-bin/models \
 		$(add_service) \
