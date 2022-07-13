@@ -19,7 +19,8 @@ WORKDIR /tmp
 
 RUN     apt-get update
 RUN     apt-get -y install --no-install-recommends \
-		intel-openvino-dev-ubuntu20-2021.4.752
+		openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 \
+		intel-dlstreamer-cpp intel-dlstreamer-dev
 RUN     apt-get -y install --no-install-recommends \
 		build-essential \
 		curl \
@@ -27,20 +28,24 @@ RUN     apt-get -y install --no-install-recommends \
 		git \
 		openssh-client \
 		bash-completion \
+		axel \
 		python3-pip \
 		git-lfs libfcgi-dev \
 		libcurl4-openssl-dev libssl-dev libpam0g-dev \
 		libgrpc-dev libgrpc++-dev libprotobuf-dev protobuf-compiler  \
 		protobuf-compiler-grpc python3-dev \
-		libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
-		gstreamer1.0-tools \
-		gstreamer1.0-x \
 		libpci-dev pciutils docker.io \
 		libjson-c-dev \
 		libsqlite3-dev \
+		libglib2.0-dev \
 		&& \
-	/usr/bin/python3 -m pip install pytest grpcio-tools kconfiglib \
-		&& \
+	python3 -m pip install --upgrade pip && \
+	python3 -m pip install \
+		pytest grpcio-tools kconfiglib torch torchvision paddlepaddle paddle2onnx
+
+RUN     apt-get -y remove python3-yaml && \
+	python3 -m pip install \
+		openvino-dev[caffe,kaldi,mxnet,onnx,pytorch,tensorflow,tensorflow2]==2022.1.0 && \
 	git clone https://github.com/pybind/pybind11 && \
 		cd pybind11 && git checkout -b tmp f31df73 && \
 		mkdir build && cd build && cmake .. && \
@@ -59,7 +64,7 @@ RUN     curl -L -O https://storage.googleapis.com/tensorflow/libtensorflow/libte
 	tar -C /opt/tensorflow -zxvf libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz && \
 	rm -f libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 
-RUN 	curl -L -O https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
+RUN 	axel https://paddle-inference-lib.bj.bcebos.com/2.3.0/cxx_c/Linux/CPU/gcc5.4_openblas/paddle_inference.tgz && \
 	tar -C /opt/ -zxvf paddle_inference.tgz && \
 	rm -f paddle_inference.tgz
 
