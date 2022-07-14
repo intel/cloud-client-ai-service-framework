@@ -14,7 +14,7 @@
     "element-ui": "^2.15.6",
     "v-viewer": "^1.6.4",
     "vue": "^2.6.11",
-    "vue-axios": "^3.4.0",
+    "vue-axios": "^3.4.1",
     "vue-router": "^3.5.2"
   },
   "devDependencies": {
