@@ -47,7 +47,7 @@ replace/add/remove services in above "fcgi_targets:" section will replace/enable
     $>sudo rm -R /opt/intel/service_runtime/rootfs
 ```
 
-## 12.2 High Level APIs test cases {#12.2}
+## 12.2 High Level APIs test cases
 
 Exposed high level APIs test cases which were provided in individual test script way, the usage of each case can be found in the following pages and the cases list are:
 
@@ -67,7 +67,7 @@ sudo ./run_test_script.sh
 
 
 
-### 12.2.2 For testing python implementation of related REST APIs {#12.2.2}
+### 12.2.2 For testing python implementation of related REST APIs
 
 test-script/test-demo/post_local_asr_py.py (the default input audio file("-a"):
 how_are_you_doing.wav; the default inference device("-d"): GNA_AUTO)
@@ -346,7 +346,7 @@ processing time is: 7.824979066848755
 
 
 
-### 12.2.3 For testing C++ implementation of related REST APIs {#12.2.3}
+### 12.2.3 For testing C++ implementation of related REST APIs
 
 test-script/test-demo/post_local_asr_c.py (the default input audio file("-a"):
 how_are_you_doing.wav; the default inference device("-d"): GNA_AUTO)
@@ -628,7 +628,7 @@ processing time is: 0.0035839080810546875
 
 
 
-### 12.2.4 For testing C++ implementation of related gRPC APIs {#12.2.4}
+### 12.2.4 For testing C++ implementation of related gRPC APIs
 
 grpc_inference_service_test.py
 
@@ -657,9 +657,9 @@ OCR result:
 
 
 
-## 12.3 Health-monitor mechanism test case {#12.3}
+## 12.3 Health-monitor mechanism test case
 
-### 12.3.1 Test case {#12.3.1}
+### 12.3.1 Test case
 
 This test case will take about two minutes, please wait.
 test-script/test-health-monitor/test_health_monitor.sh
@@ -689,7 +689,7 @@ container can automatic restart
 ```
 
 
-### 12.3.2 How it works (in brief) {#12.3.2}
+### 12.3.2 How it works (in brief)
 
 The health monitor mechanism consisted of 2 parts: health-monitor daemon
 installed in the host system, and its agent installed inside the container.
@@ -719,7 +719,7 @@ For health monitor related log, you can find them by:
     $> sudo journalctl -f -u service-runtime-health-monitor.service
 ```
 
-## 12.4 Deb package for host installed application/service (if not install yet) {#12.4}
+## 12.4 Deb package for host installed application/service (if not install yet)
 
 **Note: If not for testing the OTA process, then please uninstall existing
 packages before installing the new ones to avoid "possible" conflicts with OTA
@@ -738,7 +738,7 @@ dpkg -i *.deb
 
 
 
-## 12.5 Deb package for host installed neural network models (if not install yet) {#12.5}
+## 12.5 Deb package for host installed neural network models (if not install yet)
 
 **Note: If not for testing the OTA process, then please uninstall existing
 packages before install the new ones to avoid "possible" conflicts with OTA

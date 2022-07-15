@@ -25,7 +25,7 @@ also have CCAI framework source code access, then you also can copy source code
 to an accessible fold (like your \$HOME) and have CCAI core development within
 the container.
 
-## 4.2 Enter development container environment {#4.2}
+## 4.2 Enter development container environment
 
 After executing 'service_runtime_devel.sh', a container named
 'service_runtime_devel_container_$USER' will be run. To enter the container,
@@ -39,7 +39,7 @@ your changes in CCAI services/core. For example, you can set up a link from the
 container folder to your home directory and after changes, just restart
 container image to verify your modification.
 
-## 4.3 Setup development environment directly in your machine {#4.3}
+## 4.3 Setup development environment directly in your machine
 
 **Note: all components versions mentioned below in this document are for
 example, they will change/update according to new features/new releases in
@@ -164,7 +164,7 @@ The development process has nothing special but please noted:
     but what you need to change are core libraries and the container itself, you
     also can find useful information from chapter 5 and 6.
 
-## 4.4 Setup the Pulseaudio service {#4.4}
+## 4.4 Setup the Pulseaudio service
 
 If you want to enable sound e2e cases, such as TTS or live asr cases, you need to enable the pulseaudio service on the host side.
 

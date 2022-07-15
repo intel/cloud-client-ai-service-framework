@@ -6,7 +6,7 @@ enabled. But these features are disabled by default for better performance,
 because the server and clients are both running on localhost. Encryption and
 authentication can be enabled by changing the configuration files.
 
-## 9.1 Encryption {#9.1}
+## 9.1 Encryption
 
 When encryption is enabled, the TLS is applied to communication between server and clients. We highly recommend that TLS v1.2 or v1.3 is used for encryption. TLS v1.0 and v1.1 are obsolete now. It should be only used for compatibility with old clients.
 
@@ -62,7 +62,7 @@ Pay attention to the permission of the database in the container. It must be rea
 
 **Note: once enabled encryption, all REST APIs in all REST API based test cases above or in your own application should change those URLs from 'http' to 'https' for valid access.**
 
-## 9.2 Enable authentication {#9.2}
+## 9.2 Enable authentication
 
 1)Create user account database
 

@@ -7,7 +7,7 @@ As mentioned above in chapter 6, CCAI services work mode are:
 AI services for CCAI include two parts, one is client-side, the other is
 server-side. Customer applications are so called client-side. The CCAI services are server-side. Client-side sends http post requests or gRPC requests to server-side, and server-side replies responses to client-side.
 
-## 7.1 Request serving via REST APIs {#7.1}
+## 7.1 Request serving via REST APIs
 
 For using REST APIs providing by CCAI, the common steps for implementing a
 request in your client application are:
@@ -26,7 +26,7 @@ request in your client application are:
 Please refer to 10.1( FCGI APIs Manual) for detailed steps to implement
 different AI client applications.
 
-## 7.2 Request serving via gRPC APIs {#7.2}
+## 7.2 Request serving via gRPC APIs
 
 For using gRPC APIs providing by CCAI, the common steps for implementing a
 request in your client application are:
@@ -49,7 +49,7 @@ request in your client application are:
 
     *stub = inference_service_pb2_grpc.InferenceStub(channel)*
 
-## 7.3 Proxy setting {#7.3}
+## 7.3 Proxy setting
 
 If you are behind a firewall or developing within another container or VM and want to communicate with a CCAI container running in the same physical machine, and your system has a proxy setting, you may need to check the proxy setting, the service IP address be set into the no_proxy.
 

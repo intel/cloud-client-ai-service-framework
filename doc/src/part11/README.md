@@ -1,6 +1,6 @@
 # 11. APIs Reference List
 
-## 11.1 FCGI APIs Manual {#11.1}
+## 11.1 FCGI APIs Manual
 
 CCAI provides many FCGI APIs. They are named fcgi_xxxx. Each fcgi API is a fcgi server, running in the background. Client APPs communicate with fcgi server by using http post protocol.
 
@@ -16,7 +16,7 @@ The following picture shows two working modes.
 
 Some FCGI APIs are implemented by two languages, C++ and python. So some APIs have two types of API: python API and C++ API. Both python API and C++ API provide the same functionality and parameters. The only difference is they have different http addresses. So clients' apps can get the same inference result from either FCGI C++ API or python API by using different addresses.
 
-### 11.1.1 TTS API usage {# 11.1.1}
+### 11.1.1 TTS API usage
 
 fcgi_tts API is used for text-to-speech. This is an end-to-end TTS API. Client app inputs one text sentence, fcgi_tts outputs the wave data of the text sentence. The wave data is the sound data. There are two paths for the wave data generated. The first path is that the wave data is written to a wav file. The second path is that the wave data is sent to the speakers directly, so you can hear the sentence from the speaker devices.
 
@@ -124,7 +124,7 @@ Save and quit the configuration file.
 (4) Running the health-monitor service on the host pc if you don't run it.
 This service is used to monitor the CCAI container.
 
-### 11.1.2 ASR API usage (offline ASR case) {#11.1.2}
+### 11.1.2 ASR API usage (offline ASR case)
 
 fcgi_asr API is a usage of Automatic-Speech-Recognition. This is an end-to-end speech recognition. It includes several libraries released by the OpenVINO? toolkit. These libraries perform feature extraction, OpenVINO?-based neural-network speech recognition, and decoding to produce text from scores. All these libraries provide an end-to-end pipeline converting speech to text. Client app inputs an utterance (speech), fcgi_asr outputs the text directly expressed by this utterance.
 
@@ -188,7 +188,7 @@ Please refer to README.txt file under api-gateway/fcgi/asr/python folder.
 
 It provides only python API.
 
-### 11.1.3 API in Speech sample {#11.1.3}
+### 11.1.3 API in Speech sample
 
 Fcgi_speech API is used for inference speech. The acoustic model is trained on
 Kaldi* neural networks. The input speech data must be speech feature vectors.
@@ -301,7 +301,7 @@ This API can use GNA_HW as a reference device.
 
 It provides only C++ API.
 
-### 11.1.4 Policy API usage {#11.1.4}
+### 11.1.4 Policy API usage
 
 fcgi_policy API is used to select inference devices or working mode(local model or proxy mode) for fcgi APIs.
 
@@ -345,7 +345,7 @@ following cases.
 
 It provides two types of APIs: C++ and python API.
 
-### 11.1.5 Classification API usage {#11.1.5}
+### 11.1.5 Classification API usage
 
 fcgi_classification API is used to run inference on an image, and produce the classification information for objects in the image. Client app inputs one picture(image), fcgi_classification outputs the object information, such as what the object is, and the coordinates of the object in the picture.
 
@@ -411,7 +411,7 @@ c) Notice
 
 It provides two types of APIs: both C++ and python API.
 
-### 11.1.6 Face Detection API usage {#11.1.6}
+### 11.1.6 Face Detection API usage
 
 fcgi_face_detection API is used to run inference on an image, and find out human faces in the image. Client app inputs one picture(image), fcgi_face_detection
 outputs the face information, such as how many human faces, and the bounding box
@@ -483,7 +483,7 @@ c) Notice
 
 It provides two types of API: both C++ and python API.
 
-### 11.1.7 Facial Landmark API usage {#11.1.7}
+### 11.1.7 Facial Landmark API usage
 
 fcgi_facial_landmark API is used to run inference on an image, and print human facial landmarks in the image. Client app inputs one picture(image), fcgi_facial_landmark outputs the coordinates of facial landmark points.
 
@@ -562,7 +562,7 @@ c) Notice
 
 It provides two types of API: both C++ and python API.
 
-### 11.1.8 OCR API usage {#11.1.8}
+### 11.1.8 OCR API usage
 
 fcgi_ocr API is used to run inference on an image, and recognize handwritten or printed text from an image. Client app inputs one picture(image), fcgi_ocr outputs the text information in the picture. The information includes text coordinations and text confidence.
 
@@ -688,7 +688,7 @@ c) Notice
 
 It provides two types of API: both C++ and python API.
 
-### 11.1.9 formula API usage {#11.1.9}
+### 11.1.9 formula API usage
 
 fcgi_formula API is used to run inference on an image. It can recognize formulas and output formulas in latex format. Client app inputs one picture(image), fcgi_formula outputs the formula in latex format.
 
@@ -732,7 +732,7 @@ c) Notice
 
 It provides only python API.
 
-### 11.1.10 handwritten API usage {#11.1.10}
+### 11.1.10 handwritten API usage
 
 fcgi_handwritten API is used to run inference on an image, and recognize handwritten chinese from an image. Client app inputs one picture(image), fcgi_handwritten outputs the text information in the picture.
 
@@ -776,7 +776,7 @@ c) Notice
 
 It provides only python API.
 
-### 11.1.11 ppocr API usage {#11.1.11}
+### 11.1.11 ppocr API usage
 
 fcgi_ppocr API is used to run inference on an image, and recognize printed text from an image. Client app inputs one picture(image), fcgi_ppocr outputs the text information in the picture.
 
@@ -820,7 +820,7 @@ c) Notice
 
 It provides only python API.
 
-### 11.1.12 segmentation API usage {#11.1.12}
+### 11.1.12 segmentation API usage
 
 fcgi_segmentation API is used to run inference on an image, and recognize semantic segmentation from an image. Client app inputs one picture(image), fcgi_segmentation outputs a semantic segmentation picture.
 
@@ -865,7 +865,7 @@ c) Notice
 
 It provides two types of API: both C++ and python API.
 
-### 11.1.13 super resolution API usage {#11.1.13}
+### 11.1.13 super resolution API usage
 
 fcgi_super_resolution API is used to run inference on an image, and convert a small picture to a large picture. Client app inputs one picture(image), fcgi_super_resolution outputs a large picture.
 
@@ -911,7 +911,7 @@ c) Notice
 
 It provides two types of API: both C++ and python API.
 
-### 11.1.14 digitalnote API usage {#11.1.14}
+### 11.1.14 digitalnote API usage
 
 digitalnote API is used to run inference on an image, .Recognize and output the handwriting, machine writing and formulas in the picture. Client app inputs one picture(image), fcgi_digitalnote outputs the handwriting, machine writing and formulas in the picture.
 
@@ -963,7 +963,7 @@ It can speed up the inference. The picture does not need to be sent three times
 to get three different results. Handwriting, machine writing and formula can be
 called by one request.
 
-### 11.1.15 Video pipeline management (control) API usage {#11.1.15}
+### 11.1.15 Video pipeline management (control) API usage
 
 Video pipeline API is used to start, stop a video pipeline or read something
 from a video pipeline.
@@ -999,7 +999,7 @@ For the start/stop method, the response is a string, "0" means success, "1" mean
 
 For the read method, the response is the string of reading content.
 
-### 11.1.16 Live ASR API usage (online ASR case) {#11.1.16}
+### 11.1.16 Live ASR API usage (online ASR case)
 
 The fcgi live asr API is also a usage of Automatic-Speech-Recognition. It uses the same models as fcgi_asr API(ASR API usage in 11.1.2). The difference is that this API is an online ASR case while 11.1.2 is an offline ASR case. That means this live asr API continuously captures the voice from the MIC devices, do inference, and send out the sentences what the voice expressed. It is online working model of the fcgi_asr service.
 
@@ -1088,7 +1088,7 @@ Save and quit the configuration file.
 
 This service is used to monitor the CCAI container.
 
-### 11.1.17 Pose estimation API usage {#11.1.17}
+### 11.1.17 Pose estimation API usage
 
 Pose estimation API is a specific usage of video pipeline management API(11.1.15).
 
@@ -1161,7 +1161,7 @@ c) Notice
 •	The host side must run X server for display. Please install the following package in the host side. 
                                # sudo apt-get install x11-xserver-utils
 
-### 11.1.18 Capability API usage {#11.1.18}
+### 11.1.18 Capability API usage
 
 Capability API is used to retrive system information, including CPU, GPU, memory information and supported API list. These APIs support HTTP get and post method without parameters.
 
@@ -1218,7 +1218,7 @@ The response is the list of all supportted FCGI APIs. An example is:
 /cgi-bin/fcgi_gpuinfo
 ```
 
-## 11.2 gRPC APIs Manual {#11.2}
+## 11.2 gRPC APIs Manual
 
 CCAI framework not only provides FGCI APIs, but also provides many gRPC APIs.
 Client APPs can do inference by calling gRPC APIs.
@@ -1227,7 +1227,7 @@ Client APPs can do inference by calling gRPC APIs.
 
 The following are detailed gRPC APIs.
 
-### 11.2.1 proto file {#11.2.1}
+### 11.2.1 proto file
 
 ```
 syntax = "proto3";
@@ -1250,7 +1250,7 @@ message Result {
 
 In the .proto file the service interface, 'Inference', is defined, and rpc methods, 'OCR', 'Classification', 'FaceDetection', 'FacialLandmark' and 'ASR' are defined inside the service.
 
-### 11.2.2 OCR method {#11.2.2}
+### 11.2.2 OCR method
 
 Request:
 
@@ -1268,7 +1268,7 @@ message, Result
 |----------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
 | json           | string   | example: [  {  "itemcoord":{  "x":162,  "y":91,  "width":141,  "height":81  },  "itemstring":"intel"  },  {  "itemcoord":{  "x":205,  "y":153,  "width":175,  "height":77  },  "itemstring":"inside"  } ]  | the field is json format string |
 
-### 11.2.3 ASR method {#11.2.3}
+### 11.2.3 ASR method
 
 Request:
 
@@ -1286,7 +1286,7 @@ message Result
 |----------------|----------|------------------------------------------|---------------------------------|
 | json           | string   | example: {  "text":"HOW ARE YOU DOING" } | the field is json format string |
 
-### 11.2.4 Classification method {#11.2.4}
+### 11.2.4 Classification method
 
 Request:
 
@@ -1304,7 +1304,7 @@ message, Result
 |----------------|----------|------------------------------------------------------------------|---------------------------------|
 | json           | string   | example: [  { "Tag_name":"sandal","tag_confidence":0.743236  } ] | the field is json format string |
 
-### 11.2.5 FaceDetection method {#11.2.5}
+### 11.2.5 FaceDetection method
 
 Request:
 
@@ -1322,7 +1322,7 @@ message, Result
 |----------------|----------|------------------------------------------------------------------------------------------|---------------------------------|
 | json           | string   | example: [ {"x1":611,"y1":106,"x2":827,"y2":322}, {"x1":37,"y1":128,"x2":298,"y2":389} ] | the field is json format string |
 
-### 11.2.6 FacialLandmark method {#11.2.6}
+### 11.2.6 FacialLandmark method
 
 Request:
 
@@ -1340,7 +1340,7 @@ message, Result
 |----------------|----------|-------------------------------------------------------|---------------------------------|
 | json           | string   | example: [ {"x":684,"y":198}, {"x":664,"y":195},  ' ] | the field is json format string |
 
-## 11.3 Low level APIs Manual {#11.3}
+## 11.3 Low level APIs Manual
 
 Runtime service library provides APIs for upper layers, such as for fcgi or grpc
 layer etc. Runtime library supports different inference engines, such as
@@ -1363,9 +1363,9 @@ Version 1 is described in section 10.3.3(C++ APIs for Different backend Engines)
 
 Some C++ APIs in version 0 will be deprecated in the future. I encourage you to try to use C++ APIs in version 1 if APIs in version 0 are marked "deprecated".
 
-### 11.3.1 C++ APIs for Openvino Backend Engine(Version 0)  {#11.3.1}
+### 11.3.1 C++ APIs for Openvino Backend Engine(Version 0)
 
-#### 11.3.1.1 Return value (deprecated)  {#11.3.1.1}
+#### 11.3.1.1 Return value (deprecated)
 ```
 */***
 **@brief Status code of inference*
@@ -1384,7 +1384,7 @@ In proxy mode, the return value is
 
     RT_REMOTE_INFER_OK (success)* or *RT_INFER_ERROR(failure)
 
-#### 11.3.1.2 Server parameter  {#11.3.1.2}
+#### 11.3.1.2 Server parameter
 
     /***
     
@@ -1410,7 +1410,7 @@ The example of usage:
     //get server response
     std::cout << urlInfo.response << std::endl;
 
-#### 11.3.1.3 Policy configuration API  {#11.3.1.3}
+#### 11.3.1.3 Policy configuration API
 
 This API is used by users to change API behavior. Users can set API working mode
 (such as local mode or proxy mode), or assign inference devices (XPU) in local
@@ -1457,7 +1457,7 @@ int res = vino_ie_pipeline_set_parameters(cfg);
 
 This API setting is a global setting. That means this setting affects all the following APIs behaviors.
 
-#### 11.3.1.4 image API (deprecated)  {#11.3.1.4}
+#### 11.3.1.4 image API (deprecated)
 
 This API is used to do inference on images. It is related to image processing.
 
@@ -1529,7 +1529,7 @@ int res = vino_ie_pipeline_infer_image(images, additionalInput, model_file, rawD
 
 Parameter - additionalInput: don't support cv::Mat data format.
 
-#### 11.3.1.5 ASR API (deprecated)  {#11.3.1.5}
+#### 11.3.1.5 ASR API (deprecated)
 
 ASR means Automatic Speech Recognition, speech-to-text. This API is implemented
 based on some Intel speech libraries.
@@ -1589,7 +1589,7 @@ No eample code.
 From this release(V1.3), this API isn't supported any longer.
 Please don't use it any more.
 
-#### 11.3.1.6 common API (deprecated)  {#11.3.1.6}
+#### 11.3.1.6 common API (deprecated)
 
 "Common" means this API is used for cases other than image and ASR. For example,
 the TTS case. If the input/output data of the model meet the requirements of
@@ -1680,7 +1680,7 @@ struct serverParams& remoteServerInfo);
 
 4) Note
 
-#### 11.3.1.7 video API  {#11.3.1.7}
+#### 11.3.1.7 video API
 
 This API is used to run inference for video streaming. The video API includes
 two APIs: one is used for initializing models, another is used for running
@@ -1788,7 +1788,7 @@ rawDetectionResults);
 
 (2) It has only one working mode, local mode. Doesn't have proxy mode.
 
-#### 11.3.1.8 Load Openvino Model from Buffer API  {#11.3.1.8}
+#### 11.3.1.8 Load Openvino Model from Buffer API
 
 This api is used for loading a Openvino model from a buffer. In some cases, the
 Openvino model isn't a file in the disk, it is located in the memory buffer. For
@@ -1838,7 +1838,7 @@ these cases, we need to call this api to initialize the Openvino model.
 | batch          | int          | The batch size.                                    |
 | isImgInput     | bool         | Whether the input of the model is image data.      |
 
-#### 11.3.1.9 Configure a temporary inference device API  {#11.3.1.10}
+#### 11.3.1.9 Configure a temporary inference device API
 
 This API is used by users to set a temporary inference device for one case. The
 inference device is usually set by the Policy configuration API(11.4.1.3). But
@@ -1907,7 +1907,7 @@ temporary
 
 device isn't used any longer.
 
-### 11.3.2 Python API  {#11.3.2}
+### 11.3.2 Python API
 
 Runtime service library also provides some python APIs to upper layers. These
 python APIs can be called by python APPs directly.
@@ -1928,7 +1928,7 @@ mapping of data structures between two languages.
 | vectorVecFloat | std::vector<std::vector<float>>                |
 | tripleVecFloat | std::vector<std::vector<std::vector<float>>> |
 
-#### 11.3.2.1 Image API(deprecated)  {#11.3.2.1}
+#### 11.3.2.1 Image API(deprecated)
 
 1) API
 
@@ -1981,7 +1981,7 @@ res = rt_api.infer_image(pics, 3, other_pin, model_xml, out, urlinfo)
 
 The usage of this API is the same as C++ image API.
 
-#### 11.3.2.2 Image API  {#11.3.2.2}
+#### 11.3.2.2 Image API
 
 1) API
 
@@ -2036,7 +2036,7 @@ urlinfo)
 
 The usage of this API is the same as C++ image API.
 
-#### 11.3.2.3 ASR API {#11.3.2.3}
+#### 11.3.2.3 ASR API
 
 1) API
 
@@ -2063,7 +2063,7 @@ Currently, no example uses this API.
 The usage of this API is the same as C++ ASR API.
 Intel ASR model isn't supported by this API any longer.
 
-#### 11.3.2.4 Common API {#11.3.2.4}
+#### 11.3.2.4 Common API
 
 This api is mapped to C++ common API, irt_infer_from_common(). It can be used in TTS cases. For C++ common API, please refer to 10.4.3.
 
@@ -2127,7 +2127,7 @@ urlinfo)
 
 The usage of this API is the same as C++ common API.
 
-#### 11.3.2.5 Policy configuration API {#11.3.2.5}
+#### 11.3.2.5 Policy configuration API
 
 1) API
 
@@ -2156,7 +2156,7 @@ The usage of this API is the same as C++ common API.
 
 The usage of this API is the same as C++ policy configuration API.
 
-#### 11.3.2.6 Set temporary inference device API {#11.3.2.6}
+#### 11.3.2.6 Set temporary inference device API
 
 1) API
 
@@ -2195,13 +2195,13 @@ set_temporary_infer_device(set, model, device);
 
 The usage of this API is the same as C++ configuring a temporary inference device API(11.4.1.11).
 
-### 11.3.3 C++ APIs for Different backend Engines (Version 1) {#11.3.3}
+### 11.3.3 C++ APIs for Different backend Engines (Version 1)
 
 This set of C++ APIs(version 1) are the superset of the set of C++ APIs for Openvino backend engines (version 0). The difference between two versions is that version 1 supports different inference engines, such as Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. You can use APIs in version 1 to do the same things as APIs in version0.
 
 C++ APIs of version 1 are "standard" c++ APIs. In the future, some of the APIs in version 0 will be obselete. I encourage you to try to use C++ APIs in version 1.
 
-#### 11.3.3.1 Return Value {#11.3.3.1}
+#### 11.3.3.1 Return Value
 
 ```
 /**
@@ -2230,7 +2230,7 @@ In local mode, the return value is *RT_LOCAL_INFER_OK (success)* or *RT_INFER_ER
 
 In proxy mode, the return value is *RT_REMOTE_INFER_OK (success)* or *RT_INFER_ERROR(failure)*
 
-#### 11.3.3.2 Inference Engines {#11.3.3.2}
+#### 11.3.3.2 Inference Engines
 
 Currently, runtime libraries support five inference engines, they are Openvino, Pytorch, Onnx, PaddlePaddle and Tensorflow. The PaddlePaddle is a new inference engine added in this release.
 
@@ -2256,7 +2256,7 @@ There is a configuration file which defines which inference engines are supporte
 
 This file defines the name of the inference engine, and also the inference engine library.
 
-#### 11.3.3.3 Image API {#11.3.3.3}
+#### 11.3.3.3 Image API
 
 The usage of this API is the same as image API in version 0.
 
@@ -2384,7 +2384,7 @@ enum irtStatusCode res = irt_infer_from_image(modelAndBuffers, model_file,"OPENV
 
 
 
-#### 11.3.3.4 Speech API {#11.3.3.4}
+#### 11.3.3.4 Speech API
 
 The usage of this API is the same as ASR API in version 0.
 
@@ -2460,7 +2460,7 @@ struct irtWaveData {
 
 Currently, no example uses this API.
 
-#### 11.3.3.5 Common API {#11.3.3.5}
+#### 11.3.3.5 Common API
 
 The usage of this API is the same as the common API in version 0.
 
@@ -2557,7 +2557,7 @@ std::string encoder_model_file = "./models/text-spotting-0001-recognizer-encoder
 
 
 
-### 11.3.4 Video pipeline management (construct) APIs {#11.3.4}
+### 11.3.4 Video pipeline management (construct) APIs
 
 This set of APIs will help developers construct their own video pipelines and manage those pipelines in their life cycle.
 
@@ -2663,7 +2663,7 @@ This function below reads something from a video pipeline. The pipe should be th
 You can follow the steps below to implement a plugin to extend the video
 pipeline.
 
-### 11.4.1 construct the plugin {#11.4.1}
+### 11.4.1 construct the plugin
 
 ```
 
@@ -2760,20 +2760,20 @@ In the source code, you must call or implement the following functions:
    
 4. Implement create/start/stop/remove function. When a client requests to start or stop a pipeline, the video pipeline manager will call those functions.
 
-### 11.4.2 Build the plugin {#11.4.2}
+### 11.4.2 Build the plugin
 
 ```
     $> gcc `pkg-config --cflags gstreamer-1.0` -g -O2 plugin_sample.c -o sample.so \ 
     `pkg-config --libs gstreamer-1.0` -shared -lccai_stream
 ```
 
-### 11.4.3 Install the plugin to destination {#11.4.3}
+### 11.4.3 Install the plugin to destination
 
 ```
     $> sudo cp sample.so /usr/lib/ccai_stream/plugins/
 ```
 
-### 11.4.4 Test your plugin {#11.4.4}
+### 11.4.4 Test your plugin
 
 ```
     $> sv restart lighttpd
@@ -2783,19 +2783,19 @@ In the source code, you must call or implement the following functions:
 
 ```
 
-# 11.5 Smart Photo Search {#11.5}
+# 11.5 Smart Photo Search
 
 CCAI smart photo search includes a service and a library to provide a set of APIs to support the photo indexing and searching via AI identified 'Tag'.
 
-### 11.5.1 Components overview {#11.5.1}
+### 11.5.1 Components overview
 
 ![](../media/945c30016213078421172027fc6d63b3.png)
 
-### 11.5.2 Launch smart photo search service {#11.5.2}
+### 11.5.2 Launch smart photo search service
 
 By default CCAI will auto start smart photo service, users only need to prepare the photo directory. By default photo directory will be set to '/opt/intel/service_runtime/smartphoto', but you can modify the script, '/opt/intel/service_runtime/service_runtime.sh' to set the photo directory to any directory.
 
-### 11.5.3 Photo monitor {#11.5.3}
+### 11.5.3 Photo monitor
 
 The photo monitor is a sample which was provided by CCAI. It will monitor the
 photo directory, and if the file in the directory is changed, the photo monitor
@@ -2808,7 +2808,7 @@ Launch monitor
     $> ./monitor.py -d /opt/intel/service_runtime/smartphoto
 ```
 
-### 11.5.4 Photo viewer {#11.5.4}
+### 11.5.4 Photo viewer
 
 The photo viewer is a web app.
 
@@ -2822,7 +2822,7 @@ Launch viewer
 
 Open the URL in your browser as prompted by 'npm run serve'
 
-### 11.5.5 RESTful APIs {#11.5.5}
+### 11.5.5 RESTful APIs
 
 The photo viewer is a good example to show how to use the smart photo service
 RESTful API.

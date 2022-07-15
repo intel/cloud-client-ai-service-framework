@@ -2,7 +2,7 @@
 
 ## 3.1 How to install the pre-built runtime (if have) and verify it quickly
 
-### 3.1.1 Prepare {#3.1.1}
+### 3.1.1 Prepare
 
 **Note: all components versions mentioned below in this document are for
 example, they will change/update according to new features/new releases in
@@ -30,7 +30,7 @@ following required configuration options:
     
     CONFIG_BRIDGE=y
 
-### 3.1.2 Proxy setting {#3.1.2}
+### 3.1.2 Proxy setting
 
 If you are behind a firewall, you may need to set a proxy correctly for pulling
 pre-built docker image of CCAI.Please execute the following commands to check
@@ -46,7 +46,7 @@ the setting:
 
 If you configure docker using proxy, please add 'nvbox.bj.intel.com' to 'no_proxy'.
 
-### 3.1.3 Container image preparation {#3.1.3}
+### 3.1.3 Container image preparation
 
 If you want to have a quick try instead of building your own framework image
 system, you can pull existing docker image directly. (Otherwise, please build
@@ -55,13 +55,13 @@ this document before you install host packages and run any testing.):
 
     $>docker pull your-docker-server:port/your CCAI image:latest
 
-### 3.1.4 Download and install service-framework packages/test cases/docker files in host {#3.1.4}
+### 3.1.4 Download and install service-framework packages/test cases/docker files in host
 
 After downloaded CCAI package:
 
     $>sudo dpkg -i service_runtime_debs/*.deb
 
-### 3.1.5 Start/Stop service-framework {#3.1.5}
+### 3.1.5 Start/Stop service-framework
 
 By default service-framework will be started automatically after the
 installation.You can manually stop / start service-framework by following the
@@ -91,7 +91,7 @@ ExecStart=/opt/intel/service_runtime/service_runtime.sh start --port-rest-api
 
 Then change the ports setting according to your needs.
 
-## 3.2 Verify CCAI functions with samples or test cases {#3.2}
+## 3.2 Verify CCAI functions with samples or test cases
 
 You can execute 'docker ps | grep service_runtime_container to check if the
 CCAI container is running.

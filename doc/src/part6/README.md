@@ -10,13 +10,13 @@ are running on server-side. Client-side sends http post requests or gRPC
 requests to server-side, and server-side replies responses to client-side. So
 developing AI services means development of server-side programs.
 
-## 6.2 Preparation {#6.2}
+## 6.2 Preparation
 
 CCAI includes four inference engines. They are Openvino, Pytorch, Onnx and
 Tensorflow. Each engine supports one type of model. The following sections
 describe how to use different inference engines in CCAI.
 
-### 6.2.1 Using OpenVINO as inference engine in CCAI {#6.2.1}
+### 6.2.1 Using OpenVINO as inference engine in CCAI
 
 Before developing, deploying your CCAI services which will use OpenVINO as
 inference engine, the following three are the preconditions you need to prepare:
@@ -37,7 +37,7 @@ inference engine, the following three are the preconditions you need to prepare:
 
     container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
-### 6.2.2 Using PyTorch as inference engine in CCAI {#6.2.2}
+### 6.2.2 Using PyTorch as inference engine in CCAI
 
 If you only have PyTorch models or cannot convert PyTorch models into OpenVINO
 format successfully, you can choose to use PyTorch as a backend inference engine
@@ -57,7 +57,7 @@ in CCAI, then please make sure you are ready with the following requirements:
 
     container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
-### 6.2.3 Using ONNX runtime as inference engine in CCAI {#6.2.3}
+### 6.2.3 Using ONNX runtime as inference engine in CCAI
 
 ONNX Runtime is an accelerator for machine learning models with multi platform support and a flexible interface to integrate with hardware-specific libraries.
 ONNX Runtime can be used with models from PyTorch, Tensorflow/Keras, TFLite,
@@ -79,7 +79,7 @@ Before developing AI services using ONNX runtime inference engine, please finish
 
     container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
-### 6.2.4 Using TensorFlow as inference engine in CCAI {#6.2.4}
+### 6.2.4 Using TensorFlow as inference engine in CCAI
 
 Tensorflow is the most popular machine learning framework developed by Google.
 It can be used across a range of tasks but has a particular focus on training and inference of deep neural networks.
@@ -92,7 +92,7 @@ CCAI can leverage the Tensorflow framework to support tensorflow models. To use 
 
 3. There are default pictures in the test program. In order to facilitate user testing, The test data need to be placed in this directory container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
-### 6.2.5 Using PaddlePaddle as inference engine in CCAI {#6.2.5}
+### 6.2.5 Using PaddlePaddle as inference engine in CCAI
 
 If you only have PaddlePaddle models or cannot convert Paddle models into OpenVINO
 format successfully, you can choose to use Paddle as a backend inference engine
@@ -112,14 +112,14 @@ in CCAI, then please make sure you are ready with the following requirements:
 
     container/script/integration_workdir/service_runtime_binary/lfs/test_data.
 
-## 6.3 Development services {#6.3}
+## 6.3 Development services
 
 CCAI included a key component known as API gateway, which provides both Fast-CGI support and gRPC support to export services to externals of CCAI containers. So you can develop CGI based services or gRPC based services for CCAI as the following sections describe.
 
 Notes: in those following sections, when we refer to a path with prefix
 "container" or "api-gateway", like "container/..." or "api-gateway/...", they are meaning the relative path under the project "container" which, as we had mentioned before, is the whole CCAI repositorys entry project, or relative path under the project "api-gateway" which is the project for developing all services.
 
-### 6.3.1 Develop FCGI service {#6.3.1}
+### 6.3.1 Develop FCGI service
 
 Develop fcgi AI services: you need to add new files or modify existing files
 under the directory api-gateway/cgi-bin
@@ -154,7 +154,7 @@ a) Add fcgi c++ services
 >> ii) fcgi_*.py:
 >> iii) test-script/test-demo/post_local_*_py.py:
 
-### 6.3.2 Develop gRPC service {#6.3.2}
+### 6.3.2 Develop gRPC service
 
 If you would like to modify the existing gRPC services, you can do by:
 
@@ -166,9 +166,9 @@ c) Change message in api-gateway/grpc/inference_service.proto Then compile to ge
 
 You also can add a new gRPC server/client by your own, it is straightforward like general gRPC application development.
 
-## 6.4 Deploy services for CCAI {#6.4}
+## 6.4 Deploy services for CCAI
 
-### 6.4.1 Deploy into container {#6.4.1}
+### 6.4.1 Deploy into container
 
 After you complete service development, you can compile those services to binary (for C++). And then deploy them in your host or into the CCAI container so that you can verify your services from outside of the CCAI container.
 
@@ -206,7 +206,7 @@ c) For services generated from both a) and b), you can always copy them to
     project api-gateway and regenerate the CCAI container by following
     instructions in section 3.3.1 and 5.1.
 
-### 6.4.2 Deploy on host {#6.4.2}
+### 6.4.2 Deploy on host
 
 1. Create a directory /opt/intel/service_runtime/service/your-service/ and put your binary file in this directory. Create a directory /opt/intel/service_runtime/service/lighttpd/conf-enabled/ and put your configuration file to this directory. The directory hierarchy example:
 ![](../media/b928eccc621eb36ec2172f1df515f46e.png)
@@ -218,33 +218,33 @@ c) For services generated from both a) and b), you can always copy them to
 
     "bin-path" => "/opt/intel/service_runtime/service/your-serviceyour-binary"
 
-### 6.4.3 Specific to PyTorch service {#6.4.3}
+### 6.4.3 Specific to PyTorch service
 
 a) Currently the runtime inference library provides APIs to support Pytorch as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "PYTORCH" string to the API parameter to specify Pytorch as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "PYTORCH" and urlinfo, the outputs are rawDetectionResults of tensorData.
 
 b) In the inference with pytorch, the normalization of the input image should be done using opencv. In the inference of openvino, the normalization of the picture can be transferred to the model file through the "mean_values" and "scale_values" of MO of openvino.
 
-### 6.4.4 Specific to Onnx service {#6.4.4}
+### 6.4.4 Specific to Onnx service
 
 a) The runtime inference library provides APIs to support ONNX as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "ONNXRT" string to the API parameter to specify ONNX as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "ONNXRT" and urlinfo, the outputs are rawDetectionResults of tensorData.
 
 b) The ONNX model may need to do preprocessing for input data, such as,transpose or normalization. Please add these preprocessing parts to your Onnx service.
 
-### 6.4.5 Specific to Tensorflow service {#6.4.5}
+### 6.4.5 Specific to Tensorflow service
 
 a) The runtime inference library provides APIs to support Tensorflow as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "TENSORFLOW" string to the API parameter to specify TENSORFLOW as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "TENSORFLOW" and urlinfo, the outputs are rawDetectionResults of tensorData.
 
 b) The Tensorflow model may need to do preprocessing for input data, such as, transpose or normalization. Please add these preprocessing parts to your Tensorflow service.
 
-### 6.4.6 Specific to PaddlePaddle service {#6.4.6}
+### 6.4.6 Specific to PaddlePaddle service
 
 a) Currently the runtime inference library provides APIs to support PaddlePaddle as an inference engine. These kinds of APIs are irt_infer_from_xxxx. Please refer to section 10 for detailed information. You need to pass the "PADDLE" string to the API parameter to specify PaddlePaddle as a backend engine. For example image API: irt_infer_from_image. The inputs are tensorData, model names , "PADDLE" and urlinfo, the outputs are rawDetectionResults of tensorData.
 
 b) The PADDLE model may need to do preprocessing for input data, such as,transpose or normalization. Please add these preprocessing parts to your Paddlepaddle service.
 
-## 6.5 Sample: Add a service for CCAI {#6.5}
+## 6.5 Sample: Add a service for CCAI
 
-### 6.5.1 Install packages {#6.5.1}
+### 6.5.1 Install packages
 
 NOTE: If you are using the CCAI development docker image, you can skip this
 step. For more details about the CCAI development docker image, please refer to [Chapter 4](#4-how-to-setup-development-environment).
@@ -255,7 +255,7 @@ step. For more details about the CCAI development docker image, please refer to 
     
     c. Openvino (must be the same version in CCAI container)
 
-### 6.5.2 Compose the header file {#6.5.2}
+### 6.5.2 Compose the header file
 
 Collect necessary parts from section 10.4.1 of this manual, copy and paste them
 into the header file "inferenceservice.h". For example, we will use the image
@@ -304,14 +304,14 @@ API. So the header should be:
     std::vector<std::vector<float>*>& rawDetectionResults,
     struct serverParams& remoteServerInfo);
 
-### 6.5.3 Extract service runtime library from CCAI container {#6.5.3}
+### 6.5.3 Extract service runtime library from CCAI container
 
 NOTE: If you are using the CCAI development docker image, you can skip this
 step. For more details about the CCAI development docker image, please refer to [Chapter 4.](#4-how-to-setup-development-environment)
 
     $> docker run --rm <image> tar -C /usr/lib/x86_64-linux-gnu -cf -libinferservice.so | tar -xf -
 
-### 6.5.4 Write the main source code {#6.5.4}
+### 6.5.4 Write the main source code
 
 Create file "demo.cpp":
 
@@ -392,11 +392,11 @@ Create file "demo.cpp":
     return 0;
     }
 
-### 6.5.5 Build the program {#6.5.5}
+### 6.5.5 Build the program
 
     g++ -o fcgi_demo -I /opt/intel/openvino/opencv/include demo.cpp libinferservice.so -L/opt/intel/openvino/opencv/lib -lopencv_imgcodecs -lopencv_core -lfcgi -Wl,--allow-shlib-undefined,--no-as-needed -lpython3.8
 
-### 6.5.6 Write the configuration file {#6.5.6}
+### 6.5.6 Write the configuration file
 
     Create file "16-demo.conf":
     
@@ -416,7 +416,7 @@ Create file "demo.cpp":
         ))
     )
 
-### 6.5.7 Build docker image {#6.5.7}
+### 6.5.7 Build docker image
 
 Create the Dockerfile:
 
@@ -428,7 +428,7 @@ Create the Dockerfile:
     
     docker build -t ccai-demo .
 
-### 6.5.8 Test {#6.5.8}
+### 6.5.8 Test
 
 Start the ccai-demo container and run command:
 
