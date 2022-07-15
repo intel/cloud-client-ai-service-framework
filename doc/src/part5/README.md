@@ -190,11 +190,11 @@ After that copy all deb packages to the other machine, and install all deb packa
 
     $> dpkg -i package/*.deb
 
-## 5.2 How to build from source {#5.2}
+## 5.2 How to build from source
 
 Once you have access to the CCAI gitlab repo, please upload your RSA public key to CCAI project and follow the instructions below to check out the whole project.
 
-### 5.2.1 download initial project - container {#5.2.1}
+### 5.2.1 download initial project - container
 
 git clone this repo
 
@@ -239,7 +239,7 @@ launch CCAI, you only need to execute:
     
     $> ./service_runtime.sh start
 
-### 5.2.2 build host packages {#5.2.2}
+### 5.2.2 build host packages
 
     $> ../release.sh
 
@@ -247,11 +247,11 @@ This command will generate a tar file named 'ccaisf_release_xxx.tar.gz' under
 the folder 'integration_workdir/release'. Please refer to Chapter 5.1 above to
 build CCAI deb packages.
 
-### 5.2.3 install CCAI services and image on host {#5.2.3}
+### 5.2.3 install CCAI services and image on host
 
 Please refer to Chapter 5.1 above in detail on how to install CCAI.
 
-## 5.3 How to check all component versions {#5.3}
+## 5.3 How to check all component versions
 
 The deb packages which include all *.service have a unified version, which can
 be queried through 'dpkg' after install:
@@ -279,7 +279,7 @@ for example:
 
 The 2 strings above should be matched (8ee35d329533).
 
-## 5.4 Generate CCAI OTA image {#5.4}
+## 5.4 Generate CCAI OTA image
 
 On the current stage (for Penguin Peak project), CCAI defines 3 Docker layers
 from top to bottom for constructing CCAI container image:
