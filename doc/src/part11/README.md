@@ -1,6 +1,6 @@
 # 11. APIs Reference List
 
-# 11.1 FCGI APIs Manual {#11.1}
+## 11.1 FCGI APIs Manual {#11.1}
 
 CCAI provides many FCGI APIs. They are named fcgi_xxxx. Each fcgi API is a fcgi server, running in the background. Client APPs communicate with fcgi server by using http post protocol.
 
@@ -34,6 +34,7 @@ response.
 a) Input parameters
 
 \- http url: such as: url= '<http://localhost:8080/cgi-bin/fcgi_py_tts>>'  
+
 \- post parameter: this parameter should include these fields:
 
 | **Field name** | **Type** | **Range**                              | **Example**       | **comments**                                                    |
@@ -64,27 +65,18 @@ how to write a post request for the remote server.
 b) Response
 
 The response of post request is json format, for example:
-
+```
 {
-
 "ret": 0, //return value: 0 (success) or 1(failure)
-
 "msg": "ok", // request result: "ok" or "inference failed"
-
 "data": { //inference result
-
-"format": 2, // the format of voice : 1(pcm) 2(wav) 3(mp3)
-
-"speech": "UklGRjL4Aw..." // wave data of input sentence
-
-"md5sum": "3bae7bf99ad32bc2880ef1938ba19590" //Base64 encoding of synthesized
-speech
-
-},
-
+  "format": 2, // the format of voice : 1(pcm) 2(wav) 3(mp3)
+  "speech": "UklGRjL4Aw..." // wave data of input sentence
+  "md5sum": "3bae7bf99ad32bc2880ef1938ba19590" //Base64 encoding of synthesized speech
+  },
 "time": 7.283 //fcgi_tts processing time
-
 }
+```
 
 If the speaker devices are configured correctly, you can also hear the sentence
 directly from the speakers.
@@ -1226,7 +1218,7 @@ The response is the list of all supportted FCGI APIs. An example is:
 /cgi-bin/fcgi_gpuinfo
 ```
 
-# 11.2 gRPC APIs Manual {#11.2}
+## 11.2 gRPC APIs Manual {#11.2}
 
 CCAI framework not only provides FGCI APIs, but also provides many gRPC APIs.
 Client APPs can do inference by calling gRPC APIs.
@@ -1348,7 +1340,7 @@ message, Result
 |----------------|----------|-------------------------------------------------------|---------------------------------|
 | json           | string   | example: [ {"x":684,"y":198}, {"x":664,"y":195},  ' ] | the field is json format string |
 
-# 11.3 Low level APIs Manual {#11.3}
+## 11.3 Low level APIs Manual {#11.3}
 
 Runtime service library provides APIs for upper layers, such as for fcgi or grpc
 layer etc. Runtime library supports different inference engines, such as
@@ -1376,14 +1368,11 @@ Some C++ APIs in version 0 will be deprecated in the future. I encourage you to 
 #### 11.3.1.1 Return value (deprecated)  {#11.3.1.1}
 ```
 */***
-
 **@brief Status code of inference*
-
 **/*
-
-#define RT_INFER_ERROR  -1 //inference error*
-#define RT_LOCAL_INFER_OK   0 //inference successfully on local*
-#define RT_REMOTE_INFER_OK  1 //inference successfully on remote server*
+  #define RT_INFER_ERROR  -1 //inference error*
+  #define RT_LOCAL_INFER_OK   0 //inference successfully on local*
+  #define RT_REMOTE_INFER_OK  1 //inference successfully on remote server*
 ```
 Some APIs have two work modes. One mode is local mode, which means doing inference on local XPU. Another is proxy mode. In proxy mode, API forwards requests to the remote server (such as QQ server or Tecent server). The remote server does inference.
 
@@ -2153,19 +2142,14 @@ The usage of this API is the same as C++ common API.
 3) example
 
 ```
-import inferservice_python as rt_api
+  import inferservice_python as rt_api
 
-#configuration:*
-
-cfg_info = rt_api.userCfgParams()
-
-cfg_info.isLocalInference = True
-
-cfg_info.inferDevice = 'CPU'
-
-res = rt_api.set_policy_params(cfg_info)
+  #configuration:*
+  cfg_info = rt_api.userCfgParams()
+  cfg_info.isLocalInference = True
+  cfg_info.inferDevice = 'CPU'
+  res = rt_api.set_policy_params(cfg_info)
 ```
-
 
 
 4) Notice
@@ -2197,19 +2181,14 @@ set_temporary_infer_device(set, model, device);
 3) example
 
 ```
-import inferservice_python as rt_api
+ import inferservice_python as rt_api
+ #set a temporary inference device:*
+ res = rt_api.set_temporary_infer_device(True, model, "CPU" )
+ '''..
+ #cancle a temporary inference device:*
 
-#set a temporary inference device:*
-
-res = rt_api.set_temporary_infer_device(True, model, "CPU" )
-
-'''..
-
-#cancle a temporary inference device:*
-
-res = rt_api.set_temporary_infer_device(False, model, "CPU" )
+ res = rt_api.set_temporary_infer_device(False, model, "CPU" )
 ```
-
 
 
 4) Notice
@@ -2285,30 +2264,20 @@ The usage of this API is the same as image API in version 0.
 
 ```
 /**
-
 * @brief Run inference from image
-
 * @param tensorData Buffers for input/output tensors
-
 * @param modelFile The model file, include path
-
 * @param backendEngine Specify the inference engine, OPENVINO, PYTORCH, ONNXRT, PADDLE,
 or
 
 * TENSORFLOW.
-
 * @param remoteSeverInfo Parameters to do inference on remote server
-
 * @return Status code of inference
-
 */
 
 enum irtStatusCode irt_infer_from_image(struct irtImageIOBuffers& tensorData,
-
 const std::string& modelFile,
-
 std::string backendEngine,
-
 struct serverParams& remoteServerInfo);
 ```
 
@@ -2689,7 +2658,7 @@ This function below reads something from a video pipeline. The pipe should be th
 | pipeline_name  |  const char * |  pipeline namel                         |
 | user_data      | void *        | plugin defined, supported by the plugin |
 
-# 11.4 How to extend video pipeline with video pipeline manager
+## 11.4 How to extend video pipeline with video pipeline manager
 
 You can follow the steps below to implement a plugin to extend the video
 pipeline.
@@ -2698,82 +2667,82 @@ pipeline.
 
 ```
 
-#include <ccai_stream_plugin.h>
-#include <ccai_stream_utils.h>
-#include <gst/gst.h>
+  #include <ccai_stream_plugin.h>
+  #include <ccai_stream_utils.h>
+  #include <gst/gst.h>
 
-static const char *pipe_name = "sample";
-static const char *gst_pipeline_desc = "videotestsrc ! ximagesink";
+  static const char *pipe_name = "sample";
+  static const char *gst_pipeline_desc = "videotestsrc ! ximagesink";
 
-/* 4. implement create/start/stop/remove function */
-static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
-{
-        if (desc == NULL)
-                return -1;
-        desc->private_data = gst_parse_launch(gst_pipeline_desc, NULL);
-        if (!desc->private_data)
-                return -1;
-        return 0;
-}
+  /* 4. implement create/start/stop/remove function */
+  static int create_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL)
+                  return -1;
+          desc->private_data = gst_parse_launch(gst_pipeline_desc, NULL);
+          if (!desc->private_data)
+                  return -1;
+          return 0;
+  }
 
-static int start_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
-{
-        if (desc == NULL || desc->private_data == NULL)
-                return -1;
-        GstElement *gst_pipe = (GstElement *)desc->private_data;
-        ccai_gst_start_pipeline(gst_pipe);
-        return 0;
-}
+  static int start_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc->private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc->private_data;
+          ccai_gst_start_pipeline(gst_pipe);
+          return 0;
+  }
 
-static int stop_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
-{
-        if (desc == NULL || desc->private_data == NULL)
-                return -1;
-        GstElement *gst_pipe = (GstElement *)desc->private_data;
-        if (gst_pipe == NULL)
-                return -1;
-        ccai_gst_stop_pipeline(gst_pipe);
-        return 0;
-}
+  static int stop_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc->private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc->private_data;
+          if (gst_pipe == NULL)
+                  return -1;
+          ccai_gst_stop_pipeline(gst_pipe);
+          return 0;
+  }
 
-static int remove_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
-{
-        if (desc == NULL || desc->private_data == NULL)
-                return -1;
-        GstElement *gst_pipe = (GstElement *)desc->private_data;
-        if (gst_pipe) {
-                gst_object_unref(gst_pipe);
-                desc->private_data = NULL;
-        }
-        return 0;
-}
+  static int remove_pipe(struct ccai_stream_pipeline_desc *desc, void *user_data)
+  {
+          if (desc == NULL || desc->private_data == NULL)
+                  return -1;
+          GstElement *gst_pipe = (GstElement *)desc->private_data;
+          if (gst_pipe) {
+                  gst_object_unref(gst_pipe);
+                  desc->private_data = NULL;
+          }
+          return 0;
+  }
 
-/* 2. implement init/exit function  */
-static int sample_plugin_init()
-{
-        struct ccai_stream_pipeline_desc *desc;
+  /* 2. implement init/exit function  */
+  static int sample_plugin_init()
+  {
+          struct ccai_stream_pipeline_desc *desc;
 
-	 /* 3. new a ccai_stream_pipeline_desc */
-        if ((desc = g_try_new0(struct ccai_stream_pipeline_desc, 1)) == NULL)
-                return -1;
-        desc->name = pipe_name;
-        desc->create = create_pipe;
-        desc->start = start_pipe;
-        desc->stop = stop_pipe;
-        desc->remove = remove_pipe;
-        desc->get_gst_pipeline = NULL;
-        desc->private_data = NULL;
-        ccai_stream_add_pipeline(desc);
-        return 0;
-}
+          /* 3. new a ccai_stream_pipeline_desc */
+          if ((desc = g_try_new0(struct ccai_stream_pipeline_desc, 1)) == NULL)
+                  return -1;
+          desc->name = pipe_name;
+          desc->create = create_pipe;
+          desc->start = start_pipe;
+          desc->stop = stop_pipe;
+          desc->remove = remove_pipe;
+          desc->get_gst_pipeline = NULL;
+          desc->private_data = NULL;
+          ccai_stream_add_pipeline(desc);
+          return 0;
+  }
 
-static void sample_plugin_exit()
-{
-}
-/* 1. define a plugin */
-CCAI_STREAM_PLUGIN_DEFINE(sample, "1.0",
-                          CCAI_STREAM_PLUGIN_PRIORITY_DEFAULT,
-                          sample_plugin_init, sample_plugin_exit)
+  static void sample_plugin_exit()
+  {
+  }
+  /* 1. define a plugin */
+  CCAI_STREAM_PLUGIN_DEFINE(sample, "1.0",
+                            CCAI_STREAM_PLUGIN_PRIORITY_DEFAULT,
+                            sample_plugin_init, sample_plugin_exit)
 
 ```
 
@@ -2793,20 +2762,26 @@ In the source code, you must call or implement the following functions:
 
 ### 11.4.2 Build the plugin {#11.4.2}
 
+```
     $> gcc `pkg-config --cflags gstreamer-1.0` -g -O2 plugin_sample.c -o sample.so \ 
     `pkg-config --libs gstreamer-1.0` -shared -lccai_stream
+```
 
 ### 11.4.3 Install the plugin to destination {#11.4.3}
 
+```
     $> sudo cp sample.so /usr/lib/ccai_stream/plugins/
+```
 
 ### 11.4.4 Test your plugin {#11.4.4}
 
+```
     $> sv restart lighttpd
     
     $> curl -H "Content-Type:application/json" -X POST http://localhost:8080/cgi-bin/streaming - '{"pipeline":"sample", "method":"start"}'
     $> curl -H "Content-Type:application/json" -X POST http://localhost:8080/cgi-bin/streaming - '{"pipeline":"sample", "method":"stop"}'
 
+```
 
 # 11.5 Smart Photo Search {#11.5}
 
@@ -2828,9 +2803,10 @@ will call smart photo service RESTful API to notify the service.
 
 Launch monitor
 
+```
     $> cd gateway-demo/smart-photo/photo-monitor/
-    
     $> ./monitor.py -d /opt/intel/service_runtime/smartphoto
+```
 
 ### 11.5.4 Photo viewer {#11.5.4}
 
@@ -2838,11 +2814,11 @@ The photo viewer is a web app.
 
 Launch viewer
 
+```
     $> cd gateway-demo/smart-photo/photo-viewer/
-    
     $> npm install
-    
     $> npm run serve
+```
 
 Open the URL in your browser as prompted by 'npm run serve'
 
@@ -2859,141 +2835,140 @@ The parameter must include a key named 'method'.
 
 1. start scan
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**  | **Example**               |
 | ------- | -------- | ---------- | ------------------------- |
 | method  | string   | scan_start | { "method": "scan_start"} |
 
-    b) response
+b) response
 
 | **Key** | **Type** | **Value** | **Example**     | **Comments**                         |
 | ------- | -------- | --------- | --------------- | ------------------------------------ |
-| result  | int      |           | { "result": 0 } | 0 means success, otherwides failure. |
+| result  | int      |   -       | { "result": 0 } | 0 means success, otherwides failure. |
 
-    c)
 
 2. stop scan
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value** | **Example**               |
 | ------- | -------- | --------- | ------------------------- |
 | method  | string   | scan_stop | { "method": "scan_stop" } |
 
-    b) response
+b) response
 
 | **Key** | **Type** | **Value** | **Example**     | **Comments**                         |
 | ------- | -------- | --------- | --------------- | ------------------------------------ |
-| result  | int      |           | { "result": 0 } | 0 means success, otherwides failure. |
+| result  | int      |     -     | { "result": 0 } | 0 means success, otherwides failure. |
 
 3. list class
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**  | **Example**              |
 | ------- | -------- | ---------- | ------------------------ |
 | method  | string   | list_class | { "method": "list_class" |
 
-    b) response is json object array.
+b) response is json object array.
 
 | **Key** | **Type** | **Value** | **Example**                 |
 | ------- | -------- | --------- | --------------------------- |
-| id      | int      |           | { "id": 1, "name": "tree" } |
-| name    | string   |           |                             |
+| id      | int      |     -     | { "id": 1, "name": "tree" } |
+| name    | string   |     -     |              -              |
 
 4. list person
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**   | **Example**                 |
 | ------- | -------- | ----------- | --------------------------- |
 | method  | string   | list_person | { "method": "list_person" } |
 
-    b) response is json object array.
+b) response is json object array.
 
 | **Key** | **Type** | **Value** | **Example**                                   |
 | ------- | -------- | --------- | --------------------------------------------- |
-| id      | int      |           | {   "id": 1,   "name": "mantou",  "count":3 } |
-| name    | string   |           |                                               |
-| count   | int      |           |                                               |
+| id      | int      |     -     | {   "id": 1,   "name": "mantou",  "count":3 } |
+| name    | string   |     -     |             -                                 |
+| count   | int      |     -     |             -                                 |
 
 5. list all photo
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**      | **Example**                   |
 | ------- | -------- | -------------- | ----------------------------- |
 | method  | string   | list_all_photo | { "method": "list_all_photo"} |
 
-    b) response is json object array.
+b) response is json object array.
 
 | **Key** | **Type** | **Value** | **Example**                   |
 | ------- | -------- | --------- | ----------------------------- |
-| id      | int      |           | { "id": 1, "path": "a.jpeg" } |
-| path    | string   |           |                               |
+| id      | int      |      -    | { "id": 1, "path": "a.jpeg" } |
+| path    | string   |      -    |             -                 |
 
 6. list photo by class
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**           | **Example**                                             |
 |---------|----------|---------------------|---------------------------------------------------------|
 | method  | string   | list_photo_by_class | {   "method": "list_photo_by_class",  "param": "tree" } |
-| param   | string   | <class name>      |                                                         |
+| param   | string   | *class name*        |                          -                              |
 
-    b) response is json object array.
+b) response is json object array.
 
 | **Key** | **Type** | **Value** | **Example**                   |
 | ------- | -------- | --------- | ----------------------------- |
-| id      | int      |           | { "id": 1, "path": "a.jpeg" } |
-| path    | string   |           |                               |
+| id      | int      |    -      | { "id": 1, "path": "a.jpeg" } |
+| path    | string   |    -      |            -                  |
 
 7. list photo by person
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**           | **Example**                                           |
 |---------|----------|---------------------|-------------------------------------------------------|
 | method  | string   | list_photo_by_class | {   "method": "list_photo_by_person",  "param": "1" } |
-| param   | string   | <person id>       |                                                       |
+| param   | string   | *person id*         |                        -                              |
 
-    b) response is json object array.
+b) response is json object array.
 
 | **Key** | **Type** | **Value** | **Example**                   |
 | ------- | -------- | --------- | ----------------------------- |
-| id      | int      |           | { "id": 1, "path": "a.jpeg" } |
-| path    | string   |           |                               |
+| id      | int      |     -     | { "id": 1, "path": "a.jpeg" } |
+| path    | string   |     -     |             -                 |
 
 8. add file
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**     | **Example**                                    |
 |---------|----------|---------------|------------------------------------------------|
 | method  | string   | add_file      | {   "method": "add_file",  "param": "a.jpeg" } |
-| param   | string   | <file name> |                                                |
+| param   | string   | *file name*   |                     -                          |
 
-    b) response
+b) response
 
 | **Key** | **Type** | **Value** | **Example**     | **Comments**                         |
 | ------- | -------- | --------- | --------------- | ------------------------------------ |
-| result  | int      |           | { "result": 0 } | 0 means success, otherwides failure. |
+| result  | int      |    -      | { "result": 0 } | 0 means success, otherwides failure. |
 
 9. delete file
 
-    a) request
+a) request
 
 | **Key** | **Type** | **Value**     | **Example**                                       |
 |---------|----------|---------------|---------------------------------------------------|
 | method  | string   | delete_file   | {   "method": "delete_file",  "param": "a.jpeg" } |
-| param   | string   | <file name> |                                                   |
+| param   | string   | *file name*   |                    -                              |
 
-    b) response
+b) response
 
 | **Key** | **Type** | **Value** | **Example**     | **Comments**                         |
 | ------- | -------- | --------- | --------------- | ------------------------------------ |
-| result  | int      |           | { "result": 0 } | 0 means success, otherwides failure. |
+| result  | int      |    -      | { "result": 0 } | 0 means success, otherwides failure. |
 
 10. move file
 
@@ -3002,11 +2977,10 @@ The parameter must include a key named 'method'.
 | **Key** | **Type**    | **Value**          | **Example**                                                                    |
 |---------|-------------|--------------------|--------------------------------------------------------------------------------|
 | method  | string      | move_file          | {   "method": "delete_file",  "param": {   "src": a.jpeg,  "dest": b.jpeg  } } |
-| param   | json object | <src file name>  |                                                                                |
-|         |             | <dest file name> |                                                                                |
+| param   | json object | *src & dest file name* |                                     -                                          |
 
-    b) response
+b) response
 
 | **Key** | **Type** | **Value** | **Example**     | **Comments**                         |
 | ------- | -------- | --------- | --------------- | ------------------------------------ |
-| result  | int      |           | { "result": 0 } | 0 means success, otherwides failure. |
+| result  | int      |     -     | { "result": 0 } | 0 means success, otherwides failure. |
