@@ -20,6 +20,7 @@ sudo apt install git build-essential docker.io wget cmake python3-pip unzip \
 curl https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | sudo apt-key add -
 echo "deb https://apt.repos.intel.com/openvino/2022 `. /etc/os-release && echo ${UBUNTU_CODENAME}` main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2022.list
 
+sudo apt update
 sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 intel-dlstreamer-dev
 sudo /opt/intel/openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
 sudo /opt/intel/dlstreamer/install_dependencies/install_media_driver.sh
