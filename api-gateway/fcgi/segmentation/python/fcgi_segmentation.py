@@ -40,7 +40,7 @@ def get_result(environ):
     except (ValueError):
         request_body_size = 0
 
-    model_xml="./models/deeplab_fp32/frozen_inference_graph.xml"
+    model_xml="./models/deeplabv3.xml"
 
 
     data = environ["wsgi.input"].read(request_body_size)
