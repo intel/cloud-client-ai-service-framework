@@ -11,7 +11,6 @@
     "@vue/cli-plugin-router": "^5.0.5",
     "axios": "^0.27.2",
     "core-js": "^3.23.1",
-    "element-ui": "^2.15.9",
     "v-viewer": "^1.6.4",
     "vue": "^2.7.5",
     "vue-axios": "^3.4.0",
