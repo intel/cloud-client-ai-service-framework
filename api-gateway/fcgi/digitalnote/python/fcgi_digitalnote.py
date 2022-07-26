@@ -465,20 +465,13 @@ class ppocr():
 
             other_pin = rt_api.vectorVecFloat()
             out1 = rt_api.vectorFloat()
-            out2 = rt_api.vectorFloat()
-            out3 = rt_api.vectorFloat()
-            out4 = rt_api.vectorFloat()
-            out5 = rt_api.vectorFloat()
             out = rt_api.vectorVecFloat() ##with opaque and stl_binding
             out.append(out1)
-            out.append(out2)
-            out.append(out3)
-            out.append(out4)
-            out.append(out5)
+
 
             new_rec_xml = rec_xml.split(".xml")[0] + "_" + str(length) + ".xml"
             res = rt_api.infer_image(pics, 3, other_pin, new_rec_xml, out, urlinfo)
-            preds = np.array(out[4])
+            preds = np.array(out[0])
             preds = preds.reshape(1, int(25 * length / 100), 6625)
             preds_idx = preds.argmax(axis = 2)
             preds_prob = preds.max(axis = 2)
