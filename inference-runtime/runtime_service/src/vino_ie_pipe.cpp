@@ -578,3 +578,28 @@ enum irtStatusCode irt_infer_from_common(struct irtFloatIOBuffers& tensorData,
 
     return (enum irtStatusCode)res;
 }
+
+enum irtStatusCode irt_get_IO_information(const std::string& modelFile,
+                                          std::string backendEngine,
+                                          struct mock_data& IOInformation) {
+
+    // Policy checking to decide inference locally or remotely
+    Policy policyHandle;
+    policyHandle.WakeupDaemon();
+    struct CfgParams policyParams{true, false, "CPU", 500};
+    struct XPUStatus isXpuBusy{false, false};
+    policyHandle.ReadShareMemory(policyParams, isXpuBusy);
+
+    int res = RT_INFER_ERROR;
+
+    std::string inferDevice = policyParams.InferDevice;
+    check_temporary_infer_device(modelFile, inferDevice);
+
+    struct modelParams model{modelFile, false, 0, 0};
+
+    inference_entity* p_entity = gIrtInf.getInferenceEntity(backendEngine);
+    if (p_entity)
+        res = p_entity->video_infer_init(model, inferDevice, IOInformation);
+
+    return (enum irtStatusCode)res;
+}
