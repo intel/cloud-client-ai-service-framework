@@ -306,3 +306,13 @@ enum irtStatusCode irt_infer_from_common(struct irtFloatIOBuffers& tensorData,
                                          std::string backendEngine,
                                          struct serverParams& remoteServerInfo);
 
+/**
+ * @brief Get IO information, including IO name and IO shape
+ * @param modelFile The model file, include path
+ * @param backendEngine Specify the inferece engine, OPENVINO,ONNXRT,PYTORCH or TENSORFLOW.
+ * @param IOInformation IO information returned by the model
+ * @return Status code of infernce
+ */
+enum irtStatusCode irt_get_IO_information(const std::string& modelFile,
+                                          std::string backendEngine,
+                                          struct mock_data& IOInformation);
