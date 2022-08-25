@@ -57,6 +57,16 @@ RUN     mkdir -p /opt/fcgi && \
 		groupadd -g 109 render && \
 		usermod -G video,render -a www-data
 
+# download source packages for GPL/LGPL compliance
+RUN     sed -i "s/^# deb-src/deb-src/g" /etc/apt/sources.list && apt-get update && cd /usr/src && \
+		apt-get source --download-only ca-certificates libapparmor1 gamin libcryptsetup12 \
+		libdevmapper1.02.1 libglib2.0-0 libgamin0 libip4tc2 libkeyutils1 libpam-systemd \
+		libreadline8 librtmp1 libssh-4 readline-common systemd-timesyncd systemd-sysv systemd \
+		gstreamer1.0-x fonts-dejavu-core iso-codes libcairo2 libdatrie1 libdw1 libfribidi0 \
+		libgstreamer1.0-0 libgstreamer-plugins-base1.0-0 libkmod2 libpci3 libpangoft2-1.0-0 \
+		libpangocairo-1.0-0 libpango-1.0-0 libthai0 libthai-data pciutils ucf libelf1 && \
+		apt-get clean && rm -rf /var/lib/apt/lists/*
+
 USER    www-data
 # start service
 CMD     ["/start.sh"]
