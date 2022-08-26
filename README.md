@@ -2,6 +2,8 @@
 
 [Documentation](https://intel.github.io/cloud-client-ai-service-framework/)
 
+The latest release is [v1.3](https://github.com/intel/cloud-client-ai-service-framework/tree/v1.3)
+
 ## How to build Cloud-Client AI Service Framework
 Make sure your Build Host meets the following requirements:
 - Ubuntu 20.04.
