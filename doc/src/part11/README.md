@@ -1838,34 +1838,34 @@ these cases, we need to call this api to initialize the Openvino model.
 | batch          | int          | The batch size.                                    |
 | isImgInput     | bool         | Whether the input of the model is image data.      |
 
-#### 11.3.1.9 Configure a temporary inference device API
+#### 11.3.1.9 Configure an inference device API
 
-This API is used by users to set a temporary inference device for one case. The
+This API is used by users to set an inference device for one case. The
 inference device is usually set by the Policy configuration API(11.4.1.3). But
-this setting of the Policy configuration API is a global setting which affects
+the setting of the Policy configuration API is a global setting which affects
 all cases. If the user wants to select another inference device which is
 different from the global one, he can call this API to override the global
-inference device. This temporary setting only affect the specific user case, not
-affects others.
+inference device. This setting only affects the current user case, not affects
+others.
 
 1) API
 
 ```
 /**
 
-* @brief Set temporary inference device for the model.
+* @brief Set an inference device for the model.
 
 * @ This setting will override the policy setting.
 
-* @param set Set or clear the temporary inference device.
+* @param set Set or clear the inference device.
 
 * @param model Name of the model file, including the file path.
 
-* @param device The temporary inference device.
+* @param device The inference device.
 
 */
 
-int irt_set_temporary_infer_device(bool set, const std::string& model, std::string device);
+int irt_set_infer_device(bool set, const std::string& model, std::string device);
 ```
 
 
@@ -1873,13 +1873,13 @@ int irt_set_temporary_infer_device(bool set, const std::string& model, std::stri
 2) parameter
 
 ```
-set: Set(set==true) the temporary inference device;
+set: Set(set==true) the an inference device;
 
-or cancel(set==false) the temporary inference device.
+or cancel(set==false) the inference device.
 
 model: Name of the model file, including the file path.
 
-device: The temporary inference device.
+device: The inference device.
 ```
 
 
@@ -1887,25 +1887,22 @@ device: The temporary inference device.
 3) example
 
 ```
-// set a temporary device
+// set an inference device
 
-int res = irt_set_temporary_infer_device(true, model, "CPU")
+int res = irt_set_infer_device(true, model, "CPU")
 
 '''..
 
-// clear a temprary device
+// clear an inference device
 
-int res = irt_set_temporary_infer_device(false, model, "CPU")
+int res = irt_set_infer_device(false, model, "CPU")
 ```
 
 
 
 4) Notice
 
-Don't forget to call this api to cancel the temporary device setting when the
-temporary
-
-device isn't used any longer.
+None
 
 ### 11.3.2 Python API
 
@@ -2156,16 +2153,16 @@ The usage of this API is the same as C++ common API.
 
 The usage of this API is the same as C++ policy configuration API.
 
-#### 11.3.2.6 Set temporary inference device API
+#### 11.3.2.6 Set an inference device API
 
 1) API
 
-This API is a python version of configuring a temporary inference device API(11.4.1.11).
+This API is a python version of configuring an inference device API(11.4.1.11).
 
 Please refer to the section 11.4.1.11 for the detail usage.
 
 ```
-set_temporary_infer_device(set, model, device);
+set_infer_device(set, model, device);
 ```
 
 
@@ -2176,24 +2173,24 @@ set_temporary_infer_device(set, model, device);
 |----------------|-----------|-----------------------------------------------|
 | set            | bool      | set/clear. Same as 11.4.1.11.                 |
 | model          | str       | The model file. Same as 11.4.1.11             |
-| device         | str       | Temporary inference device. Same as 11.4.1.11 |
+| device         | str       | The inference device. Same as 11.4.1.11 |
 
 3) example
 
 ```
  import inferservice_python as rt_api
- #set a temporary inference device:*
- res = rt_api.set_temporary_infer_device(True, model, "CPU" )
+ #set an inference device:*
+ res = rt_api.set_infer_device(True, model, "CPU" )
  '''..
- #cancle a temporary inference device:*
+ #remove an inference device:*
 
- res = rt_api.set_temporary_infer_device(False, model, "CPU" )
+ res = rt_api.set_infer_device(False, model, "CPU" )
 ```
 
 
 4) Notice
 
-The usage of this API is the same as C++ configuring a temporary inference device API(11.4.1.11).
+None
 
 ### 11.3.3 C++ APIs for Different backend Engines (Version 1)
 
