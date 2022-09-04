@@ -109,13 +109,13 @@ struct userCfgParams {
 int vino_ie_pipeline_set_parameters(struct userCfgParams& configuration);
 
 /**
- * @brief Set temporary inference device for the model.
+ * @brief Set an inference device for the model.
  * @      This setting will override the policy setting.
- * @param set    Set or clear the temporary inference device.
+ * @param set    Set or clear the inference device.
  * @param model  Name of the model file, including the file path.
- * @param device The temporary inference device.
+ * @param device The inference device.
  */
-int irt_set_temporary_infer_device(bool set, const std::string& model, std::string device);
+int irt_set_infer_device(bool set, const std::string& model, std::string device);
 
 /**
  * @brief Do inference for image. For network with only one image input.
