@@ -25,7 +25,7 @@
 #include <ccai_log.h>
 
 static irt_inference_backend gIrtInf;
-static std::map<pid_t, std::map<std::string, std::string>> gIrtTempInferDevice;
+static std::map<std::string, std::string> gIrtTempInferDevice;
 
 int vino_ie_pipeline_set_parameters(struct userCfgParams& configuration) {
 
@@ -41,32 +41,21 @@ int vino_ie_pipeline_set_parameters(struct userCfgParams& configuration) {
     return res;
 }
 
-int irt_set_temporary_infer_device(bool set, const std::string& model, std::string device) {
+int irt_set_infer_device(bool set, const std::string& model, std::string device) {
 
     if (model.empty()) {
         return -1;
     }
-
-    pid_t pid = getpid();
 
     if (set) {
         Policy policyHandle;
         if (!policyHandle.IsAvailableDevice(device)) {
             return -1;
         }
-
-        if (gIrtTempInferDevice.find(pid) == gIrtTempInferDevice.end()) {
-            std::map<std::string, std::string> tmp;
-            tmp.insert(std::make_pair(model, device));
-            gIrtTempInferDevice[pid] = tmp;
-        } else {
-            gIrtTempInferDevice[pid][model] = device;
-        }
+        gIrtTempInferDevice[model] = device;
     } else {
-        if ((gIrtTempInferDevice.find(pid) != gIrtTempInferDevice.end())
-            && (gIrtTempInferDevice[pid].find(model) != gIrtTempInferDevice[pid].end())) {
-            gIrtTempInferDevice[pid].erase(model);
-        }
+        if (gIrtTempInferDevice.find(model) != gIrtTempInferDevice.end())
+            gIrtTempInferDevice.erase(model);
     }
 
     return 0;
@@ -75,11 +64,9 @@ int irt_set_temporary_infer_device(bool set, const std::string& model, std::stri
 static bool check_temporary_infer_device(const std::string& model, std::string& device) {
 
     bool res = false;
-    pid_t pid = getpid();
 
-    if ((gIrtTempInferDevice.find(pid) != gIrtTempInferDevice.end())
-        && (gIrtTempInferDevice[pid].find(model) != gIrtTempInferDevice[pid].end())) {
-        device = gIrtTempInferDevice[pid][model];
+    if (gIrtTempInferDevice.find(model) != gIrtTempInferDevice.end()) {
+        device = gIrtTempInferDevice[model];
         res = true;
     }
 

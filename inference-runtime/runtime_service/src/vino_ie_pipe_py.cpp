@@ -169,5 +169,5 @@ PYBIND11_MODULE(inferservice_python, m)
     m.def("infer_tts", &py_ie_pipeline_infer_tts, "text-to-speech inference");
     m.def("infer_common", &py_infer_common, "common case inference");
     m.def("set_policy_params", &vino_ie_pipeline_set_parameters, "parameters of policy configuration");
-    m.def("set_temporary_infer_device", &irt_set_temporary_infer_device, "set or clear the temporary inference device");
+    m.def("set_infer_device", &irt_set_infer_device, "set or clear the temporary inference device");
 }
