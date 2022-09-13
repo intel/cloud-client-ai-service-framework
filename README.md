@@ -75,3 +75,11 @@ launch Cloud-Client AI Service Framework
 cd container/script/integration_workdir/service_runtime/
 ./service_runtime.sh start
 ```
+
+## License
+
+The source code of CCAI is released under the [Apache 2.0 License](LICENSE).
+
+GStreamer is an open source framework licensed under LGPL. See https://gstreamer.freedesktop.org/documentation/frequently-asked-questions/licensing.html?gi-language=c.  You are solely responsible for determining if your use of Gstreamer requires any additional licenses.  Intel is not responsible for obtaining any such licenses, nor liable for any licensing fees due, in connection with your use of Gstreamer.
+
+FFmpeg is an open source project licensed under LGPL and GPL. See https://www.ffmpeg.org/legal.html. You are solely responsible for determining if your use of FFmpeg requires any additional licenses. Intel is not responsible for obtaining any such licenses, nor liable for any licensing fees due, in connection with your use of FFmpeg.
