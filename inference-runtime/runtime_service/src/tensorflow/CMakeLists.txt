@@ -16,7 +16,6 @@ set (TF_ENTRY_SOURCES
      tf_entry.cpp
     )
 
-set(tensorflow_INSTALL_PREFIX /opt/tensorflow)
 set(tensorflow_INCLUDE_DIRS ${tensorflow_INSTALL_PREFIX}/include)
 set(tensorflow_LIBRARY_FOLDER ${tensorflow_INSTALL_PREFIX}/lib)
 find_library(tensorflow_LIBS
@@ -29,3 +28,4 @@ target_link_libraries(${TF_ENTRY_NAME} PRIVATE ${tensorflow_LIBS} ${OpenCV_LIBRA
 target_include_directories(${TF_ENTRY_NAME} PRIVATE ${tensorflow_INCLUDE_DIRS})
 target_include_directories(${TF_ENTRY_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../)
 
+install(TARGETS ${TF_ENTRY_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

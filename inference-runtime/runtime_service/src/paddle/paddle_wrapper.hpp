@@ -9,7 +9,7 @@
 #include <string>
 
 #include <opencv2/opencv.hpp>
-#include "paddle/include/paddle_inference_api.h"
+#include "paddle_inference_api.h"
 
 
 class PaddleWrapper {

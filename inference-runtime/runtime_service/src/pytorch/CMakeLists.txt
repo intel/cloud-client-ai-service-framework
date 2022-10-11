@@ -16,13 +16,12 @@ set (TORCH_ENTRY_SOURCES
      torch_entry.cpp
     )
 
-set (Torch_DIR /opt/libtorch/share/cmake/Torch)
 find_package(Torch REQUIRED)
 
 add_library(${TORCH_ENTRY_NAME} SHARED ${TORCH_ENTRY_SOURCES} ${TORCH_ENTRY_HEADERS})
 target_link_libraries(${TORCH_ENTRY_NAME} PRIVATE ${TORCH_LIBRARIES} ${OpenCV_LIBRARIES})
-target_include_directories(${TORCH_ENTRY_NAME} PRIVATE /opt/libtorch/include)
+target_include_directories(${TORCH_ENTRY_NAME} PRIVATE ${TORCH_INCLUDE_DIRS})
 target_include_directories(${TORCH_ENTRY_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../)
+target_compile_options(${TORCH_ENTRY_NAME} PRIVATE ${TORCH_CXX_FLAGS})
 
-set_property(TARGET ${TORCH_ENTRY_NAME} PROPERTY CXX_STANDARD 14)
-
+install(TARGETS ${TORCH_ENTRY_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
