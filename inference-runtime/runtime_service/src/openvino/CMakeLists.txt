@@ -18,39 +18,29 @@ set (OPENVINO_ENTRY_SOURCES
      decrypt.c
     )
 
-find_package(InferenceEngine 2.0 REQUIRED)
-if (InferenceEngine_FOUND)
-    string(REGEX REPLACE "(.+)\\deployment_tools/inference_engine.*" "\\1" IE_PATH ${InferenceEngine_INCLUDE_DIRS})
-    message(${IE_PATH})
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(Crypto REQUIRED IMPORTED_TARGET libcrypto)
+
+find_package(InferenceEngine REQUIRED)
+message("-- Found InferenceEngine ${InferenceEngine_VERSION_MAJOR}.${InferenceEngine_VERSION_MINOR}")
+if(${InferenceEngine_VERSION_MAJOR} LESS_EQUAL 2021)
+    get_filename_component(IE_DEMO_INCLUDES "${InferenceEngine_INCLUDE_DIRS}/../samples/cpp/common" ABSOLUTE)
+    if(${InferenceEngine_VERSION_MAJOR} EQUAL 2021 AND
+       ${InferenceEngine_VERSION_MINOR} EQUAL 4)
+        string(APPEND IE_DEMO_INCLUDES "/utils/include")
+    endif()
 else()
-    message(WARNING "IE not found, " ${IE_SAMPLE_NAME} " skipped")
-    return()
+    get_filename_component(IE_DEMO_INCLUDES "${InferenceEngine_INCLUDE_DIRS}/../../../samples/cpp/common/utils/include" ABSOLUTE)
 endif()
 
-#OPENVINO R3
-#set (IE_DEMO_INCLUDES ${IE_PATH}deployment_tools/inference_engine/samples/cpp/common)
-#OPENVINO R4
-#set (IE_DEMO_INCLUDES ${IE_PATH}deployment_tools/inference_engine/samples/cpp/common/utils/include)
-#set (IE_AUDIO_INCLUDES ${IE_PATH}data_processing/audio/speech_recognition/include)
-#OPENVINO 2022.1
-set (IE_DEMO_INCLUDES ${IE_PATH}/../../../samples/cpp/common/utils/include)
-
-message("cmake_current_dir:" ${CMAKE_CURRENT_SOURCE_DIR})
-
-find_library(CRYPTO_LIBRARY_TARGET_NAME
-    crypto
-    PATHS "/usr/lib/x86_64-linux-gnu/" "/usr/local/lib/"
-    NO_DEFAULT_PATH)
-message("crypto ok" ${CRYPTO_LIBRARY_TARGET_NAME})
-set (Crypto_LIBRARIES ${CRYPTO_LIBRARY_TARGET_NAME})
-
 add_library(${OPENVINO_ENTRY_NAME} SHARED ${OPENVINO_ENTRY_SOURCES} ${OPENVINO_ENTRY_HEADERS})
-target_link_libraries(${OPENVINO_ENTRY_NAME} PRIVATE ${OpenCV_LIBRARIES}
-                                                     ${Curl_LIBRARIES} ${Crypto_LIBRARIES} 
-                                                     ${CMAKE_THREAD_LIBS_INIT} ${IMMEDIATE_BINDING_FLAG}
-                                                     ${InferenceEngine_LIBRARIES})
+target_link_libraries(${OPENVINO_ENTRY_NAME} PRIVATE
+                      ${InferenceEngine_LIBRARIES}
+                      ${OpenCV_LIBRARIES}
+                      PkgConfig::Crypto)
+target_include_directories(${OPENVINO_ENTRY_NAME} PRIVATE
+                           ${CMAKE_CURRENT_SOURCE_DIR}/..
+                           ${IE_DEMO_INCLUDES}
+                           ${OpenCV_INCLUDE_DIRS})
 
-target_include_directories(${OPENVINO_ENTRY_NAME} PRIVATE ${IE_DEMO_INCLUDES})
-target_include_directories(${OPENVINO_ENTRY_NAME} PRIVATE ${Curl_INCLUDES})
-target_include_directories(${OPENVINO_ENTRY_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../)
-
+install(TARGETS ${OPENVINO_ENTRY_NAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

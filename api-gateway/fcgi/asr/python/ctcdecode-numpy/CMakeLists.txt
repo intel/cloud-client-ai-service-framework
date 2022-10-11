@@ -6,10 +6,6 @@ find_package (Python3 REQUIRED COMPONENTS Interpreter Development NumPy)
 
 set(target_name ctcdecode_numpy_impl)
 
-set(COMPILER_IS_GCC_LIKE TRUE)
-add_compile_options(-Wall -fPIC)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
 file(GLOB_RECURSE HEADERS
     "${CMAKE_CURRENT_SOURCE_DIR}/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/*.hpp")
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
@@ -38,8 +34,8 @@ elseif(MSVC)
     )
 endif()
 
-install(TARGETS ${target_name} DESTINATION /opt/fcgi/cgi-bin/asr/ctcdecode_numpy)
+install(TARGETS ${target_name} DESTINATION opt/fcgi/cgi-bin/asr/ctcdecode_numpy)
 
 set(init_py  "${CMAKE_CURRENT_SOURCE_DIR}/ctcdecode_numpy/__init__.py")
 set(imp_py   "${CMAKE_CURRENT_SOURCE_DIR}/ctcdecode_numpy/impl.py")
-install(PROGRAMS ${init_py} ${imp_py} DESTINATION /opt/fcgi/cgi-bin/asr/ctcdecode_numpy)
+install(PROGRAMS ${init_py} ${imp_py} DESTINATION opt/fcgi/cgi-bin/asr/ctcdecode_numpy)

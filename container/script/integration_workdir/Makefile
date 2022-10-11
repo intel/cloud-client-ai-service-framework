@@ -7,7 +7,9 @@ OPENVINO_IMAGE   := service_runtime_inference_engine:ubuntu_20.04
 DEMO_IMAGE   := service_runtime_demo
 DEVEL_IMAGE   := service_runtime_devel
 
-image: docker/Dockerfile.image app_rootfs
+WORK_DIR = $(abspath $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST)))))
+
+image: docker/Dockerfile.image app_rootfs service_runtime
 	printf "%s" $(TAG) > service_runtime/docker_image_tag
 	cp -a service_runtime/docker_image_tag docker/app_rootfs/
 	../docker_build.sh .config docker/ $< $(DOCKER_IMAGE) \
@@ -20,6 +22,7 @@ image_only: docker/Dockerfile.image
 	docker tag $(DOCKER_IMAGE) service_runtime:latest
 
 devel_image: docker/Dockerfile.devel
+	ln -sf app_rootfs docker/devel_rootfs
 	../docker_build.sh .config docker/ $< $(DEVEL_IMAGE)
 
 demo_image: docker/Dockerfile.demo demo_rootfs
@@ -42,15 +45,19 @@ demo_rootfs:
 
 app_rootfs:
 	mkdir -p docker/
-	rm -rf docker/app_rootfs/
-	rm -rf service_runtime/
-	../install_projects.sh ../../../ docker/app_rootfs/ service_runtime/ .config
+	cmake -DCMAKE_INSTALL_PREFIX=docker/app_rootfs \
+	      -DBUILD_CONFIG:PATH=$(WORK_DIR)/.config -B build ../../..
+	make -C build install
 
 	# openvino_2021 dose not create the link, '/opt/intel/openvino'.
 	# Create the link in rootfs to avoid to modify app
 	mkdir -p docker/app_rootfs/opt/intel/
 
-	../link_writable_folder.sh ./docker/app_rootfs/
+service_runtime:  #TODO: convert shell scripts to cmake scripts
+	mkdir -p service_runtime
+	../../../api-gateway/install_to_service_runtime.sh $(WORK_DIR)/service_runtime $(WORK_DIR)/build
+	../../../health-monitor/install_to_service_runtime.sh $(WORK_DIR)/service_runtime
+	../../../service_runtime_binary/install_to_service_runtime.sh $(WORK_DIR)/service_runtime
 
 release_dockerfile:
 	rm -rf service_runtime_dockerfile_release/
@@ -64,11 +71,14 @@ defconfig:
 	defconfig --kconfig ../config/Kconfig  ../config/defconfig
 
 clean:
-	rm -rf docker/
+	rm -rf docker/ build service_runtime
 
 debug:
 	echo $(DOCKER_IMAGE)
 
 project_%:
-	../install_projects.sh ../../../ docker/app_rootfs/ service_runtime/ .config \
-		$(subst project_,,$@)
+	sh -c "make -C build $(subst project_,,$@) || make -C build help"
+
+.PHONY: image image_only devel_image demo_image inference_engine_image \
+        base_image demo_rootfs app_rootfs service_runtime release_dockerfile \
+        menuconfig defconfig clean debug
