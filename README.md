@@ -23,7 +23,27 @@ curl https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PU
 echo "deb https://apt.repos.intel.com/openvino/2022 `. /etc/os-release && echo ${UBUNTU_CODENAME}` main" | sudo tee /etc/apt/sources.list.d/intel-openvino-2022.list
 
 sudo apt update
-sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0 intel-dlstreamer-dev
+sudo apt install openvino-libraries-dev-2022.1.0 openvino-samples-2022.1.0
+sudo apt install intel-dlstreamer=2022.1.0.42 \
+        intel-dlstreamer-bins=2022.1.0.42 \
+        intel-dlstreamer-cpp=2022.1.0.42 \
+        intel-dlstreamer-cpu=2022.1.0.42 \
+        intel-dlstreamer-dev=2022.1.0.42 \
+        intel-dlstreamer-env=2022.1.0.42 \
+        intel-dlstreamer-gpu=2022.1.0.42 \
+        intel-dlstreamer-opencl=2022.1.0.42 \
+        intel-dlstreamer-opencv=2022.1.0.42 \
+        intel-dlstreamer-openvino=2022.1.0.42 \
+        intel-dlstreamer-vaapi=2022.1.0.42 \
+        intel-dlstreamer-gst=1.18.4.76 \
+        intel-dlstreamer-gst-gstreamer1.0=1.18.4.76 \
+        intel-dlstreamer-gst-libav=1.18.4.76 \
+        intel-dlstreamer-gst-plugins-bad=1.18.4.76 \
+        intel-dlstreamer-gst-plugins-base=1.18.4.76 \
+        intel-dlstreamer-gst-plugins-good=1.18.4.76 \
+        intel-dlstreamer-gst-plugins-ugly=1.18.4.76 \
+        intel-dlstreamer-gst-rtsp-server=1.18.4.76 \
+        intel-dlstreamer-gst-vaapi=1.18.4.76
 sudo /opt/intel/openvino_2022/install_dependencies/install_NEO_OCL_driver.sh
 sudo /opt/intel/dlstreamer/install_dependencies/install_media_driver.sh
 
@@ -40,9 +60,9 @@ wget  https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-d
 unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cpu.zip
 sudo cp -r libtorch/ /opt/ && rm -rf libtorch*
 
-wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz
-tar -zxvf onnxruntime-linux-x64-1.7.0.tgz
-sudo mv onnxruntime-linux-x64-1.7.0 /opt/onnxruntime
+wget -c https://github.com/microsoft/onnxruntime/releases/download/v1.11.0/onnxruntime-linux-x64-1.11.0.tgz
+tar -zxvf onnxruntime-linux-x64-1.11.0.tgz
+sudo mv onnxruntime-linux-x64-1.11.0 /opt/onnxruntime
 
 wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-2.8.0.tar.gz
 sudo mkdir -p /opt/tensorflow
