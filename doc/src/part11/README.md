@@ -41,7 +41,7 @@ a) Input parameters
 |----------------|----------|----------------------------------------|-------------------|-----------------------------------------------------------------|
 | 'aht'          | Int      | [-24, 24]                              | 0                 | increase(+)/descread(-) amount of semitone for generated speech |
 | 'apc'          |  int     | [0,100]                                | 58                | Set the speaker's timbre                                        |
-| 'app_id'       | Int      | Positive integer                       | 2128571502        | Application ID                                                  |
+| 'app_id'       | Int      | Positive integer                       | user-id        | Application ID                                                  |
 | 'format'       | Int      | Positive integer                       | 2                 | 1:PCM 2:WAV 3:MP3                                               |
 | 'nonce_str'    | string   | No more than 32 byte                   | fa577ce340859f9fe | Random string                                                   |
 | 'speaker'      | Int      | Positive integer                       | 1                 | 1: male voice 5: female voice                                   |
@@ -49,7 +49,7 @@ a) Input parameters
 | 'text'         | string   | Utf-8 encoding, No more than 150 bytes | Hello world       | The input text sentence                                         |
 | 'time_stamp'   | Int      | Positive integer                       | 1493468759        | timestamp                                                       |
 | 'volum'        | Int      | [-10, 10]                              | 0                 | volume                                                          |
-| 'appkey'       | string   | string                                 | di6ik9b9JiYfImUB  | Application key                                                 |
+| 'appkey'       | string   | string                                 | user-key  | Application key                                                 |
 
 In local mode(doing inference locally), only a "text" field is needed to set,
 other fields are ignored.
@@ -368,11 +368,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -437,11 +437,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -505,11 +505,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -586,11 +586,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -711,11 +711,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -755,11 +755,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -799,11 +799,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -842,11 +842,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -888,11 +888,11 @@ a) Input parameters
 
 | **Field name** | **Type** | **Range**                      | **Example**       | **comments**                     |
 |----------------|----------|--------------------------------|-------------------|----------------------------------|
-| 'app_id'       | Int      | Positive integer               | 2128571502        | Application ID                   |
+| 'app_id'       | Int      | Positive integer               | user-id        | Application ID                   |
 | 'nonce_str'    | string   | No more than 32 byte           | fa577ce340859f9fe | Random string                    |
 | 'image'        | string   | image data, often is a picture |                   | Must be encoded by base64 method |
 | 'time_stamp'   | Int      | Positive integer               | 1493468759        | timestamp                        |
-| 'appkey'       | string   | string                         | di6ik9b9JiYfImUB  | Application key                  |
+| 'appkey'       | string   | string                         | user-key  | Application key                  |
 
 In Local mode(doing inference locally), only an "image" field is needed to be set.
 
@@ -934,11 +934,11 @@ a) Input parameters
 
 | Field name    | Type   | Range                          | Example           | comments                                |
 |---------------|--------|--------------------------------|-------------------|-----------------------------------------|
-| 'app_id'      | Int    | Positive integer               | 2128571502        | Application ID                          |
+| 'app_id'      | Int    | Positive integer               | user-id        | Application ID                          |
 | 'nonce_str'   | string | No more than 32 byte           | fa577ce340859f9fe | Random string                           |
 | 'image'       | string | image data, often is a picture |                   | Must be encoded by base64 method        |
 | 'time_stamp'  | Int    | Positive integer               | 1493468759        | timestamp                               |
-| 'appkey'      | string | string                         | di6ik9b9JiYfImUB  | Application key                         |
+| 'appkey'      | string | string                         | user-key  | Application key                         |
 | 'latex'       | string | string                         | "365 234 "        | Pixel coordinates of latex              |
 | 'handwritten' | string | string                         | "354 39 431 123 " | Pixel coordinates of latex              |
 | 'html'        | int    | {0,1}                          | 0                 | 0 for terminal client 1 for html client |

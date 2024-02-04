@@ -23,7 +23,7 @@ def main(args):
     if res.status_code != 200:
         print("set device error! error number is:", res.status_code)
 
-    appkey = 'di6ik9b9JiYfImUB'
+    appkey = 'user-key'
 
     if args.wave_file == None:
         if args.language == 'ENG':

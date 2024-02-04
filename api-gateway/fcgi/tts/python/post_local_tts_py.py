@@ -21,7 +21,7 @@ def main(args):
 
     #start_time = time.time()
 
-    appkey = 'di6ik9b9JiYfImUB'
+    appkey = 'user-key'
     f = open(args.sentence, "r")
 
     time_stamp = int(time.time())
@@ -30,7 +30,7 @@ def main(args):
     params = OrderedDict()
     params['aht'] = 0
     params['apc'] = 58
-    params['app_id'] = 2128571502
+    params['app_id'] = user-id
     params['format'] = 2
     params['nonce_str'] = time_stamp
     params['speaker'] = 1

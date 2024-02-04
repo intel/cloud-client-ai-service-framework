@@ -32,11 +32,11 @@ def get_result(environ):
     d = dict((k,v[0]) for k,v in parse_qs(data).items())
     audio_data = d[b'speech']
 
-    appkey = 'di6ik9b9JiYfImUB'
+    appkey = 'user-key'
     time_stamp = int(time.time())
     random_let = ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890',10))
     params = OrderedDict()
-    params['app_id'] = 2128571502
+    params['app_id'] = user-id
     params['format'] = 2
     params['nonce_str'] = random_let
     params['rate'] = 16000

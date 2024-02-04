@@ -10,7 +10,7 @@ import time
 import random
 from collections import OrderedDict
 
-appkey = 'di6ik9b9JiYfImUB'
+appkey = 'user-key'
 
 f = open("./models/classification.jpg","rb")
 base64_data = base64.b64encode(f.read())
@@ -20,7 +20,7 @@ random_let = ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890',10))
 
 """
 params = {
-    'app_id': '2129572502',
+    'app_id': 'user-id',
     'format': '2',
     'nonce_str': random_let, # random string
     'rate': '16000',
@@ -29,7 +29,7 @@ params = {
 }
 """
 params = OrderedDict()
-params['app_id'] = 2129572502
+params['app_id'] = user-id
 params['format'] = 2
 params['nonce_str'] = random_let
 params['rate'] = 16000

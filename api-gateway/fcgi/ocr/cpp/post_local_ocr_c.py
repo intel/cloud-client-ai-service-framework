@@ -15,7 +15,7 @@ import sys
 def main(args):
     #start_time = time.time()
 
-    appkey = 'di6ik9b9JiYfImUB'
+    appkey = 'user-key'
 
     f = open(args.image, "rb")
     base64_data = base64.b64encode(f.read())
@@ -24,7 +24,7 @@ def main(args):
     #print(random_let)
 
     params = OrderedDict()
-    params['app_id'] = 2128571502
+    params['app_id'] = user-id
     params['image'] = base64_data
     params['nonce_str'] = random_let
     params['time_stamp'] =time_stamp

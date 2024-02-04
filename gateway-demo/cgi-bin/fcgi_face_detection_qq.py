@@ -31,12 +31,12 @@ def get_result(environ):
     data = environ["wsgi.input"].read(request_body_size)
     d = dict((k,v[0]) for k,v in parse_qs(data).items())
     base64_data = d[b'image']
-    appkey = 'di6ik9b9JiYfImUB'
+    appkey = 'user-key'
     time_stamp = int(time.time())
     random_let = ''.join(random.sample('zyxwvutsrqponmlkjihgfedcba1234567890',10))
 
     params = OrderedDict()
-    params['app_id'] =  2128571502
+    params['app_id'] =  user-id
     params['image'] = base64_data
     params['nonce_str'] =time_stamp
     params['time_stamp'] =time_stamp
