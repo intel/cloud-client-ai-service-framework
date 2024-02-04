@@ -17,7 +17,6 @@ echo $SCRIPT_DIR
 # install python fcgi programs
 
 mkdir -p $DESTDIR/opt/fcgi/cgi-bin
-cp $SCRIPT_DIR/fcgi_*_tencent.py $DESTDIR/opt/fcgi/cgi-bin/
 cp $SCRIPT_DIR/fcgi_*_qq.py $DESTDIR/opt/fcgi/cgi-bin/
 
 ## install config files
